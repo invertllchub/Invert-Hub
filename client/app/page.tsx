@@ -15,7 +15,7 @@ export default function Home() {
         />
         <ol>
           <li>
-         Flow TEST  <code>app/page.tsx</code>.
+         DEV TEST <code>app/page.tsx</code>.
           </li>
           <li>Save and see your changes instantly.</li>
         </ol>
