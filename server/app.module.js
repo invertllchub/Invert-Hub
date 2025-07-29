@@ -1,10 +1,10 @@
-const { Module } = require('@nestjs/common');
+
+import { Module } from '@nestjs/common';
 
 @Module({
   imports: [],
   controllers: [],
   providers: [],
 })
-class AppModule {}
 
-module.exports = { AppModule };
+export class AppModule {}
