@@ -23,7 +23,7 @@ function SearchIcon() {
                     <div className='flex items-center justify-between w-full'>
                         <input 
                         type="text" 
-                        placeholder='Search projects' 
+                        placeholder='Search' 
                         className="w-6/12 border-b border-gray-400 outline-none text-2xl lg:text-3xl px-2 pb-3 focus:border-black transition"
                         />
                         <X onClick={() => SetOpenSearch(false)} className='cursor-pointer' size={35}/>

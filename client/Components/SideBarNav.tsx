@@ -1,3 +1,4 @@
+"use client"
 import React from 'react'
 import { useState } from 'react';
 import { usePathname } from 'next/navigation'
@@ -11,6 +12,7 @@ function SideBarNav() {
     const pathname = usePathname(); 
     const [openSideBar, setOpenSideBar] = useState(false);
     const [hoveredLink, setHoveredLink] = useState<string | null>(null);
+    const [isMiniHovered, setIsMiniHovered] = useState(false);
 
     const links = [
         { href: '/projects', label: 'PROJECTS' },
@@ -39,7 +41,7 @@ function SideBarNav() {
             )}
 
             {/* sideNav */}
-            <div className={`fixed top-0 right-0 h-full w-6/12 z-50 bg-black text-white transition-transform ease-in-out duration-600
+            <div className={`fixed top-0 right-0 h-full w-6/12 z-50 bg-black text-white transition-transform ease-in-out duration-500
             ${openSideBar ? "translate-x-0" : "translate-x-full"}`}>
 
                 <div className='w-full flex items-center justify-end p-6'>
@@ -66,7 +68,8 @@ function SideBarNav() {
                             >
                                 <Link 
                                     href={link.href}
-                                    className={`font-semibold text-4xl`}
+                                    onClick={() => setOpenSideBar(false)}
+                                    className={`font-semibold text-2xl lg:text-4xl`}
                                 >
                                     {link.label}
                                 </Link>
@@ -92,6 +95,7 @@ function SideBarNav() {
                             >
                                 <Link 
                                     href={link.href}
+                                    onClick={() => setOpenSideBar(false)}
                                     className={`font-semibold text-md transition`}
                                 >
                                     {link.label}
@@ -101,16 +105,20 @@ function SideBarNav() {
                     </ul>
                 </nav>
 
-                <div className='absolute bottom-8 left-6'>
-                    <Link href={"/"} className='underline underline-offset-8'>INFO@INVERTSTUDIO.COM</Link>
+                <div className='absolute bottom-8 left-6 w-[70%] sm:w-auto'>
+                    <Link href={"/"} className='underline underline-offset-8 break-words'>INFO@INVERTSTUDIO.COM</Link>
                 </div>
 
                 {/* Mini sidebar */}
                 <div  className={`absolute group top-0 h-full z-40 text-black bg-white origin-right
-                transition-all duration-500 hover:w-60 flex flex-col items-center justify-center gap-6
-                ${openSideBar ? "left-[calc(-5rem)] w-24 hover:w-70 hover:left-[calc(-17rem)]" : "left-0"}
-                    `}>
-                        <div className="absolute inset-0 bg-black/40 z-10 pointer-events-none transition-all duration-500 group-hover:bg-transparent"></div>
+                transition-all duration-500 flex flex-col items-center justify-center gap-6
+                ${openSideBar ?  `${isMiniHovered ? "w-50 lg:w-70 lg:left-[-17rem] left-[-12rem]" : "w-24 left-[-6rem]"}`  : "left-0"}
+                    `}
+                    onMouseEnter={() => setIsMiniHovered(true)}
+                    onMouseLeave={() => setIsMiniHovered(false)}
+                    onTouchStart={() => setIsMiniHovered(prev => !prev)}
+                    >
+                        <div className={`absolute inset-0 ${isMiniHovered ? "bg-transparent" : "bg-black/40"} z-10 pointer-events-none transition-all duration-500`}></div>
                         <div className='relative z-20 w-11/12 h-[300px]'>
                             <div className="relative w-full h-[250px]">
                                 <Image 

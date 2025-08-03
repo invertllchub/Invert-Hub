@@ -28,8 +28,9 @@ function NavBar() {
             <Link href="/">
                 <Image 
                 src="/logo.png" 
-                alt="Company Logo"  
-                priority width={170} height={140}
+                alt="Invert-Hub Logo"  
+                priority 
+                width={170} height={140}
                 className="origin-left hover:scale-130 transition-transform duration-800 cursor-pointer"
                 />
             </Link>
