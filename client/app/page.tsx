@@ -1,5 +1,5 @@
 import React from "react";
-import ScreenText from "@/components/ScreenText";
+import ScreenText from "../components/ScreenText";
 
 function HomePage() {
   return (
