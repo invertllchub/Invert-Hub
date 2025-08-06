@@ -1,7 +1,6 @@
 "use client"
 import React from 'react'
 import { useState } from 'react';
-import { usePathname } from 'next/navigation'
 import Link from 'next/link';
 import { Menu, X, ArrowRight } from 'lucide-react'
 import Image from 'next/image';
@@ -9,7 +8,6 @@ import Image from 'next/image';
 
 
 function SideBarNav() {
-    const pathname = usePathname(); 
     const [openSideBar, setOpenSideBar] = useState(false);
     const [hoveredLink, setHoveredLink] = useState<string | null>(null);
     const [isMiniHovered, setIsMiniHovered] = useState(false);
