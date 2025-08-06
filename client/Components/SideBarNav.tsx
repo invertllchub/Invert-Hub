@@ -111,8 +111,8 @@ function SideBarNav() {
 
                 {/* Mini sidebar */}
                 <div  className={`absolute group top-0 h-full z-40 text-black bg-white origin-right
-                transition-all duration-500 flex flex-col items-center justify-center gap-6
-                ${openSideBar ?  `${isMiniHovered ? "w-50 lg:w-70 lg:left-[-17rem] left-[-12rem]" : "w-24 left-[-6rem]"}`  : "left-0"}
+                transition-all duration-500 flex flex-col items-center justify-center gap-10
+                ${openSideBar ?  `${isMiniHovered ? "w-45 lg:w-70 lg:left-[-17rem] left-[-11rem]" : "w-24 left-[-6rem]"}`  : "left-0"}
                     `}
                     onMouseEnter={() => setIsMiniHovered(true)}
                     onMouseLeave={() => setIsMiniHovered(false)}
