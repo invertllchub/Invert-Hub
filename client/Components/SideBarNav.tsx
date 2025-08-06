@@ -29,7 +29,7 @@ function SideBarNav() {
     return (
         <div >
             <div onClick={() => setOpenSideBar(true)} className='p-1 rounded-full cursor-pointer hover:bg-black/30'>
-                <Menu className='text-white hover:scale-75 transition duration-500' size={35}/>
+                <Menu aria-hidden="true" className='text-white hover:scale-75 transition duration-500' size={35}/>
             </div>
 
             {/* Overlay */}
@@ -44,8 +44,8 @@ function SideBarNav() {
             <div className={`fixed top-0 right-0 h-full w-6/12 z-50 bg-black text-white transition-transform ease-in-out duration-500
             ${openSideBar ? "translate-x-0" : "translate-x-full"}`}>
 
-                <div className='w-full flex items-center justify-end p-6'>
-                    <X onClick={() => setOpenSideBar(false)} className='cursor-pointer' size={35}/>
+                <div className='w-full flex items-center justify-end p-6' >
+                    <X aria-hidden="true" onClick={() => setOpenSideBar(false)} className='cursor-pointer' size={35}/>
                 </div>
 
                 <nav >

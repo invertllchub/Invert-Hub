@@ -4,14 +4,16 @@ import { Search, X, ArrowRight } from 'lucide-react'
 import Image from 'next/image'
 
 
-function SearchIcon() {
-        const [openSearch, SetOpenSearch] = useState(false)
-    
+
+const SearchIcon = () => {
+    const [openSearch, setOpenSearch] = useState(false)
+    console.log(openSearch)
     return (
         <>
-        <div onClick={() => SetOpenSearch(true)} className='p-1 rounded-full cursor-pointer hover:bg-black/30'>
-            <Search className='text-white hover:scale-75 transition duration-500' size={25}/>
+        <div aria-label="Open Search" onClick={() => setOpenSearch(true)} className='p-1 rounded-full cursor-pointer hover:bg-black/30'>
+            <Search className='text-white hover:scale-75 transition duration-500' size={25} aria-hidden="true" />
         </div>
+        {/* overLay */}
         <div className={`fixed inset-0 flex items-center justify-center bg-white/10 backdrop-blur-md  z-50
             transform transition-all duration-500 ease-in-out
             ${openSearch ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}
@@ -26,7 +28,7 @@ function SearchIcon() {
                         placeholder='Search' 
                         className="w-6/12 border-b border-gray-400 outline-none text-2xl lg:text-3xl px-2 pb-3 focus:border-black transition"
                         />
-                        <X onClick={() => SetOpenSearch(false)} className='cursor-pointer' size={35}/>
+                        <X aria-label="Close Search" onClick={() => setOpenSearch(false)} className='cursor-pointer' size={35}/>
                     </div>
                     <div>
                         <h1 className='text-2xl font-semibold my-8'>Featured Projects</h1>
