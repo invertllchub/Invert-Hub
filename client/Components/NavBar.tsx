@@ -10,7 +10,7 @@ function NavBar() {
     const pathname = usePathname(); 
 
     const links = [
-        { href: '/about', label: 'PROJECTS' },
+        { href: '/projects', label: 'PROJECTS' },
         { href: '/services', label: 'SERVICES' },
         { href: '/careers', label: 'CAREERS' },
     ];

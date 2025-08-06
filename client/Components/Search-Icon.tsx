@@ -7,7 +7,6 @@ import Image from 'next/image'
 
 const SearchIcon = () => {
     const [openSearch, setOpenSearch] = useState(false)
-    console.log(openSearch)
     return (
         <>
         <div aria-label="Open Search" onClick={() => setOpenSearch(true)} className='p-1 rounded-full cursor-pointer hover:bg-black/30'>
