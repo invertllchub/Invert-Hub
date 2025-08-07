@@ -35,9 +35,10 @@ const ContactPage = () => {
         <header className="text-left mb-16">
           <div className="relative inline-block mb-6">
             <h1
-              className="text-4xl md:text-7xl font-black mb-6 relative z-10"
+              className="text-4xl md:text-5xl font-black text-gray-900 mb-6 tracking-tight"
               style={{
                 fontSize: "clamp(2rem, 0.3723rem + 7.234vw, 6.25rem)",
+                lineHeight: 1.1,
               }}
             >
               Let's Build Something Unexpected
@@ -46,7 +47,7 @@ const ContactPage = () => {
           </div>
 
           <p
-            className="font-medium max-w-4xl text-gray-600"
+            className="font-medium text-gray-600"
             style={{ fontSize: "clamp(1rem, 0.617rem + 1.7021vw, 1.8rem)" }}
           >
             Whether you're exploring a collaboration, applying for a role, or
