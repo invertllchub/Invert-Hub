@@ -125,14 +125,14 @@ export default function AboutPage() {
       ref={containerRef}
       className="min-h-screen bg-white py-12 px-4 sm:px-6 lg:py-24 lg:px-8"
     >
-      <div className="max-w-4xl mx-auto text-black">
+      <div className="max-w-[1300px] mx-auto text-black">
         {/* Company Section */}
         <section className="company-section mb-20">
           <h2
             ref={companyTitleRef}
-            className="font-black mb-8 leading-none tracking-tight"
+            className="text-4xl md:text-7xl font-black mb-6 relative z-10"
             style={{
-              fontSize: "clamp(2rem, 0.7rem + 5.33vw, 5.5rem)",
+              fontSize: "clamp(2rem, 0.3723rem + 7.234vw, 6.25rem)",
             }}
           >
             A Company Built to Scale Creativity
