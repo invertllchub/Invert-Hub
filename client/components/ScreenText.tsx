@@ -41,9 +41,9 @@ const ScreenText = () => {
     return (
         <>
         <div className="relative top-2/5 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white 
-        font-bold h-[40px] md:h-[60px] lg:h-[180px] flex justify-center items-center overflow-hidden">
-            <div ref={currentRef} className="absolute font-bold text-4xl md:text-6xl xl:text-[180px] leading-none">{texts[0]}</div>
-            <div ref={nextRef} className="absolute font-bold text-4xl md:text-6xl xl:text-[180px] leading-none"></div>
+        font-bold h-[40px] md:h-[60px] lg:h-[160px] flex justify-center items-center overflow-hidden">
+            <div ref={currentRef} className="absolute font-bold text-4xl md:text-6xl xl:text-[150px] leading-none">{texts[0]}</div>
+            <div ref={nextRef} className="absolute font-bold text-4xl md:text-6xl xl:text-[150px] leading-none"></div>
         </div>
 
         <div className="absolute  top-[60%] left-1/2 transform -translate-x-1/2 text-white 
