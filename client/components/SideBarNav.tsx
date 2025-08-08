@@ -27,7 +27,7 @@ function SideBarNav() {
     return (
         <div >
             <div onClick={() => setOpenSideBar(true)} className='p-1 rounded-full cursor-pointer hover:bg-black/30'>
-                <Menu aria-hidden="true" className='text-white hover:scale-75 transition duration-500' size={35}/>
+                <Menu aria-hidden="true" className='text-black hover:scale-75 transition duration-500' size={35}/>
             </div>
 
             {/* Overlay */}
@@ -108,7 +108,7 @@ function SideBarNav() {
                 </div>
 
                 {/* Mini sidebar */}
-                <div  className={`absolute group top-0 h-full z-40 text-black bg-white origin-right
+                <div  className={`absolute group top-0 h-full py-6 z-40 text-black bg-white origin-right
                 transition-all duration-500 flex flex-col items-center justify-center gap-10
                 ${openSideBar ?  `${isMiniHovered ? "w-45 lg:w-70 lg:left-[-17rem] left-[-11rem]" : "w-24 left-[-6rem]"}`  : "left-0"}
                     `}
@@ -117,8 +117,8 @@ function SideBarNav() {
                     onTouchStart={() => setIsMiniHovered(prev => !prev)}
                     >
                         <div className={`absolute inset-0 ${isMiniHovered ? "bg-transparent" : "bg-black/40"} z-10 pointer-events-none transition-all duration-500`}></div>
-                        <div className='relative z-20 w-11/12 h-[300px]'>
-                            <div className="relative w-full h-[250px]">
+                        <div className='relative z-20 w-11/12 h-6/12'>
+                            <div className="relative w-full h-9/12">
                                 <Image 
                                 src="/pic1.jpg" 
                                 alt="Remode" 
@@ -130,10 +130,10 @@ function SideBarNav() {
                                 <h1 className='font-semibold'>Design</h1>
                                 <ArrowRight className='relative -left-1 cursor-pointer transition-all duration-300 hover:left-1'/>
                             </div>
-                            <p>Creation of design solutions</p>
+                            <p className="truncate w-full">Creation of design solutions</p>
                         </div>
-                        <div className='relative z-20 w-11/12 h-[300px]'>
-                            <div className="relative w-full h-[250px]">
+                        <div className='relative z-20 w-11/12 h-6/12'>
+                            <div className="relative w-full h-9/12">
                                 <Image 
                                 src="/pic1.jpg" 
                                 alt="Remode" 
@@ -145,7 +145,7 @@ function SideBarNav() {
                                 <h1 className='font-semibold'>Consulting</h1>
                                 <ArrowRight className='relative -left-1 transition-all duration-300 hover:left-1 cursor-pointer'/>
                             </div>
-                            <p>Advice and strategic guidance</p>
+                            <p className="truncate w-full">Advice and strategic guidance</p>
                         </div>
                     </div>
 
