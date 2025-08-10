@@ -56,10 +56,10 @@ export default function HomePage() {
   ];
 
   useEffect(() => {
-    window.scrollTo(0, 0); // ✅ Reset scroll on refresh
+    window.scrollTo(0, 0); // Reset scroll on refresh
 
     const ctx = gsap.context(() => {
-      // 🔥 Animation 1: تصغير أول سيكشن
+      // Animation 1: تصغير أول سيكشن
       gsap.fromTo(
         ".section1",
         { opacity: 1, scale: 1, transformOrigin: "bottom center" },
@@ -76,7 +76,7 @@ export default function HomePage() {
         }
       );
 
-      // 🔥 Animation 2: section5
+      // Animation 2: section5
       gsap.fromTo(
         ".section5",
         { y: 0 },
@@ -92,11 +92,11 @@ export default function HomePage() {
         }
       );
 
-      // 🔥 Animation 3: Vertical Scroll (stacking items)
+      // Animation 3: Vertical Scroll (stacking items)
       const section = verticalRef.current;
-      if (!section) return; // ✅ تفادي null error
+      if (!section) return; // تفادي null error
 
-      // ✅ typing للعناصر كـ HTMLElement
+      // typing للعناصر كـ HTMLElement
       const items = gsap.utils.toArray<HTMLElement>(
         section.querySelectorAll(".item")
       );
