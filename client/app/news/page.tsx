@@ -1,6 +1,4 @@
 // app/news/page.tsx
-import Image from "next/image";
-import Link from "next/link";
 import ArticleCard from "@/components/Article";
 import NewsHeader from "@/components/NewsHeader";
 import SubscriptionCTA from "@/components/SubscriptionCTA";
