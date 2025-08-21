@@ -18,7 +18,7 @@ gsap.registerPlugin(ScrollTrigger, Flip);
 
 function Page() {
     const [projects, setProjects] = useState<Project[]>([]);
-    const imagesRef = useRef<HTMLDivElement[]>([]);
+    const imagesRef = useRef<Map<number, HTMLDivElement>>(new Map());
     const [currentImg, setCurrentImg] = useState<string | null>("https://res.cloudinary.com/dntdescqh/image/upload/v1755689587/pic2_ydbgaw.webp");
     const router = useRouter();
 
@@ -60,11 +60,11 @@ function Page() {
     }, [projects]);
 
 
-    const handleClick = (e: React.MouseEvent, title: string) => {
+    const handleClick = (e: React.MouseEvent, slug: string) => {
         const container = e.currentTarget as HTMLElement;
         const imgDiv = container.querySelector("div");
         if (!imgDiv) {
-            router.push(`/projects/${title}`);
+            router.push(`/projects/${slug}`);
             return;
         }
 
@@ -83,7 +83,7 @@ function Page() {
         const projectRect = flipState.projectPageRect;
 
         if (!projectRect) {
-            router.push(`/projects/${title}`);
+            router.push(`/projects/${slug}`);
             return;
         }
 
@@ -95,7 +95,7 @@ function Page() {
             duration: 1.5,
             ease: "power1.inOut",
             onComplete: () => {
-                router.push(`/projects/${title}`);
+                router.push(`/projects/${slug}`);
             },
         });
     };
@@ -110,7 +110,7 @@ function Page() {
                     {projects.map((project, i) => {
                         return (
                             <div  
-                            onClick={(e) => handleClick(e, project.data.title)}
+                            onClick={(e) => handleClick(e, project.data.slug)}
                             key={project.data.id} 
                             className={`h-[70vh] cursor-pointer
                                 ${i % 3 === 0 ? "md:col-start-1" : ""}
@@ -119,10 +119,8 @@ function Page() {
                             `}
                                 >
                                 <div className="relative w-full h-10/12"
-                                ref={(img) => {
-                                    if (img) {
-                                        imagesRef.current[i] = img;
-                                    }
+                                ref={(el) => {
+                                    if (el) imagesRef.current.set(project.data.id, el);
                                 }}
                                 >
                                     <Image 
@@ -163,7 +161,7 @@ function Page() {
                                 onMouseEnter={() => {setCurrentImg(item.data.img)}}
                                 onClick={() => {
                                     setCurrentImg(item.data.img);
-                                    router.push(`/projects/${item.data.title}`);
+                                    router.push(`/projects/${item.data.slug}`);
                                 }}
                                 >
                                     <h1 className='font-semibold text-[14px]'>{item.data.title}</h1>
