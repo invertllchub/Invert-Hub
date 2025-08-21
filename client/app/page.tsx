@@ -9,6 +9,7 @@ import Image from "next/image";
 import Link from "next/link";
 // types
 import { Project } from "./types/project";
+import YellowCard from "@/components/YellowCard";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -314,30 +315,13 @@ export default function HomePage() {
 
         {/* Section 8 - Contact */}
         <section className="section8 w-full h-[100vh] bg-[#f6f6f6] text-black p-6 md:p-16">
-          <div
-            className="w-full h-11/12 md:h-full flex flex-col lg:flex-row items-center justify-between gap-8 mt-10 py-10 px-4 
-            bg-gradient-to-r from-yellow-200/70 to-yellow-100 rounded-lg"
-          >
-            <div className="w-full md:w-8/12 h-full flex flex-col justify-between text-start p-4">
-              <p className="text-xl md:text-5xl font-semibold mb-6">
-                We integrate architecture, urban planning, interior design,
-                product and experience design with consulting services that
-                tackle every-day challenges. Curious to know more?
-              </p>
-              <Link href="" className="relative text-xl group w-fit">
-                GET IN TOUCH
-                <span className="absolute left-0 -bottom-1 w-full h-[2px] bg-black scale-x-100 origin-left transition-transform duration-300 group-hover:scale-x-0"></span>
-              </Link>
-            </div>
-            <div className="relative w-full md:w-4/12 h-full rounded-md overflow-hidden">
-              <Image
-                alt="Description"
-                src="https://res.cloudinary.com/dntdescqh/image/upload/v1755689851/pic7_abntht.webp"
-                fill
-                className="object-cover"
-              />
-            </div>
-          </div>
+          <YellowCard 
+          p={`We integrate architecture, urban planning, interior design,product and experience
+            design with consulting services that tackle every-day challenges. Curious to know more?`}
+          link={`GET IN TOUCH`}
+          img={`https://res.cloudinary.com/dntdescqh/image/upload/v1755689851/pic7_abntht.webp`}
+          alt={`Description`}
+          />
         </section>
       </div>
     </main>
