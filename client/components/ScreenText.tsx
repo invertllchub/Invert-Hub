@@ -16,26 +16,29 @@ const ScreenText = () => {
 
     useEffect(() => {
         const interval = setInterval(() => {
-            const nextIndex = (index + 1) % texts.length;
+        if (!currentRef.current || !nextRef.current) return;
 
-            gsap.set(nextRef.current, { y: "100%"});
-            nextRef.current!.innerText = texts[nextIndex];
+        const nextIndex = (index + 1) % texts.length;
 
-            const tl = gsap.timeline({
-                onComplete: () => {
-                    currentRef.current!.innerText = texts[nextIndex];
-                    gsap.set(currentRef.current, { y: 0});
-                    index = nextIndex; 
+        gsap.set(nextRef.current, { y: "100%" });
+        nextRef.current.innerText = texts[nextIndex];
+
+        const tl = gsap.timeline({
+            onComplete: () => {
+                if (currentRef.current) {
+                    currentRef.current.innerText = texts[nextIndex];
+                    gsap.set(currentRef.current, { y: 0 });
                 }
-            });
+                index = nextIndex;
+            },
+        });
 
+        tl.to(currentRef.current, { y: "-100%", duration: 0.8, ease: "power2.inOut" })
+        .to(nextRef.current, { y: 0, duration: 0.8, ease: "power2.inOut" }, "<");
 
-            tl.to(currentRef.current, { y: "-100%", duration: 0.8, ease: "power2.inOut" })
-            .to(nextRef.current, { y: 0, duration: 0.8, ease: "power2.inOut" }, "<");
+    }, 3500);
 
-        }, 3500);
-
-        return () => clearInterval(interval);
+    return () => clearInterval(interval);
     }, []);
 
     return (

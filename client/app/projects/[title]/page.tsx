@@ -23,7 +23,7 @@ export default function ProjectDetailPage() {
     const containerRef = useRef<HTMLDivElement>(null);
     const textRef = useRef(null);
     const params = useParams(); 
-    const title = decodeURIComponent(params?.id as string);
+    const title = decodeURIComponent(params?.title as string);
     const project = projects.find((p) => p.data.title.toLowerCase() === title.toLowerCase());
 
     // fetch data
@@ -41,7 +41,7 @@ export default function ProjectDetailPage() {
         fetchData()
     }, [])
 
-  
+
     useLayoutEffect(() => {
         if (flipState.state && containerRef.current && flipState.projectPageRect) {
             Flip.from(flipState.state, {
@@ -111,7 +111,7 @@ export default function ProjectDetailPage() {
             />
             <div className="absolute inset-0 bg-black/30" />
             <h1 className="absolute top-1/2 -translate-y-1/2 md:top-[7%] md:-translate-y-0 left-1/2 -translate-x-1/2 text-5xl md:text-8xl 
-            font-bold text-white w-full text-center break-words">
+            font-bold text-white w-10/12 text-center break-words text-wrap">
                 {project.data.title}
             </h1>
 
@@ -125,7 +125,7 @@ export default function ProjectDetailPage() {
 
         <div className="w-full h-[60vh] md:h-[100vh] flex flex-col items-center justify-center ">
             <h1 className="mt-6 text-xl md:text-3xl font-semibold">{project.data.title}</h1>
-            <h3 className="mt-2 text-lg text-gray-600">{project.data.subtitle}</h3>
+            <h3 className="mt-2 text-lg">{project.data.date}</h3>
             <p className="w-full text-center uppercase text-3xl md:text-7xl font-bold break-words mt-12">
                 {project.data.description}
             </p>

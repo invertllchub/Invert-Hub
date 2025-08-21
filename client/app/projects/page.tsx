@@ -134,8 +134,8 @@ function Page() {
                                     />
                                 </div>
                                 <div className='py-4'>
-                                    <h1 className='font-semibold text-[18px]'>{project.data.title}</h1>
-                                    <p>{project.data.description}</p>
+                                    <h1 className='font-semibold text-[14px]'>{project.data.title}</h1>
+                                    <p className='text-[12px] text-gray-700'>{project.data.date}</p>
                                 </div>
                             </div>
                         )
@@ -166,8 +166,8 @@ function Page() {
                                     router.push(`/projects/${item.data.title}`);
                                 }}
                                 >
-                                    <h1 className='font-semibold text-[18px]'>{item.data.title}</h1>
-                                    <p>{item.data.description}</p>
+                                    <h1 className='font-semibold text-[14px]'>{item.data.title}</h1>
+                                    <p>{item.data.date}</p>
                                 </div>
                             )
                         })}
