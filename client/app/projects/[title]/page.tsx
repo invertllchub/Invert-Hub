@@ -23,8 +23,8 @@ export default function ProjectDetailPage() {
     const containerRef = useRef<HTMLDivElement>(null);
     const textRef = useRef(null);
     const params = useParams(); 
-    const title = decodeURIComponent(params?.title as string);
-    const project = projects.find((p) => p.data.title.toLowerCase() === title.toLowerCase());
+    const slug = decodeURIComponent(params?.title as string);
+    const project = projects.find((p) => p.data.slug.toLowerCase() === slug.toLowerCase());
 
     // fetch data
     const fetchData = async () => {

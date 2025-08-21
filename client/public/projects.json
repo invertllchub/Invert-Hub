@@ -3,7 +3,7 @@
         "data": {
             "id": 0,
             "title": "MERCEDES BENZ MUSEUM",
-            "slug": "MERCEDES-BENZ-MUSEUM",
+            "slug": "mercedes-benz-museum",
             "date": "Germany, 2015",
             "description": "TURN A SHOW ROOM INTO A MUSEUM",
             "img": "https://res.cloudinary.com/dntdescqh/image/upload/v1755689587/pic2_ydbgaw.webp", 
@@ -110,7 +110,7 @@
         "data": {
             "id": 1,
             "title": "DOHA METRO NETWORK",
-            "slug": "DOHA-METRO-NETWORK",
+            "slug": "doha-metro-network",
             "date": "Germany, 2015",
             "description": "CONVERT A SINGLE DESIGN MANUAL INTO ENDLESS POSSIBILITIES",
             "img": "https://res.cloudinary.com/dntdescqh/image/upload/v1755689688/pic3_ywbs6x.webp",
@@ -202,7 +202,7 @@
         "data": {
             "id": 2,
             "title": "BOOKING.COM CITY CAMPUS",
-            "slug": "BOOKING.COM-CITY-CAMPUS",
+            "slug": "booking-com-city-campus",
             "date": "Germany, 2015",
             "description": "MAKE AN OFFICE BUILDING FEEL LIKE A RESORT",
             "img": "https://res.cloudinary.com/dntdescqh/image/upload/v1755689765/pic4_lf11xz.webp",
@@ -300,7 +300,7 @@
         "data": {
             "id": 3,
             "title": "WESTK PERFORMING ARTS CENTER",
-            "slug": "WESTK-PERFORMING-ARTS-CENTER",
+            "slug": "westk-performing-arts-center",
             "date": "Germany, 2015",
             "description": "TRANSFORM A THREAT COMPLEX INTO A PERFOMANCE",
             "img": "https://res.cloudinary.com/dntdescqh/image/upload/v1755689811/pic5_ag93ay.webp",
@@ -390,7 +390,7 @@
         "data": {
             "id": 4,
             "title": "AUSTIN LIGHT RAIL",
-            "slug": "AUSTIN-LIGHT-RAIL",
+            "slug": "austin-light-rail",
             "date": "Germany, 2015",
             "description": "BRINGING COMMUNICATIES TOGETHER ONE STOP AT A TIME",
             "img": "https://res.cloudinary.com/dntdescqh/image/upload/v1755689857/pic8_bqgbgv.webp",
@@ -484,7 +484,7 @@
         "data": {
             "id": 5,
             "title": "STH BNK BY BEULAH",
-            "slug": "STH-BNK-BY-BEULAH",
+            "slug": "sth-bnk-by-beulah",
             "date": "Germany, 2015",
             "description": "SPINING FUTURE GARDENS INTO THE SKY",
             "img": "https://res.cloudinary.com/dntdescqh/image/upload/v1755689864/pic9_ctubxm.webp",
@@ -582,7 +582,7 @@
         "data": {
             "id": 6,
             "title": "VAN B",
-            "slug": "VAN-B",
+            "slug": "van-b",
             "date": "Germany, 2015",
             "description": "SQUARE FOOTAGE REIMAGINED",
             "img": "https://res.cloudinary.com/dntdescqh/image/upload/v1755689992/pic10_hkgufo.webp",
@@ -680,7 +680,7 @@
         "data": {
             "id": 7,
             "title": "FELLENOORD 15",
-            "slug": "FELLENOORD-15",
+            "slug": "fellenoord-15",
             "date": "Germany, 2015",
             "description": "TRANSFORMING A PAST ERA INTO A SUSTINABLE FUTURE",
             "img": "https://res.cloudinary.com/dntdescqh/image/upload/v1755690044/pic11_f13smx.webp",
@@ -779,7 +779,7 @@
         "data": {
             "id": 8,
             "title": "ECHO",
-            "slug": "ECHO",
+            "slug": "echo",
             "date": "Germany, 2015",
             "description": "TRANSPARENTLY GENERATING ENERGY",
             "img": "https://res.cloudinary.com/dntdescqh/image/upload/v1755690154/pic12_uqg0vh.webp",
