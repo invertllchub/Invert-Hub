@@ -1,0 +1,868 @@
+[
+    {
+        "data": {
+            "id": 0,
+            "title": "MERCEDES-BENZ-MUSEUM",
+            "subtitle": "TURN A SHOW ROOM INTO A MUSEUM",
+            "description": "description1",
+            "img": "https://res.cloudinary.com/dntdescqh/image/upload/v1755689587/pic2_ydbgaw.webp", 
+            "animatedText": "Animated text",
+            "overview": "In the heart of Frankfurt, a formerly inaccessible site is being transformed into a vibrant urban quarter that will redefine the city’s skyline and reinvigorate its core."
+        },
+        "keyInformation": [
+            {
+                "label": "Client",
+                "value": "G&P Erste Management GmbH"
+            },
+            {
+                "label": "Location",
+                "value": "Frankfurt, Germany"
+            },
+            {
+                "label": "Status",
+                "value": "Completed"
+            },
+            {
+                "label": "Sectors",
+                "value": ["Mixed Use", "Retail", "Residential", "Leisure and Hospitality", "Commercial Office"]
+            },
+            {
+                "label": "Services",
+                "value": ["Architecture", "Interior", "Urban", "Sustainability", "Health", "Economics"]
+            },
+            {
+                "label": "Programmes",
+                "value": "Offices, Residential, Hotel, Retail, Commercial, Services, Kindergarten"
+            }
+        ],
+        "images": [
+            "https://res.cloudinary.com/dntdescqh/image/upload/v1755689623/pic2-00_wssmqp.webp",
+            "https://res.cloudinary.com/dntdescqh/image/upload/v1755689628/pic2-01_rhkdpb.webp",
+            "https://res.cloudinary.com/dntdescqh/image/upload/v1755689630/pic2-02_b0nxe1.webp",
+            "https://res.cloudinary.com/dntdescqh/image/upload/v1755689620/pic2-03_iigu7r.webp",
+            "https://res.cloudinary.com/dntdescqh/image/upload/v1755689632/pic2-04_plbfyq.webp",
+            "https://res.cloudinary.com/dntdescqh/image/upload/v1755689596/pic2-05_qr3eiy.webp"
+        ],
+        "facts": [
+            {
+                "id": 1,
+                "type": "text",
+                "value": {
+                    "number": 3,
+                    "string": "K"
+                },
+                "text": "Once complete, 3,000 people are expected to work in the newneighbourhood."
+            },
+            {
+                "id": 2,
+                "type": "text",
+                "value": {
+                    "number": 1,
+                    "string": "K"
+                },
+                "text": "An additional 1,000 people will be able to live in FOUR Frankfurt."
+            },
+            {
+                "id": 3,
+                "type": "image",
+                "value": { "number": 0, "string": "" },
+                "text": "",
+                "img": "https://res.cloudinary.com/dntdescqh/image/upload/v1755689587/pic2_ydbgaw.webp"
+            },
+            {
+                "id": 4,
+                "type": "text",
+                "value": {
+                    "number": 173,
+                    "string": ""
+                },
+                "text": "At 173m, FOUR Frankfurt will be one of tallest residential towers inGermany."
+            },
+            {
+                "id": 5,
+                "type": "text",
+                "value": {
+                    "number": 173,
+                    "string": ""
+                },
+                "text": "At 173m, FOUR Frankfurt will be one of tallest residential towers inGermany."
+            }
+        ],
+        "articles": [
+            {
+                "id": 1,
+                "title": "title1",
+                "content": "Bringing a mixed-use project into this financial district will not only enliven the area during daytime, but it will also introduce evening programmes and create an essential form of social sustainability to this part of the city. The introduction of the residential and the leisure components is also key to this strategy.",
+                "type": "image",
+                "media": "https://res.cloudinary.com/dntdescqh/image/upload/v1755689650/pic2-06_sl2nve.png"
+            },
+            {
+                "id": 2,
+                "title": "title1",
+                "content": "Exploring how modern design shapes our cities...",
+                "type": "video",
+                "media": "https://res.cloudinary.com/dntdescqh/video/upload/v1755691694/video2_enpm13.mp4"
+            }
+        ]
+    },
+    {
+        "data": {
+            "id": 1,
+            "title": "DOHA-METRO-NETWORK",
+            "subtitle": "CONVERT A SINGLE DESIGN MANUAL INTO ENDLESS POSSIBILITIES",
+            "description": "description2",
+            "img": "https://res.cloudinary.com/dntdescqh/image/upload/v1755689688/pic3_ywbs6x.webp",
+            "animatedText": "Animated text",
+            "overview": "In the heart of Frankfurt, a formerly inaccessible site is being transformed into a vibrant urban quarter that will redefine the city’s skyline and reinvigorate its core."
+        },
+        "images": [
+            "https://res.cloudinary.com/dntdescqh/image/upload/v1755689690/pic3-00_mbakct.webp",
+            "https://res.cloudinary.com/dntdescqh/image/upload/v1755689693/pic3-01_vdltsr.webp",
+            "https://res.cloudinary.com/dntdescqh/image/upload/v1755689707/pic3-02_i7aja9.webp",
+            "https://res.cloudinary.com/dntdescqh/image/upload/v1755689675/pic3-03_bpbwsg.webp",
+            "https://res.cloudinary.com/dntdescqh/image/upload/v1755689707/pic3-04_pukgxr.webp",
+            "https://res.cloudinary.com/dntdescqh/image/upload/v1755689728/pic3-05_m2hgl6.webp",
+            "https://res.cloudinary.com/dntdescqh/image/upload/v1755689762/pic3-06_laz2im.webp"
+        ],
+        "keyInformation": [
+            {
+                "label": "Client",
+                "value": "G&P Erste Management GmbH"
+            },
+            {
+                "label": "Location",
+                "value": "Frankfurt, Germany"
+            },
+            {
+                "label": "Status",
+                "value": "Completed"
+            },
+            {
+                "label": "Sectors",
+                "value": ["Mixed Use", "Retail", "Residential", "Leisure and Hospitality", "Commercial Office"]
+            },
+            {
+                "label": "Services",
+                "value": ["Architecture", "Interior", "Urban", "Sustainability", "Health", "Economics"]
+            },
+            {
+                "label": "Programmes",
+                "value": "Offices, Residential, Hotel, Retail, Commercial, Services, Kindergarten"
+            }
+        ],
+        "facts": [
+            {
+                "id": 1,
+                "type": "text",
+                "value": {
+                    "number": 3,
+                    "string": "K"
+                },
+                "text": "Once complete, 3,000 people are expected to work in the newneighbourhood."
+            },
+            {
+                "id": 2,
+                "type": "text",
+                "value": {
+                    "number": 1,
+                    "string": "K"
+                },
+                "text": "An additional 1,000 people will be able to live in FOUR Frankfurt."
+            },
+            {
+                "id": 3,
+                "type": "image",
+                "value": { "number": 0, "string": "" },
+                "text": "",
+                "img": "https://res.cloudinary.com/dntdescqh/image/upload/v1755689688/pic3_ywbs6x.webp"
+            },
+            {
+                "id": 4,
+                "type": "text",
+                "value": {
+                    "number": 173,
+                    "string": ""
+                },
+                "text": "At 173m, FOUR Frankfurt will be one of tallest residential towers inGermany."
+            }
+        ],
+        "articles": [
+            {
+                "id": 1,
+                "title": "title2",
+                "content": "Bringing a mixed-use project into this financial district will not only enliven the area during daytime, but it will also introduce evening programmes and create an essential form of social sustainability to this part of the city. The introduction of the residential and the leisure components is also key to this strategy.",
+                "type": "image",
+                "media": "https://res.cloudinary.com/dntdescqh/image/upload/v1755689781/pic3-07_pwzdi1.png"
+            }
+        ]
+    },
+    {
+        "data": {
+            "id": 2,
+            "title": "BOOKING.COM-CITY-CAMPUS",
+            "subtitle": "MAKE AN OFFICE BUILDING FEEL LIKE A RESORT",
+            "description": "description3",
+            "img": "https://res.cloudinary.com/dntdescqh/image/upload/v1755689765/pic4_lf11xz.webp",
+            "animatedText": "Animated text",
+            "overview": "In the heart of Frankfurt, a formerly inaccessible site is being transformed into a vibrant urban quarter that will redefine the city’s skyline and reinvigorate its core."
+        },
+        "images": [
+            "https://res.cloudinary.com/dntdescqh/image/upload/v1755689778/pic4-00_s6fem8.webp",
+            "https://res.cloudinary.com/dntdescqh/image/upload/v1755689751/pic4-01_owqtvr.webp",
+            "https://res.cloudinary.com/dntdescqh/image/upload/v1755689743/pic4-02_wryqcj.webp",
+            "https://res.cloudinary.com/dntdescqh/image/upload/v1755689822/pic4-03_jo15c7.webp",
+            "https://res.cloudinary.com/dntdescqh/image/upload/v1755689797/pic4-04_krc7wq.webp",
+            "https://res.cloudinary.com/dntdescqh/image/upload/v1755689841/pic4-05_btembq.webp"
+        ],
+        "keyInformation": [
+            {
+                "label": "Client",
+                "value": "G&P Erste Management GmbH"
+            },
+            {
+                "label": "Location",
+                "value": "Frankfurt, Germany"
+            },
+            {
+                "label": "Status",
+                "value": "Completed"
+            },
+            {
+                "label": "Sectors",
+                "value": ["Mixed Use", "Retail", "Residential", "Leisure and Hospitality", "Commercial Office"]
+            },
+            {
+                "label": "Services",
+                "value": ["Architecture", "Interior", "Urban", "Sustainability", "Health", "Economics"]
+            },
+            {
+                "label": "Programmes",
+                "value": "Offices, Residential, Hotel, Retail, Commercial, Services, Kindergarten"
+            }
+        ],
+        "facts": [
+            {
+                "id": 1,
+                "type": "text",
+                "value": {
+                    "number": 3,
+                    "string": "K"
+                },
+                "text": "Once complete, 3,000 people are expected to work in the newneighbourhood."
+            },
+            {
+                "id": 2,
+                "type": "text",
+                "value": {
+                    "number": 1,
+                    "string": "K"
+                },
+                "text": "An additional 1,000 people will be able to live in FOUR Frankfurt."
+            },
+            {
+                "id": 3,
+                "type": "image",
+                "value": { "number": 0, "string": "" },
+                "text": "",
+                "img": "https://res.cloudinary.com/dntdescqh/image/upload/v1755689765/pic4_lf11xz.webp"
+            },
+            {
+                "id": 4,
+                "type": "text",
+                "value": {
+                    "number": 173,
+                    "string": ""
+                },
+                "text": "At 173m, FOUR Frankfurt will be one of tallest residential towers inGermany."
+            }
+        ],
+        "articles": [
+            {
+                "id": 1,
+                "title": "title3",
+                "content": "Bringing a mixed-use project into this financial district will not only enliven the area during daytime, but it will also introduce evening programmes and create an essential form of social sustainability to this part of the city. The introduction of the residential and the leisure components is also key to this strategy.",
+                "type": "image",
+                "media": "https://res.cloudinary.com/dntdescqh/image/upload/v1755689838/pic4-06_cvo7li.png"
+            },
+            {
+                "id": 2,
+                "title": "title3",
+                "content": "Exploring how modern design shapes our cities...",
+                "type": "video",
+                "media": "https://res.cloudinary.com/dntdescqh/video/upload/v1755691694/video2_enpm13.mp4"
+            }
+        ]
+    },
+    {
+        "data": {
+            "id": 3,
+            "title": "WESTK-PERFORMING-ARTS-CENTER",
+            "subtitle": "TRANSFORM A THREAT COMPLEX INTO A PERFOMANCE",
+            "description": "description4",
+            "img": "https://res.cloudinary.com/dntdescqh/image/upload/v1755689811/pic5_ag93ay.webp",
+            "animatedText": "Animated text",
+            "overview": "In the heart of Frankfurt, a formerly inaccessible site is being transformed into a vibrant urban quarter that will redefine the city’s skyline and reinvigorate its core."
+        },
+        "images": [
+            "https://res.cloudinary.com/dntdescqh/image/upload/v1755689804/pic5-00_luz3oy.webp",
+            "https://res.cloudinary.com/dntdescqh/image/upload/v1755689841/pic5-01_bavkja.webp",
+            "https://res.cloudinary.com/dntdescqh/image/upload/v1755689823/pic5-02_g2xzbs.webp",
+            "https://res.cloudinary.com/dntdescqh/image/upload/v1755689828/pic5-03_hw0vzo.webp",
+            "https://res.cloudinary.com/dntdescqh/image/upload/v1755689841/pic5-04_ffp7j8.webp"
+        ],
+        "keyInformation": [
+            {
+                "label": "Client",
+                "value": "G&P Erste Management GmbH"
+            },
+            {
+                "label": "Location",
+                "value": "Frankfurt, Germany"
+            },
+            {
+                "label": "Status",
+                "value": "Completed"
+            },
+            {
+                "label": "Sectors",
+                "value": ["Mixed Use", "Retail", "Residential", "Leisure and Hospitality", "Commercial Office"]
+            },
+            {
+                "label": "Services",
+                "value": ["Architecture", "Interior", "Urban", "Sustainability", "Health", "Economics"]
+            },
+            {
+                "label": "Programmes",
+                "value": "Offices, Residential, Hotel, Retail, Commercial, Services, Kindergarten"
+            }
+        ],
+        "facts": [
+            {
+                "id": 1,
+                "type": "text",
+                "value": {
+                    "number": 3,
+                    "string": "K"
+                },
+                "text": "Once complete, 3,000 people are expected to work in the newneighbourhood."
+            },
+            {
+                "id": 2,
+                "type": "text",
+                "value": {
+                    "number": 1,
+                    "string": "K"
+                },
+                "text": "An additional 1,000 people will be able to live in FOUR Frankfurt."
+            },
+            {
+                "id": 3,
+                "type": "image",
+                "value": { "number": 0, "string": "" },
+                "text": "",
+                "img": "https://res.cloudinary.com/dntdescqh/image/upload/v1755689811/pic5_ag93ay.webp"
+            },
+            {
+                "id": 4,
+                "type": "text",
+                "value": {
+                    "number": 173,
+                    "string": ""
+                },
+                "text": "At 173m, FOUR Frankfurt will be one of tallest residential towers inGermany."
+            }
+        ],
+        "articles": [
+            {
+                "id": 1,
+                "title": "title4",
+                "content": "Bringing a mixed-use project into this financial district will not only enliven the area during daytime, but it will also introduce evening programmes and create an essential form of social sustainability to this part of the city. The introduction of the residential and the leisure components is also key to this strategy.",
+                "type": "image",
+                "media": "https://res.cloudinary.com/dntdescqh/image/upload/v1755689841/pic5-05_tdqguw.webp"
+            }
+        ]
+    },
+    {
+        "data": {
+            "id": 4,
+            "title": "title5",
+            "subtitle": "subtitle5",
+            "description": "description5",
+            "img": "https://res.cloudinary.com/dntdescqh/image/upload/v1755689857/pic8_bqgbgv.webp",
+            "animatedText": "Animated text",
+            "overview": "In the heart of Frankfurt, a formerly inaccessible site is being transformed into a vibrant urban quarter that will redefine the city’s skyline and reinvigorate its core."
+        },
+        "images": [
+            "https://res.cloudinary.com/dntdescqh/image/upload/v1755689882/pic8-00_sffatl.webp",
+            "https://res.cloudinary.com/dntdescqh/image/upload/v1755689901/pic8-01_lo9pll.webp"
+        ],
+        "keyInformation": [
+            {
+                "label": "Client",
+                "value": "G&P Erste Management GmbH"
+            },
+            {
+                "label": "Location",
+                "value": "Frankfurt, Germany"
+            },
+            {
+                "label": "Status",
+                "value": "Completed"
+            },
+            {
+                "label": "Sectors",
+                "value": ["Mixed Use", "Retail", "Residential", "Leisure and Hospitality", "Commercial Office"]
+            },
+            {
+                "label": "Services",
+                "value": ["Architecture", "Interior", "Urban", "Sustainability", "Health", "Economics"]
+            },
+            {
+                "label": "Programmes",
+                "value": "Offices, Residential, Hotel, Retail, Commercial, Services, Kindergarten"
+            }
+        ],
+        "facts": [
+            {
+                "id": 1,
+                "type": "text",
+                "value": {
+                    "number": 3,
+                    "string": "K"
+                },
+                "text": "Once complete, 3,000 people are expected to work in the newneighbourhood."
+            },
+            {
+                "id": 2,
+                "type": "text",
+                "value": {
+                    "number": 1,
+                    "string": "K"
+                },
+                "text": "An additional 1,000 people will be able to live in FOUR Frankfurt."
+            },
+            {
+                "id": 3,
+                "type": "image",
+                "value": { "number": 0, "string": "" },
+                "text": "",
+                "img": "https://res.cloudinary.com/dntdescqh/image/upload/v1755689857/pic8_bqgbgv.webp"
+            },
+            {
+                "id": 4,
+                "type": "text",
+                "value": {
+                    "number": 173,
+                    "string": ""
+                },
+                "text": "At 173m, FOUR Frankfurt will be one of tallest residential towers inGermany."
+            }
+        ],
+        "articles": [
+            {
+                "id": 1,
+                "title": "title5",
+                "content": "Bringing a mixed-use project into this financial district will not only enliven the area during daytime, but it will also introduce evening programmes and create an essential form of social sustainability to this part of the city. The introduction of the residential and the leisure components is also key to this strategy.",
+                "type": "image",
+                "media": "https://res.cloudinary.com/dntdescqh/image/upload/v1755690014/pic8-02_twbswd.png"
+            },
+            {
+                "id": 2,
+                "title": "title5",
+                "content": "Exploring how modern design shapes our cities...",
+                "type": "video",
+                "media": "https://res.cloudinary.com/dntdescqh/video/upload/v1755691694/video2_enpm13.mp4"
+            }
+        ]
+    },
+    {
+        "data": {
+            "id": 5,
+            "title": "title6",
+            "subtitle": "subtitle6",
+            "description": "description6",
+            "img": "https://res.cloudinary.com/dntdescqh/image/upload/v1755689864/pic9_ctubxm.webp",
+            "animatedText": "Animated text",
+            "overview": "In the heart of Frankfurt, a formerly inaccessible site is being transformed into a vibrant urban quarter that will redefine the city’s skyline and reinvigorate its core."
+        },
+        "images": [
+            "https://res.cloudinary.com/dntdescqh/image/upload/v1755689942/pic9-00_ihzecw.webp",
+            "https://res.cloudinary.com/dntdescqh/image/upload/v1755689978/pic9-01_phnpkh.webp",
+            "https://res.cloudinary.com/dntdescqh/image/upload/v1755689959/pic9-02_xofh06.webp",
+            "https://res.cloudinary.com/dntdescqh/image/upload/v1755689951/pic9-03_w6jka2.webp",
+            "https://res.cloudinary.com/dntdescqh/image/upload/v1755690019/pic9-04_wtqjav.webp",
+            "https://res.cloudinary.com/dntdescqh/image/upload/v1755689985/pic9-05_gjyrg5.webp"
+        ],
+        "keyInformation": [
+            {
+                "label": "Client",
+                "value": "G&P Erste Management GmbH"
+            },
+            {
+                "label": "Location",
+                "value": "Frankfurt, Germany"
+            },
+            {
+                "label": "Status",
+                "value": "Completed"
+            },
+            {
+                "label": "Sectors",
+                "value": ["Mixed Use", "Retail", "Residential", "Leisure and Hospitality", "Commercial Office"]
+            },
+            {
+                "label": "Services",
+                "value": ["Architecture", "Interior", "Urban", "Sustainability", "Health", "Economics"]
+            },
+            {
+                "label": "Programmes",
+                "value": "Offices, Residential, Hotel, Retail, Commercial, Services, Kindergarten"
+            }
+        ],
+        "facts": [
+            {
+                "id": 1,
+                "type": "text",
+                "value": {
+                    "number": 3,
+                    "string": "K"
+                },
+                "text": "Once complete, 3,000 people are expected to work in the newneighbourhood."
+            },
+            {
+                "id": 2,
+                "type": "text",
+                "value": {
+                    "number": 1,
+                    "string": "K"
+                },
+                "text": "An additional 1,000 people will be able to live in FOUR Frankfurt."
+            },
+            {
+                "id": 3,
+                "type": "image",
+                "value": { "number": 0, "string": "" },
+                "text": "",
+                "img": "https://res.cloudinary.com/dntdescqh/image/upload/v1755689864/pic9_ctubxm.webp"
+            },
+            {
+                "id": 4,
+                "type": "text",
+                "value": {
+                    "number": 173,
+                    "string": ""
+                },
+                "text": "At 173m, FOUR Frankfurt will be one of tallest residential towers inGermany."
+            }
+        ],
+        "articles": [
+            {
+                "id": 1,
+                "title": "title6",
+                "content": "Bringing a mixed-use project into this financial district will not only enliven the area during daytime, but it will also introduce evening programmes and create an essential form of social sustainability to this part of the city. The introduction of the residential and the leisure components is also key to this strategy.",
+                "type": "image",
+                "media": "https://res.cloudinary.com/dntdescqh/image/upload/v1755690143/pic9-06_i72kit.png"
+            },
+            {
+                "id": 2,
+                "title": "title6",
+                "content": "Exploring how modern design shapes our cities...",
+                "type": "video",
+                "media": "https://res.cloudinary.com/dntdescqh/video/upload/v1755693162/video9_e9imnf.mp4"
+            }
+        ]
+    },
+    {
+        "data": {
+            "id": 6,
+            "title": "title7",
+            "subtitle": "subtitle7",
+            "description": "description7",
+            "img": "https://res.cloudinary.com/dntdescqh/image/upload/v1755689992/pic10_hkgufo.webp",
+            "animatedText": "Animated text",
+            "overview": "In the heart of Frankfurt, a formerly inaccessible site is being transformed into a vibrant urban quarter that will redefine the city’s skyline and reinvigorate its core."
+        },
+        "images": [
+            "https://res.cloudinary.com/dntdescqh/image/upload/v1755690014/pic10-00_nhyt4v.webp",
+            "https://res.cloudinary.com/dntdescqh/image/upload/v1755690033/pic10-01_wwp5mv.webp",
+            "https://res.cloudinary.com/dntdescqh/image/upload/v1755690031/pic10-02_mjoxod.webp",
+            "https://res.cloudinary.com/dntdescqh/image/upload/v1755690041/pic10-03_jub4tk.webp",
+            "https://res.cloudinary.com/dntdescqh/image/upload/v1755690034/pic10-04_io7nu6.webp",
+            "https://res.cloudinary.com/dntdescqh/image/upload/v1755690092/pic10-05_jnic3g.webp"
+        ],
+        "keyInformation": [
+            {
+                "label": "Client",
+                "value": "G&P Erste Management GmbH"
+            },
+            {
+                "label": "Location",
+                "value": "Frankfurt, Germany"
+            },
+            {
+                "label": "Status",
+                "value": "Completed"
+            },
+            {
+                "label": "Sectors",
+                "value": ["Mixed Use", "Retail", "Residential", "Leisure and Hospitality", "Commercial Office"]
+            },
+            {
+                "label": "Services",
+                "value": ["Architecture", "Interior", "Urban", "Sustainability", "Health", "Economics"]
+            },
+            {
+                "label": "Programmes",
+                "value": "Offices, Residential, Hotel, Retail, Commercial, Services, Kindergarten"
+            }
+        ],
+        "facts": [
+            {
+                "id": 1,
+                "type": "text",
+                "value": {
+                    "number": 3,
+                    "string": "K"
+                },
+                "text": "Once complete, 3,000 people are expected to work in the newneighbourhood."
+            },
+            {
+                "id": 2,
+                "type": "text",
+                "value": {
+                    "number": 1,
+                    "string": "K"
+                },
+                "text": "An additional 1,000 people will be able to live in FOUR Frankfurt."
+            },
+            {
+                "id": 3,
+                "type": "image",
+                "value": { "number": 0, "string": "" },
+                "text": "",
+                "img": "https://res.cloudinary.com/dntdescqh/image/upload/v1755689992/pic10_hkgufo.webp"
+            },
+            {
+                "id": 4,
+                "type": "text",
+                "value": {
+                    "number": 173,
+                    "string": ""
+                },
+                "text": "At 173m, FOUR Frankfurt will be one of tallest residential towers inGermany."
+            }
+        ],
+        "articles": [
+            {
+                "id": 1,
+                "title": "title7",
+                "content": "Bringing a mixed-use project into this financial district will not only enliven the area during daytime, but it will also introduce evening programmes and create an essential form of social sustainability to this part of the city. The introduction of the residential and the leisure components is also key to this strategy.",
+                "type": "image",
+                "media": "https://res.cloudinary.com/dntdescqh/image/upload/v1755690153/pic10-06_wwaz01.png"
+            },
+            {
+                "id": 2,
+                "title": "title7",
+                "content": "Exploring how modern design shapes our cities...",
+                "type": "video",
+                "media": "https://res.cloudinary.com/dntdescqh/video/upload/v1755693162/video9_e9imnf.mp4"
+            }
+        ]
+    },
+    {
+        "data": {
+            "id": 7,
+            "title": "title8",
+            "subtitle": "subtitle8",
+            "description": "description8",
+            "img": "https://res.cloudinary.com/dntdescqh/image/upload/v1755690044/pic11_f13smx.webp",
+            "animatedText": "Animated text",
+            "overview": "In the heart of Frankfurt, a formerly inaccessible site is being transformed into a vibrant urban quarter that will redefine the city’s skyline and reinvigorate its core."
+        },
+        "images": [
+            "https://res.cloudinary.com/dntdescqh/image/upload/v1755690088/pic11-00_bpecxa.webp",
+            "https://res.cloudinary.com/dntdescqh/image/upload/v1755690090/pic11-01_izhh8r.webp",
+            "https://res.cloudinary.com/dntdescqh/image/upload/v1755690070/pic11-02_psguhm.webp",
+            "https://res.cloudinary.com/dntdescqh/image/upload/v1755690109/pic11-03_xfxr69.webp",
+            "https://res.cloudinary.com/dntdescqh/image/upload/v1755690138/pic11-04_fmxrvm.webp",
+            "https://res.cloudinary.com/dntdescqh/image/upload/v1755690130/pic11-05_cxx4jg.webp",
+            "https://res.cloudinary.com/dntdescqh/image/upload/v1755690164/pic11-06_aqmypi.webp"
+        ],
+        "keyInformation": [
+            {
+                "label": "Client",
+                "value": "G&P Erste Management GmbH"
+            },
+            {
+                "label": "Location",
+                "value": "Frankfurt, Germany"
+            },
+            {
+                "label": "Status",
+                "value": "Completed"
+            },
+            {
+                "label": "Sectors",
+                "value": ["Mixed Use", "Retail", "Residential", "Leisure and Hospitality", "Commercial Office"]
+            },
+            {
+                "label": "Services",
+                "value": ["Architecture", "Interior", "Urban", "Sustainability", "Health", "Economics"]
+            },
+            {
+                "label": "Programmes",
+                "value": "Offices, Residential, Hotel, Retail, Commercial, Services, Kindergarten"
+            }
+        ],
+        "facts": [
+            {
+                "id": 1,
+                "type": "text",
+                "value": {
+                    "number": 3,
+                    "string": "K"
+                },
+                "text": "Once complete, 3,000 people are expected to work in the newneighbourhood."
+            },
+            {
+                "id": 2,
+                "type": "text",
+                "value": {
+                    "number": 1,
+                    "string": "K"
+                },
+                "text": "An additional 1,000 people will be able to live in FOUR Frankfurt."
+            },
+            {
+                "id": 3,
+                "type": "image",
+                "value": { "number": 0, "string": "" },
+                "text": "",
+                "img": "https://res.cloudinary.com/dntdescqh/image/upload/v1755690044/pic11_f13smx.webp"
+            },
+            {
+                "id": 4,
+                "type": "text",
+                "value": {
+                    "number": 173,
+                    "string": ""
+                },
+                "text": "At 173m, FOUR Frankfurt will be one of tallest residential towers inGermany."
+            }
+        ],
+        "articles": [
+            {
+                "id": 1,
+                "title": "title8",
+                "content": "Bringing a mixed-use project into this financial district will not only enliven the area during daytime, but it will also introduce evening programmes and create an essential form of social sustainability to this part of the city. The introduction of the residential and the leisure components is also key to this strategy.",
+                "type": "image",
+                "media": "https://res.cloudinary.com/dntdescqh/image/upload/v1755690233/pic11-07_fbnyek.png"
+            },
+            {
+                "id": 2,
+                "title": "title8",
+                "content": "Exploring how modern design shapes our cities...",
+                "type": "video",
+                "media": "https://res.cloudinary.com/dntdescqh/video/upload/v1755693633/video11_rsofna.mp4"
+            }
+        ]
+    },
+    {
+        "data": {
+            "id": 8,
+            "title": "title9",
+            "subtitle": "subtitle9",
+            "description": "description9",
+            "img": "https://res.cloudinary.com/dntdescqh/image/upload/v1755690154/pic12_uqg0vh.webp",
+            "animatedText": "Animated text",
+            "overview": "In the heart of Frankfurt, a formerly inaccessible site is being transformed into a vibrant urban quarter that will redefine the city’s skyline and reinvigorate its core."
+        },
+        "images": [
+            "https://res.cloudinary.com/dntdescqh/image/upload/v1755690181/pic12-00_prkf5n.webp",
+            "https://res.cloudinary.com/dntdescqh/image/upload/v1755690190/pic12-01_mbei46.webp",
+            "https://res.cloudinary.com/dntdescqh/image/upload/v1755690185/pic12-02_umrm1s.webp",
+            "https://res.cloudinary.com/dntdescqh/image/upload/v1755690194/pic12-03_gk3vpn.webp",
+            "https://res.cloudinary.com/dntdescqh/image/upload/v1755690182/pic12-04_lmrfzu.webp",
+            "https://res.cloudinary.com/dntdescqh/image/upload/v1755690202/pic12-05_olwhyr.webp",
+            "https://res.cloudinary.com/dntdescqh/image/upload/v1755690201/pic12-06_u2l0s3.webp"
+        ],
+        "keyInformation": [
+            {
+                "label": "Client",
+                "value": "G&P Erste Management GmbH"
+            },
+            {
+                "label": "Location",
+                "value": "Frankfurt, Germany"
+            },
+            {
+                "label": "Status",
+                "value": "Completed"
+            },
+            {
+                "label": "Sectors",
+                "value": ["Mixed Use", "Retail", "Residential", "Leisure and Hospitality", "Commercial Office"]
+            },
+            {
+                "label": "Services",
+                "value": ["Architecture", "Interior", "Urban", "Sustainability", "Health", "Economics"]
+            },
+            {
+                "label": "Programmes",
+                "value": "Offices, Residential, Hotel, Retail, Commercial, Services, Kindergarten"
+            }
+        ],
+        "facts": [
+            {
+                "id": 1,
+                "type": "text",
+                "value": {
+                    "number": 3,
+                    "string": "K"
+                },
+                "text": "Once complete, 3,000 people are expected to work in the newneighbourhood."
+            },
+            {
+                "id": 2,
+                "type": "text",
+                "value": {
+                    "number": 1,
+                    "string": "K"
+                },
+                "text": "An additional 1,000 people will be able to live in FOUR Frankfurt."
+            },
+            {
+                "id": 3,
+                "type": "image",
+                "value": { "number": 0, "string": "" },
+                "text": "",
+                "img": "https://res.cloudinary.com/dntdescqh/image/upload/v1755690154/pic12_uqg0vh.webp"
+            },
+            {
+                "id": 4,
+                "type": "text",
+                "value": {
+                    "number": 173,
+                    "string": ""
+                },
+                "text": "At 173m, FOUR Frankfurt will be one of tallest residential towers inGermany."
+            }
+        ],
+        "articles": [
+            {
+                "id": 1,
+                "title": "title9",
+                "content": "Bringing a mixed-use project into this financial district will not only enliven the area during daytime, but it will also introduce evening programmes and create an essential form of social sustainability to this part of the city. The introduction of the residential and the leisure components is also key to this strategy.",
+                "type": "image",
+                "media": "https://res.cloudinary.com/dntdescqh/image/upload/v1755690255/pic12-07_eg2hao.png"
+            },
+            {
+                "id": 2,
+                "title": "title9",
+                "content": "Exploring how modern design shapes our cities...",
+                "type": "video",
+                "media": "https://res.cloudinary.com/dntdescqh/video/upload/v1755693633/video11_rsofna.mp4"
+            }
+        ]
+    }
+]
