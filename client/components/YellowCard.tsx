@@ -15,7 +15,7 @@ function YellowCard({p, link, img, alt}: YellowCardProps) {
         className="w-full h-11/12 md:h-full flex flex-col lg:flex-row items-center justify-between gap-8 mt-10 py-4 md:py-10 px-4 
         bg-gradient-to-l from-green-200/50 to-yellow-200/60 rounded-lg"
         >
-            <div className="w-full md:w-8/12 h-5/12 md:h-full flex flex-col justify-between text-start p-4">
+            <div className="w-full md:w-8/12 h-5/12 md:h-full flex flex-col justify-between text-start p-2 gap-4">
                 <p className="text-xl md:text-5xl font-semibold">
                     {p}
                 </p>
