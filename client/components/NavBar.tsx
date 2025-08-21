@@ -21,7 +21,7 @@ function NavBar() {
         {/* Logo */}
         <Link href="/" aria-label="Home">
           <Image
-            src="/logo.png"
+            src="https://res.cloudinary.com/dntdescqh/image/upload/v1755689582/logo_dppoxr.png"
             alt="Invert-Hub Logo"
             priority
             width={170}

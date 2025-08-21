@@ -2,9 +2,10 @@
     {
         "data": {
             "id": 0,
-            "title": "MERCEDES-BENZ-MUSEUM",
-            "subtitle": "TURN A SHOW ROOM INTO A MUSEUM",
-            "description": "description1",
+            "title": "MERCEDES BENZ MUSEUM",
+            "slug": "MERCEDES-BENZ-MUSEUM",
+            "date": "Germany, 2015",
+            "description": "TURN A SHOW ROOM INTO A MUSEUM",
             "img": "https://res.cloudinary.com/dntdescqh/image/upload/v1755689587/pic2_ydbgaw.webp", 
             "animatedText": "Animated text",
             "overview": "In the heart of Frankfurt, a formerly inaccessible site is being transformed into a vibrant urban quarter that will redefine the city’s skyline and reinvigorate its core."
@@ -108,9 +109,10 @@
     {
         "data": {
             "id": 1,
-            "title": "DOHA-METRO-NETWORK",
-            "subtitle": "CONVERT A SINGLE DESIGN MANUAL INTO ENDLESS POSSIBILITIES",
-            "description": "description2",
+            "title": "DOHA METRO NETWORK",
+            "slug": "DOHA-METRO-NETWORK",
+            "date": "Germany, 2015",
+            "description": "CONVERT A SINGLE DESIGN MANUAL INTO ENDLESS POSSIBILITIES",
             "img": "https://res.cloudinary.com/dntdescqh/image/upload/v1755689688/pic3_ywbs6x.webp",
             "animatedText": "Animated text",
             "overview": "In the heart of Frankfurt, a formerly inaccessible site is being transformed into a vibrant urban quarter that will redefine the city’s skyline and reinvigorate its core."
@@ -199,9 +201,10 @@
     {
         "data": {
             "id": 2,
-            "title": "BOOKING.COM-CITY-CAMPUS",
-            "subtitle": "MAKE AN OFFICE BUILDING FEEL LIKE A RESORT",
-            "description": "description3",
+            "title": "BOOKING.COM CITY CAMPUS",
+            "slug": "BOOKING.COM-CITY-CAMPUS",
+            "date": "Germany, 2015",
+            "description": "MAKE AN OFFICE BUILDING FEEL LIKE A RESORT",
             "img": "https://res.cloudinary.com/dntdescqh/image/upload/v1755689765/pic4_lf11xz.webp",
             "animatedText": "Animated text",
             "overview": "In the heart of Frankfurt, a formerly inaccessible site is being transformed into a vibrant urban quarter that will redefine the city’s skyline and reinvigorate its core."
@@ -296,9 +299,10 @@
     {
         "data": {
             "id": 3,
-            "title": "WESTK-PERFORMING-ARTS-CENTER",
-            "subtitle": "TRANSFORM A THREAT COMPLEX INTO A PERFOMANCE",
-            "description": "description4",
+            "title": "WESTK PERFORMING ARTS CENTER",
+            "slug": "WESTK-PERFORMING-ARTS-CENTER",
+            "date": "Germany, 2015",
+            "description": "TRANSFORM A THREAT COMPLEX INTO A PERFOMANCE",
             "img": "https://res.cloudinary.com/dntdescqh/image/upload/v1755689811/pic5_ag93ay.webp",
             "animatedText": "Animated text",
             "overview": "In the heart of Frankfurt, a formerly inaccessible site is being transformed into a vibrant urban quarter that will redefine the city’s skyline and reinvigorate its core."
@@ -385,9 +389,10 @@
     {
         "data": {
             "id": 4,
-            "title": "title5",
-            "subtitle": "subtitle5",
-            "description": "description5",
+            "title": "AUSTIN LIGHT RAIL",
+            "slug": "AUSTIN-LIGHT-RAIL",
+            "date": "Germany, 2015",
+            "description": "BRINGING COMMUNICATIES TOGETHER ONE STOP AT A TIME",
             "img": "https://res.cloudinary.com/dntdescqh/image/upload/v1755689857/pic8_bqgbgv.webp",
             "animatedText": "Animated text",
             "overview": "In the heart of Frankfurt, a formerly inaccessible site is being transformed into a vibrant urban quarter that will redefine the city’s skyline and reinvigorate its core."
@@ -478,9 +483,10 @@
     {
         "data": {
             "id": 5,
-            "title": "title6",
-            "subtitle": "subtitle6",
-            "description": "description6",
+            "title": "STH BNK BY BEULAH",
+            "slug": "STH-BNK-BY-BEULAH",
+            "date": "Germany, 2015",
+            "description": "SPINING FUTURE GARDENS INTO THE SKY",
             "img": "https://res.cloudinary.com/dntdescqh/image/upload/v1755689864/pic9_ctubxm.webp",
             "animatedText": "Animated text",
             "overview": "In the heart of Frankfurt, a formerly inaccessible site is being transformed into a vibrant urban quarter that will redefine the city’s skyline and reinvigorate its core."
@@ -575,9 +581,10 @@
     {
         "data": {
             "id": 6,
-            "title": "title7",
-            "subtitle": "subtitle7",
-            "description": "description7",
+            "title": "VAN B",
+            "slug": "VAN-B",
+            "date": "Germany, 2015",
+            "description": "SQUARE FOOTAGE REIMAGINED",
             "img": "https://res.cloudinary.com/dntdescqh/image/upload/v1755689992/pic10_hkgufo.webp",
             "animatedText": "Animated text",
             "overview": "In the heart of Frankfurt, a formerly inaccessible site is being transformed into a vibrant urban quarter that will redefine the city’s skyline and reinvigorate its core."
@@ -672,9 +679,10 @@
     {
         "data": {
             "id": 7,
-            "title": "title8",
-            "subtitle": "subtitle8",
-            "description": "description8",
+            "title": "FELLENOORD 15",
+            "slug": "FELLENOORD-15",
+            "date": "Germany, 2015",
+            "description": "TRANSFORMING A PAST ERA INTO A SUSTINABLE FUTURE",
             "img": "https://res.cloudinary.com/dntdescqh/image/upload/v1755690044/pic11_f13smx.webp",
             "animatedText": "Animated text",
             "overview": "In the heart of Frankfurt, a formerly inaccessible site is being transformed into a vibrant urban quarter that will redefine the city’s skyline and reinvigorate its core."
@@ -770,9 +778,10 @@
     {
         "data": {
             "id": 8,
-            "title": "title9",
-            "subtitle": "subtitle9",
-            "description": "description9",
+            "title": "ECHO",
+            "slug": "ECHO",
+            "date": "Germany, 2015",
+            "description": "TRANSPARENTLY GENERATING ENERGY",
             "img": "https://res.cloudinary.com/dntdescqh/image/upload/v1755690154/pic12_uqg0vh.webp",
             "animatedText": "Animated text",
             "overview": "In the heart of Frankfurt, a formerly inaccessible site is being transformed into a vibrant urban quarter that will redefine the city’s skyline and reinvigorate its core."

@@ -35,7 +35,7 @@ export type Project = {
   data: {
     id: number;
     title: string;
-    subtitle: string;
+    date: string;
     description: string;
     img: string;
     animatedText: string; // مش text

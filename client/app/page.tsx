@@ -1,62 +1,39 @@
 "use client";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+// gsap animation
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+// components
 import ScreenText from "@/components/ScreenText";
 import Image from "next/image";
 import Link from "next/link";
+// types
+import { Project } from "./types/project";
 
 gsap.registerPlugin(ScrollTrigger);
 
-interface VerticalItem {
-  number: number;
-  title: string;
-  desc: string;
-  video: string;
-  img: string;
-}
 
 export default function HomePage() {
-  // ✅ تحديد نوع الـ ref كـ HTMLDivElement
   const verticalRef = useRef<HTMLDivElement>(null);
+  const [projects, setProjects] = useState<Project[]>([]);
 
-  const verticalItems: VerticalItem[] = [
-    {
-      number: 1,
-      title: "MERCEDES-BENZ MUSEUM",
-      desc: "TURN A SHOW ROOM INTO A MUSEUM",
-      video:
-        "https://videos.pexels.com/video-files/4763824/4763824-uhd_2560_1440_24fps.mp4",
-      img: "/pic2.webp",
-    },
-    {
-      number: 2,
-      title: "BOOKING.COM CITY CAMPUS",
-      desc: "MAKE AN OFFICE BUILDING FEEL LIKE A RESORT",
-      video:
-        "https://videos.pexels.com/video-files/3214448/3214448-uhd_2560_1440_25fps.mp4",
-      img: "/pic4.webp",
-    },
-    {
-      number: 3,
-      title: "DOHA METRO NETWORK",
-      desc: "CONVERT A SINGLE DESIGN MANUAL INTO ENDLESS POSSIBILITIES",
-      video:
-        "https://videos.pexels.com/video-files/4328514/4328514-uhd_2560_1440_30fps.mp4",
-      img: "/pic3.webp",
-    },
-    {
-      number: 4,
-      title: "WESTK PERFORMING ARTS CENTER",
-      desc: "TRANSFORM A THREAT COMPLEX INTO A PERFOMANCE",
-      video:
-        "https://videos.pexels.com/video-files/2871916/2871916-hd_1920_1080_30fps.mp4",
-      img: "/pic5.webp",
-    },
-  ];
+      // fetch data
+      const fetchData = async () => {
+          try {
+              const res = await fetch('/projects.json');
+              const json = await res.json();
+              setProjects(json)
+          } catch (error) {
+              console.error("Error fetching data:", error);
+          }
+      }
+      
+      useEffect(() => {
+          fetchData()
+      }, [])
+
 
   useEffect(() => {
-    window.scrollTo(0, 0); // Reset scroll on refresh
 
     const ctx = gsap.context(() => {
       // Animation 1: تصغير أول سيكشن
@@ -96,7 +73,6 @@ export default function HomePage() {
       const section = verticalRef.current;
       if (!section) return; // تفادي null error
 
-      // typing للعناصر كـ HTMLElement
       const items = gsap.utils.toArray<HTMLElement>(
         section.querySelectorAll(".item")
       );
@@ -127,7 +103,7 @@ export default function HomePage() {
     });
 
     return () => ctx.revert();
-  }, []);
+  }, [projects]);
 
   return (
     <main className="bg-black text-[#292929]">
@@ -192,15 +168,15 @@ export default function HomePage() {
           className="section4 vertical-section relative overflow-hidden h-screen z-10"
         >
           <div className="wrapper h-full relative flex flex-col gap-[20vh] items-center p-1">
-            {verticalItems.map((item, index, arr) => (
+            {projects.slice(0, 4).map((item, index, arr) => (
               <div
-                key={item.number}
+                key={item.data.id}
                 className="item bg-white absolute w-full h-full flex flex-col sm:flex-row shadow-lg overflow-hidden p-5"
               >
                 <div className="relative w-full sm:w-1/2 h-[60vh] md:h-full">
                   <Image
-                    src={item.img}
-                    alt={item.title}
+                    src={item.data.img}
+                    alt={item.data.title}
                     fill
                     className="object-cover"
                     loading="lazy"
@@ -211,10 +187,10 @@ export default function HomePage() {
                 md:text-start bg-white text-[#292929] p-6 sm:p-12 sm:w-1/2 w-full h-[40vh] sm:h-full"
                 >
                   <h2 className="text-sm md:text-lg font-bold mb-2">
-                    {item.title}
+                    {item.data.title}
                   </h2>
-                  <p className="text-2xl sm:text-5xl md:text-7xl font-bold">
-                    {item.desc}
+                  <p className="text-2xl sm:text-5xl md:text-6xl font-bold">
+                    {item.data.description}
                   </p>
                   <div className="w-full h-10 flex items-center justify-between absolute bottom-0 left-0 p-6">
                     <p>{`${String(index + 1).padStart(2, "0")} / ${String(
@@ -247,7 +223,7 @@ export default function HomePage() {
           <span className="absolute left-0 -bottom-1 w-full h-[2px] bg-black scale-x-100 origin-left transition-transform duration-300 group-hover:scale-x-0"></span>
         </Link>
         <div className="relative mt-10 w-full object-cover h-[400px] md:h-[800px] rounded-md overflow-hidden">
-          <Image alt="" src="/pic7.webp" fill className="object-cover" />
+          <Image alt="" src="https://res.cloudinary.com/dntdescqh/image/upload/v1755689851/pic7_abntht.webp" fill className="object-cover" />
         </div>
 
         <div className="w-full mt-12 space-y-10">
@@ -300,7 +276,7 @@ export default function HomePage() {
           <span className="absolute left-0 -bottom-1 w-full h-[2px] bg-white scale-x-100 origin-left transition-transform duration-300 group-hover:scale-x-0"></span>
         </Link>
         <div className="relative mt-10 w-full object-cover h-[400px] md:h-[800px] rounded-md overflow-hidden">
-          <Image alt="" src="/pic7.webp" fill className="object-cover" />
+          <Image alt="" src="https://res.cloudinary.com/dntdescqh/image/upload/v1755689851/pic7_abntht.webp" fill className="object-cover" />
         </div>
       </section>
 
@@ -326,7 +302,7 @@ export default function HomePage() {
                 <div key={index} className="relative w-full aspect-[3/4]">
                   <Image
                     alt={`Team Member ${index + 1}`}
-                    src="/pic6.webp"
+                    src="https://res.cloudinary.com/dntdescqh/image/upload/v1755689849/pic6_mzndwx.webp"
                     fill
                     className="object-cover rounded-md"
                   />
@@ -339,7 +315,7 @@ export default function HomePage() {
         {/* Section 8 - Contact */}
         <section className="section8 w-full h-[100vh] bg-[#f6f6f6] text-black p-6 md:p-16">
           <div
-            className="w-full h-full flex flex-col lg:flex-row items-center justify-between gap-8 mt-10 py-10 px-4 
+            className="w-full h-11/12 md:h-full flex flex-col lg:flex-row items-center justify-between gap-8 mt-10 py-10 px-4 
             bg-gradient-to-r from-yellow-200/70 to-yellow-100 rounded-lg"
           >
             <div className="w-full md:w-8/12 h-full flex flex-col justify-between text-start p-4">
@@ -356,7 +332,7 @@ export default function HomePage() {
             <div className="relative w-full md:w-4/12 h-full rounded-md overflow-hidden">
               <Image
                 alt="Description"
-                src="/pic7.webp"
+                src="https://res.cloudinary.com/dntdescqh/image/upload/v1755689851/pic7_abntht.webp"
                 fill
                 className="object-cover"
               />
