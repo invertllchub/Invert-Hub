@@ -1,11 +1,12 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import Image from 'next/image';
 // Import gsap animation
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation } from "swiper/modules";
 // Import Swiper styles
 import 'swiper/css';
 // Types
@@ -137,3 +138,86 @@ export function Swiper2({project}: SwiperProps) {
     </Swiper>
     );
 }
+
+const thirdSwiper = [
+    {
+        title: "Across All Design Phases",
+        description: "Spanning every stage of landscape design, from the initial idea to design development, technical planning, execution, and final aesthetic supervision.",
+        img: "https://res.cloudinary.com/dntdescqh/image/upload/v1755960634/swipe-00_jjojbg.webp"
+    },
+    {
+        title: "Across All Design Phases",
+        description: "Spanning every stage of landscape design, from the initial idea to design development, technical planning, execution, and final aesthetic supervision.",
+        img: "https://res.cloudinary.com/dntdescqh/image/upload/v1755960595/swipe-01_qe2ygk.webp"
+    },
+    {
+        title: "Across All Design Phases",
+        description: "Spanning every stage of landscape design, from the initial idea to design development, technical planning, execution, and final aesthetic supervision.",
+        img: "https://res.cloudinary.com/dntdescqh/image/upload/v1755960629/swipe-02_gjamws.webp"
+    },
+    {
+        title: "Across All Design Phases",
+        description: "Spanning every stage of landscape design, from the initial idea to design development, technical planning, execution, and final aesthetic supervision.",
+        img: "https://res.cloudinary.com/dntdescqh/image/upload/v1755960633/swipe-03_qy0k62.webp"
+    },
+    {
+        title: "Across All Design Phases",
+        description: "Spanning every stage of landscape design, from the initial idea to design development, technical planning, execution, and final aesthetic supervision.",
+        img: "https://res.cloudinary.com/dntdescqh/image/upload/v1755960598/swipe-04_ommfav.webp"
+    },
+]
+
+// The third Swiper
+
+export function Swiper3 () {
+
+    return (
+        <Swiper
+        className='w-full h-[50vh] md:h-[100vh] mt-36 cursor-grab'
+        spaceBetween={40}
+        slidesPerView={1}
+        breakpoints={{
+            768: {slidesPerView: 2},
+            1024: {slidesPerView: 1},
+        }}
+        modules={[Navigation]}
+        navigation={{
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+        }}
+        >
+        {thirdSwiper.map((swipe, i, arr) => (
+            <SwiperSlide key={i} >
+                <div className="w-full h-[90vh] flex items-center justify-between">
+                    <div className="w-6/12 h-full align-text-top">
+                        <p className="mb-12 font-semibold">
+                            {`${String(i + 1).padStart(2, "0")} / ${String(arr.length).padStart(2, "0")}`}
+                        </p>
+                        <h1 className="text-5xl font-semiblod">{swipe.title}</h1>
+                        <h3 className="text-bold mt-6">{swipe.description}</h3>
+                        <div className="flex gap-4 mt-8">
+                            <button 
+                            className="swiper-button-prev bg-gray-200 hover:bg-gray-300 rounded-full p-3 shadow cursor-pointer">
+                                ←
+                            </button>
+                            <button 
+                            className="swiper-button-next bg-gray-200 hover:bg-gray-300 rounded-full p-3 shadow cursor-pointer">
+                                →
+                            </button>
+                        </div>
+                    </div>
+                    <div className="relative w-6/12 h-full">
+                        <Image
+                            src={swipe.img}
+                            alt={`slide-${i}`}
+                            priority
+                            fill
+                            className="w-full h-full object-cover"
+                        />
+                    </div>
+                </div>
+            </SwiperSlide>
+        ))}
+    </Swiper>
+    );
+};

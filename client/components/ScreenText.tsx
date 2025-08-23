@@ -51,11 +51,11 @@ const ScreenText = () => {
 
         <div className="absolute  top-[60%] left-1/2 transform -translate-x-1/2 text-white 
             flex justify-between gap-10">
-            <Link href="" className="relative text-xl group">
+            <Link href="/services/design" className="relative text-xl group">
                 DESIGN
                 <span className="absolute left-0 -bottom-1 w-full h-[2px] bg-white scale-x-100 origin-left transition-transform duration-300 group-hover:scale-x-0"></span>
             </Link>
-            <Link href="" className="relative text-xl group">
+            <Link href="/services/consulting" className="relative text-xl group">
                 CONSULTING
                 <span className="absolute left-0 -bottom-1 w-full h-[2px] bg-white scale-x-100 origin-left transition-transform duration-300 group-hover:scale-x-0"></span>
             </Link>
