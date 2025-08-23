@@ -197,7 +197,7 @@ export default function HomePage() {
                     <p>{`${String(index + 1).padStart(2, "0")} / ${String(
                       arr.length
                     ).padStart(2, "0")}`}</p>
-                    <Link href="" className="relative text-xl group">
+                    <Link href="/projects" className="relative text-xl group">
                       ALL PROJECTS
                       <span className="absolute left-0 -bottom-1 w-full h-[2px] bg-black scale-x-100 origin-left transition-transform duration-300 group-hover:scale-x-0"></span>
                     </Link>
@@ -219,7 +219,7 @@ export default function HomePage() {
           pot of expertises leads to interwoven design and consultancy solutions
           that deliver beyond the brief.
         </h2>
-        <Link href="" className="relative text-xl group">
+        <Link href="/services" className="relative text-xl group">
           OUR SERVICES
           <span className="absolute left-0 -bottom-1 w-full h-[2px] bg-black scale-x-100 origin-left transition-transform duration-300 group-hover:scale-x-0"></span>
         </Link>
@@ -237,7 +237,7 @@ export default function HomePage() {
                 Delivering transformative design solutions across all scales and
                 disciplines.
               </p>
-              <Link href="" className="relative text-xl group">
+              <Link href="/services/design" className="relative text-xl group">
                 FIND OUT MORE
                 <span className="absolute left-0 -bottom-1 w-full h-[2px] bg-black scale-x-100 origin-left transition-transform duration-300 group-hover:scale-x-0"></span>
               </Link>
@@ -252,7 +252,7 @@ export default function HomePage() {
                 Unlocking new possibilities in sustainability, economics,
                 technology, and health
               </p>
-              <Link href="" className="relative text-xl group">
+              <Link href="/services/consulting" className="relative text-xl group">
                 FIND OUT MORE
                 <span className="absolute left-0 -bottom-1 w-full h-[2px] bg-black scale-x-100 origin-left transition-transform duration-300 group-hover:scale-x-0"></span>
               </Link>
