@@ -20,14 +20,15 @@ function NavBar() {
       <nav className="fixed w-full flex items-center justify-between px-8 py-2 top-0 left-0 z-40 bg-transparent">
         {/* Logo */}
         <Link href="/" aria-label="Home">
-          <Image
-            src="https://res.cloudinary.com/dntdescqh/image/upload/v1755689582/logo_dppoxr.png"
-            alt="Invert-Hub Logo"
-            priority
-            width={170}
-            height={140}
-            className="origin-left hover:scale-130 transition-transform duration-800 cursor-pointer"
-          />
+            <div className="relative w-[170px] h-[60px]">
+              <Image
+                src="https://res.cloudinary.com/dntdescqh/image/upload/v1755689582/logo_dppoxr.png"
+                alt="Invert-Hub Logo"
+                priority
+                fill
+                className="object-contain origin-left cursor-pointer transition-transform duration-[800ms] hover:[transform:scale(1.3)]"
+              />
+            </div>
         </Link>
 
         {/* NavLinks */}

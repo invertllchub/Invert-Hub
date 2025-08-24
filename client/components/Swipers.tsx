@@ -145,37 +145,19 @@ export function Swiper2({project}: SwiperProps) {
     );
 }
 
-const thirdSwiper = [
-    {
-        title: "Across All Design Phases",
-        description: "Spanning every stage of landscape design, from the initial idea to design development, technical planning, execution, and final aesthetic supervision.",
-        img: "https://res.cloudinary.com/dntdescqh/image/upload/v1755960634/swipe-00_jjojbg.webp"
-    },
-    {
-        title: "Across All Design Phases",
-        description: "Spanning every stage of landscape design, from the initial idea to design development, technical planning, execution, and final aesthetic supervision.",
-        img: "https://res.cloudinary.com/dntdescqh/image/upload/v1755960595/swipe-01_qe2ygk.webp"
-    },
-    {
-        title: "Across All Design Phases",
-        description: "Spanning every stage of landscape design, from the initial idea to design development, technical planning, execution, and final aesthetic supervision.",
-        img: "https://res.cloudinary.com/dntdescqh/image/upload/v1755960629/swipe-02_gjamws.webp"
-    },
-    {
-        title: "Across All Design Phases",
-        description: "Spanning every stage of landscape design, from the initial idea to design development, technical planning, execution, and final aesthetic supervision.",
-        img: "https://res.cloudinary.com/dntdescqh/image/upload/v1755960633/swipe-03_qy0k62.webp"
-    },
-    {
-        title: "Across All Design Phases",
-        description: "Spanning every stage of landscape design, from the initial idea to design development, technical planning, execution, and final aesthetic supervision.",
-        img: "https://res.cloudinary.com/dntdescqh/image/upload/v1755960598/swipe-04_ommfav.webp"
-    },
-]
+type ThirdSwiperItem = {
+  title: string;
+  description: string;
+  img: string;
+};
+
+type Swiper3Props = {
+  thirdSwiper: ThirdSwiperItem[];
+};
 
 // The third Swiper
 
-export function Swiper3 () {
+export function Swiper3 ({thirdSwiper}: Swiper3Props) {
 
     return (
         <Swiper
@@ -195,7 +177,7 @@ export function Swiper3 () {
         {thirdSwiper.map((swipe, i, arr) => (
             <SwiperSlide key={i} >
                 <div className="w-full h-full md:h-[90vh] flex flex-col-reverse md:flex-row items-center justify-between gap-4">
-                    <div className="w-full md:w-6/12 h-6/12 md:h-full align-text-top">
+                    <div className="w-full md:w-6/12 h-6/12 md:h-full align-text-top md:p-4">
                         <p className="md:mb-12 font-semibold">
                             {`${String(i + 1).padStart(2, "0")} / ${String(arr.length).padStart(2, "0")}`}
                         </p>
