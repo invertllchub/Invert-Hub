@@ -50,7 +50,7 @@ function Page() {
                     opportunities that others might overlook.
                 </p>
                 <div className='mt-12'>
-                    <Link href="/consulting" className="relative text-xl group">
+                    <Link href="/services/consulting" className="relative text-xl group">
                         FIND OUT MORE
                         <span className="absolute left-0 -bottom-1 w-full h-[2px] bg-black scale-x-100 origin-left transition-transform duration-300 group-hover:scale-x-0"></span>
                     </Link>
