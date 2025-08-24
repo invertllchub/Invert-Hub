@@ -7,8 +7,10 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from "swiper/modules";
+import { Pagination } from "swiper/modules";
 // Import Swiper styles
 import 'swiper/css';
+import "swiper/css/pagination";
 // Types
 import { SwiperProps } from "@/app/types/project";
 
@@ -22,8 +24,10 @@ export function Swiper1 ({ project }: SwiperProps) {
 
     return (
         <Swiper
-        className='w-full h-[50vh] md:h-[100vh] mt-36 cursor-grab'
+        className='w-full h-[60vh] md:h-[110vh] mt-36  cursor-grab'
         spaceBetween={40}
+        modules={[Pagination]}
+        pagination={{ clickable: true }} 
         slidesPerView={1}
         breakpoints={{
             768: {slidesPerView: 2},
@@ -32,7 +36,7 @@ export function Swiper1 ({ project }: SwiperProps) {
         >
         {project.images.map((src, i) => (
             <SwiperSlide key={i}>
-                <div className="relative w-full h-full">
+                <div className="relative w-full h-[50vh] md:h-[100vh]">
                     <Image
                         src={src}
                         alt={`slide-${i}`}
@@ -99,6 +103,8 @@ export function Swiper2({project}: SwiperProps) {
         <Swiper
         className="w-full h-[70vh] mt-16 cursor-grab"
         spaceBetween={40}
+        modules={[Pagination]}
+        pagination={{ clickable: true }}  
         slidesPerView={1}
         breakpoints={{
             768: { slidesPerView: 2 },
@@ -109,7 +115,7 @@ export function Swiper2({project}: SwiperProps) {
         {project.facts.map((fact, i) => (
             <SwiperSlide key={fact.id}>
                 {fact.type === "text" ? (
-                    <div className={`bg-gradient-to-r h-[400px] flex flex-col items-start justify-end gap-3 p-4
+                    <div className={`bg-gradient-to-r h-[60vh] flex flex-col items-start justify-end gap-3 p-4
                     ${i % 2 === 0 ? "from-sky-200 to-sky-100" : "from-yellow-200 to-yellow-100"}
                     `}>
                         <div className="flex items-center justify-center">
@@ -124,7 +130,7 @@ export function Swiper2({project}: SwiperProps) {
                         <p className="font-semibold leading-5 h-14">{fact.text}</p>
                     </div>
                 ) : fact.type === "image" ? (
-                    <div className="relative w-full h-[400px]">
+                    <div className="relative w-full h-[60vh]">
                         <Image
                         src={fact.img}
                         alt="fact-image"
@@ -188,25 +194,25 @@ export function Swiper3 () {
         >
         {thirdSwiper.map((swipe, i, arr) => (
             <SwiperSlide key={i} >
-                <div className="w-full h-[90vh] flex items-center justify-between">
-                    <div className="w-6/12 h-full align-text-top">
-                        <p className="mb-12 font-semibold">
+                <div className="w-full h-full md:h-[90vh] flex flex-col-reverse md:flex-row items-center justify-between gap-4">
+                    <div className="w-full md:w-6/12 h-6/12 md:h-full align-text-top">
+                        <p className="md:mb-12 font-semibold">
                             {`${String(i + 1).padStart(2, "0")} / ${String(arr.length).padStart(2, "0")}`}
                         </p>
-                        <h1 className="text-5xl font-semiblod">{swipe.title}</h1>
-                        <h3 className="text-bold mt-6">{swipe.description}</h3>
-                        <div className="flex gap-4 mt-8">
+                        <h1 className="text-xl md:text-5xl font-semiblod">{swipe.title}</h1>
+                        <h3 className="text-bold mt-3 md:mt-6 text-sm">{swipe.description}</h3>
+                        <div className="flex gap-4 mt-4 md:mt-8">
                             <button 
-                            className="swiper-button-prev bg-gray-200 hover:bg-gray-300 rounded-full p-3 shadow cursor-pointer">
+                            className="swiper-button-prev bg-gray-200 hover:bg-gray-300 rounded-full p-2 md:p-3 shadow cursor-pointer">
                                 ←
                             </button>
                             <button 
-                            className="swiper-button-next bg-gray-200 hover:bg-gray-300 rounded-full p-3 shadow cursor-pointer">
+                            className="swiper-button-next bg-gray-200 hover:bg-gray-300 rounded-full p-2 md:p-3 shadow cursor-pointer">
                                 →
                             </button>
                         </div>
                     </div>
-                    <div className="relative w-6/12 h-full">
+                    <div className="relative w-full md:w-6/12 h-6/12 md:h-full">
                         <Image
                             src={swipe.img}
                             alt={`slide-${i}`}

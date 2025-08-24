@@ -149,10 +149,10 @@ function page() {
                         />
                     </div>
                 )}
-                <p className='text-2xl font-semibold mt-16 w-full md:w-6/12'>
+                <p className='text-xl md:text-2xl font-semibold mt-16 w-full md:w-6/12'>
                 {designPattern?.firsArticle}
                 </p>
-                <p className='text-2xl font-semibold mt-16 w-full md:w-6/12 ml-auto'>
+                <p className='text-xl md:text-2xl font-semibold mt-16 w-full md:w-6/12 ml-auto'>
                 {designPattern?.secondArticle}
                 </p>
             </section>
