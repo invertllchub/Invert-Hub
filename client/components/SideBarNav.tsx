@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { Menu, X, ArrowRight } from 'lucide-react'
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 
 
 
@@ -11,6 +12,7 @@ function SideBarNav() {
     const [openSideBar, setOpenSideBar] = useState(false);
     const [hoveredLink, setHoveredLink] = useState<string | null>(null);
     const [isMiniHovered, setIsMiniHovered] = useState(false);
+    const router = useRouter()
 
     const links = [
         { href: '/projects', label: 'PROJECTS' },
@@ -120,30 +122,37 @@ function SideBarNav() {
                         <div className='relative z-20 w-11/12 h-6/12'>
                             <div className="relative w-full h-9/12">
                                 <Image 
-                                src="/pic1.jpg" 
-                                alt="Remode" 
+                                src="https://res.cloudinary.com/dntdescqh/image/upload/v1755803840/Design_kflncf.webp" 
+                                alt="design" 
                                 fill 
                                 className="object-cover rounded-lg"
                                 />
                             </div>
                             <div className='flex items-center justify-between z-20 mt-1.5'>
                                 <h1 className='font-semibold'>Design</h1>
-                                <ArrowRight className='relative -left-1 cursor-pointer transition-all duration-300 hover:left-1'/>
+                                <ArrowRight 
+                                className='relative -left-1 cursor-pointer transition-all duration-300 hover:left-1'
+                                onClick={()=> {router.push('/services/design'), setOpenSideBar(false)}}
+                                />
                             </div>
                             <p className="truncate w-full">Creation of design solutions</p>
                         </div>
-                        <div className='relative z-20 w-11/12 h-6/12'>
+                        <div 
+                        className='relative z-20 w-11/12 h-6/12'>
                             <div className="relative w-full h-9/12">
                                 <Image 
-                                src="/pic1.jpg" 
-                                alt="Remode" 
+                                src="https://res.cloudinary.com/dntdescqh/image/upload/v1755803839/Consulting_acsyvt.webp"
+                                alt="consulting" 
                                 fill 
                                 className="object-cover rounded-lg"
                                 />
                             </div>
                             <div className='flex items-center justify-between z-20 mt-1.5'>
                                 <h1 className='font-semibold'>Consulting</h1>
-                                <ArrowRight className='relative -left-1 transition-all duration-300 hover:left-1 cursor-pointer'/>
+                                <ArrowRight 
+                                className='relative -left-1 transition-all duration-300 hover:left-1 cursor-pointer'
+                                onClick={()=> {router.push('/services/consulting'), setOpenSideBar(false)}}
+                                />
                             </div>
                             <p className="truncate w-full">Advice and strategic guidance</p>
                         </div>
