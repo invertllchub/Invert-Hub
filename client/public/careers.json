@@ -1,0 +1,95 @@
+{
+    "Employees" : 
+    [
+        {
+            "name": "Prethvi Manoharan",
+            "jopDescription": "Sustainability Engineering Lead, Amsterdam",
+            "video": "https://res.cloudinary.com/dntdescqh/video/upload/v1756125032/career-video-01_fjgmas.mp4",
+            "poster": "https://res.cloudinary.com/dntdescqh/image/upload/v1756124954/career-poster-01_ggs1wa.webp"
+        },
+        {
+            "name": "Cristobal Burgos",
+            "jopDescription": "Digital Innovations Manager, Amsterdam",
+            "video": "https://res.cloudinary.com/dntdescqh/video/upload/v1756125083/career-video-00_svaiys.mp4",
+            "poster": "https://res.cloudinary.com/dntdescqh/image/upload/v1756124954/career-poster-00_vep7ls.webp"
+        },
+        {
+            "name": "Prethvi Manoharan",
+            "jopDescription": "Sustainability Engineering Lead, Amsterdam",
+            "video": "https://res.cloudinary.com/dntdescqh/video/upload/v1756125032/career-video-01_fjgmas.mp4",
+            "poster": "https://res.cloudinary.com/dntdescqh/image/upload/v1756124954/career-poster-01_ggs1wa.webp"
+        },
+        {
+            "name": "Cristobal Burgos",
+            "jopDescription": "Digital Innovations Manager, Amsterdam",
+            "video": "https://res.cloudinary.com/dntdescqh/video/upload/v1756125083/career-video-00_svaiys.mp4",
+            "poster": "https://res.cloudinary.com/dntdescqh/image/upload/v1756124954/career-poster-00_vep7ls.webp"
+        }
+    ],
+    "articles": 
+    [
+        {
+            "label": "Helping you grow",
+            "content": "UNS thrives on bold collaboration and innovation, bringing together diverse backgrounds, disciplines, and creative approaches. By embracing inventive push-and-pull and drawing from unconventional inspiration, we craft sharper, more impactful solutions for our environments. As part of our united network, you’ll find unparalleled opportunities to grow, contribute, and redefine what’s possible in design. This is only achievable with our collective hive mind of top talent, who enrich our thinking and work to originate the new."
+        },
+        {
+            "label": "Supporting you",
+            "content": "We believe good ideas come from everywhere. Step into a dynamic environment where curiosity drives everything we do. Creativity isn’t just part of the process—it’s woven into your daily work, opening doors to collaborate with leading companies and institutions. While your experience matters, it’s bold ideas and an entrepreneurial spirit that truly make a difference here. UNS is a place where you design through discovery, learn by doing, and are encouraged to push creative boundaries of problem solving. Responsibility isn’t handed out—it’s earned, giving you the freedom to shape your own path and make a real impact."
+        },
+        {
+            "label": "Employee benefits",
+            "content": "You’ll take on high-profile, global projects that challenge and inspire, all while working in some of the world’s most beautiful and dynamic cities.You’ll join an international team that’s ambitious, collaborative,  and full of character, from fresh graduates to seasoned architects. Our culture is as dynamic as our work, with legendary Summer and Winter Events, Friday Afternoon Drinks, and a supportive environment that makes you feel at home. With annual holidays and a holiday allowance on top of your salary, we ensure you have the time and space to recharge, so you can thrive both personally and professionally."
+        }
+    ],
+    "locations" : 
+    [
+    {
+        "capitalCity": "Amsterdam",
+        "street": "Stadhouderskade 113",
+        "postalCode": "1073 AX Amsterdam",
+        "country": "The Netherlands",
+        "tele": "T +31 20 570 20 40",
+        "domain": "info@unstudio.com"
+    },
+    {
+        "capitalCity": "Amsterdam",
+        "street": "Stadhouderskade 113",
+        "postalCode": "1073 AX Amsterdam",
+        "country": "The Netherlands",
+        "tele": "T +31 20 570 20 40",
+        "domain": "info@unstudio.com"
+    },
+    {
+        "capitalCity": "Amsterdam",
+        "street": "Stadhouderskade 113",
+        "postalCode": "1073 AX Amsterdam",
+        "country": "The Netherlands",
+        "tele": "T +31 20 570 20 40",
+        "domain": "info@unstudio.com"
+    },
+    {
+        "capitalCity": "Amsterdam",
+        "street": "Stadhouderskade 113",
+        "postalCode": "1073 AX Amsterdam",
+        "country": "The Netherlands",
+        "tele": "T +31 20 570 20 40",
+        "domain": "info@unstudio.com"
+    },
+    {
+        "capitalCity": "Amsterdam",
+        "street": "Stadhouderskade 113",
+        "postalCode": "1073 AX Amsterdam",
+        "country": "The Netherlands",
+        "tele": "T +31 20 570 20 40",
+        "domain": "info@unstudio.com"
+    },
+    {
+        "capitalCity": "Amsterdam",
+        "street": "Stadhouderskade 113",
+        "postalCode": "1073 AX Amsterdam",
+        "country": "The Netherlands",
+        "tele": "T +31 20 570 20 40",
+        "domain": "info@unstudio.com"
+    }
+    ]
+}
