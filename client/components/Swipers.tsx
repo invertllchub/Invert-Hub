@@ -13,6 +13,10 @@ import 'swiper/css';
 import "swiper/css/pagination";
 // Types
 import { SwiperProps } from "@/app/types/project";
+import { Swiper4Props } from "@/app/types/careers";
+import { Clock } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
+import Link from "next/link";
 
 
 gsap.registerPlugin(ScrollTrigger);
@@ -209,3 +213,52 @@ export function Swiper3 ({thirdSwiper}: Swiper3Props) {
     </Swiper>
     );
 };
+
+
+// The Fourth Swiper
+
+export function Swiper4({locations}: Swiper4Props) {
+
+    return (
+        <Swiper
+        className="w-full h-[60vh] md:h-[80vh] mt-16 cursor-grab"
+        spaceBetween={10}
+        modules={[Pagination]}
+        pagination={{ clickable: true }}  
+        slidesPerView={1.15}
+        breakpoints={{
+            768: { slidesPerView: 2 },
+            1024: { slidesPerView: 4.15 },
+        }}
+        >
+        {locations.map((location, i) => (
+            <SwiperSlide key={i}>
+                <div className={`bg-gradient-to-r h-[50vh] md:h-[70vh] flex flex-col items-start justify-end p-4
+                ${i % 2 === 0 ? "from-sky-100 to-sky-50" : "from-yellow-100 to-yellow-50"}`}
+                >
+                        <div className="absolute top-4 left-4">
+                            <Clock strokeWidth={0.5} size={72} color="gray"/>
+                        </div>
+                        <div className="text-md font-semibold">
+                            <p className="mb-5">{location.capitalCity}</p>
+                            <p>{location.street}</p>
+                            <p>{location.postalCode}</p>
+                            <p>{location.country}</p>
+                            <p>{location.tele}</p>
+                            <p>{location.domain}</p>
+                        </div>
+                        <div className='mt-8'>
+                            <Link href="/" className="relative text-md font-semibold group">
+                                <div className="flex items-center gap-1">
+                                    VIEW OPEN RULES
+                                    <span><ArrowUpRight size={20}/></span>
+                                </div>
+                                <span className="absolute left-0 -bottom-1 w-full h-[2px] bg-black scale-x-100 origin-left transition-transform duration-300 group-hover:scale-x-0"></span>
+                            </Link>
+                        </div>
+                    </div>
+            </SwiperSlide>
+        ))}
+    </Swiper>
+    );
+}

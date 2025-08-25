@@ -51,3 +51,5 @@ export type Project = {
 export type SwiperProps = {
   project: Project;
 };
+
+
