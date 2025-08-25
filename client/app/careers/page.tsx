@@ -193,11 +193,11 @@ function Page() {
                 <h1 className='w-full text-4xl md:text-7xl font-extrabold'>OUR LOCATIONS</h1>
                 <Swiper4 locations={careers?.locations || []} />
             </section>
-            <section className='w-full h-full flex items-center mt-48'>
-                <div className='w-6/12 h-full mb-auto px-8'>
-                    <h1 className='text-5xl font-semibold'>Our recruitment team</h1>
+            <section className='w-full h-full flex flex-col md:flex-row items-center mt-48'>
+                <div className='w-full md:w-6/12 h-full mb-auto px-8'>
+                    <h1 className='text-2xl md:text-5xl font-semibold'>Our recruitment team</h1>
                 </div>
-                <div  className="relative w-3/12 h-[300px] md:h-[400px]">
+                <div  className="relative mx-auto md:mx-0 w-10/12 md:w-3/12 h-[300px] md:h-[400px] mt-12 md:mt-0">
                     <Image
                     alt="recruitment team picture"
                     src="https://res.cloudinary.com/dntdescqh/image/upload/v1756029274/consulting-00_jamh0m.webp"
