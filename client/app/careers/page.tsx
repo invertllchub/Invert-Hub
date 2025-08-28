@@ -1,9 +1,10 @@
 "use client"
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { useState } from 'react'
+// components
 import { Swiper4 } from '@/components/Swipers'
+// types
 import { CareersType } from '../types/careers'
 
 function Page() {
@@ -78,7 +79,8 @@ function Page() {
                         <div className='mt-6'>
                             <Link href="/" className="relative text-xl group">
                                 FIND OUT MORE
-                                <span className="absolute left-0 -bottom-1 w-full h-[2px] bg-black scale-x-100 origin-left transition-transform duration-300 group-hover:scale-x-0"></span>
+                                <span className="absolute left-0 -bottom-1 w-full h-[2px] bg-black scale-x-100 
+                                origin-left transition-transform duration-300 group-hover:scale-x-0"></span>
                             </Link>
                         </div>
                     </div>
@@ -113,7 +115,8 @@ function Page() {
                         <div className='mt-6'>
                             <Link href="/" className="relative text-xl group">
                                 FIND OUT MORE
-                                <span className="absolute left-0 -bottom-1 w-full h-[2px] bg-black scale-x-100 origin-left transition-transform duration-300 group-hover:scale-x-0"></span>
+                                <span className="absolute left-0 -bottom-1 w-full h-[2px] bg-black scale-x-100 
+                                origin-left transition-transform duration-300 group-hover:scale-x-0"></span>
                             </Link>
                         </div>
                     </div>
@@ -174,7 +177,8 @@ function Page() {
                     <div className='mt-12'>
                         <Link href="/" className="relative text-md font-semibold group">
                             VIEW OPEN RULES
-                            <span className="absolute left-0 -bottom-1 w-full h-[2px] bg-black scale-x-100 origin-left transition-transform duration-300 group-hover:scale-x-0"></span>
+                            <span className="absolute left-0 -bottom-1 w-full h-[2px] bg-black scale-x-100 
+                            origin-left transition-transform duration-300 group-hover:scale-x-0"></span>
                         </Link>
                     </div>
                 </div>
