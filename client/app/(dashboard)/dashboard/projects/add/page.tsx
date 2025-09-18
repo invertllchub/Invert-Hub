@@ -32,13 +32,13 @@ const [project, setProject] = useState<Project>({
     {
       id: 1,
       type: "text",
-      value: { number: "", label: "K" },
+      value: { number: 0, label: "K" },
       text: "",
     },
     {
       id: 2,
       type: "text",
-      value: { number: "", label: "K" },
+      value: { number: 0, label: "K" },
       text: "",
     },
     {
@@ -51,7 +51,7 @@ const [project, setProject] = useState<Project>({
     {
       id: 4,
       type: "text",
-      value: { number: "", label: "K" },
+      value: { number: 0, label: "K" },
       text: "",
     }
   ],
