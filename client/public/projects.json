@@ -50,7 +50,7 @@
                 "type": "text",
                 "value": {
                     "number": 3,
-                    "string": "K"
+                    "label": "K"
                 },
                 "text": "Once complete, 3,000 people are expected to work in the newneighbourhood."
             },
@@ -59,14 +59,14 @@
                 "type": "text",
                 "value": {
                     "number": 1,
-                    "string": "K"
+                    "label": "K"
                 },
                 "text": "An additional 1,000 people will be able to live in FOUR Frankfurt."
             },
             {
                 "id": 3,
                 "type": "image",
-                "value": { "number": 0, "string": "" },
+                "value": { "number": 0, "label": "" },
                 "text": "",
                 "img": "https://res.cloudinary.com/dntdescqh/image/upload/v1755689587/pic2_ydbgaw.webp"
             },
@@ -75,16 +75,7 @@
                 "type": "text",
                 "value": {
                     "number": 173,
-                    "string": ""
-                },
-                "text": "At 173m, FOUR Frankfurt will be one of tallest residential towers inGermany."
-            },
-            {
-                "id": 5,
-                "type": "text",
-                "value": {
-                    "number": 173,
-                    "string": ""
+                    "label": ""
                 },
                 "text": "At 173m, FOUR Frankfurt will be one of tallest residential towers inGermany."
             }
@@ -137,7 +128,7 @@
             },
             {
                 "label": "Status",
-                "value": "Completed"
+                "value": "Not-Completed"
             },
             {
                 "label": "Sectors",
@@ -158,7 +149,7 @@
                 "type": "text",
                 "value": {
                     "number": 3,
-                    "string": "K"
+                    "label": "K"
                 },
                 "text": "Once complete, 3,000 people are expected to work in the newneighbourhood."
             },
@@ -167,14 +158,14 @@
                 "type": "text",
                 "value": {
                     "number": 1,
-                    "string": "K"
+                    "label": "K"
                 },
                 "text": "An additional 1,000 people will be able to live in FOUR Frankfurt."
             },
             {
                 "id": 3,
                 "type": "image",
-                "value": { "number": 0, "string": "" },
+                "value": { "number": 0, "label": "" },
                 "text": "",
                 "img": "https://res.cloudinary.com/dntdescqh/image/upload/v1755689688/pic3_ywbs6x.webp"
             },
@@ -183,7 +174,7 @@
                 "type": "text",
                 "value": {
                     "number": 173,
-                    "string": ""
+                    "label": ""
                 },
                 "text": "At 173m, FOUR Frankfurt will be one of tallest residential towers inGermany."
             }
@@ -249,7 +240,7 @@
                 "type": "text",
                 "value": {
                     "number": 3,
-                    "string": "K"
+                    "label": "K"
                 },
                 "text": "Once complete, 3,000 people are expected to work in the newneighbourhood."
             },
@@ -258,14 +249,14 @@
                 "type": "text",
                 "value": {
                     "number": 1,
-                    "string": "K"
+                    "label": "K"
                 },
                 "text": "An additional 1,000 people will be able to live in FOUR Frankfurt."
             },
             {
                 "id": 3,
                 "type": "image",
-                "value": { "number": 0, "string": "" },
+                "value": { "number": 0, "label": "" },
                 "text": "",
                 "img": "https://res.cloudinary.com/dntdescqh/image/upload/v1755689765/pic4_lf11xz.webp"
             },
@@ -274,7 +265,7 @@
                 "type": "text",
                 "value": {
                     "number": 173,
-                    "string": ""
+                    "label": ""
                 },
                 "text": "At 173m, FOUR Frankfurt will be one of tallest residential towers inGermany."
             }
@@ -346,7 +337,7 @@
                 "type": "text",
                 "value": {
                     "number": 3,
-                    "string": "K"
+                    "label": "K"
                 },
                 "text": "Once complete, 3,000 people are expected to work in the newneighbourhood."
             },
@@ -355,14 +346,14 @@
                 "type": "text",
                 "value": {
                     "number": 1,
-                    "string": "K"
+                    "label": "K"
                 },
                 "text": "An additional 1,000 people will be able to live in FOUR Frankfurt."
             },
             {
                 "id": 3,
                 "type": "image",
-                "value": { "number": 0, "string": "" },
+                "value": { "number": 0, "label": "" },
                 "text": "",
                 "img": "https://res.cloudinary.com/dntdescqh/image/upload/v1755689811/pic5_ag93ay.webp"
             },
@@ -371,7 +362,7 @@
                 "type": "text",
                 "value": {
                     "number": 173,
-                    "string": ""
+                    "label": ""
                 },
                 "text": "At 173m, FOUR Frankfurt will be one of tallest residential towers inGermany."
             }
@@ -433,7 +424,7 @@
                 "type": "text",
                 "value": {
                     "number": 3,
-                    "string": "K"
+                    "label": "K"
                 },
                 "text": "Once complete, 3,000 people are expected to work in the newneighbourhood."
             },
@@ -442,14 +433,14 @@
                 "type": "text",
                 "value": {
                     "number": 1,
-                    "string": "K"
+                    "label": "K"
                 },
                 "text": "An additional 1,000 people will be able to live in FOUR Frankfurt."
             },
             {
                 "id": 3,
                 "type": "image",
-                "value": { "number": 0, "string": "" },
+                "value": { "number": 0, "label": "" },
                 "text": "",
                 "img": "https://res.cloudinary.com/dntdescqh/image/upload/v1755689857/pic8_bqgbgv.webp"
             },
@@ -458,7 +449,7 @@
                 "type": "text",
                 "value": {
                     "number": 173,
-                    "string": ""
+                    "label": ""
                 },
                 "text": "At 173m, FOUR Frankfurt will be one of tallest residential towers inGermany."
             }
@@ -531,7 +522,7 @@
                 "type": "text",
                 "value": {
                     "number": 3,
-                    "string": "K"
+                    "label": "K"
                 },
                 "text": "Once complete, 3,000 people are expected to work in the newneighbourhood."
             },
@@ -540,14 +531,14 @@
                 "type": "text",
                 "value": {
                     "number": 1,
-                    "string": "K"
+                    "label": "K"
                 },
                 "text": "An additional 1,000 people will be able to live in FOUR Frankfurt."
             },
             {
                 "id": 3,
                 "type": "image",
-                "value": { "number": 0, "string": "" },
+                "value": { "number": 0, "label": "" },
                 "text": "",
                 "img": "https://res.cloudinary.com/dntdescqh/image/upload/v1755689864/pic9_ctubxm.webp"
             },
@@ -556,7 +547,7 @@
                 "type": "text",
                 "value": {
                     "number": 173,
-                    "string": ""
+                    "label": ""
                 },
                 "text": "At 173m, FOUR Frankfurt will be one of tallest residential towers inGermany."
             }
@@ -629,7 +620,7 @@
                 "type": "text",
                 "value": {
                     "number": 3,
-                    "string": "K"
+                    "label": "K"
                 },
                 "text": "Once complete, 3,000 people are expected to work in the newneighbourhood."
             },
@@ -638,14 +629,14 @@
                 "type": "text",
                 "value": {
                     "number": 1,
-                    "string": "K"
+                    "label": "K"
                 },
                 "text": "An additional 1,000 people will be able to live in FOUR Frankfurt."
             },
             {
                 "id": 3,
                 "type": "image",
-                "value": { "number": 0, "string": "" },
+                "value": { "number": 0, "label": "" },
                 "text": "",
                 "img": "https://res.cloudinary.com/dntdescqh/image/upload/v1755689992/pic10_hkgufo.webp"
             },
@@ -654,7 +645,7 @@
                 "type": "text",
                 "value": {
                     "number": 173,
-                    "string": ""
+                    "label": ""
                 },
                 "text": "At 173m, FOUR Frankfurt will be one of tallest residential towers inGermany."
             }
@@ -728,7 +719,7 @@
                 "type": "text",
                 "value": {
                     "number": 3,
-                    "string": "K"
+                    "label": "K"
                 },
                 "text": "Once complete, 3,000 people are expected to work in the newneighbourhood."
             },
@@ -737,14 +728,14 @@
                 "type": "text",
                 "value": {
                     "number": 1,
-                    "string": "K"
+                    "label": "K"
                 },
                 "text": "An additional 1,000 people will be able to live in FOUR Frankfurt."
             },
             {
                 "id": 3,
                 "type": "image",
-                "value": { "number": 0, "string": "" },
+                "value": { "number": 0, "label": "" },
                 "text": "",
                 "img": "https://res.cloudinary.com/dntdescqh/image/upload/v1755690044/pic11_f13smx.webp"
             },
@@ -753,7 +744,7 @@
                 "type": "text",
                 "value": {
                     "number": 173,
-                    "string": ""
+                    "label": ""
                 },
                 "text": "At 173m, FOUR Frankfurt will be one of tallest residential towers inGermany."
             }
@@ -827,7 +818,7 @@
                 "type": "text",
                 "value": {
                     "number": 3,
-                    "string": "K"
+                    "label": "K"
                 },
                 "text": "Once complete, 3,000 people are expected to work in the newneighbourhood."
             },
@@ -836,14 +827,14 @@
                 "type": "text",
                 "value": {
                     "number": 1,
-                    "string": "K"
+                    "label": "K"
                 },
                 "text": "An additional 1,000 people will be able to live in FOUR Frankfurt."
             },
             {
                 "id": 3,
                 "type": "image",
-                "value": { "number": 0, "string": "" },
+                "value": { "number": 0, "label": "" },
                 "text": "",
                 "img": "https://res.cloudinary.com/dntdescqh/image/upload/v1755690154/pic12_uqg0vh.webp"
             },
@@ -852,7 +843,7 @@
                 "type": "text",
                 "value": {
                     "number": 173,
-                    "string": ""
+                    "label": ""
                 },
                 "text": "At 173m, FOUR Frankfurt will be one of tallest residential towers inGermany."
             }
