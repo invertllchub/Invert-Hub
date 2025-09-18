@@ -27,7 +27,7 @@ function Facts({project, setProject}: FactsProps) {
                       value={fact.value.number}
                       onChange={(e) => {
                         const updatedFacts = [...project.facts];
-                        updatedFacts[i].value.number = e.target.value;
+                        updatedFacts[i].value.number = Number(e.target.value);
                         setProject({ ...project, facts: updatedFacts });
                       }}
                       className="w-26 text-6xl font-bold bg-transparent outline-none"
