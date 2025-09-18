@@ -38,20 +38,26 @@ export function Swiper1 ({ project }: SwiperProps) {
             1024: {slidesPerView: 1.1},
         }}
         >
-        {project.images.map((src, i) => (
-            <SwiperSlide key={i}>
-                <div className="relative w-full h-[50vh] md:h-[100vh]">
-                    <Image
-                        src={src}
-                        alt={`slide-${i}`}
-                        priority
-                        fill
-                        className="w-full h-full object-cover"
-                    />
-                </div>
-            </SwiperSlide>
-        ))}
-    </Swiper>
+            {project.images.map((img, i) => {
+                if (!img) return null;
+
+                const src = typeof img === "string" ? img : URL.createObjectURL(img);
+
+                return (
+                    <SwiperSlide key={i}>
+                        <div className="relative w-full h-[50vh] md:h-[100vh]">
+                            <Image
+                            src={src}
+                            alt={`slide-${i}`}
+                            priority
+                            fill
+                            className="w-full h-full object-cover"
+                            />
+                        </div>
+                    </SwiperSlide>
+                );
+            })}
+            </Swiper>
     );
 };
 
@@ -128,7 +134,7 @@ export function Swiper2({project}: SwiperProps) {
                                 className="text-8xl font-semibold"
                             />
                                 <span className="text-8xl font-semibold">
-                                    {fact.value.string}
+                                    {fact.value.label}
                                 </span>
                         </div>
                         <p className="font-semibold leading-5 h-14">{fact.text}</p>

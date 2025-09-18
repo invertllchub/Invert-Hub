@@ -3,7 +3,7 @@ export type Fact =
       id: number;
       type: "text";
       value: {
-        number: string;
+        number: number;
         label: string;
       };
       text: string;
@@ -43,7 +43,7 @@ export type Project = {
     overview: string;
   };
   keyInformation: KeyInfoItem[];
-  images: (File | null)[];
+   images: (string | File | null)[];
   facts: Fact[];
   articles: Article[];
 };
