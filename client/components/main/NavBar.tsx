@@ -17,7 +17,7 @@ function NavBar() {
 
   return (
     <>
-      <nav className="fixed w-full flex items-center justify-between px-8 py-2 top-0 left-0 z-40 bg-transparent">
+      <nav className="fixed w-full flex items-center justify-between px-4 py-2 top-0 left-0 z-40 bg-transparent">
         {/* Logo */}
         <Link href="/" aria-label="Home">
             <div className="relative w-[170px] h-[60px]">

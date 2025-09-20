@@ -9,7 +9,7 @@
           "data": { "text": "The First Article", "level": 2 }
         },
         {
-          "type": "paragraph",
+          "type": "overview",
           "data": { "text": "This is a demo article created with EditorJS and custom tools." }
         },
         {
@@ -22,7 +22,7 @@
         {
           "type": "image",
           "data": {
-            "file": { "url": "https://res.cloudinary.com/demo/image/upload/v1234567890/sample.jpg" },
+            "file": { "url": "https://res.cloudinary.com/dyfregti9/image/upload/v1757971722/samples/animals/reindeer.jpg" },
             "caption": "Sample Image",
             "withBorder": false,
             "stretched": false,
@@ -52,7 +52,7 @@
       "version": "2.29.1"
     },
     {
-      "time": 1694967890456,
+      "time": 1694967890123,
       "id": 2,
       "blocks": [
         {
@@ -60,14 +60,58 @@
           "data": { "text": "The Second Article", "level": 2 }
         },
         {
+          "type": "overview",
+          "data": { "text": "This is a demo article created with EditorJS and custom tools." }
+        },
+        {
+          "type": "list",
+          "data": {
+            "style": "unordered",
+            "items": ["First item", "Second item", "Third item"]
+          }
+        },
+        {
+          "type": "image",
+          "data": {
+            "file": { "url": "https://res.cloudinary.com/dyfregti9/image/upload/v1757971722/samples/animals/reindeer.jpg" },
+            "caption": "Sample Image",
+            "withBorder": false,
+            "stretched": false,
+            "withBackground": false
+          }
+        },
+        {
+          "type": "header",
+          "data": { "text": "The Second Article", "level": 2 }
+        },
+        {
           "type": "paragraph",
-          "data": { "text": "This is another demo article created with EditorJS and custom tools." }
+          "data": { "text": "This is the first line of the paragraph. his is the second line that continues the idea. And this is the third line to make it a complete three-line paragraph.  " }
+        },
+        {
+          "type": "link",
+          "data": { "url": "https://facebook.com" }
+        },
+        {
+          "type": "embed",
+          "data": {
+            "service": "youtube",
+            "source": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+            "embed": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+            "width": 580,
+            "height": 320,
+            "caption": ""
+          }
+        },
+        {
+          "type": "video",
+          "data": { "url": "https://res.cloudinary.com/dyfregti9/video/upload/v1757971724/samples/sea-turtle.mp4" }
         }
       ],
       "version": "2.29.1"
     },
     {
-      "time": 1694967890789,
+      "time": 1694967890123,
       "id": 3,
       "blocks": [
         {
@@ -75,8 +119,44 @@
           "data": { "text": "The Third Article", "level": 2 }
         },
         {
-          "type": "paragraph",
-          "data": { "text": "This is the third demo article." }
+          "type": "overview",
+          "data": { "text": "This is a demo article created with EditorJS and custom tools." }
+        },
+        {
+          "type": "list",
+          "data": {
+            "style": "unordered",
+            "items": ["First item", "Second item", "Third item"]
+          }
+        },
+        {
+          "type": "image",
+          "data": {
+            "file": { "url": "https://res.cloudinary.com/dyfregti9/image/upload/v1757971722/samples/animals/reindeer.jpg" },
+            "caption": "Sample Image",
+            "withBorder": false,
+            "stretched": false,
+            "withBackground": false
+          }
+        },
+        {
+          "type": "embed",
+          "data": {
+            "service": "youtube",
+            "source": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+            "embed": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+            "width": 580,
+            "height": 320,
+            "caption": ""
+          }
+        },
+        {
+          "type": "video",
+          "data": { "url": "https://res.cloudinary.com/demo/video/upload/v1234567890/sample.mp4" }
+        },
+        {
+          "type": "link",
+          "data": { "url": "https://facebook.com" }
         }
       ],
       "version": "2.29.1"
