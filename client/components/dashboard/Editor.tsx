@@ -9,6 +9,7 @@ import ImageTool from "@editorjs/image";
 import Embed from "@editorjs/embed";
 import VideoTool from "@/utils/editorTools/VideoTool";
 import LinkTool from "@/utils/editorTools/LinkTool";
+import OverviewTool from "@/utils/editorTools/OverViewTool";
 // id generator
 import { v4 as uuidv4 } from "uuid";
 // Upload to Cloudinary fn()
@@ -24,7 +25,6 @@ export default function Editor() {
         holder: "editorjs",
         autofocus: true,
         tools: {
-          link: LinkTool,
           header: {
             class: Header,
             inlineToolbar: true,
@@ -34,6 +34,8 @@ export default function Editor() {
               defaultLevel: 1,
             },
           },
+          overview: OverviewTool,
+          link: LinkTool,
           list: List,
           image: {
             class: ImageTool,
