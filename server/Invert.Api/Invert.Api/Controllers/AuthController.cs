@@ -18,37 +18,37 @@ namespace Invert.Api.Controllers
     public class AuthController : ControllerBase
     {
         private readonly IAuthService _authService;
-        private readonly UserManager<AppUser> _userManager;
-        public AuthController(IAuthService authService, UserManager<AppUser> userManager)
+        public AuthController(IAuthService authService)
         {
             _authService = authService;
-            _userManager = userManager;
         }
 
         [HttpPost("login")]
+        [AllowAnonymous]
         public async Task<IActionResult> Login([FromBody] LoginDto loginDto)
         {
             try
             {
                 if (!ModelState.IsValid) return BadRequest(ModelState);
 
-                //var user = await _userManager.FindByEmailAsync(LoginDto.Email);
+                var user = await _authService.GetUserByEmailAsync(loginDto.Email);
 
-                var user = await _authService.GetUserByNameAsync(loginDto.Email);
+                if (user == null) return BadRequest(new { Message = "User not found" });
 
-                if (user == null || !await _authService.CheckPasswordAsync(user, loginDto.Password))
-                    return Unauthorized(new { Message = "Invalid username or password" });
+                var result = await _authService.CheckPasswordAsync(user, loginDto.Password);
 
-                // Generate both access and refresh tokens
-                //var tokens = await _authService.GenerateTokensAsync(user);
+                if (!result) return BadRequest(new { Message = "Password is incorrect" });
+                //generate token
+
+
 
                 return Ok(new UserDto
                 {
                     DisplayName = user.UserName,
                     Email = user.Email,
-                    Token = " tokens.accessToken",
-                    //RefreshToken = tokens.refreshToken
+                    Token = " ",
                 });
+
             }
             catch (Exception ex)
             {
@@ -58,6 +58,7 @@ namespace Invert.Api.Controllers
 
 
         [HttpPost("register")]
+        [AllowAnonymous]
         public async Task<IActionResult> Register([FromBody] RegisterDto registerDto)
         {
             try
