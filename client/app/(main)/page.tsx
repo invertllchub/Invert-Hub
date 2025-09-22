@@ -297,7 +297,7 @@ export default function HomePage() {
               <span className="absolute left-0 -bottom-1 w-full h-[2px] bg-black scale-x-100 origin-left transition-transform duration-300 group-hover:scale-x-0"></span>
             </Link>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 p-6 gap-4">
+          {/* <div className="grid grid-cols-2 md:grid-cols-4 p-6 gap-4">
             {Array.from({ length: 4 }).map((_, index) => {
               return (
                 <div key={index} className="relative w-full aspect-[3/4]">
@@ -310,7 +310,7 @@ export default function HomePage() {
                 </div>
               );
             })}
-          </div>
+          </div> */}
         </section>
 
         {/* Section 8 - Contact */}
@@ -322,7 +322,7 @@ export default function HomePage() {
             industries. Our approach blends design with strategy, offering solutions that are both 
             practical and forward-looking. Curious to know more?`}
           link={`GET IN TOUCH`}
-          img={`https://res.cloudinary.com/dntdescqh/image/upload/v1755689851/pic7_abntht.webp`}
+          img={`https://res.cloudinary.com/dyfregti9/image/upload/v1758487075/Homepage_last_sectoin_yvyyo8.png`}
           alt={`Description`}
           />
         </section>
