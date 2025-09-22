@@ -1,6 +1,6 @@
 export interface Block {
   type: string;
-  data: any; // لو عايز تعمل typing لكل tool ممكن نفصلها أكتر
+  data: any; 
 }
 
 export interface Article {

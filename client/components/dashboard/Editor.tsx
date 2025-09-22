@@ -88,14 +88,14 @@ export default function Editor() {
   };
 
   return (
-    <div className="p-12 w-full bg-gray-400/30">
+    <div className="p-12 w-full bg-gray-200/75">
       <div className="w-full flex items-center justify-between">
         <h1 className="text-4xl font-extrabold text-gray-800">
           PUBLISH YOUR ARTICLE
         </h1>
         <button
           onClick={handleSave}
-          className="mt-4 px-6 py-2 bg-gray-800 hover:bg-gray-600 text-white rounded cursor-pointer"
+          className="px-4 w-24 py-2 bg-blue-600 text-white rounded-lg col-start-1 cursor-pointer"
         >
           Publish
         </button>
