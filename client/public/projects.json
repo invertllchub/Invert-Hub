@@ -33,7 +33,7 @@
             },
             {
                 "label": "Programmes",
-                "value": "Offices, Residential, Hotel, Retail, Commercial, Services, Kindergarten"
+                "value": ["Offices, Residential, Hotel, Retail, Commercial, Services, Kindergarten"]
             }
         ],
         "images": [

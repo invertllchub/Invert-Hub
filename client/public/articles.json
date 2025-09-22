@@ -6,80 +6,159 @@
       "blocks": [
         {
           "type": "header",
-          "data": { "text": "The First Article", "level": 2 }
+          "data": { "text": "AI Revolution in 2025", "level": 2 }
         },
         {
-          "type": "paragraph",
-          "data": { "text": "This is a demo article created with EditorJS and custom tools." }
+          "type": "overview",
+          "data": { "text": "Artificial Intelligence is no longer a future dream—it’s the present. From healthcare to creative industries, AI is reshaping the way we live and work." }
         },
         {
           "type": "list",
           "data": {
             "style": "unordered",
-            "items": ["First item", "Second item", "Third item"]
+            "items": [
+              "AI assistants are now common in workplaces",
+              "Medical diagnosis improved by machine learning",
+              "Education platforms adopting personalized AI tutors"
+            ]
           }
         },
         {
           "type": "image",
           "data": {
-            "file": { "url": "https://res.cloudinary.com/demo/image/upload/v1234567890/sample.jpg" },
-            "caption": "Sample Image",
+            "file": {  "url": "https://images.unsplash.com/photo-1504384308090-c894fdcc538d" },
+            "caption": "AI transforming industries",
             "withBorder": false,
             "stretched": false,
             "withBackground": false
           }
         },
         {
-          "type": "embed",
-          "data": {
-            "service": "youtube",
-            "source": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-            "embed": "https://www.youtube.com/embed/dQw4w9WgXcQ",
-            "width": 580,
-            "height": 320,
-            "caption": ""
-          }
-        },
-        {
-          "type": "video",
-          "data": { "url": "https://res.cloudinary.com/demo/video/upload/v1234567890/sample.mp4" }
+          "type": "paragraph",
+          "data": { "text": "Experts predict that by 2030, AI could contribute over $15 trillion to the global economy. While opportunities are huge, challenges around ethics and privacy remain at the center of the debate." }
         },
         {
           "type": "link",
-          "data": { "url": "https://facebook.com" }
+          "data": { "url": "https://www.weforum.org/agenda/2025/01/ai-revolution-global-impact" }
         }
       ],
       "version": "2.29.1"
     },
     {
-      "time": 1694967890456,
+      "time": 1694967890123,
       "id": 2,
       "blocks": [
         {
           "type": "header",
-          "data": { "text": "The Second Article", "level": 2 }
+          "data": { "text": "Climate Change and Renewable Energy", "level": 2 }
+        },
+        {
+          "type": "overview",
+          "data": { "text": "As the effects of climate change intensify, renewable energy is becoming the world’s top priority for sustainability." }
         },
         {
           "type": "paragraph",
-          "data": { "text": "This is another demo article created with EditorJS and custom tools." }
+          "data": { "text": "Solar and wind power are now cheaper than fossil fuels in many countries. Governments are investing heavily in green infrastructure to reduce emissions and secure a sustainable future." }
+        },
+        {
+          "type": "image",
+          "data": {
+            "file": { "url": "https://images.unsplash.com/photo-1509395176047-4a66953fd231" },
+            "caption": "Wind turbines at sunset",
+            "withBorder": false,
+            "stretched": false,
+            "withBackground": false
+          }
+        },
+        {
+          "type": "list",
+          "data": {
+            "style": "ordered",
+            "items": [
+              "Increase global investment in renewable energy",
+              "Promote electric vehicles and clean transport",
+              "Develop better storage solutions for solar/wind energy"
+            ]
+          }
+        },
+        {
+          "type": "embed",
+          "data": {
+            "service": "youtube",
+            "source": "https://www.youtube.com/watch?v=3jZ5vnv-LZc",
+            "embed": "https://www.youtube.com/embed/3jZ5vnv-LZc",
+            "width": 580,
+            "height": 320,
+            "caption": "The future of renewable energy"
+          }
         }
       ],
       "version": "2.29.1"
     },
+{
+  "time": 1694967890123,
+  "id": 3,
+  "blocks": [
     {
-      "time": 1694967890789,
-      "id": 3,
-      "blocks": [
-        {
-          "type": "header",
-          "data": { "text": "The Third Article", "level": 2 }
+      "type": "header",
+      "data": { "text": "The Future of Renewable Energy", "level": 2 }
+    },
+    {
+      "type": "overview",
+      "data": { "text": "Exploring how solar, wind, and sustainable energy sources are shaping the next decade." }
+    },
+    {
+      "type": "list",
+      "data": {
+        "style": "unordered",
+        "items": [
+          "Advancements in solar panel efficiency",
+          "Growth of offshore wind farms",
+          "Government incentives for clean energy"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "data": {
+        "file": { 
+          "url": "https://res.cloudinary.com/dyfregti9/image/upload/v1757971723/samples/landscapes/architecture-signs.jpg"
         },
-        {
-          "type": "paragraph",
-          "data": { "text": "This is the third demo article." }
-        }
-      ],
-      "version": "2.29.1"
+        "caption": "Solar panels in a modern renewable energy farm",
+        "withBorder": false,
+        "stretched": false,
+        "withBackground": false
+      }
+    },
+    {
+      "type": "paragraph",
+      "data": { 
+        "text": "Renewable energy is no longer a futuristic concept—it is the present. Countries around the world are investing in clean energy technologies to reduce dependence on fossil fuels." 
+      }
+    },
+    {
+      "type": "embed",
+      "data": {
+        "service": "youtube",
+        "source": "https://www.youtube.com/watch?v=1kUE0BZtTRc",
+        "embed": "https://www.youtube.com/embed/1kUE0BZtTRc",
+        "width": 580,
+        "height": 320,
+        "caption": "How renewable energy is changing the world"
+      }
+    },
+    {
+      "type": "video",
+      "data": { 
+        "url": "https://res.cloudinary.com/dyfregti9/video/upload/v1757971724/samples/sea-turtle.mp4" 
+      }
+    },
+    {
+      "type": "link",
+      "data": { "url": "https://www.irena.org/" }
     }
+  ],
+  "version": "2.29.1"
+}
   ]
 }

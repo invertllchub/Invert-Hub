@@ -2,7 +2,7 @@ import React from 'react'
 
 function page() {
   return (
-    <div className='ml-30'>
+    <div >
       uhdfggfnfgdufgfugreiugbttgbegbegtguhrughef8gydeftgerrgre
     </div>
   )

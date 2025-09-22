@@ -9,6 +9,7 @@ import ImageTool from "@editorjs/image";
 import Embed from "@editorjs/embed";
 import LinkTool from "@/utils/editorTools/LinkTool";
 import VideoTool from "@/utils/editorTools/VideoTool";
+import OverviewTool from "@/utils/editorTools/OverViewTool";
 
 export default function EditArticlePage() {
   const { id } = useParams();
@@ -40,6 +41,7 @@ export default function EditArticlePage() {
           embed: Embed,
           link: LinkTool,
           video: VideoTool,
+          overview: OverviewTool
         },
       });
       editorRef.current = editor;
@@ -68,15 +70,22 @@ export default function EditArticlePage() {
   if (!article) return <p>Loading...</p>;
 
   return (
-    <div className="p-12">
-      <h1 className="text-2xl font-bold mb-4">Edit Article</h1>
-      <div id="editorjs" className="border p-4 rounded bg-white min-h-[400px]" />
-      <button
-        onClick={handleSave}
-        className="mt-4 px-6 py-2 bg-green-600 text-white rounded"
-      >
-        Save Changes
-      </button>
+    <div className="w-full bg-gray-200/75 p-12">
+      <div className="w-full flex items-center justify-between">
+        <h1 className="text-4xl font-extrabold text-gray-800">
+          EDIT YOUR ARTICLE
+        </h1>
+        <button
+          onClick={handleSave}
+          className="px-4 w-42 py-2 bg-blue-600 text-white rounded-lg col-start-1 cursor-pointer"
+        >
+          Save Changes
+        </button>
+      </div>
+
+      <div className="rounded-lg shadow-md py-6 min-h-[100vh] px-4 mt-10 bg-white w-full">
+        <div id="editorjs" />
+      </div>
     </div>
   );
 }
