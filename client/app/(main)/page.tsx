@@ -209,8 +209,8 @@ export default function HomePage() {
 
       {/* Section 5 - Architecture */}
       <section className="section5 w-full bg-[#f6f6f6] text-black p-6 sm:p-10 md:p-16 mt-12">
-        <h1 className="font-sans text-3xl sm:text-5xl md:text-[88px] font-[900] leading-tight">
-          Beyond <br /> Creativity
+        <h1 className="font-sans text-3xl sm:text-5xl md:text-[88px] font-extrabold leading-tight">
+          BEYOND <br /> CREATIVITY
         </h1>
         <h2 className="text-xl sm:text-3xl md:text-5xl font-semibold mt-6 mb-16">
           Invert Hub is where ideas grow into impact. We work across creative niches—from design 
