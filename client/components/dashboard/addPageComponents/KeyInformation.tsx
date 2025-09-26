@@ -18,13 +18,15 @@ function KeyInformation({project, setProject}: KeyInfoProps) {
     });
   };
 
+  const fullWidthLabels = ["Programmes", "Sectors", "Services", "Location"];
+
   return (
         <div className="w-full space-y-4 grid grid-cols-2 gap-6 p-8 bg-gray-200 rounded-lg">
           <h1 className="text-2xl font-bold mb-4 col-span-2">Key information</h1>
           {project.keyInformation.map((info, index) => (
             <div 
             key={index} 
-            className={info.label === "Programmes" || info.label === "Sectors" || info.label === "Services" || info.label === "Location" ? "col-span-2" : ""}
+            className={fullWidthLabels.includes(info.label) ? "col-span-2" : ""}
             >
               <label className="block mb-1 font-medium">{info.label}</label>
               <input
