@@ -2,12 +2,26 @@
 import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-// components
-import { Swiper4 } from '@/components/main/Swipers'
 // types
 import { CareersType } from '../types/careers'
 
-
+const Team = [
+    {
+        name: "Jasmine",
+        role: "Creative manger",
+        comment: "“At Invert Hub I never felt like just an employee, I felt like part of something bigger. The mentorship and guidance I received didn’t just help me improve my technical skills, it gave me the confidence to explore new ideas and take ownership of my work. Every challenge became an opportunity to grow, and every success was celebrated as a team.”"
+    },
+    {
+        name: "Haidy",
+        role: "Project manager",
+        comment: "“What I love most about working at Invert Hub is the freedom to bring my own ideas to the table. It’s not a place where you just follow a process, it’s a place where you help shape it. My suggestions are valued, my creativity is encouraged, and I know that my contributions make a real difference. That sense of trust keeps me motivated every day.”"
+    },
+    {
+        name: "Doaa",
+        role: "Channel Sales Manager",
+        comment: "“The international exposure I’ve had here opened doors for me I didn’t even know existed. From working with clients across different cultures to collaborating with experts in various fields, every project has been a chance to expand my knowledge and broaden my perspective. I feel like I’m part of a global community that constantly pushes me to evolve.”"
+    },
+]
 function Page() {
     
     const [careers, setCareers] = useState<CareersType | null>(null);
@@ -30,62 +44,33 @@ function Page() {
 
     return (
         <div className='w-full py-30'>
-            <section className='px-4 md:px-16'>
+            <section className='w-full px-4 md:px-16'>
                 <h1 className='w-full text-4xl md:text-9xl font-extrabold'>CAREERS</h1>
                 <p className='text-2xl md:text-4xl font-semibold mt-6'>
-                    Join us to venture into the unexpected – and discover how big picture thinking and collective
-                    intelligence are always at play.
+                    Join us on a journey into the unexpected, where bold thinking meets 
+                    collective intelligence, and the bigger picture is always within reach.
                 </p>
+                <div className="w-full mt-12 flex justify-end">
+                    <Link href="/jobs" target='_blanck' className="relative text-xl group left-0">
+                        VIEW APPLICATIONS
+                        <span className="absolute left-0 -bottom-1 w-full h-[2px] bg-black scale-x-100 
+                        origin-left transition-transform duration-300 group-hover:scale-x-0"></span>
+                    </Link>
+                </div>
             </section>
-            <section className='w-full h-full flex flex-col md:flex-row items-center justify-between gap-8 mt-12 px-4 md:px-16'>
+            <section className='w-full h-full mt-12 px-4 md:px-16'>
                 <div  className="relative w-full h-[300px] md:h-[700px]">
                     <Image
                     alt="Careers picture"
-                    src="https://res.cloudinary.com/dntdescqh/image/upload/v1756121225/careers-00_men20g.webp"
+                    src="https://res.cloudinary.com/dyfregti9/image/upload/v1759329723/Carrier-02_nobuix.png"
                     fill
                     className="object-cover rounded-md"
-                    />
-                </div>
-                <div  className="relative w-full h-[300px] md:h-[700px]">
-                    <Image
-                    alt="Careers picture"
-                    src="https://res.cloudinary.com/dntdescqh/image/upload/v1756121224/careers-01_gacoge.webp"
-                    fill
-                    className="object-cover rounded-md"
-                    />
-                </div>
-            </section>
-
-            {/* Articles-1 section */}
-            <section className='w-full mt-10 md:mt-32 px-4 md:px-16'>
-                <div  className='flex flex-col md:flex-row items-start justify-between mt-64 mb-24'>
-                    <h1 className='text-2xl md:text-4xl font-bold '>{careers?.articles[0].label}</h1>
-                    <div  className="w-full md:w-6/12">
-                        <h3 className='text-xl font-semibold mt-6'>
-                            {careers?.articles[0].content}
-                        </h3>
-                        <div className='mt-6'>
-                            <Link href="/" className="relative text-xl group">
-                                FIND OUT MORE
-                                <span className="absolute left-0 -bottom-1 w-full h-[2px] bg-black scale-x-100 
-                                origin-left transition-transform duration-300 group-hover:scale-x-0"></span>
-                            </Link>
-                        </div>
-                    </div>
-                </div>
-                <div className="relative w-full h-[300px] md:h-[100vh] mt-16">
-                    <video 
-                    src='https://res.cloudinary.com/dntdescqh/video/upload/v1756148349/career-video-02_tx2qhm.mp4'
-                    muted
-                    autoPlay
-                    playsInline
-                    className="w-full h-full object-cover rounded-lg cursor-pointer"
                     />
                 </div>
             </section>
 
             {/* Articles-2 section */}
-            <section className='px-4 md:px-16'>
+            <section className='px-4 md:px-16 my-40'>
                 <div  className='mt-32 mb-24'>
                     <h1 className='text-2xl md:text-4xl font-bold '>Growing Together, Building the Future</h1>
                     <div  className="w-full mt-6">
@@ -111,47 +96,33 @@ function Page() {
                 </div>
             </section>
 
-
-            <section className='p-12 md:p-32 mt-32'>
-                <p className='text-2xl md:text-5xl font-semibold'>
-                    <span>“</span>
-                        From exploring new technologies to addressing global challenges, 
-                        every project is an opportunity to innovate. Collaborating with a talented team and 
-                        global partners to turn ambitious ideas into impactful solutions is both inspiring 
-                        and fulfilling.
-                    <span>”</span>
-                </p>
-                <div className='mt-16'>
-                    <h1 className='font-bold'>Adam Tarr</h1>
-                    <h3 className='text-gray-700'>Head of Research and Innovation</h3>
-                </div>
-            </section>
-
-            {/* The team section */}
-            <section className='w-full mt-32'>
-                <div className='px-4 md:px-16'>
-                    <h1 className='w-full text-4xl md:text-7xl font-extrabold'>JOIN THE TEAM</h1>
-                    <p className='text-2xl md:text-5xl font-semibold mt-6'>
-                        Join us – and let’s start thinking about the big picture together.
-                    </p>
-                    <div className='mt-12'>
-                        <Link href="/jobs" target='_blanck' className="relative text-md font-semibold group">
-                            VIEW OPEN RULES
-                            <span className="absolute left-0 -bottom-1 w-full h-[2px] bg-black scale-x-100 
-                            origin-left transition-transform duration-300 group-hover:scale-x-0"></span>
-                        </Link>
-                    </div>
-                </div>
-                <div  className="relative w-full h-[300px] md:h-[700px] mt-12">
+            <section className='w-full h-full mt-12 px-4 md:px-16'>
+                <div  className="relative w-full h-[300px] md:h-[700px]">
                     <Image
-                    alt="Team picture"
-                    src="https://res.cloudinary.com/dntdescqh/image/upload/v1756131130/careers-02_lhxwa5.webp"
+                    alt="Careers picture"
+                    src="https://res.cloudinary.com/dyfregti9/image/upload/v1759329728/Carrier-01_iyur94.png"
                     fill
-                    className="object-cover"
+                    className="object-cover rounded-md"
                     />
                 </div>
             </section>
 
+            <section className='w-full h-full mt-20 px-4 md:px-16'>
+                <h1 className='text-2xl md:text-4xl font-bold my-10'>From The Team</h1>
+                <div className='w-full grid grid-cols-1 md:grid-cols-3 gap-12'>
+                    {Team.map((mem, i) => {
+                        return (
+                            <div key={i} className='p-8 h-[350px] bg-white rounded-md shadow-xl flex flex-col justify-between'>
+                                <p>{mem.comment}</p>
+                                <div>
+                                    <h3 className='font-bold'>{mem.name}</h3>
+                                    <h4 className='text-gray-500'>{mem.role}</h4>
+                                </div>
+                            </div>
+                        )
+                    })}
+                </div>
+            </section>
 
         </div>
     )
