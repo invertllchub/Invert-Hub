@@ -47,6 +47,7 @@ function page() {
                                 alt="User Picture"
                                 src={`https://res.cloudinary.com/dyfregti9/image/upload/v1757971723/samples/people/boy-snow-hoodie.jpg`}
                                 fill
+                                priority
                                 className="object-cover rounded-md"
                                 />
                             </div>

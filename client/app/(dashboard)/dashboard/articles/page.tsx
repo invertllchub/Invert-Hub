@@ -4,6 +4,7 @@ import ToolBar from "@/components/dashboard/ToolBar";
 import DeleteBtn from "@/components/dashboard/DeleteBtn";
 import { SquarePen } from "lucide-react";
 import Link from "next/link";
+import UpdateBtn from "@/components/dashboard/UpdateBtn";
 
 interface Article {
     id: number
@@ -93,7 +94,7 @@ function Page() {
     });
 
     return (
-        <div className="w-full h-[200vh] bg-gray-200/75 pl-30 pr-15 py-10">
+        <div className="w-full min-h-screen bg-gray-200/75 pl-30 pr-15 py-10">
             <div>
                 <ToolBar
                 handleDeleteAll={handleDeleteAll}
@@ -103,7 +104,7 @@ function Page() {
                 title={"Articles"}
                 />
             </div>
-            <div className="w-full h-full mt-10 rounded-lg bg-white p-8">
+            <div className="w-full h-fit mt-10 rounded-lg bg-white p-8">
                 <div className="grid grid-cols-[50px_250px_150px_150px_150px_200px] gap-8 mb-3">
                     <div className="h-[40px] flex items-center justify-center">
                         <input
@@ -144,14 +145,7 @@ function Page() {
                             <div className="flex items-center">{date}</div>
                             <div className="flex items-center justify-center gap-5">
                                 <DeleteBtn handleDeleteOne={() => handleDeleteOne(i)} />
-                                <Link href={`/dashboard/articles/${article.id}/edit`}>
-                                    <div 
-                                    title="update" 
-                                    className='cursor-pointer hover:bg-gray-200 p-2 rounded-full'
-                                    >
-                                        <SquarePen size={20}/>
-                                    </div>
-                                </Link>
+                                <UpdateBtn page={'articles'} id={article.id}/>
                             </div>
                         </div>
                     );

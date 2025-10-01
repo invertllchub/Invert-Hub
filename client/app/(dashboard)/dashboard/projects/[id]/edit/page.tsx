@@ -12,17 +12,17 @@ export default function EditProjectPage() {
   const [projects, setProjects] = useState<Project[]>([]);
   const params = useParams();
 
-  // 1️⃣ Load projects from JSON
+  const fetchData = async () => {
+    try {
+      const res = await fetch("/projects.json");
+      const json = await res.json();
+      setProjects(json);
+    } catch (error) {
+      console.error("Error fetching projects:", error);
+    }
+  };
+
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await fetch("/projects.json");
-        const json = await res.json();
-        setProjects(json);
-      } catch (error) {
-        console.error("Error fetching projects:", error);
-      }
-    };
     fetchData();
   }, []);
 
