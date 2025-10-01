@@ -1,23 +1,23 @@
 "use client"
 import React, { useState, useEffect, useRef } from 'react'
 import SearchBar from '@/components/dashboard/ToolBar'
-import { Project } from '@/app/(main)/types/project';
+import type { Job } from '@/app/(main)/types/jobs';
 import DeleteBtn from '@/components/dashboard/DeleteBtn';
 import UpdateBtn from '@/components/dashboard/UpdateBtn';
 
 
 function page() {
     const [selected, setSelected] = useState<number []>([])
-    const [projects, setProjects] = useState<Project[]>([]);
+    const [jobs, setJobs] = useState<Job[]>([]);
     const [searchValue, setSearchValue] = useState("");
     const headerCheckboxRef = useRef<HTMLInputElement>(null)
 
         // fetch data
         const fetchData = async () => {
             try {
-                const res = await fetch('/projects.json');
-                const json = await res.json();
-                setProjects(json)
+                const res = await fetch('/jobs.json');
+                const json: Job[] = await res.json();
+                setJobs(json);   
             } catch (error) {
                 console.error("Error fetching data:", error);
             }
@@ -27,7 +27,7 @@ function page() {
             fetchData()
         }, [])
 
-        const allSelected = selected.length === projects.length && projects.length > 0
+        const allSelected = selected.length === jobs.length && jobs.length > 0
         const someSelected = selected.length > 0 && !allSelected
 
         useEffect(() => {
@@ -40,7 +40,7 @@ function page() {
             if (allSelected) {
                 setSelected([])
             } else {
-                setSelected(projects.map((_, i) => i))
+                setSelected(jobs.map((_, i) => i))
             }
         }
 
@@ -49,22 +49,20 @@ function page() {
     }
 
     const handleDeleteOne = (i: number) => {
-        setProjects(prev => prev.filter((_, index) => index !== i))
+        setJobs(prev => prev.filter((_, index) => index !== i))
     }
 
     const handleDeleteAll = () => {
-        setProjects((prev) => prev.filter((_, i) => !selected.includes(i)))
+        setJobs((prev) => prev.filter((_, i) => !selected.includes(i)))
         setSelected([])  
     }
 
-    const filteredProjects = projects.filter((project) => {
+    const filteredProjects = jobs.filter((job) => {
         if (!searchValue) return true;
         const search = searchValue.toLowerCase();
         return (
-            project.data.title.toLowerCase().includes(search) ||
-            project.keyInformation.some((info) =>
-                String(info.value).toLowerCase().includes(search)
-            )
+            job.title.toLowerCase().includes(search) ||
+            job.datePosted.includes(search)
         )
     })
 
@@ -72,7 +70,7 @@ function page() {
     return (
         <div className="w-full min-h-screen bg-gray-200/75 pl-30 pr-15 py-10">
             <div>
-                <SearchBar handleDeleteAll={handleDeleteAll} allSelected={allSelected} someSelected={someSelected} setSearchValue={setSearchValue} title={"Projects"}/>
+                <SearchBar handleDeleteAll={handleDeleteAll} allSelected={allSelected} someSelected={someSelected} setSearchValue={setSearchValue} title={"jobs"}/>
             </div>
             <div className='w-full h-fit mt-10 rounded-lg bg-white p-8'>
                 <div className='grid grid-cols-[50px_250px_150px_150px_150px_200px] gap-8 mb-3'>
@@ -86,16 +84,16 @@ function page() {
                         className="w-4 h-4 cursor-pointer accent-blue-700"
                         />
                     </div>
-                    <div className='h-[40px] flex items-center'>Name</div>
-                    <div className='h-[40px] flex items-center'>Client</div>
-                    <div className='h-[40px] flex items-center'>Location</div>
-                    <div className='h-[40px] flex items-center justify-center'>Status</div>
+                    <div className='h-[40px] flex items-center'>Title</div>
+                    <div className='h-[40px] flex items-center'>Employment Type</div>
+                    <div className='h-[40px] flex items-center'>Date Posted</div>
+                    <div className='h-[40px] flex items-center justify-center'>Closing Date</div>
                     <div className='h-[40px] flex items-center justify-center'>Edit</div>
                 </div>
                 <hr />
 
                 {/* Table Rows */}
-                {filteredProjects.map((project, i) => (
+                {filteredProjects.map((job, i) => (
                     <div
                     key={i}
                     className="grid grid-cols-[50px_250px_150px_150px_150px_200px] gap-8 py-3 border-b last:border-b-0 text-gray-600"
@@ -108,13 +106,13 @@ function page() {
                             className="w-4 h-4 cursor-pointer accent-blue-700"
                             />
                         </div>
-                        <div className="flex items-center">{project.data.title}</div>
-                        <div className="flex items-center">{project.keyInformation[0].value}</div>
-                        <div className="flex items-center">{project.keyInformation[1].value}</div>
-                        <div className="flex items-center justify-center">{project.keyInformation[2].value}</div>
+                        <div className="flex items-center">{job.title}</div>
+                        <div className="flex items-center">{job.employmentType}</div>
+                        <div className="flex items-center">{job.datePosted}</div>
+                        <div className="flex items-center justify-center">{job.closingDate}</div>
                         <div className="flex items-center justify-center gap-5">
                             <DeleteBtn handleDeleteOne={() => handleDeleteOne(i)} />
-                            <UpdateBtn page={'projects'} id={project.data.id} />
+                            <UpdateBtn page={'jobs'} id={job.id}/>
                         </div>
                     </div>
                 ))}

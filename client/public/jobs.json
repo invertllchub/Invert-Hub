@@ -1,0 +1,97 @@
+[
+  {
+    "id": 1,
+    "title": "Frontend Developer",
+    "location": "Cairo, Egypt",
+    "employmentType": "Full-time",
+    "experienceLevel": "Mid-level",
+    "salary": "18,000 EGP",
+    "status": "Available",
+    "datePosted": "2025-09-25",
+    "closingDate": "2025-10-15",
+    "description": "Responsible for developing UI components using React and Next.js.",
+    "requirements": [
+      "3+ years experience with React",
+      "Knowledge of Tailwind CSS",
+      "Experience with REST APIs",
+      "Proficiency in React, Next.js, Tailwind, JavaScript"
+    ],
+    "benefits": ["Health insurance", "Remote work flexibility", "Annual bonus"]
+  },
+  {
+    "id": 2,
+    "title": "Backend Developer",
+    "location": "Remaote",
+    "employmentType": "Part-Time",
+    "experienceLevel": "Senior",
+    "salary": "15,000 EGP",
+    "status": "Not Available",
+    "datePosted": "2025-09-26",
+    "closingDate": "2025-10-20",
+    "description": "Develop and maintain scalable backend services using Node.js and MongoDB.",
+    "requirements": [
+      "5+ years backend development experience",
+      "Strong knowledge of Node.js & Express",
+      "Experience with MongoDB and SQL databases"
+    ],
+    "skills": ["Node.js", "Express", "MongoDB", "SQL"],
+    "benefits": ["Remote work", "Flexible hours", "Performance bonus"]
+  },
+  {
+    "id": 3,
+    "title": "UI/UX Designer",
+    "location": "Giza, Egypt",
+    "employmentType": "Part-time",
+    "experienceLevel": "Junior",
+    "salary": "10,000 EGP",
+    "status": "Available",
+    "datePosted": "2025-09-27",
+    "closingDate": "2025-10-12",
+    "description": "Design user-friendly interfaces and collaborate closely with developers.",
+    "requirements": [
+      "1+ years design experience",
+      "Familiarity with Figma or Adobe XD",
+      "Understanding of UX principles"
+    ],
+    "skills": ["Figma", "Adobe XD", "Wireframing", "Prototyping"],
+    "benefits": ["Flexible schedule", "Training programs"]
+  },
+  {
+    "id": 4,
+    "title": "Digital Marketing Specialist",
+    "location": "Remote",
+    "employmentType": "Full-time",
+    "experienceLevel": "Mid-level",
+    "salary": "12,000 EGP",
+    "status": "Available",
+    "datePosted": "2025-09-28",
+    "closingDate": "2025-10-18",
+    "description": "Plan and execute digital marketing campaigns across social media and Google Ads.",
+    "requirements": [
+      "2+ years in digital marketing",
+      "Knowledge of SEO & SEM",
+      "Experience with social media campaigns"
+    ],
+    "skills": ["SEO", "Google Ads", "Facebook Ads", "Analytics"],
+    "benefits": ["Remote work", "Career growth opportunities"]
+  },
+  {
+    "id": 5,
+    "title": "Data Analyst",
+    "location": "Cairo, Egypt",
+    "employmentType": "Full-time",
+    "experienceLevel": "Entry-level",
+    "salary": "11,000 EGP",
+    "status": "Not Available",
+    "datePosted": "2025-09-29",
+    "closingDate": "2025-10-25",
+    "description": "Analyze business data and prepare insightful reports for decision-making.",
+    "requirements": [
+      "Strong knowledge of Excel and SQL",
+      "Understanding of data visualization tools",
+      "Good analytical and problem-solving skills"
+    ],
+    "skills": ["Excel", "SQL", "Tableau", "Power BI"],
+    "benefits": ["Health insurance", "Annual bonus", "Training courses"]
+  }
+]
