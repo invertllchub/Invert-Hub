@@ -1,0 +1,94 @@
+﻿{
+  "articles": [
+    {
+      "time": 1694967890123,
+      "id": 1,
+      "blocks": [
+        {
+          "type": "header",
+          "data": {
+            "text": "The First Article",
+            "level": 2
+          }
+        },
+        {
+          "type": "paragraph",
+          "data": { "text": "This is a demo article created with EditorJS and custom tools." }
+        },
+        {
+          "type": "list",
+          "data": {
+            "style": "unordered",
+            "items": [ "First item", "Second item", "Third item" ]
+          }
+        },
+        {
+          "type": "image",
+          "data": {
+            "file": { "url": "https://res.cloudinary.com/demo/image/upload/v1234567890/sample.jpg" },
+            "caption": "Sample Image",
+            "withBorder": false,
+            "stretched": false,
+            "withBackground": false
+          }
+        },
+        {
+          "type": "embed",
+          "data": {
+            "service": "youtube",
+            "source": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+            "embed": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+            "width": 580,
+            "height": 320,
+            "caption": ""
+          }
+        },
+        {
+          "type": "video",
+          "data": { "url": "https://res.cloudinary.com/demo/video/upload/v1234567890/sample.mp4" }
+        },
+        {
+          "type": "link",
+          "data": { "url": "https://facebook.com" }
+        }
+      ],
+      "version": "2.29.1"
+    },
+    {
+      "time": 1694967890456,
+      "id": 2,
+      "blocks": [
+        {
+          "type": "header",
+          "data": {
+            "text": "The Second Article",
+            "level": 2
+          }
+        },
+        {
+          "type": "paragraph",
+          "data": { "text": "This is another demo article created with EditorJS and custom tools." }
+        }
+      ],
+      "version": "2.29.1"
+    },
+    {
+      "time": 1694967890789,
+      "id": 3,
+      "blocks": [
+        {
+          "type": "header",
+          "data": {
+            "text": "The Third Article",
+            "level": 2
+          }
+        },
+        {
+          "type": "paragraph",
+          "data": { "text": "This is the third demo article." }
+        }
+      ],
+      "version": "2.29.1"
+    }
+  ]
+}
