@@ -112,7 +112,7 @@ function Page() {
                 <div className='w-full grid grid-cols-1 md:grid-cols-3 gap-12'>
                     {Team.map((mem, i) => {
                         return (
-                            <div key={i} className='p-8 h-[350px] bg-white rounded-md shadow-xl flex flex-col justify-between'>
+                            <div key={i} className='p-8 h-[350px] bg-white border rounded-md flex flex-col justify-between'>
                                 <p>{mem.comment}</p>
                                 <div>
                                     <h3 className='font-bold'>{mem.name}</h3>
