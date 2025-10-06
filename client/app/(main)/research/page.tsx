@@ -1,108 +1,174 @@
 "use client"
 import React from 'react'
-import { useState } from 'react';
 import Image from 'next/image'
 import YellowCard from '@/components/main/YellowCard';
-import { MoveRight } from 'lucide-react';
-import { useRouter } from "next/navigation";
+import Link from 'next/link';
 
 function page() {
-    const [currentImg, setCurrentImg] = useState<string | null>("https://res.cloudinary.com/dntdescqh/image/upload/v1756331311/research-swipe-00_tihmdq.webp");
-    const router = useRouter();
 
-    const Researchs = [
+    const Blocks = [
         {
-            label: "Sustainability innovation", 
-            slug: "sustainability-innovation", 
-            img: "https://res.cloudinary.com/dntdescqh/image/upload/v1756331311/research-swipe-00_tihmdq.webp"
+            title: "- Systems Thinking for Creative Growth", 
+            paragraph: "We research how to help creative professionals install repeatable, scalable systems—so they can grow their business without sacrificing their craft.", 
         },
         {
-            label: "Digital innovation", 
-            slug: "digital-innovation", 
-            img: "https://res.cloudinary.com/dntdescqh/image/upload/v1756331292/research-swipe-01_wlh3pk.webp"
-        }
+            label: "- AI-Augmented Design & Process Optimization", 
+            slug: "From image generation to prompt-based automation, we explore how AI can serve as a collaborator, not just a tool, in the design process.", 
+        },
+        {
+            title: "- Behavioral Branding & Identity Models", 
+            paragraph: "We apply behavioral science and branding psychology to help creators develop powerful, emotionally resonant brand identities that convert.", 
+        },
+        {
+            title: "🏗️ ERP & Platform Development", 
+            paragraph: (
+                <>
+                Our cloud-based platform,{" "}
+                <Link
+                href="https://akarati.com" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="font-bold text-blue-600 hover:underline"
+                >
+                    Akarati
+                </Link>
+                , is a smart ERP solution built for the future of real estate—integrating BIM, automation, and AI to streamline operations.
+                </>
+            ),
+        },
+        {
+            title: "- Digital Ecosystems & E-Commerce Experiences", 
+            paragraph: (
+                <>
+                With projects like,{" "}
+                <Link
+                href="https://revitesse.com" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="font-bold text-blue-600 hover:underline"
+                >
+                    Revitesse
+                </Link>
+                , we reimagine how luxury brands can operate online—blending aesthetics, automation, and seamless user experience to create digital spaces that feel as refined as their products.
+                </>
+            ),
+        },
+        {
+            title: "- Creative Workflows & Prompt Engineering", 
+            paragraph: "We experiment with visual language systems and AI prompt strategies to speed up ideation, prototyping, and content creation for artists, architects, and designers.", 
+        },
     ]
     return (
         <div className='w-full py-30 px-4 md:px-16 mt-12'>
             <section className='w-full'>
                 <h1 className='w-full text-4xl md:text-9xl font-extrabold'>RESEARCH AND INNOVATION</h1>
                 <p className='text-2xl md:text-4xl font-semibold mt-6'>
-                    We apply intellectual rigour, an open, honest and collaborative approach and deep
-                    practice expertise to every project and problem.
+                    At INVERT, we don’t chase trends, we build what’s next.
+                    We approach every project with strategic clarity, system-based thinking, 
+                    and bold experimentation. Our work sits at the intersection of design, 
+                    artificial intelligence, automation, and real-world business challenges, 
+                    bridging vision with execution.
+                    Research and Innovation aren’t side tracks, they are the core engine powering every 
+                    initiative across INVERT: from coaching programs and digital platforms to architecture, 
+                    publishing, and scalable business systems.
                 </p>
+            </section>
+            <section>
                 <div className="relative w-full h-[300px] md:h-[100vh] mt-16">
                     <video
-                    src="https://res.cloudinary.com/dntdescqh/video/upload/v1756373784/research-video_kx39us.mp4"
+                    src="https://res.cloudinary.com/dyfregti9/video/upload/v1759590818/R_D_Header_uztekb.mp4"
                     autoPlay
                     loop
                     muted
+                    aria-label='video about our research and innovation'
                     className="w-full h-full object-cover rounded-lg"
                     />
                 </div>
-                <p className='text-2xl font-semibold mt-16 w-full md:w-6/12'>
-                    Research & Innovation are central to our mission of creating healthier,
-                    more sustainable, and future-ready environments.
-                    By combining forward-thinking research with innovative practices,
-                    we transform knowledge into solutions that address today’s
-                    challenges while preparing for tomorrow’s needs.
-                </p>
-                <p className='text-2xl font-semibold mt-16 w-full md:w-6/12 ml-auto'>
-                    Our work is driven by purpose, placing human needs at the heart of every design
-                    to create projects and services that are not only impactful and forward-looking
-                    but also deliver lasting value for clients, communities, and the planet.
-                    Through our globally connected Centers of Expertise,
-                    which bring specialised knowledge and innovation into our work,
-                    we contribute to shaping a smarter, greener, and more inclusive future.
-                </p>
             </section>
-            <section className='w-full h-[60vh] md:h-[100vh] flex items-center justify-between mt-32'>
-                <div className='w-full md:w-6/12 h-full flex flex-col gap-6'>
-                    <h1 className='md:mb-10 text-xl md:text-2xl font-semibold'>Centers of Expertise</h1>
-                    <div className='max-h-[80vh] overflow-y-auto scrollbar-hide'>
-                        {Researchs.map((item, i) => {
-                            return (
-                                <div 
-                                className={`py-4 w-fit cursor-pointer
-                                ${currentImg === item.img
-                                    ? 'md:opacity-100'
-                                    : 'md:opacity-40'
-                                }`}
-                                key={i}
-                                onMouseEnter={() => {setCurrentImg(item.img)}}
-                                onClick={() => {
-                                    setCurrentImg(item.img);
-                                    router.push(`/research/${item.slug.toLowerCase()}`);
-                                }}
-                                >
-                                    <h1 className='text-2xl md:text-4xl font-bold flex items-end justify-between gap-4'>
-                                        {item.label}
-                                        <span className='w-12 h-8 rounded-full bg-gray-300/70 px-2'>
-                                            <MoveRight size={30}/>
-                                        </span>
-                                    </h1>
-                                </div>
-                            )
-                        })}
+            <section className='w-full mt-20'>
+                <h1 className='w-full text-2xl md:text-4xl font-bold'>Innovation With Purpose</h1>
+                <p className='text-xl md:text-2xl font-semibold mt-6'>
+                    We believe innovation is only meaningful when it's human-centered, scalable, 
+                    and deeply integrated into real-world workflows. 
+                    That’s why every R&D effort at INVERT is tied to solving systemic challenges across 
+                    the industries we serve—from creative entrepreneurship to real estate tech 
+                    and AI-integrated design.
+                    We focus on building tools, frameworks, and digital ecosystems that:
+                </p>
+                <ul className="list-disc pl-6 space-y-2 text-gray-700 mt-10">
+                    <li>Help creators scale without burning out</li>
+                    <li>Bring automation and intelligence into legacy industries</li>
+                    <li>Create platforms that empower—not replace—human creativity</li>
+                    <li className='font-bold'>Make visionary design and strategic thinking accessible to everyone—creators, companies, individuals, and communities alike</li>
+                </ul>
+            </section>
+            <section className='w-full h-[100vh] mt-25'>
+                <div className='w-full h-full flex items-center gap-4'>
+                    <div className='w-6/12 h-full'>
+                        <h1 className='w-full text-2xl md:text-4xl font-bold mb-10'>Our Innovation Model</h1>
+                        <p className='text-xl md:text-2xl font-semibold mt-6'>
+                            At INVERT, R&D flows through what we call our Living Systems Model:
+                        </p>
+                        <ul className="list-decimal pl-6 space-y-2 text-gray-700 marker:text-black marker:font-bold mt-10">
+                            <li>
+                                <h3 className='text-black font-bold'>Research the real problem</h3>
+                                <p>We dig beneath the surface to uncover root causes—what’s invisible, not just what’s urgent.</p>
+                            </li>
+                            <li>
+                                <h3 className='text-black font-bold'>Prototype solutions</h3>
+                                <p>We create agile, scalable systems—from AI-powered tools and design workflows to coaching models and business frameworks.</p>
+                            </li>
+                            <li>
+                                <h3 className='text-black font-bold'>Deploy and refine</h3>
+                                <p>We launch, test, and iterate across real businesses inside our ecosystem—constantly optimizing based on feedback.</p>
+                            </li>
+                            <li>
+                                <h3 className='text-black font-bold'>Open source & share</h3>
+                                <p>We publish our insights through WOW WORLD Magazine, ArchYards, and our consulting programs—turning knowledge into tools for the global creative community.</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div className='w-6/12 h-full'>
+                        <div  className="relative w-full h-full">
+                            <Image
+                            alt="Innovation Model"
+                            src="https://res.cloudinary.com/dyfregti9/image/upload/v1759591630/R_D_Sec3_gxaduq.png"
+                            fill
+                            className="object-cover rounded-md"
+                            />
+                        </div>
                     </div>
                 </div>
-                <div className="relative w-6/12 h-full overflow-hidden hidden md:block">
-                {currentImg && (
-                    <Image 
-                    src={currentImg} 
-                    alt="big picture for the project"
-                    fill 
-                    className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
+            </section>
+            <section className='w-full mt-20'>
+                <h1 className='w-full text-2xl md:text-4xl font-bold'>Areas of Exploration</h1>
+                <div  className="relative w-full h-[100vh] mt-15">
+                    <Image
+                    alt="Areas of Exploration"
+                    src="https://res.cloudinary.com/dyfregti9/image/upload/v1759331654/R_D_02.png_zgm3qb.png"
+                    fill
+                    className="object-cover rounded-md"
                     />
-                )}
+                </div>
+                <div className='w-full mt-15'>
+                    {Blocks.map((b, i) => {
+                        return (
+                            <div key={i} className='w-full leading-8'>
+                                <h3 className='text-black font-bold'>{b.title}</h3>
+                                <p className='pl-6 text-gray-700'>{b.paragraph}</p>
+                            </div>
+                        )
+                    })}
                 </div>
             </section>
             <section className='w-full h-[90vh] mt-32'>
                 <YellowCard 
-                p={`We integrate architecture, urban planning, interior design, product and experience design
-                    with consulting services that tackle every-day challenges. Curious to know more?`}
-                link={`GET IN TOUCH`}
-                img={`https://res.cloudinary.com/dntdescqh/image/upload/v1755806302/Services_iitw04.webp`}
-                alt={`Sevices get in touch`}
+                h1={`Want to Collaborate With Us?`}
+                p={`We partner with creators, studios, and visionary companies who believe the future isn’t something to wait for—it’s something we can design.
+                👉 Let’s co-create the tools and systems that will define the next decade.`}
+                link={`Join Our Innovation Network`}
+                img={`https://res.cloudinary.com/dyfregti9/image/upload/v1759591630/R_D_Footer_gdzjtw.png`}
+                alt={`Innovation Network`}
                 />
             </section>
         </div>

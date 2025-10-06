@@ -1,11 +1,10 @@
-// utils/cloudinaryUpload.ts
-
-export async function uploadToCloudinary(
-  file: File,
-  resourceType: "image" | "video" = "image"
-): Promise<string> {
+// utils/CloudinaryUpload.ts
+export async function uploadToCloudinary(file: File): Promise<string> {
   const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME!;
   const uploadPreset = process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET!;
+
+  // تحديد نوع الملف تلقائيًا
+  const resourceType = file.type.startsWith("image/") ? "image" : "raw";
 
   const formData = new FormData();
   formData.append("file", file);
@@ -19,7 +18,10 @@ export async function uploadToCloudinary(
     }
   );
 
-  if (!res.ok) throw new Error("Upload failed");
+  if (!res.ok) {
+    const errorData = await res.json().catch(() => ({}));
+    throw new Error(errorData.error?.message || "Upload failed");
+  }
 
   const data = await res.json();
   return data.secure_url; 
