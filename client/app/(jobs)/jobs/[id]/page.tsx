@@ -54,6 +54,7 @@ function Page() {
                     alt="jobs picture"
                     src="https://res.cloudinary.com/dyfregti9/image/upload/v1758050776/Home-Sec2_invertstudios_p72g4j.png"
                     fill
+                    priority
                     className="object-cover"
                 />
 

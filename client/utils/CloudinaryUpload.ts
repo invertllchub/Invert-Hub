@@ -2,7 +2,7 @@
 
 export async function uploadToCloudinary(
   file: File,
-  resourceType: "image" | "video" = "image"
+  resourceType: "image" | "video" |"raw" = "image"
 ): Promise<string> {
   const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME!;
   const uploadPreset = process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET!;
