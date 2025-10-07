@@ -271,7 +271,7 @@ export default function HomePage() {
           and technology, we push our capabilities forward. Our expanding work in innovation 
           allows us to grow beyond expectations and open new directions across creative industries.
         </h2>
-        <Link href="" className="relative text-xl group">
+        <Link href="/research" className="relative text-xl group">
           FIND OUT MORE
           <span className="absolute left-0 -bottom-1 w-full h-[2px] bg-white scale-x-100 origin-left transition-transform duration-300 group-hover:scale-x-0"></span>
         </Link>

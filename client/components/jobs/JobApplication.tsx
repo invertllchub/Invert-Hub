@@ -1,13 +1,18 @@
 import React from 'react'
-import { Job } from '@/app/(main)/types/jobs'
+// React-hook-form and validation with Zod
 import { useForm, Controller, SubmitHandler } from "react-hook-form";
-import { FormFields } from './schemas/JobApplySchema';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { FormFields } from './schemas/JobApplySchema';
 import { schema } from './schemas/JobApplySchema';
+// Reach-phone-liberary
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
+// Types
+import { Job } from '@/app/(main)/types/jobs'
+// Functions
 import { uploadToCloudinary } from '@/utils/CloudinaryUpload';
-
+// Toast
+import { showToast } from './Toast';
 
 type JobProps = {
     job: Job
@@ -25,65 +30,53 @@ function JobApplication({job}: JobProps) {
         resolver: zodResolver(schema)
     });
 
+    const onSubmit: SubmitHandler<FormFields> = async (data) => {
+        const toastId = showToast("loading", { message: "Submitting application..." })
 
+        try {
+            let cvUrl = "";
 
-const onSubmit: SubmitHandler<FormFields> = async (data) => {
-  try {
-    let cvUrl = "";
+            const file = (data.CV as FileList)[0]; 
+            if (file) {
+                cvUrl = await uploadToCloudinary(file); 
+            }
 
-    // ✅ استخرج الملف الأول
-    const file = (data.CV as FileList)[0]; // الملف اللي هنرفعه
-    console.log("File to upload:", file);
-    if (file) {
-      console.log("Uploading CV to Cloudinary...");
-      cvUrl = await uploadToCloudinary(file); // ⬅️ هنا لازم نستنى
-      console.log("CV uploaded:", cvUrl);
-    }
+            const formData = new FormData();
+            formData.append("access_key", "ded1253b-03e7-4112-a8fb-38f556c9bd59");
+            formData.append("Full Name", data.fullName);
+            formData.append("Gender", data.gender);
+            formData.append("Email", data.email);
+            formData.append("Phone Number", data.phoneNumber);
+            formData.append("Job Title", data.jobTitle);
+            formData.append("CoverLetter", data.coverLetter);
+            formData.append("CV_Link", cvUrl); 
 
-    // ✅ بعد ما يخلص، جهز بيانات Web3Forms
-    const formData = new FormData();
-    formData.append("access_key", "ded1253b-03e7-4112-a8fb-38f556c9bd59");
-    formData.append("FullName", data.fullName);
-    formData.append("Gender", data.gender);
-    formData.append("Email", data.email);
-    formData.append("PhoneNumber", data.phoneNumber);
-    formData.append("JobTitle", data.jobTitle);
-    formData.append("CoverLetter", data.coverLetter);
+            const response = await fetch("https://api.web3forms.com/submit", {
+                method: "POST",
+                body: formData,
+            });
 
-    if (cvUrl) {
-        formData.append("CVLink", cvUrl); 
-    }
+            const result = await response.json();
 
-    console.log("Submitting form to Web3Forms...");
+            if (result.success) {
+                showToast("success", { message: "Application submitted successfully!", toastId })
+                reset()
+            } else {
+                showToast("error", { message: "Something went wrong. Please try again.", toastId })
+            }
+        } catch (error) {
+            console.error(error)
+            showToast("error", { message: "Failed to submit the application, please try again later.", toastId })
+        }
+    };
 
-    const response = await fetch("https://api.web3forms.com/submit", {
-      method: "POST",
-      body: formData,
-    });
-
-    const result = await response.json();
-    console.log("Web3Forms response:", result);
-
-    if (result.success) {
-      alert("Form submitted successfully!");
-      reset();
-    } else {
-      alert("Something went wrong. Please try again.");
-    }
-  } catch (error) {
-    console.error(error);
-    setError("root", {
-      message: "Failed to submit the application, please try again later",
-    });
-  }
-};
 
 
     return (
-        <div className='w-full flex flex-row-reverse gap-4 justify-between my-10 bg-white py-6 px-12'>
-            <form onSubmit={handleSubmit(onSubmit)} className="w-7/12 mx-auto flex flex-col gap-4 mt-10 bg-white rounded-md shadow-md p-6">
+        <div className='w-full flex flex-row-reverse gap-4 justify-between md:my-10 bg-white py-3 md:py-6 px-6 md:px-12'>
+            <form onSubmit={handleSubmit(onSubmit)} className="w-full md:w-7/12 mx-auto flex flex-col gap-4 mt-10 bg-white md:rounded-md md:shadow-md p-6">
                 <h2 className="text-2xl font-bold mb-4">Apply for {job?.title}</h2>
-                <div className="grid grid-cols-2 gap-4">
+                <div className="flex flex-col md:flex-row gap-4">
                     <div className='w-full flex flex-col gap-2'>
                         <label htmlFor="fullName">Full Name</label>
                         <input
@@ -190,7 +183,7 @@ const onSubmit: SubmitHandler<FormFields> = async (data) => {
                 <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-3/12 mx-auto my-10 bg-black text-white py-3 rounded-lg cursor-pointer"
+                className="w-6/12 md:w-3/12 mx-auto my-10 bg-black text-white py-3 rounded-lg cursor-pointer"
                 >
                     {isSubmitting ? 'Loading...' : 'Send Application'}
                 </button>

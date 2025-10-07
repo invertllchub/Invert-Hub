@@ -1,6 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 import { Job } from '@/app/(main)/types/jobs'
+import ShareButton from './ShareButton'
 
 type JobProps = {
   job: Job
@@ -33,7 +34,7 @@ function JobDetails({job, setShowForm}: JobProps) {
                     </div>
                 </div>
                 {/* Buttons */}
-                <div className='w-3/12 flex flex-col mx-auto gap-6 my-10'>
+                <div className='w-6/12 md:w-3/12 flex flex-col mx-auto gap-6 my-10'>
                     <button
                         onClick={() => setShowForm(true)}
                         className="py-4 px-4 rounded-md shadow-md bg-black text-white 
@@ -41,13 +42,9 @@ function JobDetails({job, setShowForm}: JobProps) {
                     >
                         Apply
                     </button>
-                    <Link
-                        href={''}
-                        className="py-2 px-4 rounded-md shadow-md bg-white border border-black 
-                        font-bold text-lg text-center cursor-pointer"
-                    >
-                        Share job
-                    </Link>
+                    <ShareButton 
+                    title={job.title}
+                    />
                 </div>
             </div>
     )

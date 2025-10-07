@@ -42,7 +42,7 @@ export default function Editor() {
             config: {
               uploader: {
                 async uploadByFile(file: File) {
-                  const url = await uploadToCloudinary(file, "image");
+                  const url = await uploadToCloudinary(file);
                   return {
                     success: 1,
                     file: { url },
