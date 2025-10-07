@@ -45,7 +45,7 @@ function Page() {
     return (
         <div className='w-full py-30'>
             <section className='w-full px-4 md:px-16'>
-                <h1 className='w-full text-4xl md:text-9xl font-extrabold'>CAREERS</h1>
+                <h1 className='w-full text-4xl md:text-8xl font-extrabold'>CAREERS</h1>
                 <p className='text-2xl md:text-4xl font-semibold mt-6'>
                     Join us on a journey into the unexpected, where bold thinking meets 
                     collective intelligence, and the bigger picture is always within reach.
