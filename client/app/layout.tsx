@@ -1,5 +1,7 @@
 import './(main)/globals.css';
 import { Geist, Geist_Mono } from "next/font/google";
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,6 +31,16 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
+        <ToastContainer
+        position="bottom-right"
+        autoClose={3000}
+        hideProgressBar
+        closeOnClick
+        draggable
+        pauseOnHover
+        theme="light"
+        toastClassName='w-[200px] h-[150px] rounded-lg shadow-md'
+        />
       </body>
     </html>
   );
