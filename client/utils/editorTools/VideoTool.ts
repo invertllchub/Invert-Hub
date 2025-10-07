@@ -49,7 +49,7 @@ export default class VideoTool {
       const target = e.target as HTMLInputElement;
       const file = target.files?.[0];
       if (file) {
-        const url = await uploadToCloudinary(file, "video");
+        const url = await uploadToCloudinary(file);
         this.data = { url };
         this.wrapper!.innerHTML = "";
 
