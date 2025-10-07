@@ -1,179 +1,65 @@
 "use client";
-import React, { useEffect, useRef } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
+import React from "react";
+import Image from "next/image";
+import Link from "next/link";
 
 export default function AboutPage() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const companyTitleRef = useRef<HTMLHeadingElement>(null);
-  const teamTitleRef = useRef<HTMLHeadingElement>(null);
-  const quoteRef = useRef<HTMLQuoteElement>(null);
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.from(companyTitleRef.current, {
-        duration: 1.2,
-        y: 100,
-        opacity: 0,
-        ease: "power3.out",
-        delay: 0.2,
-      });
-
-      // Company section paragraphs stagger
-      gsap.from(".company-paragraph", {
-        duration: 0.8,
-        y: 50,
-        opacity: 0,
-        stagger: 0.2,
-        ease: "power2.out",
-        delay: 0.6,
-        scrollTrigger: {
-          trigger: ".company-section",
-          start: "top 80%",
-        },
-      });
-
-      // Team section animation
-      gsap.from(teamTitleRef.current, {
-        duration: 1,
-        y: 80,
-        opacity: 0,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: teamTitleRef.current,
-          start: "top 80%",
-        },
-      });
-
-      gsap.from(".team-paragraph", {
-        duration: 0.8,
-        y: 40,
-        opacity: 0,
-        stagger: 0.15,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: ".team-section",
-          start: "top 70%",
-        },
-      });
-
-      // Quote animation
-      gsap.from(quoteRef.current, {
-        duration: 1.2,
-        scale: 0.8,
-        opacity: 0,
-        ease: "back.out(1.7)",
-        scrollTrigger: {
-          trigger: quoteRef.current,
-          start: "top 75%",
-        },
-      });
-
-      // Philosophy paragraphs
-      gsap.from(".philosophy-paragraph", {
-        duration: 0.8,
-        y: 30,
-        opacity: 0,
-        stagger: 0.1,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: ".philosophy-section",
-          start: "top 70%",
-        },
-      });
-
-      // Divider animations
-      gsap.from(".divider", {
-        duration: 1,
-        scaleX: 0,
-        transformOrigin: "left center",
-        ease: "power2.inOut",
-        scrollTrigger: {
-          trigger: ".divider",
-          start: "top 85%",
-        },
-      });
-
-      // Hover animation for the meet team link
-      const meetTeamLink = document.querySelector(".meet-team-link");
-      if (meetTeamLink) {
-        meetTeamLink.addEventListener("mouseenter", () => {
-          gsap.to(meetTeamLink, {
-            duration: 0.3,
-            x: 10,
-            ease: "power2.out",
-          });
-        });
-
-        meetTeamLink.addEventListener("mouseleave", () => {
-          gsap.to(meetTeamLink, {
-            duration: 0.3,
-            x: 0,
-            ease: "power2.out",
-          });
-        });
-      }
-    }, containerRef);
-
-    return () => ctx.revert();
-  }, []);
-
   return (
     <div
-      ref={containerRef}
-      className="min-h-screen bg-white py-12 px-4 sm:px-6 lg:py-24 lg:px-8"
+      className='w-full py-30 px-4 md:px-16'
     >
-      <div className="max-w-[1300px] mx-auto text-black">
         {/* Company Section */}
-        <section className="company-section mb-20">
-          <h2
-            ref={companyTitleRef}
-            className="text-4xl md:text-7xl font-black mb-6 relative z-10"
-            style={{
-              fontSize: "clamp(2rem, 0.3723rem + 7.234vw, 6.25rem)",
-            }}
-          >
+        <section className='w-full'>
+          <h1 className='w-full text-4xl md:text-8xl font-extrabold'>
             A Company Built to Scale Creativity
-          </h2>
-          <div className="space-y-5 text-lg leading-relaxed text-gray-800 [&>p]:font-bold [&>p]:tracking-tight">
-            <p className="company-paragraph [word-spacing:-0.5px]">
-              <span className="font-semibold text-black">INVERT LLC</span> is a
+          </h1>
+          <div className="text-lg md:text-2xl font-semibold text-gray-800 space-y-5 leading-relaxed [&>p]:font-bold [&>p]:tracking-tight mt-10">
+            <p>
+              <span className="font-semibold  text-black">INVERT LLC</span> is a
               global design and consulting company operating at the intersection
               of architecture, publishing, and systems innovation.
             </p>
-            <p className="company-paragraph [word-spacing:-0.5px]">
+            <p>
               We work with forward-thinking founders, studios, artists, and
               organizations to turn ideas into structured, scalable realities.
               From the foundations of physical space to the architecture of
               digital business models, we support those who create, and those
               who want to grow.
             </p>
-            <p className="company-paragraph italic border-l-2 border-gray-300 pl-4 py-1 mt-6 [word-spacing:-0.5px]">
+            <p>
               We are based in Berlin and Dubai, with collaborators across
               Europe, the Middle East, and beyond.
             </p>
           </div>
         </section>
 
-        {/* Divider */}
-        <div className="divider border-t border-gray-200 my-16"></div>
+        <section className='w-full h-full mt-20 '>
+            <div  className="relative w-full h-[300px] md:h-[700px]">
+                <Image
+                alt="Careers picture"
+                src="https://res.cloudinary.com/dyfregti9/image/upload/v1759763106/About_sec1_shphul.webp"
+                fill
+                className="object-cover rounded-md"
+                />
+            </div>
+        </section>
+
+        <div className="w-full mt-12 flex justify-center md:justify-end">
+            <Link href="/contact" className="relative text-2xl font-semibold group left-0">
+                CONTACT WITH US
+                <span className="absolute left-0 -bottom-1 w-full h-[2px] bg-black scale-x-100 
+                origin-left transition-transform duration-300 group-hover:scale-x-0"></span>
+            </Link>
+        </div>
 
         {/* Team Section */}
-        <section className="team-section mb-20">
-          <h2
-            ref={teamTitleRef}
-            className="font-black mb-8 leading-none tracking-tight"
-            style={{
-              fontSize: "clamp(2rem, 0.7rem + 5.33vw, 5.5rem)",
-            }}
-          >
+        <section className="mt-20">
+          <h1 className='w-full text-4xl md:text-7xl font-extrabold'>
             A Collective of Designers,
             <br />
             Strategists, and System Builders
-          </h2>
-          <div className="space-y-5 text-lg leading-relaxed text-gray-800 [&>p]:font-bold [&>p]:tracking-tight">
+          </h1>
+          <div className="space-y-5 text-lg leading-relaxed text-gray-800 [&>p]:font-bold [&>p]:tracking-tight mt-10">
             <p className="team-paragraph [word-spacing:-0.5px]">
               Our team combines backgrounds in architecture, creative direction,
               business strategy, automation, publishing, and software
@@ -194,12 +80,20 @@ export default function AboutPage() {
           </p>
         </section>
 
-        {/* Divider */}
-        <div className="divider border-t border-gray-200 my-16"></div>
+        <section className='w-full h-full mt-20 '>
+            <div  className="relative w-full h-[300px] md:h-[700px]">
+                <Image
+                alt="Careers picture"
+                src="https://res.cloudinary.com/dyfregti9/image/upload/v1759763092/About_sec2_fol6dh.webp"
+                fill
+                className="object-cover rounded-md"
+                />
+            </div>
+        </section>
 
         {/* Philosophy Section */}
-        <section className="philosophy-section">
-          <blockquote ref={quoteRef} className="text-center mb-16">
+        <section className="mt-20">
+          <blockquote className="text-center mb-16">
             <p
               className="italic leading-tight max-w-2xl mx-auto"
               style={{
@@ -227,6 +121,5 @@ export default function AboutPage() {
           </div>
         </section>
       </div>
-    </div>
   );
 }
