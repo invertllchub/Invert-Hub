@@ -4,6 +4,9 @@ export async function uploadToCloudinary(file: File): Promise<string> {
   const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME!;
   const uploadPreset = process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET!;
 
+  console.log("CloudName:", process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME);
+  console.log("Preset:", process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET);
+
   // تحديد نوع الملف تلقائيًا
   let resourceType: "image" | "video" | "raw" = "raw";
 
