@@ -4,138 +4,143 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 // types
-import { Article, Block } from "@/app/(main)/types/articles"; 
+import { Article, Block } from "@/types/articles";
 
 interface Props {
   article: Article;
 }
 
-const ArticlePage: React.FC<Props> = ({ article}) => {
+const ArticlePage: React.FC<Props> = ({ article }) => {
   return (
     <div className="p-6 md:p-16 mt-20">
-        <time className="text-sm text-gray-500 mb-3 block">
-            {new Date(article.time).toLocaleDateString("en-US", {
-            year: "numeric",
-            month: "short",
-            day: "numeric",
-            })}
-        </time>
-        {article.blocks.map((block: Block, i: number) => {
+      <time className="text-sm text-gray-500 mb-3 block">
+        {new Date(article.time).toLocaleDateString("en-US", {
+          year: "numeric",
+          month: "short",
+          day: "numeric",
+        })}
+      </time>
+      {article.blocks.map((block: Block, i: number) => {
         switch (block.type) {
-        case "header":
+          case "header":
             return React.createElement(
-                `h${block.data.level || 2}`,
-                { 
-                    key: i,
-                    className: "text-3xl md:text-5xl font-bold mt-10 mb-3 text-gray-800",
-                },
-                block.data.text
+              `h${block.data.level || 2}`,
+              {
+                key: i,
+                className:
+                  "text-3xl md:text-5xl font-bold mt-10 mb-3 text-gray-800",
+              },
+              block.data.text
             );
 
-        case "overview":
-            return <p 
-            key={i}
-            className="text-md md:text-3xl font-bold my-2 text-gray-800"
-            >
+          case "overview":
+            return (
+              <p
+                key={i}
+                className="text-md md:text-3xl font-bold my-2 text-gray-800"
+              >
                 {block.data.text}
-            </p>;
+              </p>
+            );
 
-        case "paragraph":
-            return <p 
-            key={i}
-            className="text-xl md:text-2xl font-bold my-10 text-gray-800"
-            >
+          case "paragraph":
+            return (
+              <p
+                key={i}
+                className="text-xl md:text-2xl font-bold my-10 text-gray-800"
+              >
                 {block.data.text}
-            </p>;
+              </p>
+            );
 
-        case "list":
+          case "list":
             return block.data.style === "ordered" ? (
-                <ol 
+              <ol
                 key={i}
                 className="list-decimal list-inside pl-6 space-y-2 my-6 text-gray-700"
-                >
-                    {block.data.items.map((item: string, idx: number) => (
-                        <li key={idx}>{item}</li>
-                    ))}
-                </ol>
+              >
+                {block.data.items.map((item: string, idx: number) => (
+                  <li key={idx}>{item}</li>
+                ))}
+              </ol>
             ) : (
-                <ul 
+              <ul
                 key={i}
                 className="list-disc list-inside pl-6 space-y-2 my-6 text-gray-700"
-                >
-                    {block.data.items.map((item: string, idx: number) => (
-                        <li key={idx}>{item}</li>
-                    ))}
-                </ul>
+              >
+                {block.data.items.map((item: string, idx: number) => (
+                  <li key={idx}>{item}</li>
+                ))}
+              </ul>
             );
 
-        case "image":
+          case "image":
             return (
-                <div key={i} className="my-12">
-                    <div className="relative w-full">
-                        <Image
-                        src={block.data.file.url}
-                        alt={block.data.caption || ""}
-                        width={1920}
-                        height={1080}
-                        priority
-                        className="w-full h-auto rounded-lg object-contain"
-                        />
-                    </div>
+              <div key={i} className="my-12">
+                <div className="relative w-full">
+                  <Image
+                    src={block.data.file.url}
+                    alt={block.data.caption || ""}
+                    width={1920}
+                    height={1080}
+                    priority
+                    className="w-full h-auto rounded-lg object-contain"
+                  />
                 </div>
+              </div>
             );
 
-        case "video":
+          case "video":
             return (
-                <div key={i} className="my-12">
-                    <div className="relative w-full">
-                        <video
-                        src={block.data.url}
-                        controls
-                        muted
-                        autoPlay
-                        width={1920}
-                        height={1080}
-                        className="w-full h-auto rounded-lg object-contain"
-                        />
-                    </div>
+              <div key={i} className="my-12">
+                <div className="relative w-full">
+                  <video
+                    src={block.data.url}
+                    controls
+                    muted
+                    autoPlay
+                    width={1920}
+                    height={1080}
+                    className="w-full h-auto rounded-lg object-contain"
+                  />
                 </div>
+              </div>
             );
 
-        case "link":
+          case "link":
             if (!block.data?.url) return null;
             return (
-                <p key={i}>
-                    <Link
-                    href={block.data.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-blue-600 underline hover:text-blue-800"
-                    >
-                        {block.data.url}
-                    </Link>
-                </p>
+              <p key={i}>
+                <Link
+                  href={block.data.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-600 underline hover:text-blue-800"
+                >
+                  {block.data.url}
+                </Link>
+              </p>
             );
 
-        case "embed":
+          case "embed":
             return (
-                <div key={i}className="relative w-full my-20">
-                    <iframe
-                    src={block.data.embed}
-                    width={block.data.width}
-                    height={block.data.height}
-                    allow="autoplay"
-                    className="w-full h-[300px] md:h-screen  rounded-lg object-contain"
-                    ></iframe>
-                </div>
-        );
+              <div key={i} className="relative w-full my-20">
+                <iframe
+                  src={block.data.embed}
+                  width={block.data.width}
+                  height={block.data.height}
+                  allow="autoplay"
+                  className="w-full h-[300px] md:h-screen  rounded-lg object-contain"
+                ></iframe>
+              </div>
+            );
 
-        default:
+          default:
             return null;
         }
-    })}
+      })}
     </div>
-);
+  );
 };
 
 export default ArticlePage;

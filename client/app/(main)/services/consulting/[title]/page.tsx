@@ -2,7 +2,6 @@
 import React from 'react'
 import Image from 'next/image'
 import { useParams } from "next/navigation";
-import { Swiper3 } from '@/components/main/Swipers';
 
 
 function page() {
@@ -146,11 +145,6 @@ function page() {
                 <p className='text-xl md:text-2xl font-semibold mt-16 w-full md:w-6/12 ml-auto'>
                 {designPattern?.secondArticle}
                 </p>
-            </section>
-
-            {/* Swiper */}
-            <section>
-                <Swiper3 thirdSwiper={thirdSwiper}/>
             </section>
         </div>
     )

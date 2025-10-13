@@ -3,7 +3,7 @@ import React from 'react'
 function page() {
   return (
     <div >
-      uhdfggfnfgdufgfugreiugbttgbegbegtguhrughef8gydeftgerrgre
+      Hi I am Dashboard
     </div>
   )
 }
