@@ -1,5 +1,4 @@
 import React from 'react'
-import Link from 'next/link'
 import Image from 'next/image'
 import YellowCard from '@/components/main/YellowCard'
 
@@ -27,12 +26,6 @@ function Page() {
                     Delivering transformative design solutions across all scales and disciplines,
                     blending decades of expertise with a global reach.
                 </p>
-                <div className='mt-12'>
-                    <Link href="/services/design" className="relative text-xl group">
-                        FIND OUT MORE
-                        <span className="absolute left-0 -bottom-1 w-full h-[2px] bg-black scale-x-100 origin-left transition-transform duration-300 group-hover:scale-x-0"></span>
-                    </Link>
-                </div>
                 <div  className="relative w-full h-[300px] md:h-[700px] mt-12">
                     <Image
                     alt="Design picture"
@@ -49,12 +42,6 @@ function Page() {
                     and health to guide clients to navigate and increase impact and seize upon
                     opportunities that others might overlook.
                 </p>
-                <div className='mt-12'>
-                    <Link href="/services/consulting" className="relative text-xl group">
-                        FIND OUT MORE
-                        <span className="absolute left-0 -bottom-1 w-full h-[2px] bg-black scale-x-100 origin-left transition-transform duration-300 group-hover:scale-x-0"></span>
-                    </Link>
-                </div>
                 <div  className="relative w-full h-[300px] md:h-[700px] mt-12">
                     <Image
                     alt="Consulting picture"
