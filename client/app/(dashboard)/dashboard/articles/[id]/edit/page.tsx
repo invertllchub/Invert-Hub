@@ -2,7 +2,7 @@
 
 import dynamic from "next/dynamic";
 
-const EditArticlePage = dynamic(() => import("@/components/dashboard/EditArticlePage"), {
+const EditArticlePage = dynamic(() => import("@/components/dashboard/articlesComponents/EditArticlePage"), {
   ssr: false,
 });
 import React from 'react'

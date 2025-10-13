@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 type UpdateBtnProps = {
   page: string
-  id: number
+  id: string
 }
 
 function UpdateBtn({ id, page }: UpdateBtnProps) {

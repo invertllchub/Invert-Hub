@@ -1,7 +1,7 @@
-"use client"
+"use client";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
-import { Job } from "../../(main)/types/jobs";
+import { Job } from "../../../types/jobs";
 import Link from "next/link";
 
 function Page() {
@@ -26,15 +26,15 @@ function Page() {
       {/* Hero Section */}
       <div className="relative w-full h-[90vh] md:h-[100vh]">
         <Link href="/" aria-label="Home">
-            <div className="absolute top-5 left-5 w-[120px] h-[40px] sm:w-[170px] sm:h-[60px] z-10">
-              <Image
-                src="https://res.cloudinary.com/dntdescqh/image/upload/v1755689582/logo_dppoxr.png"
-                alt="Invert-Hub Logo"
-                priority
-                fill
-                className="object-contain origin-left cursor-pointer transition-transform duration-[800ms] hover:[transform:scale(1.3)]"
-              />
-            </div>
+          <div className="absolute top-5 left-5 w-[120px] h-[40px] sm:w-[170px] sm:h-[60px] z-10">
+            <Image
+              src="https://res.cloudinary.com/dntdescqh/image/upload/v1755689582/logo_dppoxr.png"
+              alt="Invert-Hub Logo"
+              priority
+              fill
+              className="object-contain origin-left cursor-pointer transition-transform duration-[800ms] hover:[transform:scale(1.3)]"
+            />
+          </div>
         </Link>
 
         <Image
@@ -52,9 +52,10 @@ function Page() {
         </div>
       </div>
 
-  
       <div className="w-full flex flex-col items-center my-20 px-4 sm:px-10">
-        <h1 className="text-3xl md:text-5xl font-semibold mb-10 text-center">Open Positions</h1>
+        <h1 className="text-3xl md:text-5xl font-semibold mb-10 text-center">
+          Open Positions
+        </h1>
 
         {/* Desktop Table */}
         <div className="w-full hidden md:block">
@@ -68,26 +69,30 @@ function Page() {
             </div>
             <hr />
             {jobs.map((job, i) => (
-            <div
-              key={i}
-              className="grid grid-cols-5 gap-8 py-3 border-b last:border-b-0 text-gray-600"
-            >
-              <div className="flex items-center">{job.title}</div>
-              <div className="flex items-center">{job.location}</div>
-              <div className="flex items-center">{job.employmentType}</div>
-              <div className="flex items-center">{job.status}</div>
-              <div className="flex items-center">
+              <div
+                key={i}
+                className="grid grid-cols-5 gap-8 py-3 border-b last:border-b-0 text-gray-600"
+              >
+                <div className="flex items-center">{job.title}</div>
+                <div className="flex items-center">{job.location}</div>
+                <div className="flex items-center">{job.employmentType}</div>
+                <div className="flex items-center">{job.status}</div>
+                <div className="flex items-center">
                   <Link
-                    href={job?.status === "Not Available" ? "#" : `/jobs/${job.id}`}
-                  onClick={(e) => {
-                    if (job?.status === "Not Available") {
-                      e.preventDefault(); 
+                    href={
+                      job?.status === "Not Available" ? "#" : `/jobs/${job.id}`
                     }
-                  }}
+                    onClick={(e) => {
+                      if (job?.status === "Not Available") {
+                        e.preventDefault();
+                      }
+                    }}
                     className={`py-2 px-4 rounded-md shadow-md text-white font-bold text-lg
-                    ${job?.status === "Not Available" 
-                      ? 'bg-gray-400 cursor-not-allowed opacity-70' 
-                      : 'bg-black hover:bg-gray-900'}
+                    ${
+                      job?.status === "Not Available"
+                        ? "bg-gray-400 cursor-not-allowed opacity-70"
+                        : "bg-black hover:bg-gray-900"
+                    }
                   `}
                   >
                     View Job
@@ -101,24 +106,39 @@ function Page() {
         {/* Mobile Cards */}
         <div className="w-full flex flex-col gap-4 md:hidden">
           {jobs.map((job) => (
-            <div key={job.id} className="bg-white shadow-md rounded-lg p-4 border border-gray-200 w-full max-w-md mx-auto">
+            <div
+              key={job.id}
+              className="bg-white shadow-md rounded-lg p-4 border border-gray-200 w-full max-w-md mx-auto"
+            >
               <h2 className="text-xl font-bold text-gray-800">{job.title}</h2>
-              <p className="text-gray-600"><strong>Location:</strong> {job.location}</p>
-              <p className="text-gray-600"><strong>Employment Type:</strong> {job.employmentType}</p>
-              <p className="text-gray-600"><strong>Status:</strong> {job.status}</p>
+              <p className="text-gray-600">
+                <strong>Location:</strong> {job.location}
+              </p>
+              <p className="text-gray-600">
+                <strong>Employment Type:</strong> {job.employmentType}
+              </p>
+              <p className="text-gray-600">
+                <strong>Status:</strong> {job.status}
+              </p>
               <Link
                 href={job?.status === "Not Available" ? "#" : `/jobs/${job.id}`}
-                onClick={(e) => job?.status === "Not Available" && e.preventDefault()}
+                onClick={(e) =>
+                  job?.status === "Not Available" && e.preventDefault()
+                }
                 className={`mt-2 inline-block py-2 px-4 rounded-md shadow-md text-white font-bold
-                  ${job?.status === "Not Available" ? 'bg-gray-400 cursor-not-allowed opacity-70' : 'bg-black hover:bg-gray-900'}`}
+                  ${
+                    job?.status === "Not Available"
+                      ? "bg-gray-400 cursor-not-allowed opacity-70"
+                      : "bg-black hover:bg-gray-900"
+                  }`}
               >
                 View Job
               </Link>
             </div>
           ))}
+        </div>
       </div>
     </div>
-  </div>
   );
 }
 

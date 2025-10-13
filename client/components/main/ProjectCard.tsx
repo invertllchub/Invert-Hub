@@ -1,16 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
-// toSlug Function
-import { toSlug } from "@/utils/ToSlug";
 // types
-import { Article, Block } from "@/types/articles";
+import { Project } from "@/types/project";
 
-const ArticleCard: React.FC<{ article: Article }> = ({ article }) => {
-  const header = article.blocks.find((b) => b.type === "header")?.data?.text;
-  const image = article.blocks.find((b) => b.type === "image")?.data?.file?.url;
-  const paragraph = article.blocks.find((b) => b.type === "overview")?.data
-    ?.text;
-  const slug = toSlug(header);
+const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
+  const header = project.title;
+  const image = project.img;
+  const paragraph = project.description;
+  const link = project.link;
 
   return (
     <article className="group bg-white rounded-lg overflow-hidden border border-gray-100 hover:border-gray-300 transition-all duration-300">
@@ -26,24 +23,16 @@ const ArticleCard: React.FC<{ article: Article }> = ({ article }) => {
       )}
 
       <div className="p-6">
-        <time className="text-sm text-gray-500 mb-3 block">
-          {new Date(article.time).toLocaleDateString("en-US", {
-            year: "numeric",
-            month: "short",
-            day: "numeric",
-          })}
-        </time>
-
         <h2 className="text-lg font-bold text-gray-900 mb-2 leading-snug group-hover:text-gray-700 transition-colors">
           {header}
         </h2>
-
         <p className="text-gray-600 mb-3 line-clamp-3 font-light">
           {paragraph}
         </p>
 
         <Link
-          href={`/news/${slug}`}
+          href={link}
+          target="_blank"
           className="font-medium text-gray-900 hover:text-gray-700 transition-colors flex items-center gap-1 mt-4"
         >
           Read More
@@ -67,4 +56,4 @@ const ArticleCard: React.FC<{ article: Article }> = ({ article }) => {
   );
 };
 
-export default ArticleCard;
+export default ProjectCard;
