@@ -121,11 +121,15 @@ function Page() {
       <section className="w-full h-full mt-20 px-4 md:px-16">
         <h1 className="text-2xl md:text-4xl font-bold my-10">From The Team</h1>
         <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-12">
-          {Team.map((mem, i) => {
+          {Team.map((mem, index) => {
             return (
               <div
-                key={i}
-                className="p-8 h-[350px] bg-white border rounded-md flex flex-col justify-between"
+                key={index}
+                className={`p-8 h-fit rounded-md flex flex-col justify-between
+                  ${index % 2 === 0
+                    ? "bg-gradient-to-b from-yellow-100 via-yellow-300/50 to-yellow-300"
+                    : "bg-gradient-to-b from-sky-100 via-sky-300/50 to-sky-300"
+                  }`}
               >
                 <p>{mem.comment}</p>
                 <div>

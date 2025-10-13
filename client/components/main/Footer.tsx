@@ -52,25 +52,6 @@ function Footer() {
                         ))}
                     </ul>
                 </nav>
-
-                {/* Contact + Legal */}
-                <div className="w-full md:w-4/12 space-y-4">
-                    <div>
-                        <Link
-                            href="mailto:INFO@INVERTSTUDIO.COM"
-                            className="text-lg underline underline-offset-8 break-words"
-                            aria-label="Email Info"
-                        >
-                            INFO@INVERTSTUDIO.COM
-                        </Link>
-                    </div>
-                    <p className="text-sm text-gray-400">
-                        © 2025 United Network Studio •{" "}
-                        <Link href="/terms" className="underline underline-offset-4">
-                            Terms & Conditions
-                        </Link>
-                    </p>
-                </div>
             </div>
 
         </footer>
