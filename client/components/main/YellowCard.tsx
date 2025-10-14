@@ -13,7 +13,7 @@ type YellowCardProps = {
 function YellowCard({h1, p, link, img, alt}: YellowCardProps) {
     return (
         <div
-        className="w-full h-11/12 md:h-full flex flex-col lg:flex-row items-center justify-between gap-8 mt-10 py-4 md:py-10 px-4 
+        className="w-full h-full flex flex-col lg:flex-row items-center justify-between gap-8 mt-10 py-4 md:py-10 px-4 
         bg-gradient-to-l from-green-200/50 to-yellow-200/60 rounded-lg"
         >
             <div className="w-full md:w-8/12 h-5/12 md:h-full flex flex-col justify-between text-start p-2 gap-4">
