@@ -34,7 +34,6 @@ export default function EditJobForm({ job }: JobProps) {
       closingDate: job.closingDate,
       description: job.description,
       requirements: (job.requirements || []).join("\n"),
-      skills: (job.skills || []).join("\n"),
       benefits: (job.benefits || []).join("\n"),
     } as any,
   });
