@@ -279,7 +279,7 @@ export default function HomePage() {
         </section>
   
         {/* Section 8 - Contact */}
-        <section className='w-full h-[90vh] mt-32 bg-white p-6 md:p-16 mb-10'>
+        <section className='w-full h-[100vh] mt-32 bg-white p-6 md:p-16 mb-10'>
           <YellowCard
             h1={`Integrated Solutions`}
             p={`We connect architecture, urban planning, interior and product design, publishing,
