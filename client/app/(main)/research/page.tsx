@@ -59,10 +59,10 @@ function page() {
         },
     ]
     return (
-        <div className='w-full py-30 px-4 md:px-16 mt-12'>
+        <div className='w-full py-30 px-6 md:px-16 mt-12 overflow-x-hidden'>
             <section className='w-full'>
                 <h1 className='w-full text-4xl md:text-9xl font-extrabold'>RESEARCH AND INNOVATION</h1>
-                <p className='text-2xl md:text-4xl font-semibold mt-6'>
+                <p className='text-xl md:text-4xl font-semibold mt-6'>
                     At INVERT, we don’t chase trends, we build what’s next.
                     We approach every project with strategic clarity, system-based thinking, 
                     and bold experimentation. Our work sits at the intersection of design, 
@@ -103,8 +103,8 @@ function page() {
                 </ul>
             </section>
             <section className='w-full h-[100vh] mt-25'>
-                <div className='w-full h-full flex items-center gap-4'>
-                    <div className='w-6/12 h-full'>
+                <div className='w-full h-full flex flex-col md:flex-row items-center gap-12 md:gap-4'>
+                    <div className='w-full md:w-6/12 h-full'>
                         <h1 className='w-full text-2xl md:text-4xl font-bold mb-10'>Our Innovation Model</h1>
                         <p className='text-xl md:text-2xl font-semibold mt-6'>
                             At INVERT, R&D flows through what we call our Living Systems Model:
@@ -128,7 +128,7 @@ function page() {
                             </li>
                         </ul>
                     </div>
-                    <div className='w-6/12 h-full'>
+                    <div className='w-full md:w-6/12 h-full'>
                         <div  className="relative w-full h-full">
                             <Image
                             alt="Innovation Model"
@@ -142,7 +142,7 @@ function page() {
             </section>
             <section className='w-full mt-20'>
                 <h1 className='w-full text-2xl md:text-4xl font-bold'>Areas of Exploration</h1>
-                <div  className="relative w-full h-[100vh] mt-15">
+                <div  className="relative w-full h-[40vh] md:h-[100vh] mt-15">
                     <Image
                     alt="Areas of Exploration"
                     src="https://res.cloudinary.com/dyfregti9/image/upload/v1759331654/R_D_02.png_zgm3qb.png"

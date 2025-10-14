@@ -34,7 +34,7 @@ function SideBarNav() {
             )}
 
             {/* sideNav */}
-            <div className={`fixed top-0 right-0 h-full w-4/12 z-50 bg-black text-white transition-transform ease-in-out duration-500
+            <div className={`fixed top-0 right-0 h-full w-6/12 md:w-4/12 z-50 bg-black text-white transition-transform ease-in-out duration-500
             ${openSideBar ? "translate-x-0" : "translate-x-full"}`}>
 
                 <div className='w-full flex items-center justify-end p-6' >

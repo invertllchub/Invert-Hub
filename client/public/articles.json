@@ -582,7 +582,7 @@
     },
 {
   "id": 3,
-  "time": 1739472960,
+  "time": 1760438400000,
   "blocks": [
     {
       "type": "header",
@@ -593,12 +593,6 @@
     },
     {
       "type": "overview",
-      "data": {
-        "text": "Creativity has always been celebrated as the force of originality — the art of crafting something beautiful from nothing. But beauty alone doesn’t build empires. What separates the successful creative professional from the struggling one isn’t talent. It’s structure."
-      }
-    },
-    {
-      "type": "paragraph",
       "data": {
         "text": "Creativity has always been celebrated as the force of originality — the art of crafting something beautiful from nothing. But beauty alone doesn’t build empires. What separates the successful creative professional from the struggling one isn’t talent. It’s structure."
       }

@@ -17,8 +17,6 @@ function Footer() {
         { href: "/about", label: "ABOUT US" },
         { href: "/research", label: "RESEARCH & INNOVATION" },
         { href: "/news", label: "NEWS & INSIGHTS" },
-        { href: "/team", label: "OUR GLOBAL TEAM" },
-        { href: "/awards", label: "AWARDS" },
         { href: "/contact", label: "CONTACT US" },
     ];
 
