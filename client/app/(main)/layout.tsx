@@ -11,7 +11,9 @@ export default function MainLayout({
       <div>
         <NavBar />
         {children}
-        <Footer />
+        <div className="mt-20">
+          <Footer />
+        </div>
       </div>
   );
 }
