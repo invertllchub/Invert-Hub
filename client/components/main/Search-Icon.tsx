@@ -1,12 +1,38 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react'
 import { Search, X, ArrowRight } from 'lucide-react'
-import Image from 'next/image'
+import { Project } from '@/types/project'
+import ProjectCard from './projectPage/ProjectCard'
 
 
 
 const SearchIcon = () => {
     const [openSearch, setOpenSearch] = useState(false)
+    const [projects, setProjects] = useState<Project[]>([])
+    const [searchValue, setSearchValue] = useState("");
+    
+
+    const fetchData = async () =>{
+        try {
+            const res = await fetch('/projects.json')
+            const json = await res.json()
+            setProjects(json)
+        } catch (error) {
+            console.error("Error fetching data:", error);
+        }
+    }
+    useEffect(() => {
+        fetchData()
+    }, [])
+
+    const filteredProjects = projects.filter((project) => {
+        if (!searchValue) return true;
+        const search = searchValue.toLowerCase();
+        const title = project.title.toLowerCase();
+
+        return title.includes(search);
+    });
+
     return (
         <>
         <div aria-label="Open Search" onClick={() => setOpenSearch(true)} className='p-1 rounded-full cursor-pointer hover:bg-black/30'>
@@ -24,6 +50,8 @@ const SearchIcon = () => {
                     <div className='flex items-center justify-between w-full'>
                         <input 
                         type="text" 
+                        value={searchValue}
+                        onChange={(e) => setSearchValue(e.target.value)}
                         placeholder='Search' 
                         className="w-6/12 border-b border-gray-400 outline-none text-2xl lg:text-3xl px-2 pb-3 focus:border-black transition"
                         />
@@ -32,24 +60,10 @@ const SearchIcon = () => {
                     <div>
                         <h1 className='text-2xl font-semibold my-8'>Featured Projects</h1>
                         <div className='w-full grid grid-cols-1  lg:grid-cols-3 gap-8'>
-                            {Array(3).fill(0).map((_, i) => {
+                            {filteredProjects?.slice(0, 3).map((p, i) => {
                                 return (
                                     <div key={i}>
-                                        <div className="relative w-full h-[250px]">
-                                            <Image 
-                                            src="/pic1.jpg" 
-                                            alt="Remode" 
-                                            fill 
-                                            className="object-cover rounded-lg"
-                                            />
-                                        </div>
-                                        <div className='flex items-center justify-between'>
-                                            <div>
-                                                <h1>Remode</h1>
-                                                <p>2019 - 2024</p>
-                                            </div>
-                                            <ArrowRight className='relative -left-1 cursor-pointer transition-all duration-300 hover:left-1'/>
-                                        </div>
+                                        <ProjectCard project={p}/>
                                     </div>
                                 )
                             })}

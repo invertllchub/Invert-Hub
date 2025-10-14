@@ -2,9 +2,9 @@
 
 import { useEffect, useState } from "react";
 // components
-import NewsHeader from "@/components/main/NewsHeader";
+import NewsHeader from "@/components/main/NewsPage/NewsHeader";
 import SubscriptionCTA from "@/components/main/SubscriptionCTA";
-import ArticleCard from "@/components/main/ArticleCard";
+import ArticleCard from "@/components/main/NewsPage/ArticleCard";
 // types
 import { Article, ArticlesResponse } from "../../../types/articles";
 
