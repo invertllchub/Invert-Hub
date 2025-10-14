@@ -59,7 +59,7 @@ function Page() {
           className="absolute inset-0 flex flex-col items-center justify-center backdrop-blur-sm
                 bg-white/10 border border-white/30 shadow-lg text-white"
         >
-          <h1 className="w-7/12 text-start mx-auto text-3xl md:text-5xl font-bold drop-shadow-lg">
+          <h1 className="w-7/12 text-start mx-auto text-xl md:text-5xl font-bold drop-shadow-lg">
             {job?.title} - {job?.location}
           </h1>
           <div className="w-7/12 mx-auto mt-5 flex flex-col md:flex-row items-start gap-6">
@@ -89,7 +89,7 @@ function Page() {
           <button onClick={() => setShowForm(false)}>
             <p
               className={`text-lg font-semibold cursor-pointer p-4
-                            ${!showForm ? "border-b-2" : ""}`}
+              ${!showForm ? "border-b-2" : ""}`}
             >
               Job details
             </p>

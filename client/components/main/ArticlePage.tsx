@@ -47,7 +47,7 @@ const ArticlePage: React.FC<Props> = ({ article }) => {
             return (
               <p
                 key={i}
-                className="text-xl md:text-2xl font-bold my-10 text-gray-800"
+                className="text-xl md:text-xl font-bold my-5 text-gray-600"
               >
                 {block.data.text}
               </p>

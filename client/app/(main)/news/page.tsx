@@ -32,8 +32,10 @@ export default function NewsPage() {
         <NewsHeader />
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 my-20">
-          {articles.map((article) => (
-            <ArticleCard key={article.id} article={article} />
+          {articles.map((article, i) => (
+            <div key={i}>
+              <ArticleCard key={article.id} article={article} />
+            </div>
           ))}
         </div>
 

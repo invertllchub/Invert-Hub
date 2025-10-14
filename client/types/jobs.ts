@@ -11,8 +11,8 @@ export interface Job {
   datePosted: string;   
   closingDate: string;
   description: string;
+  keyResponsibilities: string[],
   requirements: string[];
-  skills: string[];
   benefits: string[];
 }
 

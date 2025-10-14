@@ -22,6 +22,14 @@ function JobDetails({ job, setShowForm }: JobProps) {
           )}
         </div>
         <div className="my-5">
+          <h2 className="text-2xl font-bold mb-4">Key Responsibilities</h2>
+          <ul className="list-disc pl-6 space-y-2 text-gray-700">
+            {job?.keyResponsibilities.map((req, i) => (
+              <li key={i}>{req}</li>
+            ))}
+          </ul>
+        </div>
+        <div className="my-5">
           <h2 className="text-2xl font-bold mb-4">Requirements</h2>
           <ul className="list-disc pl-6 space-y-2 text-gray-700">
             {job?.requirements.map((req, i) => (

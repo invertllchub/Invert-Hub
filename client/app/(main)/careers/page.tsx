@@ -125,7 +125,7 @@ function Page() {
             return (
               <div
                 key={index}
-                className={`p-8 h-fit rounded-md flex flex-col justify-between
+                className={`p-8 min-h-[300px] rounded-md flex flex-col justify-between
                   ${index % 2 === 0
                     ? "bg-gradient-to-b from-yellow-100 via-yellow-300/50 to-yellow-300"
                     : "bg-gradient-to-b from-sky-100 via-sky-300/50 to-sky-300"

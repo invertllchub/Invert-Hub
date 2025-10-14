@@ -48,7 +48,6 @@ function JobApplication({ job }: JobProps) {
       formData.append("Gender", data.gender);
       formData.append("Email", data.email);
       formData.append("Phone Number", data.phoneNumber);
-      formData.append("Job Title", data.jobTitle);
       formData.append("CoverLetter", data.coverLetter);
       formData.append("CV_Link", cvUrl);
 
@@ -159,22 +158,6 @@ function JobApplication({ job }: JobProps) {
             </div>
           )}
         </div>
-
-        <label htmlFor="position">Job Title</label>
-        <select
-          id="position"
-          {...register("jobTitle")}
-          defaultValue={job?.title}
-          className="border p-3 rounded-lg focus:outline-none cursor-pointer"
-        >
-          <option value="Frontend Developer">Frontend Developer</option>
-          <option value="Backend Developer">Backend Developer</option>
-          <option value="UI/UX Designer">UI/UX Designer</option>
-          <option value="Digital Marketing Specialist">
-            Digital Marketing Specialist
-          </option>
-          <option value="Data Analyst">Data Analyst</option>
-        </select>
 
         <label htmlFor="coverLetter">Cover Letter</label>
         <textarea
