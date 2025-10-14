@@ -1,25 +1,16 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-// Navigation
 import { useParams } from "next/navigation";
-// toSlug function
 import { fromSlug } from "@/utils/FromSlug";
-// components
 import ArticlePage from "@/components/main/ArticlePage";
-// types
 import { Article, ArticlesResponse } from "../../../../types/articles";
 
 function page() {
   const [articles, setArticles] = useState<Article[]>([]);
   const params = useParams();
-  const title = fromSlug(params?.title as string);
-  const article = articles.find((p) => {
-    const headerBlock = p.blocks.find((b) => b.type === "header");
-    return headerBlock?.data.text.toLowerCase() === title.toLowerCase();
-  });
+  const title = fromSlug(decodeURIComponent(params?.title as string));
 
-  // fetch data
   const fetchData = async () => {
     try {
       const res = await fetch("/articles.json");
@@ -34,9 +25,20 @@ function page() {
     fetchData();
   }, []);
 
+const article = articles.find((p) => {
+  const firstHeader = p.blocks.find((b) => b.type === "header"); 
+  return firstHeader?.data.text.toLowerCase() === title.toLowerCase();
+});
+
   return (
     <div>
-      {article ? <ArticlePage article={article} /> : <p>Loading article...</p>}
+      {articles.length === 0 ? (
+        <p>Loading article...</p>
+      ) : article ? (
+        <ArticlePage article={article} />
+      ) : (
+        <p>Article not found</p>
+      )}
     </div>
   );
 }

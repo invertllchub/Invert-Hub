@@ -3,22 +3,31 @@ import Link from "next/link";
 // toSlug Function
 import { toSlug } from "@/utils/ToSlug";
 // types
-import { Article, Block } from "@/types/articles";
+import { Article } from "@/types/articles";
 
 const ArticleCard: React.FC<{ article: Article }> = ({ article }) => {
-  const header = article.blocks.find((b) => b.type === "header")?.data?.text;
-  const image = article.blocks.find((b) => b.type === "image")?.data?.file?.url;
-  const paragraph = article.blocks.find((b) => b.type === "overview")?.data
-    ?.text;
+
+  console.log(article)
+  const blocks = Array.isArray(article.blocks) ? article.blocks : [];
+
+  const headerBlock = blocks.find((b) => b.type === "header");
+  const header = headerBlock?.data?.text || "No title";
+
+  const imageBlock = blocks.find((b) => b.type === "image");
+  const image = imageBlock?.data?.file?.url;
+
+  const overviewBlock = blocks.find((b) => b.type === "overview");
+  const paragraph = overviewBlock?.data?.text || "";
+
   const slug = toSlug(header);
 
   return (
-    <article className="group bg-white rounded-lg overflow-hidden border border-gray-100 hover:border-gray-300 transition-all duration-300">
+    <article className="group min-h-[300px] bg-white rounded-lg overflow-hidden border border-gray-100 hover:border-gray-300 transition-all duration-300">
       {image && (
         <div className="relative h-60 overflow-hidden">
           <Image
             src={image}
-            alt={header || "Article image"}
+            alt={header}
             fill
             className="object-cover transition-transform duration-500 group-hover:scale-105"
           />
