@@ -104,12 +104,12 @@ export default function HomePage() {
   }, [projects]);
 
   return (
-    <main className="bg-black text-[#292929]">
+    <main className="w-full overflow-x-hidden">
       {/* Section 1 */}
-      <section className="section1 relative overflow-hidden h-[100vh]">
+      <section className="section1 relative h-[100vh]">
         <div className="wrapper h-full relative flex justify-center items-center p-4 md:justify-start md:p-1">
           <div className="absolute inset-0 w-full h-full shadow-lg">
-            <div className="relative w-full h-full overflow-hidden">
+            <div className="relative w-full h-full ">
               <video
                 src="https://res.cloudinary.com/dyfregti9/video/upload/v1758050780/Home_Header_bdgnzn.mp4"
                 autoPlay
@@ -258,9 +258,9 @@ export default function HomePage() {
         </div>
       </section>
 
-      <div className=" bg-[#f6f6f6]">
+  
         {/* Section 7 - Join the Team */}
-        <section className="section7 w-full bg-[#f6f6f6] text-black mt-10">
+        <section className="section7 w-full bg-[#f6f6f6] text-black">
           <div className="p-6 sm:p-10 md:p-14">
             <h1 className="font-sans text-3xl sm:text-5xl md:text-[88px] font-[900]">
               JOIN THE TEAM
@@ -277,9 +277,9 @@ export default function HomePage() {
             </Link>
           </div>
         </section>
-
+  
         {/* Section 8 - Contact */}
-        <section className="section8 w-full h-[100vh] bg-[#f6f6f6] text-black p-6 md:p-16">
+        <section className='w-full h-[90vh] mt-32 bg-white p-6 md:p-16 mb-10'>
           <YellowCard
             h1={`Integrated Solutions`}
             p={`We connect architecture, urban planning, interior and product design, publishing,
@@ -291,7 +291,6 @@ export default function HomePage() {
             alt={`Description`}
           />
         </section>
-      </div>
     </main>
   );
 }
