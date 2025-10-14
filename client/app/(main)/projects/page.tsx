@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 // types
 import { Project } from "../../../types/project";
 //components
-import ProjectCard from "@/components/main/ProjectCard";
+import ProjectCard from "@/components/main/projectPage/ProjectCard";
 
 function Page() {
     const [projects, setProjects] = useState<Project[]>([]);

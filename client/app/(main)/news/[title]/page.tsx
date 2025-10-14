@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import { fromSlug } from "@/utils/FromSlug";
-import ArticlePage from "@/components/main/ArticlePage";
+import ArticlePage from "@/components/main/NewsPage/ArticlePage";
 import { Article, ArticlesResponse } from "../../../../types/articles";
 
 function page() {

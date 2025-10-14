@@ -229,42 +229,6 @@ export default function HomePage() {
             className="object-cover"
           />
         </div>
-
-        <div className="w-full mt-12 space-y-10">
-          <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-6">
-            <h1 className="text-2xl sm:text-4xl md:text-5xl font-semibold">
-              Design
-            </h1>
-            <div className="w-full md:w-6/12">
-              <p className="text-lg sm:text-xl md:text-2xl font-semibold mb-10">
-                Delivering transformative design solutions across all scales and
-                disciplines.
-              </p>
-              <Link href="/services/design" className="relative text-xl group">
-                FIND OUT MORE
-                <span className="absolute left-0 -bottom-1 w-full h-[2px] bg-black scale-x-100 origin-left transition-transform duration-300 group-hover:scale-x-0"></span>
-              </Link>
-            </div>
-          </div>
-          <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-6">
-            <h1 className="text-2xl sm:text-4xl md:text-5xl font-semibold">
-              Consulting
-            </h1>
-            <div className="w-full md:w-6/12">
-              <p className="text-lg sm:text-xl md:text-2xl font-semibold mb-10">
-                Unlocking new possibilities in sustainability, economics,
-                technology, and health
-              </p>
-              <Link
-                href="/services/consulting"
-                className="relative text-xl group"
-              >
-                FIND OUT MORE
-                <span className="absolute left-0 -bottom-1 w-full h-[2px] bg-black scale-x-100 origin-left transition-transform duration-300 group-hover:scale-x-0"></span>
-              </Link>
-            </div>
-          </div>
-        </div>
       </section>
 
       {/* Section 6 - Research */}
