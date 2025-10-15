@@ -6,7 +6,6 @@ export const schema = z.object({
     gender: z.string(),
     email: z.email(),
     phoneNumber: z.string().refine((val) => isValidPhoneNumber(val), "Enter a valid phone number"),
-    jobTitle: z.string(),
     coverLetter: z.string(),
     CV: z
   .any()
