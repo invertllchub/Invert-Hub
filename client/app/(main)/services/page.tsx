@@ -51,13 +51,16 @@ function Page() {
                     />
                 </div>
             </section>
-            <section className='w-full h-[90vh] mt-32'>
-                <YellowCard 
-                p={`We integrate architecture, urban planning, interior design, product and experience design
-                    with consulting services that tackle every-day challenges. Curious to know more?`}
+            <section className='w-full h-[100vh] p-6 md:p-16 bg-white'>
+                <YellowCard
+                h1={`Integrated Solutions`}
+                p={`We connect architecture, urban planning, interior and product design, publishing,
+                and business coaching with consulting services that address everyday challenges in creative 
+                industries. Our approach blends design with strategy, offering solutions that are both 
+                practical and forward-looking. Curious to know more?`}
                 link={`GET IN TOUCH`}
-                img={`https://res.cloudinary.com/dntdescqh/image/upload/v1755806302/Services_iitw04.webp`}
-                alt={`Sevices get in touch`}
+                img={`https://res.cloudinary.com/dyfregti9/image/upload/v1758487075/Homepage_last_sectoin_yvyyo8.png`}
+                alt={`Description`}
                 />
             </section>
         </div>

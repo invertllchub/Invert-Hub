@@ -37,13 +37,16 @@ function JobApplication({ job }: JobProps) {
     try {
       let cvUrl = "";
 
+      
       const file = (data.CV as FileList)[0];
       if (file) {
         cvUrl = await uploadToCloudinary(file);
       }
-
+      
+      const jobTitle = job.title
       const formData = new FormData();
       formData.append("access_key", "0bc40844-5a24-42dd-a1f7-350b79e12dd1");
+      formData.append("Job Title", jobTitle);
       formData.append("Full Name", data.fullName);
       formData.append("Gender", data.gender);
       formData.append("Email", data.email);

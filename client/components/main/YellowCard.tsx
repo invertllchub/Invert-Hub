@@ -23,7 +23,7 @@ function YellowCard({h1, p, link, img, alt}: YellowCardProps) {
                 <p className="text-lg md:text-3xl font-semibold">
                     {p}
                 </p>
-                <Link href="" className="relative text-xl group w-fit">
+                <Link href="contact" className="relative text-xl group w-fit my-2">
                     {link}
                     <span className="absolute left-0 -bottom-1 w-full h-[2px] bg-black scale-x-100 origin-left transition-transform duration-300 group-hover:scale-x-0"></span>
                 </Link>
