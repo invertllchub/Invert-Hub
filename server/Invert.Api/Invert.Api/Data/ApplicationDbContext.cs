@@ -10,7 +10,7 @@ namespace Invert.Api.Data
         public DbSet<Project> Projects { get; set; } = null!;
         public DbSet<AppUser> Users { get; set; } = null!;
 
-        //public DbSet<Article> Articles { get; set; } = null!;
+        public DbSet<Article> Articles { get; set; } = null!;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

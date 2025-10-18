@@ -1,16 +1,32 @@
 ﻿namespace Invert.Api.Entities
 {
-    /// <summary>
-    /// Represents an Blog article.
-    /// </summary>
     public class Article
     {
-        public int Id { get; set; }
-        public int ProjectId { get; set; }
-        public string Title { get; set; } = string.Empty;
-        public string Content { get; set; } = string.Empty;
-        public string Type { get; set; } = string.Empty;
-        public string? Media { get; set; }
-        public Project Project { get; set; } = null!;
+        public Guid Id { get; private set; } = Guid.NewGuid(); // Generate Id automatically if not using DB auto-gen
+        public string Title { get; private set; }
+        public string ContentJson { get; private set; }
+        public DateTime CreatedAt { get; private set; }
+        public DateTime? UpdatedAt { get; private set; }
+
+        public Article(string title, string contentJson)
+        {
+            Title = title;
+            ContentJson = contentJson;
+            CreatedAt = DateTime.UtcNow;
+        }
+
+        public void UpdateContent(string newContentJson)
+        {
+            ContentJson = newContentJson;
+            UpdatedAt = DateTime.UtcNow;
+        }
+
+        // Add method to update Title if needed
+        public void UpdateTitle(string newTitle)
+        {
+            Title = newTitle;
+            UpdatedAt = DateTime.UtcNow;
+        }
     }
 }
+

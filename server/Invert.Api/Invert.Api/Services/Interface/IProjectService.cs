@@ -1,4 +1,5 @@
 ﻿using Invert.Api.Dtos;
+using Invert.Api.Dtos.Article;
 using Invert.Api.Entities;
 using Invert.Api.Repositories.Interface;
 

@@ -1,4 +1,5 @@
 using Invert.Api.Dtos;
+using Invert.Api.Dtos.Article;
 using Invert.Api.Services.Interface;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
