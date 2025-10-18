@@ -31,11 +31,13 @@ builder.Services.AddAutoMapper(cfg => { /* Optional config here */ }, typeof(Aut
 
 
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
-builder.Services.AddScoped (typeof(IGenaricRepository<>), typeof(GenaricRepository<>));
+builder.Services.AddScoped(typeof(IGenaricRepository<>), typeof(GenaricRepository<>));
 builder.Services.AddScoped<IProjectRepository, ProjectRepository>();
 builder.Services.AddScoped<IProjectService, ProjectService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IArticleService, ArticleService>();
+
 
 
 // Identity (ensure AppUser type and ApplicationDbContext are correct)
@@ -100,7 +102,7 @@ using (var scope = app.Services.CreateScope())
         var context = services.GetRequiredService<ApplicationDbContext>();
         logger.LogInformation("Starting database migration");
         await context.Database.MigrateAsync();
-        await ApplicationDbContextSeed.SeedAsync(context);
+        // await ApplicationDbContextSeed.SeedAsync(context);
 
         //// Seed initial users 
         var DataSeed = services.GetRequiredService<ContextSeed>();
@@ -109,7 +111,7 @@ using (var scope = app.Services.CreateScope())
         var userManager = services.GetRequiredService<UserManager<AppUser>>();
         // await AppIdentityDbContextSeed.SeedUserAsync(userManager);
 
-        logger.LogInformation("Database Migrated successfully");  
+        logger.LogInformation("Database Migrated successfully");
     }
     catch (Exception ex)
     {
