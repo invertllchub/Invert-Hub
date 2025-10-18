@@ -7,11 +7,11 @@ namespace Invert.Api.Data
 {
     public static class ApplicationDbContextSeed
     {
-        public static async Task SeedAsync(ApplicationDbContext db)
-        {
+        // public static async Task SeedAsync(ApplicationDbContext db)
+        // {
 
 
-        }
+        // }
 
     }
 }
