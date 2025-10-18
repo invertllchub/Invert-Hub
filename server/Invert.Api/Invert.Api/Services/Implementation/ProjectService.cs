@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Invert.Api.Data;
 using Invert.Api.Dtos;
+using Invert.Api.Dtos.Article;
 using Invert.Api.Entities;
 using Invert.Api.Repositories.Implementation;
 using Invert.Api.Repositories.Interface;
