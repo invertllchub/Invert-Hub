@@ -87,7 +87,7 @@ function Page() {
   });
 
   return (
-    <div className="w-full min-h-screen bg-gray-200/75 pl-30 pr-15 py-10">
+    <div className="w-full min-h-screen bg-gray-200/75 pl-0 md:pl-30 pr-0 md:pr-15 pb-20 md:pb-10 pt-5 md:pt-10 overflow-hidden">
       <ToolBar
       title="articles"
       allSelected={allSelected}
@@ -98,7 +98,7 @@ function Page() {
       </ToolBar>
 
       {/* 🖥️ TABLE VIEW */}
-      <div className="hidden md:block w-full mt-8 rounded-lg bg-white p-8 shadow-sm overflow-x-auto">
+      <div className="hidden md:block w-full mt-8 rounded-lg bg-white p-12 shadow-sm overflow-x-auto">
         <div className="grid grid-cols-[50px_1fr_200px_200px_200px] gap-8 mb-3 font-semibold text-gray-700 border-b pb-2">
           <div className="flex justify-center">
             <input
@@ -153,7 +153,7 @@ function Page() {
       </div>
 
       {/* 📱 CARD VIEW */}
-      <div className="block md:hidden mt-6 space-y-4">
+      <div className="block md:hidden mt-6 p-6 space-y-4">
         {filteredArticles.map((article, i) => {
           const titleBlock = article.blocks.find((b) => b.type === "header");
           const title = titleBlock?.data.text || "Untitled";
