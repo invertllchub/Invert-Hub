@@ -10,8 +10,8 @@ import Embed from "@editorjs/embed";
 import VideoTool from "@/utils/editorTools/VideoTool";
 import LinkTool from "@/utils/editorTools/LinkTool";
 import OverviewTool from "@/utils/editorTools/OverViewTool";
-// id generator
-import { v4 as uuidv4 } from "uuid";
+// Toast
+import { showToast } from "@/components/jobs/Toast";
 // Upload to Cloudinary fn()
 import { uploadToCloudinary } from "@/utils/CloudinaryUpload";
 
@@ -76,15 +76,46 @@ export default function Editor() {
 
   const handleSave = async () => {
     const outputData = await editorRef.current?.save();
+    const toastId = showToast("loading", {
+      message: "Publishing Article..."
+    })
 
     
-    const articleWithId = {
-      id: uuidv4(),   // 👈 توليد id
+    const article = {     
       ...outputData,
-      author: "Mohamed", // ممكن تضيف أي بيانات إضافية
+      author: "Mohamed", 
     };
   
-    console.log("✅ Article with ID:", articleWithId);
+    console.log(article);
+
+    try {
+      const res = await fetch ('',{
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(article)
+      })
+      const result = await res.json()
+      if(result.success){
+        showToast("success", {
+          message: "Succussefuly published the article",
+          toastId
+        })
+      } else {
+        showToast("error", {
+          message: "Something went wrong. Please try again.",
+          toastId
+        })
+      }
+    } catch (error) {
+      console.error('Fetch Error', error)
+      showToast("error", {
+        message: "Failed to publish the article, please try again later.",
+        toastId,
+      });
+    }
+
   };
 
   return (

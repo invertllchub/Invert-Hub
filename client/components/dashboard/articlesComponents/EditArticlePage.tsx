@@ -10,6 +10,8 @@ import Embed from "@editorjs/embed";
 import LinkTool from "@/utils/editorTools/LinkTool";
 import VideoTool from "@/utils/editorTools/VideoTool";
 import OverviewTool from "@/utils/editorTools/OverViewTool";
+// Toast 
+import { showToast } from "@/components/jobs/Toast";
 
 export default function EditArticlePage() {
   const { id } = useParams();
@@ -18,15 +20,23 @@ export default function EditArticlePage() {
 
   useEffect(() => {
     const fetchArticle = async () => {
-      const res = await fetch("/articles.json");
-      const data = await res.json();
-      const found = data.articles.find((a: any) => a.id === Number(id));
-      setArticle(found);
+      try {
+        const res = await fetch("/articles.json");
+        const data = await res.json();
+        const found = data.articles.find((a: any) => a.id === Number(id));
+        if (found) setArticle(found);
+        else showToast("error", { message: "Article not found." });
+      } catch (err) {
+        console.error(err);
+        showToast("error", { message: "Failed to load article." });
+      }
     };
     fetchArticle();
   }, [id]);
 
+
   useEffect(() => {
+    if (!article || editorRef.current) return;
     let editor: EditorJS;
 
     const initEditor = async () => {
@@ -61,10 +71,44 @@ export default function EditArticlePage() {
 
   const handleSave = async () => {
     const outputData = await editorRef.current?.save();
-    console.log("Updated Article:", outputData);
+    const toastId = showToast("loading", {
+      message: "Updating article..."
+    })
+    
+    const UpdatedArticle = {     
+      ...outputData,
+      author: "Mohamed", 
+    };
+    
+    console.log("Updated Article:", UpdatedArticle);
 
-    // تقدر تبعت update للـ backend هنا
-    // await fetch(`/api/articles/${id}`, { method: "PUT", body: JSON.stringify(outputData) });
+    try {
+      const res = await fetch('', {
+        method: "PUT", 
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(UpdatedArticle)
+      })
+      const result = await res.json()
+      if (result.success){
+        showToast("success", {
+          message: "Succussefuly updated the article",
+          toastId
+        })
+      } else {
+        showToast("error", {
+          message: "Something went wrong. Please try again.",
+          toastId
+        })
+      }
+    } catch (error) {
+      console.error("Failed to fetch", error)
+      showToast("error", {
+        message: "Failed to upload the article, please try again later.",
+        toastId,
+      });
+    }
   };
 
   if (!article) return <p>Loading...</p>;
@@ -77,7 +121,7 @@ export default function EditArticlePage() {
         </h1>
         <button
           onClick={handleSave}
-          className="px-4 w-42 py-2 bg-blue-600 text-white rounded-lg col-start-1 cursor-pointer"
+          className="px-4 w-42 py-2 bg-blue-600 hover:bg-blue-700 transition-colors text-white rounded-lg col-start-1 cursor-pointer"
         >
           Save Changes
         </button>

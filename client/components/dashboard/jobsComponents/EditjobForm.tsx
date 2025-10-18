@@ -55,12 +55,10 @@ export default function EditJobForm({ job }: JobProps) {
       formData.append("closingDate", data.closingDate);
       formData.append("description", data.description);
       const requirementsArray = parseMultilineText(data.requirements || "");
-      const skillsArray = parseMultilineText(data.skills || "");
       const benefitsArray = parseMultilineText(data.benefits || "");
 
 
       formData.append("requirements", JSON.stringify(requirementsArray));
-      formData.append("skills", JSON.stringify(skillsArray));
       formData.append("benefits", JSON.stringify(benefitsArray));
 
 
@@ -259,23 +257,6 @@ export default function EditJobForm({ job }: JobProps) {
             {errors.requirements && (
               <div className="text-red-500">
                 {errors.requirements.message?.toString()}
-              </div>
-            )}
-          </div>
-
-          <div>
-            <label className="block text-gray-600 mb-1">
-              Skills (one per line)
-            </label>
-            <textarea
-              rows={7}
-              {...register("skills")}
-              placeholder={"e.g.\nHealth insurance\nRemote work flexibility"}
-              className="border p-3 rounded-lg w-full"
-            />
-            {errors.skills && (
-              <div className="text-red-500">
-                {errors.skills.message?.toString()}
               </div>
             )}
           </div>
