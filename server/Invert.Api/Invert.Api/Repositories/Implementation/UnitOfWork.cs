@@ -12,12 +12,16 @@ namespace Invert.Api.Repositories.Implementation
         public IUserRepository User { get; private set; }
         public IProjectRepository Product { get; private set; }
 
+        public IArticleRepository Article { get; private set; }
+
+
 
         public UnitOfWork(ApplicationDbContext dbContext)
         {
             _dbContext = dbContext;
             Product = new ProjectRepository(_dbContext);
             User = new UserRepository(_dbContext);
+            Article = new ArticleRepository(_dbContext);
         }
 
         public void Save()
