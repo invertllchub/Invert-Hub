@@ -22,7 +22,6 @@ export const EditJobSchema = z.object({
     closingDate: z.string().nonempty("Closing Date is required"),
     description: z.string().min(10, "Description should be at least 10 characters"),
     requirements: z.string().min(10, "Please list at least one requirement"),
-    skills: z.string().min(3, "Please list at least one skills"),
     benefits: z.string().min(5, "Please list at least one benefit"),
 });
 

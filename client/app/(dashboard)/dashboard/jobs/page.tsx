@@ -75,7 +75,7 @@ function JobsPage() {
   return (
     <div className="w-full min-h-screen bg-gray-200/75 pl-30 pr-15 py-10">
       <ToolBar
-      title="Projects"
+      title="jobs"
       allSelected={allSelected}
       someSelected={someSelected}
       setSearchValue={setSearchValue}

@@ -15,7 +15,7 @@ function DeleteBtn({ page, id, selectedIds = [], onDeleted }: DeleteBtnProps) {
         const toastId = showToast("loading", {
             message: "Submitting Project Application...",
         });
-
+        
         if (!confirm("Are you sure you want to delete this project?")) return;
 
         try {
@@ -40,41 +40,53 @@ function DeleteBtn({ page, id, selectedIds = [], onDeleted }: DeleteBtnProps) {
     };
 
 
+    
+
     const handleDeleteSelected = async () => {
         const toastId = showToast("loading", {
-            message: "Submitting Project Application...",
+            message: "Deleteing item...",
         });
 
         if (selectedIds.length === 0) {
             showToast("error", {
-                message: "No projects selected",
+                message: "No items selected",
                 toastId,
             });
             return;
         }
 
-        if (!confirm(`Delete ${selectedIds.length} selected projects?`)) return;
+        if (!confirm(`Delete ${selectedIds.length} selected items?`)) return;
 
         try {
-            await Promise.all(
-                selectedIds.map((id) =>
-                    fetch(`/api/${page}/${id}`, { method: "DELETE" })
-                )
+            const results = await Promise.all(
+                selectedIds.map(async (id) => {
+                    const res = await fetch(`/api/${page}/${id}`, { method: "DELETE" });
+                    return res.ok;
+                })
             );
 
+            if (results.some((ok) => !ok)) {
+                showToast("error", {
+                    message: "Some items failed to delete",
+                    toastId,
+                });
+                return;
+            }
+
             showToast("success", {
-                message: "Selected projects deleted successfully",
+                message: "Selected items deleted successfully",
                 toastId,
             });
             onDeleted?.();
         } catch (err) {
             console.error(err);
             showToast("error", {
-                message: "Error deleting selected projects",
+                message: "Error deleting selected items",
                 toastId,
             });
         }
     };
+
 
     return (
         <div

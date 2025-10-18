@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useMemo } from "react";
 import ToolBar from "@/components/dashboard/ToolBar";
 import DeleteBtn from "@/components/dashboard/DeleteBtn";
 import UpdateBtn from "@/components/dashboard/UpdateBtn";
@@ -27,8 +27,12 @@ function ProjectsPage() {
     fetchData();
   }, []);
 
-  const allSelected = selected.length === projects.length && projects.length > 0;
-  const someSelected = selected.length > 0 && !allSelected;
+  const { allSelected, someSelected } = useMemo(() => {
+    const all = selected.length === projects.length && projects.length > 0;
+    const some = selected.length > 0 && !all;
+    return { allSelected: all, someSelected: some };
+  }, [selected, projects]);
+
 
   useEffect(() => {
     if (headerCheckboxRef.current)
@@ -46,7 +50,8 @@ function ProjectsPage() {
   };
 
   const handleDeleteOne = (id: string) => {
-    setProjects((prev) => prev.filter((p) => p.id !== id));
+    setProjects((prev) => prev.filter((p) => String(p.id) !== String(id)));
+    setSelected((prev) => prev.filter((x) => String(x) !== String(id))); 
   };
 
   const handleDeleteAll = () => {
