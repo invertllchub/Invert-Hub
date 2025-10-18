@@ -12,13 +12,13 @@ type ToolBarProps = {
 
 function ToolBar({ allSelected, someSelected, setSearchValue, title, children }: ToolBarProps) {
   return (
-    <div className='w-full flex flex-col md:flex-row md:items-center md:justify-between gap-6'>
+    <div className='w-full flex items-center justify-between gap-6 p-6 md:p-0'>
       <div className='w-full md:w-10/12 flex items-center justify-start gap-6'>
         <div className='w-full md:w-4/12 relative bg-white rounded-lg'>
           <input
             type="text"
             placeholder='Search'
-            className="w-full px-10 py-2 outline-none "
+            className="w-full px-10 py-3 md:py-2 outline-none "
             onChange={(e) => setSearchValue(e.target.value)}
           />
           <div className='absolute top-1/2 -translate-y-1/2 left-2'>
@@ -31,7 +31,7 @@ function ToolBar({ allSelected, someSelected, setSearchValue, title, children }:
         </div>
       </div>
 
-      <div className='px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 text-white cursor-pointer'>
+      <div className='px-1 md:px-4 py-0 md:py-2 rounded-lg bg-blue-600 hover:bg-blue-500 text-white cursor-pointer'>
         <Link href={`/dashboard/${title.toLowerCase()}/add`}>
           <button className='cursor-pointer'>
             + Add <span>{title}</span>
