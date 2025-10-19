@@ -1,5 +1,6 @@
 "use client"
 
+import "../../../app/(main)/globals.css"
 import { useEffect, useRef } from "react";
 // Editor.js & Editor tools
 import EditorJS from "@editorjs/editorjs";
@@ -10,8 +11,8 @@ import Embed from "@editorjs/embed";
 import VideoTool from "@/utils/editorTools/VideoTool";
 import LinkTool from "@/utils/editorTools/LinkTool";
 import OverviewTool from "@/utils/editorTools/OverViewTool";
-// id generator
-import { v4 as uuidv4 } from "uuid";
+// Toast
+import { showToast } from "@/components/jobs/Toast";
 // Upload to Cloudinary fn()
 import { uploadToCloudinary } from "@/utils/CloudinaryUpload";
 
@@ -76,21 +77,52 @@ export default function Editor() {
 
   const handleSave = async () => {
     const outputData = await editorRef.current?.save();
+    const toastId = showToast("loading", {
+      message: "Publishing Article..."
+    })
 
     
-    const articleWithId = {
-      id: uuidv4(),   // 👈 توليد id
+    const article = {     
       ...outputData,
-      author: "Mohamed", // ممكن تضيف أي بيانات إضافية
+      author: "Mohamed", 
     };
   
-    console.log("✅ Article with ID:", articleWithId);
+    console.log(article);
+
+    try {
+      const res = await fetch ('',{
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(article)
+      })
+      const result = await res.json()
+      if(result.success){
+        showToast("success", {
+          message: "Succussefuly published the article",
+          toastId
+        })
+      } else {
+        showToast("error", {
+          message: "Something went wrong. Please try again.",
+          toastId
+        })
+      }
+    } catch (error) {
+      console.error('Fetch Error', error)
+      showToast("error", {
+        message: "Failed to publish the article, please try again later.",
+        toastId,
+      });
+    }
+
   };
 
   return (
-    <div className="p-12 w-full bg-gray-200/75">
+    <div className="p-6 md:p-12 w-full bg-gray-200/75">
       <div className="w-full flex items-center justify-between">
-        <h1 className="text-4xl font-extrabold text-gray-800">
+        <h1 className="text-2xl md:text-4xl font-extrabold text-gray-800">
           PUBLISH YOUR ARTICLE
         </h1>
         <button
@@ -101,7 +133,7 @@ export default function Editor() {
         </button>
       </div>
 
-      <div className="rounded-lg shadow-md py-6 min-h-[100vh] px-4 mt-10 bg-white">
+      <div className="rounded-lg shadow-md py-6 min-h-[100vh] px-4 mt-10 mb-15 bg-white">
         <div id="editorjs" />
       </div>
     </div>

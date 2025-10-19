@@ -35,17 +35,12 @@ export default function AddJobForm() {
       formData.append("datePosted", data.datePosted);
       formData.append("closingDate", data.closingDate);
       formData.append("description", data.description);
-      const requirementsArray = parseMultilineText(data.requirements || "");
-      const skillsArray = parseMultilineText(data.skills || "");
-      const benefitsArray = parseMultilineText(data.benefits || "");
-      
-      formData.append("requirements", JSON.stringify(requirementsArray));
-      formData.append("skills", JSON.stringify(skillsArray));
-      formData.append("benefits", JSON.stringify(benefitsArray));
 
-                  for (const [key, value] of formData.entries()) {
-                console.log(`${key}: ${value}`);
-            }
+      const requirementsArray = parseMultilineText(data.requirements || "");
+      formData.append("requirements", JSON.stringify(requirementsArray));
+      
+      const benefitsArray = parseMultilineText(data.benefits || "");
+      formData.append("benefits", JSON.stringify(benefitsArray));
 
       const response = await fetch("", {
         method: "POST",
@@ -77,7 +72,7 @@ export default function AddJobForm() {
 
   return (
     <form id="add-job-form" onSubmit={handleSubmit(onSubmit)}>
-      <div className="w-full flex flex-col md:flex-row items-start gap-6 mt-10">
+      <div className="w-full flex flex-col md:flex-row items-start gap-6 p-6 md:p-12">
         <div className="w-full md:w-1/2 flex flex-col gap-8">
           <div>
             <label className="block text-gray-600 mb-1">Job Title</label>
@@ -116,6 +111,7 @@ export default function AddJobForm() {
               <option value="">Select Employment Type</option>
               <option value="Full-time">Full-time</option>
               <option value="Part-time">Part-time</option>
+              <option value="Full-time / Part-time">Full-time / Part-time</option>
               <option value="Contract">Contract</option>
             </select>
             {errors.employmentType && (
@@ -234,23 +230,6 @@ export default function AddJobForm() {
             {errors.requirements && (
               <div className="text-red-500">
                 {errors.requirements.message?.toString()}
-              </div>
-            )}
-          </div>
-
-          <div>
-            <label className="block text-gray-600 mb-1">
-              Skills (one per line)
-            </label>
-            <textarea
-              rows={7}
-              {...register("skills")}
-              placeholder={"e.g.\nHealth insurance\nRemote work flexibility"}
-              className="border p-3 rounded-lg w-full"
-            />
-            {errors.skills && (
-              <div className="text-red-500">
-                {errors.skills.message?.toString()}
               </div>
             )}
           </div>

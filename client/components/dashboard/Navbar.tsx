@@ -16,13 +16,13 @@ function NavBar() {
 
   return (
     <>
-    <nav className="fixed top-0 left-0 h-full rounded-tr-lg rounded-br-lg bg-blue-600 z-40 group transition-all duration-300 w-16 hover:w-42 overflow-hidden">
-      <ul className="flex flex-col items-center gap-6 mt-20 px-2">
+    <nav className="fixed bottom-0 md:top-0 left-0 h-16 md:h-full w-full md:w-16 md:hover:w-42 rounded-tr-lg rounded-br-lg bg-blue-600 z-40 group transition-all duration-300  overflow-hidden">
+      <ul className="w-full flex flex-row md:flex-col items-center gap-2 md:gap-6 mt-0 md:mt-20 px-2">
         {links.map((link) => (
           <li key={link.href} className="w-full">
             <Link
               href={link.href}
-              className="flex items-center h-10 gap-6 text-white font-semibold px-3 py-2"
+              className="flex flex-col md:flex-row items-center h-10 gap-2 md:gap-6 text-white font-semibold px-3 py-2"
             >
               <span>{link.icon}</span>
               <span className="whitespace-nowrap">

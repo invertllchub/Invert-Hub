@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useMemo } from "react";
 import ToolBar from "@/components/dashboard/ToolBar";
 import DeleteBtn from "@/components/dashboard/DeleteBtn";
 import UpdateBtn from "@/components/dashboard/UpdateBtn";
@@ -27,8 +27,12 @@ function ProjectsPage() {
     fetchData();
   }, []);
 
-  const allSelected = selected.length === projects.length && projects.length > 0;
-  const someSelected = selected.length > 0 && !allSelected;
+  const { allSelected, someSelected } = useMemo(() => {
+    const all = selected.length === projects.length && projects.length > 0;
+    const some = selected.length > 0 && !all;
+    return { allSelected: all, someSelected: some };
+  }, [selected, projects]);
+
 
   useEffect(() => {
     if (headerCheckboxRef.current)
@@ -46,7 +50,8 @@ function ProjectsPage() {
   };
 
   const handleDeleteOne = (id: string) => {
-    setProjects((prev) => prev.filter((p) => p.id !== id));
+    setProjects((prev) => prev.filter((p) => String(p.id) !== String(id)));
+    setSelected((prev) => prev.filter((x) => String(x) !== String(id))); 
   };
 
   const handleDeleteAll = () => {
@@ -66,7 +71,7 @@ function ProjectsPage() {
     );
 
   return (
-    <div className="w-full min-h-screen bg-gray-200/75 pl-30 pr-15 py-10">
+    <div className="w-full min-h-screen bg-gray-200/75 pl-0 md:pl-30 pr-0 md:pr-15 pb-20 md:pb-10 pt-5 md:pt-10 overflow-hidden">
       <ToolBar
       title="Projects"
       allSelected={allSelected}
@@ -77,7 +82,7 @@ function ProjectsPage() {
       </ToolBar>
 
       {/* 🖥️ TABLE VIEW (Desktop) */}
-      <div className="hidden md:block w-full mt-8 rounded-lg bg-white p-8 shadow-sm overflow-x-auto">
+      <div className="hidden md:block w-full mt-8 rounded-lg bg-white p-12 shadow-sm overflow-x-auto">
         <div className="grid grid-cols-[50px_1fr_200px] gap-8 mb-3 font-semibold text-gray-700 border-b pb-2">
           <div className="flex justify-center">
             <input
@@ -121,7 +126,7 @@ function ProjectsPage() {
       </div>
 
       {/* 📱 CARD VIEW (Mobile) */}
-      <div className="block md:hidden mt-6 space-y-4">
+      <div className="block md:hidden mt-6 space-y-4 p-6">
         {filteredProjects.map((project) => (
           <div
             key={project.id}

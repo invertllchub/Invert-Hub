@@ -80,13 +80,9 @@ function AddProjectForm() {
 
 
   return (
-    <form
-    id="add-project-form"
-    onSubmit={handleSubmit(onSubmit)}
-    className="w-full min-h-screen space-y-4 grid grid-cols-1 md:grid-cols-2 gap-6 mt-10"
-    >
-
-      <div>
+    <form id="add-project-form" onSubmit={handleSubmit(onSubmit)}>
+    <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-6 p-6 md:p-12">
+      <div className="w-full">
         <label className="block mb-1 font-medium">Project Name</label>
         <input
           type="text"
@@ -97,7 +93,7 @@ function AddProjectForm() {
         />
       </div>
 
-      <div>
+      <div className="w-full">
         <label className="block mb-1 font-medium">Description</label>
         <textarea
           placeholder="Project Description"
@@ -108,7 +104,7 @@ function AddProjectForm() {
       </div>
 
 
-      <div>
+      <div className="w-full">
         <label className="block mb-1 font-medium">Project Image</label>
         <div
         className="relative border-2 border-dashed rounded-md p-4 text-center cursor-pointer 
@@ -157,7 +153,7 @@ function AddProjectForm() {
         </div>
       </div>
 
-      <div>
+      <div className="w-full">
         <label className="block mb-1 font-medium">Project Link</label>
         <input
           type="text"
@@ -166,7 +162,9 @@ function AddProjectForm() {
           className="border p-3 rounded-lg w-full"
         />
       </div>
-    </form>
+
+    </div>
+  </form>
   );
 }
 
