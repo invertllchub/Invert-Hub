@@ -1,12 +1,12 @@
-﻿namespace Invert.Api.Dtos
+﻿namespace Invert.Api.Dtos.Project
 {
     public class ProjectDto
     {
         public int Id { get; set; }
         public string Title { get; set; } = string.Empty;
-        public string Slug { get; set; } = string.Empty;
         public string Description { get; set; } = string.Empty;
-        public string Img { get; set; } = string.Empty;
-        public List<string> Images { get; set; } = new();
+        public string PathImg { get; set; } = string.Empty;
+        public string Link { get; set; } = string.Empty;
+        public DateTime CreatedAt { get; set; }
     }
 }

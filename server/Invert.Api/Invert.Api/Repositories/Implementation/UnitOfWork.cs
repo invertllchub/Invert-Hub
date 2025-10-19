@@ -10,14 +10,20 @@ namespace Invert.Api.Repositories.Implementation
         private readonly ApplicationDbContext _dbContext;
 
         public IUserRepository User { get; private set; }
-        public IProjectRepository Product { get; private set; }
+        public IProjectRepository Project { get; private set; }
+
+        public IArticleRepository Article { get; private set; }
+        public IJobRepository Job { get; private set; }
+
 
 
         public UnitOfWork(ApplicationDbContext dbContext)
         {
             _dbContext = dbContext;
-            Product = new ProjectRepository(_dbContext);
+            Project = new ProjectRepository(_dbContext);
             User = new UserRepository(_dbContext);
+            Article = new ArticleRepository(_dbContext);
+            Job = new JobRepository(_dbContext);
         }
 
         public void Save()
