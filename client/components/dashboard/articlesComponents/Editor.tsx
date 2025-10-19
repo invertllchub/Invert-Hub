@@ -1,5 +1,6 @@
 "use client"
 
+import "../../../app/(main)/globals.css"
 import { useEffect, useRef } from "react";
 // Editor.js & Editor tools
 import EditorJS from "@editorjs/editorjs";
@@ -119,9 +120,9 @@ export default function Editor() {
   };
 
   return (
-    <div className="p-12 w-full bg-gray-200/75">
+    <div className="p-6 md:p-12 w-full bg-gray-200/75">
       <div className="w-full flex items-center justify-between">
-        <h1 className="text-4xl font-extrabold text-gray-800">
+        <h1 className="text-2xl md:text-4xl font-extrabold text-gray-800">
           PUBLISH YOUR ARTICLE
         </h1>
         <button
@@ -132,7 +133,7 @@ export default function Editor() {
         </button>
       </div>
 
-      <div className="rounded-lg shadow-md py-6 min-h-[100vh] px-4 mt-10 bg-white">
+      <div className="rounded-lg shadow-md py-6 min-h-[100vh] px-4 mt-10 mb-15 bg-white">
         <div id="editorjs" />
       </div>
     </div>

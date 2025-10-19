@@ -18,7 +18,7 @@ function ToolBar({ allSelected, someSelected, setSearchValue, title, children }:
           <input
             type="text"
             placeholder='Search'
-            className="w-full px-10 py-3 md:py-2 outline-none "
+            className="w-full px-10 py-3.5 md:py-2 outline-none "
             onChange={(e) => setSearchValue(e.target.value)}
           />
           <div className='absolute top-1/2 -translate-y-1/2 left-2'>
@@ -31,7 +31,7 @@ function ToolBar({ allSelected, someSelected, setSearchValue, title, children }:
         </div>
       </div>
 
-      <div className='px-1 md:px-4 py-0 md:py-2 rounded-lg bg-blue-600 hover:bg-blue-500 text-white cursor-pointer'>
+      <div className='px-1 md:px-4 py-1 md:py-2 rounded-lg bg-blue-600 hover:bg-blue-500 text-white cursor-pointer'>
         <Link href={`/dashboard/${title.toLowerCase()}/add`}>
           <button className='cursor-pointer'>
             + Add <span>{title}</span>

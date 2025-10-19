@@ -27,8 +27,8 @@ export default class OverViewTool implements BlockTool {
     const textarea = document.createElement("textarea");
     textarea.placeholder = "Enter overview text";
     textarea.value = this.data?.text ?? "";
-    textarea.rows = 5,
-    textarea.className = "border p-2 rounded w-full min-h-[100px]";
+    textarea.rows = 7,
+    textarea.className = "border my-2 p-2 rounded w-full min-h-[100px]";
 
     this.wrapper.appendChild(textarea);
 

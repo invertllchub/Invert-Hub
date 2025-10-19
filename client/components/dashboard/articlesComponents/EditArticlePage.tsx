@@ -114,9 +114,9 @@ export default function EditArticlePage() {
   if (!article) return <p>Loading...</p>;
 
   return (
-    <div className="w-full bg-gray-200/75 p-12">
+    <div className="w-full bg-gray-200/75 p-6 md:p-12">
       <div className="w-full flex items-center justify-between">
-        <h1 className="text-4xl font-extrabold text-gray-800">
+        <h1 className="text-xl md:text-4xl font-extrabold text-gray-800">
           EDIT YOUR ARTICLE
         </h1>
         <button
@@ -127,7 +127,7 @@ export default function EditArticlePage() {
         </button>
       </div>
 
-      <div className="rounded-lg shadow-md py-6 min-h-[100vh] px-4 mt-10 bg-white w-full">
+      <div className="rounded-lg shadow-md py-6 min-h-[100vh] px-4 mb-15 mt-10 bg-white w-full">
         <div id="editorjs" />
       </div>
     </div>

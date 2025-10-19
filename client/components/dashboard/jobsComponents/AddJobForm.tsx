@@ -72,7 +72,7 @@ export default function AddJobForm() {
 
   return (
     <form id="add-job-form" onSubmit={handleSubmit(onSubmit)}>
-      <div className="w-full flex flex-col md:flex-row items-start gap-6 mt-10">
+      <div className="w-full flex flex-col md:flex-row items-start gap-6 p-6 md:p-12">
         <div className="w-full md:w-1/2 flex flex-col gap-8">
           <div>
             <label className="block text-gray-600 mb-1">Job Title</label>

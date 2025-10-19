@@ -9,7 +9,7 @@ import React from 'react'
 
 function page() {
   return (
-    <div className='pl-15'>
+    <div className='pl-0 md:pl-15'>
       <EditArticlePage />
     </div>
   )
