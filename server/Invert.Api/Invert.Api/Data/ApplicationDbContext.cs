@@ -5,12 +5,20 @@ using System.Reflection;
 
 namespace Invert.Api.Data
 {
-    public class ApplicationDbContext(DbContextOptions options) : IdentityDbContext<AppUser>
+    public class ApplicationDbContext : IdentityDbContext<AppUser>
     {
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+            : base(options)
+        {
+        }
+
         public DbSet<Project> Projects { get; set; } = null!;
-        public DbSet<AppUser> Users { get; set; } = null!;
+        // احذف السطر التالي لأن IdentityDbContext<AppUser> بالفعل يعرّف Users:
+        // public DbSet<AppUser> Users { get; set; } = null!;
 
         public DbSet<Article> Articles { get; set; } = null!;
+
+        public DbSet<Job> Jobs { get; set; } = null!;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -19,9 +27,7 @@ namespace Invert.Api.Data
             modelBuilder.Entity<AppUser>().HasIndex(u => u.UserName).IsUnique();
             modelBuilder.Entity<AppUser>().HasIndex(u => u.Email).IsUnique();
 
-            modelBuilder.ApplyConfigurationsFromAssembly(
-                Assembly.GetExecutingAssembly());
+            //modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
         }
     }
 }
-
