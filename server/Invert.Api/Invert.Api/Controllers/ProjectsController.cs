@@ -1,5 +1,6 @@
-using Invert.Api.Dtos;
 using Invert.Api.Dtos.Article;
+using Invert.Api.Dtos.Project;
+using Invert.Api.Entities;
 using Invert.Api.Services.Interface;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -7,12 +8,11 @@ using Microsoft.AspNetCore.Mvc;
 namespace Invert.Api.Controllers;
 
 [ApiController]
-[Route("[controller]")]
-public class ProjectsController : ControllerBase
+[Route("api/[controller]")]
+public class ProjectController : ControllerBase
 {
     private readonly IProjectService _service;
-    public ProjectsController(IProjectService service) => _service = service;
-
+    public ProjectController(IProjectService service) => _service = service;
 
     [HttpGet]
     public async Task<IActionResult> GetAll()
@@ -24,7 +24,7 @@ public class ProjectsController : ControllerBase
 
 
     [HttpPost]
-    [Authorize(Roles = "Admin")]
+    // [Authorize(Roles = "Admin")]
     public IActionResult Create([FromBody] CreateProjectDto dto)
     {
         //create project by ProjectService and add validation and exception handling
@@ -40,20 +40,20 @@ public class ProjectsController : ControllerBase
     }
 
 
-
-
     [HttpGet("{id}")]
-    public async Task<IActionResult> GetById([FromRoute] int id)
+    public async Task<IActionResult> GetById([FromBody] int id)
     {
         var project = await _service.GetByIdAsync(id);
+        if (project == null) return NotFound();
         return Ok(project);
     }
 
     [HttpPut("{id}")]
-    [Authorize(Roles = "Admin")]
-    public IActionResult Update([FromRoute] int id, [FromBody] ProjectDto dto)
+    // [Authorize(Roles = "Admin")]
+    public async Task<IActionResult>  Update(int id, [FromForm] UpdateProjectDto dto)
     {
-        if (dto.Id != id) return BadRequest("Id mismatch.");
+        var existingProject = _service.GetByIdAsync(id);
+        if (existingProject == null) return NotFound();
 
         if (ModelState.IsValid == false)
         {
@@ -61,7 +61,7 @@ public class ProjectsController : ControllerBase
         }
         try
         {
-            _service.UpdateAsync(dto);
+            await _service.UpdateAsync(id, dto);
             return Ok("Project updated successfully.");
         }
         catch (Exception ex)
@@ -70,16 +70,15 @@ public class ProjectsController : ControllerBase
         }
     }
 
-
     [HttpDelete("{id}")]
-    [Authorize(Roles = "Admin")]
-    public IActionResult Delete([FromRoute] int id)
+    // [Authorize(Roles = "Admin")]
+    public async Task<IActionResult> Delete([FromBody] int id)
     {
 
         if (id == 0) return BadRequest("Id mismatch.");
         try
         {
-            _service.DeleteAsync(id);
+            await _service.DeleteAsync(id);
             return Ok("Project deleted successfully.");
         }
         catch (Exception ex)
@@ -87,12 +86,6 @@ public class ProjectsController : ControllerBase
             return BadRequest(ex.Message);
         }
     }
-
-    
-
-    //end Point to Fact
-
-
 }
 
 

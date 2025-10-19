@@ -13,7 +13,7 @@ using System.Text;
 namespace Invert.Api.Controllers
 {
     [ApiController]
-    [Route("api/auth")]
+    [Route("api/[controller]")]
 
     public class AuthController : ControllerBase
     {

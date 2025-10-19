@@ -13,6 +13,13 @@ public class ArticlesController : ControllerBase
     private readonly IArticleService _service;
     public ArticlesController(IArticleService service) => _service = service;
 
+    [HttpGet]
+    public async Task<IActionResult> GetAll()
+    {
+        var articles = await _service.GetAllAsync();
+        return Ok(articles);
+    }
+
     [HttpPost]
     public async Task<IActionResult> Create([FromBody] CreateArticleDto dto)
     {
@@ -33,7 +40,7 @@ public class ArticlesController : ControllerBase
     public async Task<IActionResult> Update(Guid id, [FromBody] UpdateArticleDto dto)
     {
         // Ensure the article exists
-        var existingArticle = await _service.GetByIdAsync(id);
+        var existingArticle = await _service.GetByIdAsync(id);  
         if (existingArticle == null) return NotFound();
 
         await _service.UpdateArticleAsync(id, dto);
