@@ -27,15 +27,15 @@ export default function EditProjectPage() {
   if (!project) return <div className="ml-20 p-4">Loading project...</div>;
 
   return (
-    <div className="w-full min-h-screen pl-30 pr-15 py-10 overflow-hidden bg-gray-200/75">
-      <div className="w-full flex flex-col md:flex-row items-center justify-between gap-6">
+    <div className="pl-0 md:pl-30 pr-0 md:pr-15 py-10 overflow-hidden bg-gray-200/75">
+      <div className="w-full flex md:flex-row items-center justify-between gap-6 p-6 md:p-12">
         <h1 className="text-2xl md:text-4xl font-extrabold text-gray-800">Edit Project</h1>
         <button
           form="edit-project-form"
           type="submit"
-          className="px-4 w-16 py-2 bg-blue-600 text-white rounded-lg col-start-1 cursor-pointer"
+          className="px-4 w-42 py-2 bg-blue-600 hover:bg-blue-700 transition-colors text-white rounded-lg col-start-1 cursor-pointer"
         >
-          Save
+          Save Changes
         </button>
       </div>
       <div >
