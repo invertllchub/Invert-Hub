@@ -38,7 +38,7 @@ export default function EditProjectPage() {
           Save Changes
         </button>
       </div>
-      <div >
+      <div className="mb-10">
         <EditProjectForm project={project}  />
       </div>
     </div>
