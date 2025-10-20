@@ -1,3 +1,4 @@
+
 import {z} from 'zod';
 
 export const LoginSchema = z.object({
@@ -10,3 +11,4 @@ export const LoginSchema = z.object({
 })
 
 export type FormFields = z.infer<typeof LoginSchema>
+

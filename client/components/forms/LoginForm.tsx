@@ -69,7 +69,7 @@ function LoginForm() {
 
     return (
         <form onSubmit={handleSubmit(onSubmit)} >
-            <div className="flex flex-col gap-4 w-85 mx-auto p-4">
+            <div className="w-full flex flex-col gap-4 p-4">
                 <div className='w-full'>
                     <label htmlFor="userName">User Name</label>
                     <input 
