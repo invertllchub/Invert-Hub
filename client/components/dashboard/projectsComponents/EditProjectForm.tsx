@@ -14,8 +14,6 @@ type ProjectProp = {
     project: Project;
 };
 
-
-
 function EditProjectForm({project}: ProjectProp) {
   const [preview, setPreview] = useState<string>(project.img || "");
   const [file, setFile] = useState<File | null>(null); 
@@ -34,41 +32,37 @@ function EditProjectForm({project}: ProjectProp) {
   } = useForm<FormFields>({
     resolver: zodResolver(EditProjectSchema),
     defaultValues: {
-        projectName: project.title,
-        projectDescription: project.description,
-        projectLink: project.link
+      projectName: project.title,
+      projectDescription: project.description,
+      projectLink: project.link
     }
   });
 
   
   const onSubmit: SubmitHandler<FormFields> = async (data) => {
 
-    console.log("Hi")
-
     const toastId = showToast("loading", {
       message: "Editing Project Application...",
     });
 
-  let uploadedImageUrl = preview; 
+    let uploadedImageUrl = preview; 
 
-  if (file) {
-    uploadedImageUrl = await uploadToCloudinary(file); 
-  }
+    if (file) {
+      uploadedImageUrl = await uploadToCloudinary(file); 
+    }
 
     try {
-      const formData = new FormData();
-      formData.append("projectName", data.projectName);
-      formData.append("projectDescription", data.projectDescription);
-      formData.append("projectImage", uploadedImageUrl);
-      formData.append("projectLink", data.projectLink);
-
-      for (const [key, value] of formData.entries()) {
-        console.log(`${key}: ${value}`);
-      }
-
+      const payload = {
+        ...data,
+        projectImage: uploadedImageUrl
+      };
+      
       const response = await fetch("", {
         method: "POST",
-        body: formData,
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
       });
 
       const result = await response.json();

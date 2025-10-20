@@ -39,21 +39,18 @@ function AddProjectForm() {
     }
 
     try {
-      const formData = new FormData();
-      formData.append("projectName", data.projectName);
-      formData.append("projectDescription", data.projectDescription);
-      formData.append("projectImage", uploadedImageUrl);
-      formData.append("projectLink", data.projectLink);
-
-      for (const [key, value] of formData.entries()) {
-        console.log(`${key}: ${value}`);
-      }
-
+      const payload = {
+        ...data,
+        projectImage: uploadedImageUrl
+      };
+      
       const response = await fetch("", {
         method: "POST",
-        body: formData,
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
       });
-
       const result = await response.json();
 
       if (result.success) {
