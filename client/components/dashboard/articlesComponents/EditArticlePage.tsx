@@ -80,8 +80,6 @@ export default function EditArticlePage() {
       author: "Mohamed", 
     };
     
-    console.log("Updated Article:", UpdatedArticle);
-
     try {
       const res = await fetch('', {
         method: "PUT", 
