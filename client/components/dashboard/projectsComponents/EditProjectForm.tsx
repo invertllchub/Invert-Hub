@@ -103,7 +103,6 @@ function EditProjectForm({project}: ProjectProp) {
           type="text"
           placeholder="Project Title"
           { ...register("projectName")}
-          required
           className="border p-3 rounded-lg w-full"
         />
         {errors.projectName && (
@@ -118,7 +117,6 @@ function EditProjectForm({project}: ProjectProp) {
         <textarea
           placeholder="Project Description"
           { ...register("projectDescription")}
-          required
           className="border p-3 rounded-lg w-full h-28"
         />
         {errors.projectDescription && (
