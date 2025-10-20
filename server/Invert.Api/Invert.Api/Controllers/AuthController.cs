@@ -13,14 +13,16 @@ using System.Text;
 namespace Invert.Api.Controllers
 {
     [ApiController]
-    [Route("api/auth")]
+    [Route("api/[controller]")]
 
     public class AuthController : ControllerBase
     {
         private readonly IAuthService _authService;
-        public AuthController(IAuthService authService)
+        private readonly UserManager<AppUser> _userManager;
+        public AuthController(IAuthService authService, UserManager<AppUser> userManager)
         {
             _authService = authService;
+            // _userManager = userManager;
         }
 
         [HttpPost("login")]
@@ -31,7 +33,7 @@ namespace Invert.Api.Controllers
             {
                 if (!ModelState.IsValid) return BadRequest(ModelState);
 
-                var user = await _authService.GetUserByEmailAsync(loginDto.Email);
+                var user = await _userManager.FindByEmailAsync(loginDto.Email);
 
                 if (user == null) return BadRequest(new { Message = "User not found" });
 

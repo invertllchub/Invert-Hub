@@ -21,7 +21,7 @@ namespace Invert.Api.Services.Implementation
         public AuthService(
             UserManager<AppUser> userManager,
             IConfiguration configuration)
-        {
+        {   
             _userManager = userManager;
             _configuration = configuration;
         }
@@ -46,6 +46,7 @@ namespace Invert.Api.Services.Implementation
         {
             return await _userManager.FindByEmailAsync(email) != null;
         }
+
 
 
 

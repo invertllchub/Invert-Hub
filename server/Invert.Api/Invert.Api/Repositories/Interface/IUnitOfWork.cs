@@ -6,7 +6,9 @@ namespace Invert.Api.Repositories.Interface
     {
        
         IUserRepository User { get; }
-        IProjectRepository Product { get; }
+        IProjectRepository Project { get; }
+        IArticleRepository Article { get; }
+        IJobRepository Job { get; }
         void Save();
         
     }
