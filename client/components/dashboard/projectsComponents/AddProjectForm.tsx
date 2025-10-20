@@ -85,9 +85,11 @@ function AddProjectForm() {
           type="text"
           placeholder="Project Title"
           { ...register("projectName")}
-          required
           className="border p-3 rounded-lg w-full"
         />
+        {errors.projectName && (
+          <div className="text-red-600">{errors.projectName.message}</div>
+        )}
       </div>
 
       <div className="w-full">
@@ -95,9 +97,11 @@ function AddProjectForm() {
         <textarea
           placeholder="Project Description"
           { ...register("projectDescription")}
-          required
           className="border p-3 rounded-lg w-full h-28"
         />
+        {errors.projectDescription && (
+          <div className="text-red-600">{errors.projectDescription.message}</div>
+        )}
       </div>
 
 
@@ -148,6 +152,9 @@ function AddProjectForm() {
           }}
           />
         </div>
+        {errors.projectImage && (
+          <div className="text-red-600">{errors.projectImage.message}</div>
+        )}
       </div>
 
       <div className="w-full">
@@ -158,6 +165,9 @@ function AddProjectForm() {
           { ...register("projectLink")}
           className="border p-3 rounded-lg w-full"
         />
+        {errors.projectLink && (
+          <div className="text-red-600">{errors.projectLink.message}</div>
+        )}
       </div>
 
     </div>
