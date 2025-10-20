@@ -17,7 +17,7 @@ function NavBar() {
   return (
     <>
     <nav className="fixed bottom-0 md:top-0 left-0 h-16 md:h-full w-full md:w-16 md:hover:w-42 rounded-tr-lg rounded-br-lg bg-blue-600 z-40 group transition-all duration-300  overflow-hidden">
-      <ul className="w-full flex flex-row md:flex-col items-center justify-between gap-2 md:gap-6 mt-0 md:mt-20 px-2">
+      <ul className="w-full flex flex-row md:flex-col items-center gap-1 md:gap-6 mt-0 md:mt-20 px-2">
         {links.map((link) => (
           <li key={link.href} className="w-full">
             <Link
