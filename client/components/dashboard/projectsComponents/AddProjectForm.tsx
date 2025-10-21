@@ -39,21 +39,18 @@ function AddProjectForm() {
     }
 
     try {
-      const formData = new FormData();
-      formData.append("projectName", data.projectName);
-      formData.append("projectDescription", data.projectDescription);
-      formData.append("projectImage", uploadedImageUrl);
-      formData.append("projectLink", data.projectLink);
-
-      for (const [key, value] of formData.entries()) {
-        console.log(`${key}: ${value}`);
-      }
-
+      const payload = {
+        ...data,
+        projectImage: uploadedImageUrl
+      };
+      
       const response = await fetch("", {
         method: "POST",
-        body: formData,
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
       });
-
       const result = await response.json();
 
       if (result.success) {
@@ -88,9 +85,11 @@ function AddProjectForm() {
           type="text"
           placeholder="Project Title"
           { ...register("projectName")}
-          required
           className="border p-3 rounded-lg w-full"
         />
+        {errors.projectName && (
+          <div className="text-red-600">{errors.projectName.message}</div>
+        )}
       </div>
 
       <div className="w-full">
@@ -98,9 +97,11 @@ function AddProjectForm() {
         <textarea
           placeholder="Project Description"
           { ...register("projectDescription")}
-          required
           className="border p-3 rounded-lg w-full h-28"
         />
+        {errors.projectDescription && (
+          <div className="text-red-600">{errors.projectDescription.message}</div>
+        )}
       </div>
 
 
@@ -151,6 +152,9 @@ function AddProjectForm() {
           }}
           />
         </div>
+        {errors.projectImage && (
+          <div className="text-red-600">{errors.projectImage.message}</div>
+        )}
       </div>
 
       <div className="w-full">
@@ -161,6 +165,9 @@ function AddProjectForm() {
           { ...register("projectLink")}
           className="border p-3 rounded-lg w-full"
         />
+        {errors.projectLink && (
+          <div className="text-red-600">{errors.projectLink.message}</div>
+        )}
       </div>
 
     </div>
