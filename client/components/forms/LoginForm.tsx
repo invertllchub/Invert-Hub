@@ -38,7 +38,7 @@ function LoginForm() {
 
             const result = await response.json();
 
-            if (result.success) {
+            if (!response.ok) {
                 showToast("error", {
                     message: result.message || "Login failed!",
                     toastId,
