@@ -44,31 +44,19 @@ export default function EditJobForm({ job }: JobProps) {
     });
 
     try {
-      const formData = new FormData();
-      formData.append("title", data.title);
-      formData.append("location", data.location);
-      formData.append("employmentType", data.employmentType);
-      formData.append("experienceLevel", data.experienceLevel);
-      formData.append("salary", String(data.salary));
-      formData.append("status", data.status);
-      formData.append("datePosted", data.datePosted);
-      formData.append("closingDate", data.closingDate);
-      formData.append("description", data.description);
-      const requirementsArray = parseMultilineText(data.requirements || "");
-      const benefitsArray = parseMultilineText(data.benefits || "");
-
-
-      formData.append("requirements", JSON.stringify(requirementsArray));
-      formData.append("benefits", JSON.stringify(benefitsArray));
-
-
-                  for (const [key, value] of formData.entries()) {
-                console.log(`${key}: ${value}`);
-            }
+      const payload = {
+        ...data,
+        requirements: parseMultilineText(data.requirements || ""),
+        benefits: parseMultilineText(data.benefits || ""),
+        salary: Number(data.salary), 
+    };
 
       const response = await fetch("", {
         method: "PUT",
-        body: formData,
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
       });
 
       const result = await response.json();

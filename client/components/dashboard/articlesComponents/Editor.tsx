@@ -87,8 +87,6 @@ export default function Editor() {
       author: "Mohamed", 
     };
   
-    console.log(article);
-
     try {
       const res = await fetch ('',{
         method: "POST",
