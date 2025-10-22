@@ -3,9 +3,9 @@ import { z } from "zod";
 export const EditJobSchema = z.object({
     title: z.string().min(3, "Title is required"),
     location: z.string().min(2, "Location is required"),
-  
+
     employmentType: z
-        .enum(["Full-time", "Part-time", "Contract"])
+        .enum(["Full-Time", "Part-Time", "Contract", "Full-Time / Part-Time"])
         .refine((val) => !!val, { message: "Employment Type is required" }),
 
     experienceLevel: z

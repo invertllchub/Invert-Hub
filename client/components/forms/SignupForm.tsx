@@ -8,6 +8,7 @@ import { SignupSchema } from '../schemas/SignupSchema';
 import { FormFields } from '../schemas/SignupSchema';
 // Toast
 import { showToast } from "@/components/jobs/Toast";
+
 function SignupForm() {
     const {
         register,
@@ -20,7 +21,7 @@ function SignupForm() {
 
     const onSubmit: SubmitHandler<FormFields> = async (data) => {
         const toastId = showToast("loading", {
-            message: "Please wait a few seconds to login...",
+            message: "Please wait a few seconds to signup...",
         });
 
         try {
@@ -36,14 +37,14 @@ function SignupForm() {
 
             if (!response.ok) {
                 showToast("error", {
-                    message: result.message || "Login failed!",
+                    message: result.message || "Signup failed!",
                     toastId,
                 });
                 return;
             }
 
             showToast("success", {
-                message: "Login has been done successfully!",
+                message: "Signup has been done successfully!",
                 toastId,
             });
 
@@ -51,7 +52,7 @@ function SignupForm() {
         } catch (error) {
             console.error(error);
             showToast("error", {
-                message: "Failed to login, please try again later.",
+                message: "Failed to signup, please try again later.",
                 toastId,
             });
         }
@@ -147,12 +148,15 @@ function SignupForm() {
 
             <button 
             type='submit'
-            className="w-full bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg shadow-md 
+            className={`w-full bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg shadow-md 
             hover:bg-blue-700 hover:shadow-lg cursor-pointer mt-4
             focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-1
-            transition duration-200"
+            transition duration-200${isSubmitting
+                ? "bg-blue-400 cursor-not-allowed"
+                : "bg-blue-600 hover:bg-blue-700 hover:shadow-lg cursor-pointer"
+            }`}
             >
-                Signup
+                {isSubmitting ? 'Signing...' : 'Signup'}
             </button>
             <p className="text-sm text-gray-600">
                 Already have an account?{" "}

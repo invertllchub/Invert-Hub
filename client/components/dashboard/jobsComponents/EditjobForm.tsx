@@ -123,8 +123,9 @@ export default function EditJobForm({ job }: JobProps) {
               className="border p-3 rounded-lg w-full"
             >
               <option value="">Select Employment Type</option>
-              <option value="Full-time">Full-time</option>
-              <option value="Part-time">Part-time</option>
+              <option value="Full-Time">Full-Time</option>
+              <option value="Part-Time">Part-Time</option>
+              <option value="Full-Time / Part-Time">Full-Time / Part-Time</option>
               <option value="Contract">Contract</option>
             </select>
             {errors.employmentType && (

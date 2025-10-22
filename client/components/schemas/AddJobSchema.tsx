@@ -5,7 +5,7 @@ export const AddJobSchema = z.object({
   location: z.string().min(2, "Location is required"),
   
   employmentType: z
-    .enum(["Full-time", "Part-time", "Contract", "Full-time / Part-time"])
+    .enum(["Full-Time", "Part-Time", "Contract", "Full-Time / Part-Time"])
     .refine((val) => !!val, { message: "Employment Type is required" }),
 
   experienceLevel: z
