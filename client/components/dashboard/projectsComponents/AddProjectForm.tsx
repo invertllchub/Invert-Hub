@@ -32,21 +32,23 @@ function AddProjectForm() {
       message: "Submitting Project Application...",
     });
 
-
-
     try {
+
+      console.log("⬆️ Starting upload", data.projectImage);
 
       let uploadedImageUrl = "";
       if (data.projectImage) {
         uploadedImageUrl = await uploadToCloudinary(data.projectImage);
       }
 
+      console.log("✅ Upload complete:", uploadedImageUrl);
+
       const payload = {
         ...data,
         projectImage: uploadedImageUrl,
       };
 
-      const response = await fetch("", {
+      const response = await fetch("/api/projects", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
