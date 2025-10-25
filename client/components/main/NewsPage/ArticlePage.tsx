@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 // types
 import { Article, Block } from "@/types/articles";
+import DownloadArticleButton from "./DownloadArticleButton";
 
 interface Props {
   article: Article;
@@ -12,14 +13,18 @@ interface Props {
 
 const ArticlePage: React.FC<Props> = ({ article }) => {
   return (
-    <div className="p-6 md:p-16 mt-20">
-      <time className="text-sm text-gray-500 mb-3 block">
-        {new Date(article.time).toLocaleDateString("en-US", {
-          year: "numeric",
-          month: "short",
-          day: "numeric",
-        })}
-      </time>
+    <div className="p-6 md:p-16 mt-20" id="article-content">
+      <div className="w-full flex justify-between">
+        <time className="text-sm text-gray-500 mb-3 block">
+          {new Date(article.time).toLocaleDateString("en-US", {
+            year: "numeric",
+            month: "short",
+            day: "numeric",
+          })}
+        </time>
+        <DownloadArticleButton blocks={article.blocks} fileName={`${article.blocks[0].data.text}.pdf`} />
+      </div>
+
       {article.blocks.map((block: Block, i: number) => {
         switch (block.type) {
           case "header":

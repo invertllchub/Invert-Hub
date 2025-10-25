@@ -16,6 +16,7 @@
     "@editorjs/link": "^2.6.2",
     "@editorjs/list": "^2.0.8",
     "@hookform/resolvers": "^5.2.2",
+    "@react-pdf/renderer": "^4.3.1",
     "@tailwindcss/postcss": "^4.1.11",
     "gsap": "^3.13.0",
     "lucide-react": "^0.535.0",
@@ -33,6 +34,7 @@
   },
   "devDependencies": {
     "@types/node": "^20",
+    "@types/pdfmake": "^0.2.12",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "typescript": "^5"
