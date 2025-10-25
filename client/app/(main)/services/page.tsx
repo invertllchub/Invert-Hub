@@ -51,7 +51,7 @@ function Page() {
                     />
                 </div>
             </section>
-            <section className='w-full h-[100vh] p-6 md:p-16 bg-white'>
+            <section className='w-full h-[100vh] bg-white'>
                 <YellowCard
                 h1={`Integrated Solutions`}
                 p={`We connect architecture, urban planning, interior and product design, publishing,
