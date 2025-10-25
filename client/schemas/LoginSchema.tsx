@@ -10,5 +10,5 @@ export const LoginSchema = z.object({
     .min(8, "Password must be at least 8 characters long")
 })
 
-export type FormFields = z.infer<typeof LoginSchema>
+export type LoginFormFields = z.infer<typeof LoginSchema>
 

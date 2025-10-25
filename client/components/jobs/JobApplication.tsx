@@ -2,8 +2,8 @@ import React from "react";
 // React-hook-form and validation with Zod
 import { useForm, Controller, SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { FormFields } from "../schemas/JobApplySchema";
-import { schema } from "../schemas/JobApplySchema";
+import { JobApplicationFormFields } from "../../schemas/JobApplySchema";
+import { schema } from "../../schemas/JobApplySchema";
 // Reach-phone-liberary
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
@@ -25,11 +25,11 @@ function JobApplication({ job }: JobProps) {
     control,
     reset,
     formState: { errors, isSubmitting },
-  } = useForm<FormFields>({
+  } = useForm<JobApplicationFormFields>({
     resolver: zodResolver(schema),
   });
 
-  const onSubmit: SubmitHandler<FormFields> = async (data) => {
+  const onSubmit: SubmitHandler<JobApplicationFormFields> = async (data) => {
     const toastId = showToast("loading", {
       message: "Submitting application...",
     });
@@ -37,13 +37,12 @@ function JobApplication({ job }: JobProps) {
     try {
       let cvUrl = "";
 
-      
       const file = (data.CV as FileList)[0];
       if (file) {
         cvUrl = await uploadToCloudinary(file);
       }
-      
-      const jobTitle = job.title
+
+      const jobTitle = job.title;
       const formData = new FormData();
       formData.append("access_key", "0bc40844-5a24-42dd-a1f7-350b79e12dd1");
       formData.append("Job Title", jobTitle);

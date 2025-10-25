@@ -25,4 +25,4 @@ export const EditJobSchema = z.object({
     benefits: z.string().min(5, "Please list at least one benefit"),
 });
 
-export type FormFields = z.infer<typeof EditJobSchema>;
+export type EditJobFormFields = z.infer<typeof EditJobSchema>;

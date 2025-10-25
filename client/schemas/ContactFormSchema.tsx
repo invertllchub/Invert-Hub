@@ -19,4 +19,4 @@ export const ContactFormSchema = z.object({
     .max(1000, "Message is too long"),
 });
 
-export type FormFields = z.infer<typeof ContactFormSchema>;
+export type ContactFormFields = z.infer<typeof ContactFormSchema>;

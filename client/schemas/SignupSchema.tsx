@@ -22,4 +22,4 @@ export const SignupSchema = z
         path: ["confirmedPassword"],
     });
 
-export type FormFields = z.infer<typeof SignupSchema>;
+export type SignupFormFields = z.infer<typeof SignupSchema>;
