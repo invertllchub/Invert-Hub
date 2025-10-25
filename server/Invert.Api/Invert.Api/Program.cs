@@ -37,6 +37,10 @@ builder.Services.AddScoped<IProjectService, ProjectService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IArticleService, ArticleService>();
+builder.Services.AddScoped<IArticleRepository, ArticleRepository>();
+builder.Services.AddScoped<IJobRepository, JobRepository>();
+builder.Services.AddScoped<IJobService, JobService>();
+
 
 
 
@@ -51,14 +55,14 @@ builder.Services.AddIdentity<AppUser, IdentityRole>(options =>
 
 
 
-// builder.Services.AddCors(options =>
-//   options.AddPolicy("AllowReactDev", policy =>
-//     policy.WithOrigins("http://localhost:3000", "https://localhost:3000")
-//           .AllowAnyHeader()
-//           .AllowAnyMethod()
-//           .AllowCredentials()
-//   )
-// );
+builder.Services.AddCors(options =>
+  options.AddPolicy("AllowReactDev", policy =>
+    policy.WithOrigins("http://localhost:3000", "https://localhost:3000")
+          .AllowAnyHeader()
+          .AllowAnyMethod()
+          .AllowCredentials()
+  )
+);
 
 // Configure JWT auth
 var jwtCfg = builder.Configuration.GetSection("Jwt");
@@ -134,7 +138,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
-// app.UseCors("AllowReactDev");
+ app.UseCors("AllowReactDev");
 app.UseAuthentication();
 app.UseAuthorization();
 
