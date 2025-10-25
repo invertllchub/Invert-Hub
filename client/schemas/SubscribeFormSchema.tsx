@@ -4,4 +4,4 @@ export const SubscribeFormSchema = z.object({
     email: z.email("Email is required")
 })
 
-export type FormFields = z.infer<typeof SubscribeFormSchema>
+export type SubscribeFormFields = z.infer<typeof SubscribeFormSchema>

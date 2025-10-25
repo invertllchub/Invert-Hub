@@ -21,4 +21,4 @@ export const schema = z.object({
   )
 })
 
-export type FormFields = z.infer<typeof schema>
+export type JobApplicationFormFields = z.infer<typeof schema>

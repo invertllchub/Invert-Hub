@@ -4,8 +4,8 @@ import { Job } from "@/types/jobs";
 // React-hook-form and validation with Zod
 import { useForm, SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { FormFields } from "@/components/schemas/EditJobSchema";
-import { EditJobSchema } from "@/components/schemas/EditJobSchema";
+import { EditJobFormFields } from "@/schemas/EditJobSchema";
+import { EditJobSchema } from "@/schemas/EditJobSchema";
 // Toast
 import { showToast } from "@/components/jobs/Toast";
 // Functions
@@ -21,7 +21,7 @@ export default function EditJobForm({ job }: JobProps) {
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm<FormFields>({
+  } = useForm<EditJobFormFields>({
     resolver: zodResolver(EditJobSchema),
     defaultValues: {
       title: job.title,
@@ -38,7 +38,7 @@ export default function EditJobForm({ job }: JobProps) {
     } as any,
   });
 
-  const onSubmit: SubmitHandler<FormFields> = async (data) => {
+  const onSubmit: SubmitHandler<EditJobFormFields> = async (data) => {
     const toastId = showToast("loading", {
       message: "Editing Job Application",
     });
@@ -48,8 +48,8 @@ export default function EditJobForm({ job }: JobProps) {
         ...data,
         requirements: parseMultilineText(data.requirements || ""),
         benefits: parseMultilineText(data.benefits || ""),
-        salary: Number(data.salary), 
-    };
+        salary: Number(data.salary),
+      };
 
       const response = await fetch("", {
         method: "PUT",
@@ -125,7 +125,9 @@ export default function EditJobForm({ job }: JobProps) {
               <option value="">Select Employment Type</option>
               <option value="Full-Time">Full-Time</option>
               <option value="Part-Time">Part-Time</option>
-              <option value="Full-Time / Part-Time">Full-Time / Part-Time</option>
+              <option value="Full-Time / Part-Time">
+                Full-Time / Part-Time
+              </option>
               <option value="Contract">Contract</option>
             </select>
             {errors.employmentType && (

@@ -3,8 +3,8 @@ import React from "react";
 // React-hook-form and validation with Zod
 import { useForm, SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { FormFields } from "@/components/schemas/AddJobSchema";
-import { AddJobSchema } from "@/components/schemas/AddJobSchema";
+import { AddJobFormFields } from "@/schemas/AddJobSchema";
+import { AddJobSchema } from "@/schemas/AddJobSchema";
 // Toast
 import { showToast } from "@/components/jobs/Toast";
 import { parseMultilineText } from "@/utils/ParseMultilineText";
@@ -15,11 +15,11 @@ export default function AddJobForm() {
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm<FormFields>({
+  } = useForm<AddJobFormFields>({
     resolver: zodResolver(AddJobSchema),
   });
 
-  const onSubmit: SubmitHandler<FormFields> = async (data) => {
+  const onSubmit: SubmitHandler<AddJobFormFields> = async (data) => {
     const toastId = showToast("loading", {
       message: "Submitting Job Application...",
     });
@@ -29,8 +29,8 @@ export default function AddJobForm() {
         ...data,
         requirements: parseMultilineText(data.requirements || ""),
         benefits: parseMultilineText(data.benefits || ""),
-        salary: Number(data.salary), 
-    };
+        salary: Number(data.salary),
+      };
 
       const response = await fetch("", {
         method: "POST",
@@ -104,7 +104,9 @@ export default function AddJobForm() {
               <option value="">Select Employment Type</option>
               <option value="Full-Time">Full-Time</option>
               <option value="Part-Time">Part-Time</option>
-              <option value="Full-Time / Part-Time">Full-Time / Part-Time</option>
+              <option value="Full-Time / Part-Time">
+                Full-Time / Part-Time
+              </option>
               <option value="Contract">Contract</option>
             </select>
             {errors.employmentType && (
@@ -138,7 +140,7 @@ export default function AddJobForm() {
               type="number"
               placeholder="Salary"
               min={0}
-              {...register("salary", { valueAsNumber: true })} 
+              {...register("salary", { valueAsNumber: true })}
               className="border p-3 rounded-lg w-full"
             />
             {errors.salary && (
