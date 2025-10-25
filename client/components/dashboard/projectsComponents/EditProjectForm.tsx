@@ -42,13 +42,16 @@ function EditProjectForm({ project }: ProjectProp) {
       message: "Editing Project Application...",
     });
 
-    let uploadedImageUrl = preview;
 
-    if (file) {
-      uploadedImageUrl = await uploadToCloudinary(file);
-    }
 
     try {
+
+      let uploadedImageUrl = preview;
+
+      if (file) {
+        uploadedImageUrl = await uploadToCloudinary(file);
+      }
+
       const payload = {
         ...data,
         projectImage: uploadedImageUrl,

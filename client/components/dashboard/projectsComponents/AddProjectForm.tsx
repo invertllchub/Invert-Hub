@@ -32,12 +32,15 @@ function AddProjectForm() {
       message: "Submitting Project Application...",
     });
 
-    let uploadedImageUrl = "";
-    if (data.projectImage) {
-      uploadedImageUrl = await uploadToCloudinary(data.projectImage);
-    }
+
 
     try {
+
+      let uploadedImageUrl = "";
+      if (data.projectImage) {
+        uploadedImageUrl = await uploadToCloudinary(data.projectImage);
+      }
+
       const payload = {
         ...data,
         projectImage: uploadedImageUrl,
