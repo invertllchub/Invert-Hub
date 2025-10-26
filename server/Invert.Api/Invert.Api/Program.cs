@@ -44,8 +44,6 @@ builder.Services.AddScoped<IJobRepository, JobRepository>();
 builder.Services.AddScoped<IJobService, JobService>();
 
 
-
-
 // Identity (ensure AppUser type and ApplicationDbContext are correct)
 builder.Services.AddIdentity<AppUser, IdentityRole>(options =>
 {
@@ -87,11 +85,16 @@ builder.Services.AddAuthentication(options =>
         ValidIssuer = jwtCfg["Issuer"],
         ValidAudience = jwtCfg["Audience"],
         IssuerSigningKey = new SymmetricSecurityKey(key),
-        ClockSkew = TimeSpan.FromMinutes(1)
+        ClockSkew = TimeSpan.FromMinutes(15)
     };
 });
 builder.Services.AddScoped<AppIdentityDbContextSeed.ContextSeed>();
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+    .AddJsonOptions(opts =>
+    {
+        opts.JsonSerializerOptions.PropertyNameCaseInsensitive = true;
+        opts.JsonSerializerOptions.Converters.Add(new System.Text.Json.Serialization.JsonStringEnumConverter());
+    });
 
 var app = builder.Build();
 

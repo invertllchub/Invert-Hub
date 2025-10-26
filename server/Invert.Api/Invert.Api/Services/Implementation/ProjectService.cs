@@ -38,22 +38,22 @@ namespace Invert.Api.Services.Implementation
             return Task.FromResult(project.Id);
         }
 
-        public Task<IEnumerable<ProjectDto>> GetAllAsync()
+        public async Task<IEnumerable<ProjectDto>> GetAllAsync()
         {
             //get all projects by unit of work
-            var projects = _unitOfWork.Project.GetAll();
+            var projects = await _unitOfWork.Project.GetAll();
             var projectDtos = projects.Select(p => new ProjectDto
             {
                 Id = p.Id,
                 Title = p.Title,
-                Description = p.Description,
-                PathImg = p.PathImg,
+                Description = p.Description ?? string.Empty,
+                PathImg = p.PathImg ?? string.Empty,
                 Link = p.Link,
                 CreatedAt = p.CreatedAt
-            });
+            }).ToList();
 
             // var projectDtos = _mapper.Map<IEnumerable<ProjectDto>>(projects);
-            return Task.FromResult(projectDtos);
+            return projectDtos;
 
         }
 
@@ -96,7 +96,7 @@ namespace Invert.Api.Services.Implementation
         {
             //get project by unit of work
             var project = _unitOfWork.Project.Get(p => p.Id == id);
-            if (project == null) return null;
+            if (project == null) return Task.FromResult<ProjectDto>(null!);
             var projectDto = _mapper.Map<ProjectDto>(project);
             return Task.FromResult(projectDto);
         }

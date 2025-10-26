@@ -29,6 +29,8 @@ public class JobsController : ControllerBase
     public async Task<IActionResult> Create([FromBody] CreateJobDto dto)
     {
         // create job by JobService and add validation and exception handling
+
+        if (!ModelState.IsValid) return BadRequest(ModelState);
         try
         {
             var jobId = await _service.CreateJobAsync(dto);
@@ -43,7 +45,7 @@ public class JobsController : ControllerBase
 
 
     [HttpGet("{id}")]
-    public async Task<IActionResult> GetById([FromBody] int id)
+    public async Task<IActionResult> GetById(int id)
     {
         var job = await _service.GetByIdAsync(id);
         if (job == null) return NotFound();

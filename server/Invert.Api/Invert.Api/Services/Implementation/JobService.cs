@@ -7,6 +7,7 @@ using Invert.Api.Entities;
 using Invert.Api.Repositories.Implementation;
 using Invert.Api.Repositories.Interface;
 using Invert.Api.Services.Interface;
+using System.Net.NetworkInformation;
 using System.Text.Json;
 
 namespace Invert.Api.Services.Implementation
@@ -44,19 +45,58 @@ namespace Invert.Api.Services.Implementation
             return Task.CompletedTask;
         }
 
-        public Task<IEnumerable<JobDto>> GetAllAsync()
+        public async Task<IEnumerable<JobDto>> GetAllAsync()
         {
-            var jobs = _unitOfWork.Job.GetAll();
-            var jobDtos = _mapper.Map<IEnumerable<JobDto>>(jobs);
-            return Task.FromResult(jobDtos);
+            var jobs = await _unitOfWork.Job.GetAll();
+            // var jobDtos = _mapper.Map<IEnumerable<JobDto>>(jobs);
+            // mapping manual to handle semicolon separated strings
+            var jobDtos = jobs.Select(job => new JobDto
+            {
+                Id = job.Id,
+                Title = job.Title,
+                Description = job.Description,
+                Location = job.Location,
+                EmploymentType = job.EmploymentType,
+                ExperienceLevel = job.ExperienceLevel,
+                Salary = job.Salary,
+                Status = job.Status,
+                DatePosted = job.DatePosted,
+                ClosingDate = job.ClosingDate,
+                Requirements = string.IsNullOrEmpty(job.Requirements) ? Array.Empty<string>() : job.Requirements.Split(';'),
+                Skills = string.IsNullOrEmpty(job.Skills) ? Array.Empty<string>() : job.Skills.Split(';'),
+                Benefits = string.IsNullOrEmpty(job.Benefits) ? Array.Empty<string>() : job.Benefits.Split(';'),
+
+
+            }).ToList();
+
+            return jobDtos;
         }
 
         public Task<JobDto?> GetByIdAsync(int id)
         {
             var job = _unitOfWork.Job.Get(j => j.Id == id);
             if (job == null) return Task.FromResult<JobDto?>(null);
-            var jobDto = _mapper.Map<JobDto>(job);
-            return Task.FromResult(jobDto);
+            var jobDto = new JobDto
+            {
+                Id = job.Id,
+                Title = job.Title,
+                Description = job.Description,
+                Location = job.Location,
+                EmploymentType = job.EmploymentType,
+                ExperienceLevel = job.ExperienceLevel,
+                Salary = job.Salary,
+                Status = job.Status,
+                DatePosted = job.DatePosted,
+                ClosingDate = job.ClosingDate,
+                Requirements = string.IsNullOrEmpty(job.Requirements) ? Array.Empty<string>() : job.Requirements.Split(';'),
+                Skills = string.IsNullOrEmpty(job.Skills) ? Array.Empty<string>() : job.Skills.Split(';'),
+                Benefits = string.IsNullOrEmpty(job.Benefits) ? Array.Empty<string>() : job.Benefits.Split(';'),
+
+            };
+            return Task.FromResult<JobDto?>(jobDto);
+
+
+            //return Task.FromResult(jobDto);
         }
 
         public Task UpdateJobAsync(int id, UpdateJobDto dto)

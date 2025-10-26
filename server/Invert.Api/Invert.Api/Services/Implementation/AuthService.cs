@@ -121,6 +121,7 @@ namespace Invert.Api.Services.Implementation
         public Task<string> GenerateRefreshTokenAsync()
         {
             var randomNumber = new byte[64];
+            // Use RandomNumberGenerator to generate a secure random number
             using var rng = RandomNumberGenerator.Create();
             rng.GetBytes(randomNumber);
             return Task.FromResult(Convert.ToBase64String(randomNumber));

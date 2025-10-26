@@ -55,7 +55,7 @@ namespace Invert.Api.Services.Implementation
         public async Task<IEnumerable<ArticleDto>> GetAllAsync()
         {
             // Get all articles
-            var articles = _unitOfWork.Article.GetAll();
+            var articles = await _unitOfWork.Article.GetAll();
             var articleDtos = articles.Select(a => new ArticleDto
             {
                 Id = a.Id,

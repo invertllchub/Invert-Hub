@@ -45,7 +45,7 @@ namespace Invert.Api.Repositories.Implementation
             return query.FirstOrDefault();
         }
 
-        public IEnumerable<T> GetAll(Expression<Func<T, bool>>? filter = null, string? includeProperty = null)
+        public async Task<List<T>> GetAll(Expression<Func<T, bool>>? filter = null, string? includeProperty = null)
         {
             IQueryable<T> query = dbSet;
             if (filter != null)
@@ -60,7 +60,7 @@ namespace Invert.Api.Repositories.Implementation
                     query = query.Include(include);
                 }
             }
-            return query.ToList();
+            return await query.AsNoTracking().ToListAsync();
         }
 
         public void Remove(T entity)

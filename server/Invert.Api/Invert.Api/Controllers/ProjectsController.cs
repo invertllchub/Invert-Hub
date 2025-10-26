@@ -28,6 +28,7 @@ public class ProjectsController : ControllerBase
     public IActionResult Create([FromBody] CreateProjectDto dto)
     {
         //create project by ProjectService and add validation and exception handling
+        if (!ModelState.IsValid) return BadRequest(ModelState);
         try
         {
             _service.CreateAsync(dto);
