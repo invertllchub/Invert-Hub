@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react'
 import { useState } from 'react'
-import { Search, X, ArrowRight } from 'lucide-react'
+import { Search, X } from 'lucide-react'
 import { Project } from '@/types/project'
 import ProjectCard from './projectPage/ProjectCard'
 
 
 
-const SearchIcon = () => {
+const SearchIcon = ({ isDark }: { isDark: boolean }) => {
     const [openSearch, setOpenSearch] = useState(false)
     const [projects, setProjects] = useState<Project[]>([])
     const [searchValue, setSearchValue] = useState("");
@@ -36,7 +36,12 @@ const SearchIcon = () => {
     return (
         <>
         <div aria-label="Open Search" onClick={() => setOpenSearch(true)} className='p-1 rounded-full cursor-pointer hover:bg-black/30'>
-            <Search className='text-black hover:scale-75 transition duration-500' size={25} aria-hidden="true" />
+            <Search 
+            className={`
+                ${isDark ? 'text-white' : 'text-black'}
+                hover:scale-75 transition duration-500
+                `} 
+            size={25} aria-hidden="true" />
         </div>
         {/* overLay */}
         <div className={`fixed inset-0 flex items-center justify-center bg-white/10 backdrop-blur-md  z-50

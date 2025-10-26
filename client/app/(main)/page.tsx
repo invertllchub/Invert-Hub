@@ -106,7 +106,7 @@ export default function HomePage() {
   return (
     <main className="bg-black text-[#292929]">
       {/* Section 1 */}
-      <section className="section1 relative overflow-hidden h-[100vh]">
+      <section className="section1 dark-section relative overflow-hidden h-[100vh]">
         <div className="wrapper h-full relative flex justify-center items-center p-4 md:justify-start md:p-1">
           <div className="absolute inset-0 w-full h-full shadow-lg">
             <div className="relative w-full h-full overflow-hidden">
@@ -232,7 +232,7 @@ export default function HomePage() {
       </section>
 
       {/* Section 6 - Research */}
-      <section className="section6 w-full bg-black text-white p-6 sm:p-10 md:p-16 mt-10">
+      <section className="section6 dark-section w-full bg-black text-white p-6 sm:p-10 md:p-16 mt-10">
         <h1 className="text-3xl sm:text-5xl md:text-[88px] font-[900] ">
           RESEARCH AND <br /> INNOVATION
         </h1>
