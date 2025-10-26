@@ -16,7 +16,7 @@ function JobsPage() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch("/jobs.json");
+        const res = await fetch("https://localhost:7253/api/jobs");
         const data = await res.json();
         setJobs(data);
       } catch (error) {
@@ -75,12 +75,16 @@ function JobsPage() {
   return (
     <div className="w-full min-h-screen bg-gray-200/75 pl-0 md:pl-30 pr-0 md:pr-15 pb-20 md:pb-10 pt-5 md:pt-10 overflow-hidden">
       <ToolBar
-      title="jobs"
-      allSelected={allSelected}
-      someSelected={someSelected}
-      setSearchValue={setSearchValue}
+        title="jobs"
+        allSelected={allSelected}
+        someSelected={someSelected}
+        setSearchValue={setSearchValue}
       >
-        <DeleteBtn selectedIds={selected} onDeleted={handleDeleteAll} page={'jobs'}/>
+        <DeleteBtn
+          selectedIds={selected}
+          onDeleted={handleDeleteAll}
+          page={"jobs"}
+        />
       </ToolBar>
 
       {/* 🖥️ TABLE VIEW (Desktop) */}
@@ -122,16 +126,18 @@ function JobsPage() {
             <div className="flex items-center">{job.datePosted}</div>
             <div className="flex items-center">{job.closingDate}</div>
             <div className="flex justify-center gap-4">
-              <DeleteBtn page={'jobs'} id={job.id} onDeleted={() => handleDeleteOne(job.id)} />
+              <DeleteBtn
+                page={"jobs"}
+                id={job.id}
+                onDeleted={() => handleDeleteOne(job.id)}
+              />
               <UpdateBtn page="jobs" id={job.id} />
             </div>
           </div>
         ))}
 
         {filteredJobs.length === 0 && (
-          <div className="text-center text-gray-500 py-10">
-            No jobs found.
-          </div>
+          <div className="text-center text-gray-500 py-10">No jobs found.</div>
         )}
       </div>
 
@@ -141,9 +147,7 @@ function JobsPage() {
           <div
             key={job.id}
             className={`relative bg-white p-5 rounded-xl shadow-sm border transition-all duration-200 ${
-              selected.includes(job.id)
-                ? "border-blue-500"
-                : "border-gray-200"
+              selected.includes(job.id) ? "border-blue-500" : "border-gray-200"
             }`}
           >
             {/* Checkbox */}
@@ -171,7 +175,11 @@ function JobsPage() {
 
             {/* Actions */}
             <div className="flex justify-end gap-3">
-              <DeleteBtn page={'jobs'} id={job.id} onDeleted={() => handleDeleteOne(job.id)} />
+              <DeleteBtn
+                page={"jobs"}
+                id={job.id}
+                onDeleted={() => handleDeleteOne(job.id)}
+              />
               <UpdateBtn page="jobs" id={job.id} />
             </div>
           </div>

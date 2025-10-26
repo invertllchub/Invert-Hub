@@ -44,7 +44,7 @@ function AddProjectForm() {
         projectImage: uploadedImageUrl
       };
       
-      const response = await fetch("", {
+      const response = await fetch("https://localhost:7253/api/projects", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

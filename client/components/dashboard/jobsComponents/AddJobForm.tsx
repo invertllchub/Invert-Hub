@@ -25,14 +25,39 @@ export default function AddJobForm() {
     });
 
     try {
-      const payload = {
-        ...data,
-        requirements: parseMultilineText(data.requirements || ""),
-        benefits: parseMultilineText(data.benefits || ""),
-        salary: Number(data.salary), 
-    };
+      // Clean & normalize fields so we don't send empty strings or NaN
+      const requirements = parseMultilineText(data.requirements || "").filter(
+        Boolean
+      );
+      const benefits = parseMultilineText(data.benefits || "").filter(Boolean);
 
-      const response = await fetch("", {
+      // Normalize dates: send null if not provided (important for DateTime model binding)
+      const datePosted = data.datePosted ? data.datePosted : null;
+      const closingDate = data.closingDate ? data.closingDate : null;
+
+      // Salary: if empty or NaN, send null
+      const salaryVal =
+        data.salary === undefined ||
+        data.salary === null ||
+        Number.isNaN(Number(data.salary))
+          ? null
+          : Number(data.salary);
+
+      const payload = {
+        title: data.title,
+        location: data.location,
+        employmentType: data.employmentType || null,
+        experienceLevel: data.experienceLevel || null,
+        salary: salaryVal,
+        status: data.status || null,
+        datePosted,
+        closingDate,
+        description: data.description || null,
+        requirements,
+        benefits,
+      };
+
+      const response = await fetch("https://localhost:7253/api/jobs", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -40,22 +65,41 @@ export default function AddJobForm() {
         body: JSON.stringify(payload),
       });
 
-      const result = await response.json();
+      // Better error handling: inspect response body for validation errors
+      const text = await response.text();
+      let parsed;
+      try {
+        parsed = text ? JSON.parse(text) : null;
+      } catch {
+        parsed = text;
+      }
 
-      if (result.success) {
+      if (!response.ok) {
+        console.error("Server returned error", response.status, parsed);
+        showToast("error", {
+          message: `Failed: ${response.status} ${response.statusText}`,
+          toastId,
+        });
+        return;
+      }
+
+      // Server returns { JobId, Message } in your controller; adapt accordingly
+      if (parsed && parsed.jobId !== undefined) {
         showToast("success", {
-          message: "Application submitted successfully!",
+          message: parsed.message ?? "Job created successfully!",
           toastId,
         });
         reset();
       } else {
-        showToast("error", {
-          message: "Something went wrong. Please try again.",
+        // fallback
+        showToast("success", {
+          message: "Job created (server returned unexpected shape).",
           toastId,
         });
+        reset();
       }
     } catch (error) {
-      console.error(error);
+      console.error("Request error", error);
       showToast("error", {
         message: "Failed to submit the application, please try again later.",
         toastId,
@@ -104,7 +148,9 @@ export default function AddJobForm() {
               <option value="">Select Employment Type</option>
               <option value="Full-time">Full-time</option>
               <option value="Part-time">Part-time</option>
-              <option value="Full-time / Part-time">Full-time / Part-time</option>
+              <option value="Full-time / Part-time">
+                Full-time / Part-time
+              </option>
               <option value="Contract">Contract</option>
             </select>
             {errors.employmentType && (
@@ -138,7 +184,7 @@ export default function AddJobForm() {
               type="number"
               placeholder="Salary"
               min={0}
-              {...register("salary", { valueAsNumber: true })} 
+              {...register("salary", { valueAsNumber: true })}
               className="border p-3 rounded-lg w-full"
             />
             {errors.salary && (

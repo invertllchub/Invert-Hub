@@ -21,7 +21,7 @@ export default function EditArticlePage() {
   useEffect(() => {
     const fetchArticle = async () => {
       try {
-        const res = await fetch("/articles.json");
+        const res = await fetch("https://localhost:7253/api/Articles");
         const data = await res.json();
         const found = data.articles.find((a: any) => a.id === Number(id));
         if (found) setArticle(found);

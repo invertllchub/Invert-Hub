@@ -51,7 +51,7 @@ export default function EditJobForm({ job }: JobProps) {
         salary: Number(data.salary), 
     };
 
-      const response = await fetch("", {
+      const response = await fetch("https://localhost:7253/api/jobs", {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

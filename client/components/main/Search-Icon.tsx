@@ -14,7 +14,7 @@ const SearchIcon = () => {
 
     const fetchData = async () =>{
         try {
-            const res = await fetch('/projects.json')
+            const res = await fetch('https://localhost:7253/api/Projects')
             const json = await res.json()
             setProjects(json)
         } catch (error) {

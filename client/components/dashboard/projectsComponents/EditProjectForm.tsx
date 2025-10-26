@@ -57,7 +57,7 @@ function EditProjectForm({project}: ProjectProp) {
         projectImage: uploadedImageUrl
       };
       
-      const response = await fetch("", {
+      const response = await fetch("https://localhost:7253/api/Projects", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
