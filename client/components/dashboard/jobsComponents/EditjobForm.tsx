@@ -4,8 +4,8 @@ import { Job } from "@/types/jobs";
 // React-hook-form and validation with Zod
 import { useForm, SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { FormFields } from "@/components/schemas/EditJobSchema";
-import { EditJobSchema } from "@/components/schemas/EditJobSchema";
+import { EditJobFormFields } from "@/schemas/EditJobSchema";
+import { EditJobSchema } from "@/schemas/EditJobSchema";
 // Toast
 import { showToast } from "@/components/jobs/Toast";
 // Functions
@@ -21,7 +21,7 @@ export default function EditJobForm({ job }: JobProps) {
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm<FormFields>({
+  } = useForm<EditJobFormFields>({
     resolver: zodResolver(EditJobSchema),
     defaultValues: {
       title: job.title,
@@ -38,37 +38,25 @@ export default function EditJobForm({ job }: JobProps) {
     } as any,
   });
 
-  const onSubmit: SubmitHandler<FormFields> = async (data) => {
+  const onSubmit: SubmitHandler<EditJobFormFields> = async (data) => {
     const toastId = showToast("loading", {
       message: "Editing Job Application",
     });
 
     try {
-      const formData = new FormData();
-      formData.append("title", data.title);
-      formData.append("location", data.location);
-      formData.append("employmentType", data.employmentType);
-      formData.append("experienceLevel", data.experienceLevel);
-      formData.append("salary", String(data.salary));
-      formData.append("status", data.status);
-      formData.append("datePosted", data.datePosted);
-      formData.append("closingDate", data.closingDate);
-      formData.append("description", data.description);
-      const requirementsArray = parseMultilineText(data.requirements || "");
-      const benefitsArray = parseMultilineText(data.benefits || "");
-
-
-      formData.append("requirements", JSON.stringify(requirementsArray));
-      formData.append("benefits", JSON.stringify(benefitsArray));
-
-
-                  for (const [key, value] of formData.entries()) {
-                console.log(`${key}: ${value}`);
-            }
+      const payload = {
+        ...data,
+        requirements: parseMultilineText(data.requirements || ""),
+        benefits: parseMultilineText(data.benefits || ""),
+        salary: Number(data.salary),
+      };
 
       const response = await fetch("", {
         method: "PUT",
-        body: formData,
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
       });
 
       const result = await response.json();
@@ -135,8 +123,11 @@ export default function EditJobForm({ job }: JobProps) {
               className="border p-3 rounded-lg w-full"
             >
               <option value="">Select Employment Type</option>
-              <option value="Full-time">Full-time</option>
-              <option value="Part-time">Part-time</option>
+              <option value="Full-Time">Full-Time</option>
+              <option value="Part-Time">Part-Time</option>
+              <option value="Full-Time / Part-Time">
+                Full-Time / Part-Time
+              </option>
               <option value="Contract">Contract</option>
             </select>
             {errors.employmentType && (

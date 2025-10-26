@@ -3,9 +3,9 @@ import { z } from "zod";
 export const EditJobSchema = z.object({
     title: z.string().min(3, "Title is required"),
     location: z.string().min(2, "Location is required"),
-  
+
     employmentType: z
-        .enum(["Full-time", "Part-time", "Contract"])
+        .enum(["Full-Time", "Part-Time", "Contract", "Full-Time / Part-Time"])
         .refine((val) => !!val, { message: "Employment Type is required" }),
 
     experienceLevel: z
@@ -25,4 +25,4 @@ export const EditJobSchema = z.object({
     benefits: z.string().min(5, "Please list at least one benefit"),
 });
 
-export type FormFields = z.infer<typeof EditJobSchema>;
+export type EditJobFormFields = z.infer<typeof EditJobSchema>;

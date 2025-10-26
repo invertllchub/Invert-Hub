@@ -13,6 +13,8 @@ function Page() {
   const [jobs, setJobs] = useState<Job[]>([]);
   const params = useParams();
 
+
+
   const fetchData = async () => {
     try {
       const res = await fetch("/jobs.json");
@@ -29,10 +31,17 @@ function Page() {
 
   const job = jobs.find((j) => String(j.id) === params.id);
 
+  const jobBannerDetails = [
+    {icon: <Hourglass size={20} />, label: job?.employmentType},
+    {icon: <MapPin size={20} />, label: job?.location},
+    {icon: <Calendar size={20} />, label: job?.datePosted},
+    {icon: <Clock size={20} />, label: job?.closingDate},
+  ]
+
   return (
     <div className="w-full">
       {/* Hero Section */}
-      <div className="relative w-full h-[80vh]">
+      <div className="relative w-full h-[100vh] md:h-[80vh]">
         {/* Logo */}
         <Link href="/" aria-label="Home">
           <div className="absolute top-5 left-5 w-[120px] h-[40px] sm:w-[170px] sm:h-[60px] z-10">
@@ -57,24 +66,22 @@ function Page() {
 
         <div
           className="absolute inset-0 flex flex-col items-center justify-center backdrop-blur-sm
-                bg-white/10 border border-white/30 shadow-lg text-white"
+          bg-white/10 border border-white/30 shadow-lg text-white"
         >
           <h1 className="w-7/12 text-start mx-auto text-xl md:text-5xl font-bold drop-shadow-lg">
             {job?.title} - {job?.location}
           </h1>
           <div className="w-7/12 mx-auto mt-5 flex flex-col md:flex-row items-start gap-6">
-            <p className="flex gap-2">
-              <Hourglass size={20} /> {job?.employmentType}
-            </p>
-            <p className="flex gap-2">
-              <MapPin size={20} /> {job?.location}
-            </p>
-            <p className="flex gap-2">
-              <Calendar size={20} /> {job?.datePosted}
-            </p>
-            <p className="flex gap-2">
-              <Clock size={20} /> {job?.closingDate}
-            </p>
+            {jobBannerDetails?.map((item, i) => {
+              return (
+                <div key={i} className="flex gap-2">
+                  <div className="w-6 h-6 flex items-center justify-center">
+                    {item.icon}
+                  </div>
+                  <span>{item.label}</span>
+                </div>
+              )
+            })}
           </div>
           <div className="w-7/12 mx-auto mt-10">
             <p className="text-md md:text-xl font-semibold">
@@ -97,12 +104,12 @@ function Page() {
           <button
             onClick={() => setShowForm(true)}
             className={`p-4 font-bold text-lg text-center cursor-pointer 
-                        ${
-                          showForm
-                            ? "rounded-none shadow-none bg-transparent text-black border-b-2"
-                            : "rounded-md shadow-md bg-black text-white hover:bg-gray-800 transition"
-                        }
-                        `}
+            ${
+              showForm
+                ? "rounded-none shadow-none bg-transparent text-black border-b-2"
+                : "rounded-md shadow-md bg-black text-white hover:bg-gray-800 transition"
+            }
+            `}
           >
             {!showForm ? "Apply" : "Application"}
           </button>

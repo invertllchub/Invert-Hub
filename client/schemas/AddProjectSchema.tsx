@@ -11,4 +11,4 @@ export const AddProjectSchema = z.object({
     projectLink: z.string().regex(/^https?:\/\/[^\s$.?#].[^\s]*$/, "Please enter a valid URL")
 });
 
-export type FormFields = z.infer<typeof AddProjectSchema>;
+export type AddProjectFormFields = z.infer<typeof AddProjectSchema>;

@@ -16,11 +16,11 @@ function YellowCard({h1, p, link, img, alt}: YellowCardProps) {
         className="w-full h-full flex flex-col lg:flex-row items-center justify-between gap-8 mt-10 py-4 md:py-10 px-4 
         bg-gradient-to-l from-green-200/50 to-yellow-200/60 rounded-lg"
         >
-            <div className="w-full md:w-8/12 h-7/12 md:h-full flex flex-col justify-between text-start p-2 gap-4">
+            <div className="w-full md:w-8/12 h-7/12 md:h-full flex flex-col text-start p-2 gap-6">
                 {h1 && 
                     <h1  className="text-2xl md:text-5xl font-bold">{h1}</h1>
                 }
-                <p className="text-lg md:text-3xl font-semibold">
+                <p className="text-md md:text-3xl font-semibold">
                     {p}
                 </p>
                 <Link href="contact" className="relative text-xl group w-fit">

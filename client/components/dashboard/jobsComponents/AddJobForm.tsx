@@ -3,8 +3,8 @@ import React from "react";
 // React-hook-form and validation with Zod
 import { useForm, SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { FormFields } from "@/components/schemas/AddJobSchema";
-import { AddJobSchema } from "@/components/schemas/AddJobSchema";
+import { AddJobFormFields } from "@/schemas/AddJobSchema";
+import { AddJobSchema } from "@/schemas/AddJobSchema";
 // Toast
 import { showToast } from "@/components/jobs/Toast";
 import { parseMultilineText } from "@/utils/ParseMultilineText";
@@ -15,36 +15,29 @@ export default function AddJobForm() {
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm<FormFields>({
+  } = useForm<AddJobFormFields>({
     resolver: zodResolver(AddJobSchema),
   });
 
-  const onSubmit: SubmitHandler<FormFields> = async (data) => {
+  const onSubmit: SubmitHandler<AddJobFormFields> = async (data) => {
     const toastId = showToast("loading", {
       message: "Submitting Job Application...",
     });
 
     try {
-      const formData = new FormData();
-      formData.append("title", data.title);
-      formData.append("location", data.location);
-      formData.append("employmentType", data.employmentType);
-      formData.append("experienceLevel", data.experienceLevel);
-      formData.append("salary", String(data.salary));
-      formData.append("status", data.status);
-      formData.append("datePosted", data.datePosted);
-      formData.append("closingDate", data.closingDate);
-      formData.append("description", data.description);
-
-      const requirementsArray = parseMultilineText(data.requirements || "");
-      formData.append("requirements", JSON.stringify(requirementsArray));
-      
-      const benefitsArray = parseMultilineText(data.benefits || "");
-      formData.append("benefits", JSON.stringify(benefitsArray));
+      const payload = {
+        ...data,
+        requirements: parseMultilineText(data.requirements || ""),
+        benefits: parseMultilineText(data.benefits || ""),
+        salary: Number(data.salary),
+      };
 
       const response = await fetch("", {
         method: "POST",
-        body: formData,
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
       });
 
       const result = await response.json();
@@ -109,9 +102,11 @@ export default function AddJobForm() {
               className="border p-3 rounded-lg w-full"
             >
               <option value="">Select Employment Type</option>
-              <option value="Full-time">Full-time</option>
-              <option value="Part-time">Part-time</option>
-              <option value="Full-time / Part-time">Full-time / Part-time</option>
+              <option value="Full-Time">Full-Time</option>
+              <option value="Part-Time">Part-Time</option>
+              <option value="Full-Time / Part-Time">
+                Full-Time / Part-Time
+              </option>
               <option value="Contract">Contract</option>
             </select>
             {errors.employmentType && (
@@ -142,9 +137,10 @@ export default function AddJobForm() {
           <div>
             <label className="block text-gray-600 mb-1">Salary</label>
             <input
-              type="text"
+              type="number"
               placeholder="Salary"
-              {...register("salary")}
+              min={0}
+              {...register("salary", { valueAsNumber: true })}
               className="border p-3 rounded-lg w-full"
             />
             {errors.salary && (
