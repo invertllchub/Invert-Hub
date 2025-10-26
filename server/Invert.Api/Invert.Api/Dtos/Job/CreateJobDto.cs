@@ -10,8 +10,8 @@
         string DatePosted,
         string ClosingDate,
         string Description,
-        string Requirements, // JSON string of array
-        string Skills,       // JSON string of array
-        string Benefits      // JSON string of array
+        IEnumerable<string> Requirements,
+        IEnumerable<string> Skills,
+        IEnumerable<string> Benefits
     );
 }
