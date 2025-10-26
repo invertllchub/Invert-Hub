@@ -36,7 +36,7 @@ function NavBar() {
     darkSections.forEach((section) => observer.observe(section));
     return () => observer.disconnect();
   
-  }, []);
+  }, [String(pathname)]);
 
   return (
     <>

@@ -6,7 +6,7 @@ export default function Logo({ isDark }: { isDark: boolean }) {
     return (
         <div className="transition-all duration-300">
             <Link href="/" aria-label="Home">
-                <div className="absolute top-5 left-5 w-[120px] h-[40px] sm:w-[170px] sm:h-[60px] z-10">
+                <div className="relative w-[170px] h-[60px]  z-10">
                     <Image
                         src={
                             isDark 
