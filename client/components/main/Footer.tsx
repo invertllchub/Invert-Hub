@@ -26,7 +26,7 @@ function Footer() {
             <div className="flex flex-col md:flex-row justify-between gap-10">
                {/* Navigation Links */}
                 <nav className="w-full md:w-8/12" aria-label="Footer Navigation">
-                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-8">
+                    <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
                         {links.map((link) => (
                             <li
                             key={link.href}
@@ -50,8 +50,26 @@ function Footer() {
                         ))}
                     </ul>
                 </nav>
-            </div>
 
+                <div className="w-full md:w-4/12 flex flex-col gap-3 text-gray-400 text-sm">
+                    <p>© 2025 Invert Hub. All rights reserved.</p>
+        
+                    <div className="flex flex-wrap gap-4">
+                        <Link
+                        href="/terms"
+                        className="hover:text-white transition-colors"
+                        >
+                            Terms & Conditions
+                        </Link>
+                        <Link
+                        href="/privacy"
+                        className="hover:text-white transition-colors"
+                        >
+                            Privacy Policy
+                        </Link>
+                    </div>
+                </div>
+            </div>
         </footer>
     );
 }
