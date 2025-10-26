@@ -9,7 +9,7 @@ import { showToast } from "@/components/jobs/Toast";
 // Cloudinary function
 import { uploadToCloudinary } from "@/utils/CloudinaryUpload";
 import { Project } from "@/types/project";
-//
+// props
 type ProjectProp = {
   project: Project;
 };
@@ -41,8 +41,6 @@ function EditProjectForm({ project }: ProjectProp) {
     const toastId = showToast("loading", {
       message: "Editing Project Application...",
     });
-
-
 
     try {
 
