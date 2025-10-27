@@ -12,7 +12,7 @@ function Page() {
 
   const fetchData = async () => {
     try {
-      const res = await fetch("/jobs.json");
+      const res = await fetch("https://localhost:7253/api/Jobs");
       const json = await res.json();
       setJobs(json);
     } catch (error) {

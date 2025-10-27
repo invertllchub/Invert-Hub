@@ -13,7 +13,7 @@ function page() {
 
   const fetchData = async () => {
     try {
-      const res = await fetch("/articles.json");
+      const res = await fetch("https://localhost:7253/api/Articles");
       const json: ArticlesResponse = await res.json();
       setArticles(json.articles);
     } catch (error) {

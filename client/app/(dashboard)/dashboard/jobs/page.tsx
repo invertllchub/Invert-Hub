@@ -16,7 +16,7 @@ function JobsPage() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch("/jobs.json");
+        const res = await fetch("https://localhost:7253/api/jobs");
         const data = await res.json();
         setJobs(data);
       } catch (error) {
