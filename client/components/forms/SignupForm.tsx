@@ -25,7 +25,7 @@ function SignupForm() {
     });
 
     try {
-      const response = await fetch("", {
+      const response = await fetch("https://localhost:7253/api/auth/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

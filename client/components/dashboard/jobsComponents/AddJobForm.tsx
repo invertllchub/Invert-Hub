@@ -139,9 +139,9 @@ const onSubmit: SubmitHandler<AddJobFormFields> = async (data) => {
               className="border p-3 rounded-lg w-full"
             >
               <option value="">Select Employment Type</option>
-              <option value="Full-Time">Full-Time</option>
-              <option value="Part-Time">Part-Time</option>
-              <option value="Full-Time / Part-Time">
+              <option value="FullTime">Full-Time</option>
+              <option value="PartTime">Part-Time</option>
+              <option value="Hybrid">
                 Full-Time / Part-Time
               </option>
               <option value="Contract">Contract</option>
