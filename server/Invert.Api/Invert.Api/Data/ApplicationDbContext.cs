@@ -27,7 +27,7 @@ namespace Invert.Api.Data
             modelBuilder.Entity<AppUser>().HasIndex(u => u.UserName).IsUnique();
             modelBuilder.Entity<AppUser>().HasIndex(u => u.Email).IsUnique();
 
-            //modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
         }
     }
 }
