@@ -51,29 +51,45 @@ function AddProjectForm() {
         },
         body: JSON.stringify(payload),
       });
-      const result = await response.json();
 
-      if (result.success) {
+      const text = await response.text();
+      let parsed;
+      try {
+        parsed = text ? JSON.parse(text) : null;
+      } catch {
+        parsed = text;
+      }
+
+      if (!response.ok) {
+        console.error("❌ Server returned error", response.status, parsed);
+        showToast("error", {
+          message: `Failed: ${response.status} ${response.statusText}`,
+          toastId,
+        });
+        return;
+      }
+
+      if (parsed && parsed.jobId !== undefined) {
         showToast("success", {
-          message: "Application submitted successfully!",
+          message: parsed.message ?? "Project Submited successfully!",
           toastId,
         });
         reset();
-        setPreview("");
       } else {
+        showToast("success", {
+          message: "Project Submited successfully (unexpected response shape).",
+          toastId,
+        });
+        reset();
+      }
+      } catch (error) {
+        console.error("⚠️ Request error", error);
         showToast("error", {
-          message: "Something went wrong. Please try again.",
+          message: "Failed to submit the application, please try again later.",
           toastId,
         });
       }
-    } catch (error) {
-      console.error(error);
-      showToast("error", {
-        message: "Failed to submit the application, please try again later.",
-        toastId,
-      });
-    }
-  };
+    };
 
   return (
     <form id="add-project-form" onSubmit={handleSubmit(onSubmit)}>

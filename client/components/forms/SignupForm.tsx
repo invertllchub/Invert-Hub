@@ -2,17 +2,21 @@
 import Link from "next/link";
 import React from "react";
 // React-hook-form and validation with Zod
-import { useForm, SubmitHandler } from "react-hook-form";
+import { useForm, SubmitHandler, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { SignupSchema } from "../../schemas/SignupSchema";
 import { SignupFormFields } from "../../schemas/SignupSchema";
 // Toast
 import { showToast } from "@/components/jobs/Toast";
+// Reach-phone-liberary
+import PhoneInput from "react-phone-number-input";
+import "react-phone-number-input/style.css";
 
 function SignupForm() {
   const {
     register,
     reset,
+    control,
     handleSubmit,
     formState: { errors, isSubmitting },
   } = useForm<SignupFormFields>({
@@ -33,29 +37,43 @@ function SignupForm() {
         body: JSON.stringify(data),
       });
 
-      const result = await response.json();
+      const text = await response.text();
+      let parsed;
+      try {
+        parsed = text ? JSON.parse(text) : null;
+      } catch {
+        parsed = text;
+      }
 
       if (!response.ok) {
+        console.error("❌ Server returned error", response.status, parsed);
         showToast("error", {
-          message: result.message || "Signup failed!",
+          message: `Failed: ${response.status} ${response.statusText}`,
           toastId,
         });
         return;
       }
 
-      showToast("success", {
-        message: "Signup has been done successfully!",
-        toastId,
-      });
-
-      reset();
-    } catch (error) {
-      console.error(error);
-      showToast("error", {
-        message: "Failed to signup, please try again later.",
-        toastId,
-      });
-    }
+      if (parsed && parsed.jobId !== undefined) {
+        showToast("success", {
+          message: parsed.message ?? "Signup has been done successfully!",
+          toastId,
+        });
+        reset();
+      } else {
+        showToast("success", {
+          message: "Signup has been done successfully (unexpected response shape).",
+          toastId,
+        });
+        reset();
+      }
+      } catch (error) {
+        console.error("⚠️ Request error", error);
+        showToast("error", {
+          message: "Failed to submit the application, please try again later.",
+          toastId,
+        });
+      }
   };
 
   return (
@@ -134,19 +152,30 @@ function SignupForm() {
           )}
         </div>
       </div>
-      <div className="w-full flex flex-col gap-1.5">
-        <label htmlFor="phone">Phone Number</label>
-        <input
-          id="phone"
-          type="tel"
-          {...register("phoneNumber")}
-          placeholder="Enter Your Phone Number.."
-          className="border border-gray-500 outline-0 px-4 py-2 rounded-md"
-        />
-        {errors.phoneNumber && (
-          <div className="text-red-600">{errors.phoneNumber.message}</div>
-        )}
-      </div>
+        <div className="w-full flex flex-col gap-1.5">
+          <label htmlFor="phone">Phone Number</label>
+          <div className="w-full flex gap-2">
+            <Controller
+              name="phoneNumber"
+              control={control}
+              render={({ field }) => (
+                <PhoneInput
+                  {...field}
+                  defaultCountry="EG"
+                  international
+                  countryCallingCodeEditable={false}
+                  placeholder="Enter phone number"
+                  className="border p-3 rounded-lg focus:outline-none w-full"
+                />
+              )}
+            />
+          </div>
+          {errors.phoneNumber && (
+            <div className="text-red-500">
+              {errors.phoneNumber.message?.toString()}
+            </div>
+          )}
+        </div>
 
       <button
         type="submit"
