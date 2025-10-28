@@ -41,7 +41,7 @@ public class ProjectController : ControllerBase
 
 
     [HttpGet("{id}")]
-    public async Task<IActionResult> GetById([FromBody] int id)
+    public async Task<IActionResult> GetById(int id)
     {
         var project = await _service.GetByIdAsync(id);
         if (project == null) return NotFound();
@@ -72,7 +72,7 @@ public class ProjectController : ControllerBase
 
     [HttpDelete("{id}")]
     // [Authorize(Roles = "Admin")]
-    public async Task<IActionResult> Delete([FromBody] int id)
+    public async Task<IActionResult> Delete(int id)
     {
 
         if (id == 0) return BadRequest("Id mismatch.");

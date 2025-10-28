@@ -26,14 +26,17 @@ namespace Invert.Api.Repositories.Implementation
             Job = new JobRepository(_dbContext);
         }
 
-        public void Save()
-        {
-            _dbContext.SaveChanges();
-        }
+
 
         public void Dispose()
         {
             _dbContext.Dispose();
+        }
+
+
+        public async Task<int> Save()
+        {
+            return await _dbContext.SaveChangesAsync();
         }
     }
 }
