@@ -51,7 +51,7 @@ function JobDetails({ job, setShowForm }: JobProps) {
         <button
           onClick={() => setShowForm(true)}
           className="py-4 px-4 rounded-md shadow-md bg-black text-white 
-                        font-bold text-lg text-center  hover:bg-gray-800 transition cursor-pointer"
+          font-bold text-lg text-center  hover:bg-gray-800 transition cursor-pointer"
         >
           Apply
         </button>

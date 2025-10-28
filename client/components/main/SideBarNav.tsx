@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { Menu, X } from 'lucide-react'
 
-function SideBarNav() {
+function SideBarNav({ isDark }: { isDark: boolean }) {
     const [openSideBar, setOpenSideBar] = useState(false);
     const [hoveredLink, setHoveredLink] = useState<string | null>(null);
 
@@ -22,7 +22,13 @@ function SideBarNav() {
     return (
         <div >
             <div onClick={() => setOpenSideBar(true)} className='p-1 rounded-full cursor-pointer hover:bg-black/30'>
-                <Menu aria-hidden="true" className='text-black hover:scale-75 transition duration-500' size={35}/>
+                <Menu 
+                aria-hidden="true" 
+                className={`
+                ${isDark ? 'text-white' : 'text-black'}
+                hover:scale-75 transition duration-500
+                `}  
+                size={35}/>
             </div>
 
             {/* Overlay */}

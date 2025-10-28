@@ -8,7 +8,8 @@ export const EditProjectSchema = z.object({
         .refine(
             file => !file || ["image/jpeg", "image/png", "image/webp"].includes(file.type),
             { message: "Only JPG, PNG, or WEBP files are allowed" }
-        ),
+        )
+        .nullable(),
     projectLink: z.string().regex(/^https?:\/\/[^\s$.?#].[^\s]*$/, "Please enter a valid URL")
 });
 

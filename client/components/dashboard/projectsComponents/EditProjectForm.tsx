@@ -9,7 +9,7 @@ import { showToast } from "@/components/jobs/Toast";
 // Cloudinary function
 import { uploadToCloudinary } from "@/utils/CloudinaryUpload";
 import { Project } from "@/types/project";
-//
+// props
 type ProjectProp = {
   project: Project;
 };
@@ -42,8 +42,6 @@ function EditProjectForm({ project }: ProjectProp) {
       message: "Editing Project Application...",
     });
 
-
-
     try {
 
       let uploadedImageUrl = preview;
@@ -57,7 +55,7 @@ function EditProjectForm({ project }: ProjectProp) {
         projectImage: uploadedImageUrl,
       };
 
-      const response = await fetch("", {
+      const response = await fetch("https://localhost:7253/api/Projects", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

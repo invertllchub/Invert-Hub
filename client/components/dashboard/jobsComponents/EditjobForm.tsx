@@ -38,49 +38,86 @@ export default function EditJobForm({ job }: JobProps) {
     } as any,
   });
 
-  const onSubmit: SubmitHandler<EditJobFormFields> = async (data) => {
-    const toastId = showToast("loading", {
-      message: "Editing Job Application",
+const onSubmit: SubmitHandler<EditJobFormFields> = async (data) => {
+  const toastId = showToast("loading", {
+    message: "Submitting Job Application...",
+  });
+
+  try {
+    const requirements = parseMultilineText(data.requirements || "").filter(Boolean);
+    const benefits = parseMultilineText(data.benefits || "").filter(Boolean);
+
+    const datePosted = data.datePosted || null;
+    const closingDate = data.closingDate || null;
+
+    const salaryVal =
+      data.salary === undefined ||
+      data.salary === null ||
+      Number.isNaN(Number(data.salary))
+        ? null
+        : Number(data.salary);
+
+    const payload = {
+      title: data.title,
+      location: data.location,
+      employmentType: data.employmentType || null,
+      experienceLevel: data.experienceLevel || null,
+      salary: salaryVal,
+      status: data.status || null,
+      datePosted,
+      closingDate,
+      description: data.description || null,
+      requirements,
+      benefits,
+    };
+
+    const response = await fetch("https://localhost:7253/api/jobs", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
     });
 
+    const text = await response.text();
+    let parsed;
     try {
-      const payload = {
-        ...data,
-        requirements: parseMultilineText(data.requirements || ""),
-        benefits: parseMultilineText(data.benefits || ""),
-        salary: Number(data.salary),
-      };
+      parsed = text ? JSON.parse(text) : null;
+    } catch {
+      parsed = text;
+    }
 
-      const response = await fetch("", {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(payload),
-      });
-
-      const result = await response.json();
-
-      if (result.success) {
-        showToast("success", {
-          message: "Application submitted successfully!",
-          toastId,
-        });
-        reset();
-      } else {
-        showToast("error", {
-          message: "Something went wrong. Please try again.",
-          toastId,
-        });
-      }
-    } catch (error) {
-      console.error(error);
+    if (!response.ok) {
+      console.error("❌ Server returned error", response.status, parsed);
       showToast("error", {
-        message: "Failed to submit the application, please try again later.",
+        message: `Failed: ${response.status} ${response.statusText}`,
         toastId,
       });
+      return;
     }
-  };
+
+    if (parsed && parsed.jobId !== undefined) {
+      showToast("success", {
+        message: parsed.message ?? "Job created successfully!",
+        toastId,
+      });
+      reset();
+    } else {
+      showToast("success", {
+        message: "Job created successfully (unexpected response shape).",
+        toastId,
+      });
+      reset();
+    }
+  } catch (error) {
+    console.error("⚠️ Request error", error);
+    showToast("error", {
+      message: "Failed to submit the application, please try again later.",
+      toastId,
+    });
+  }
+};
+
 
   return (
     <form id="edit-job-form" onSubmit={handleSubmit(onSubmit)}>

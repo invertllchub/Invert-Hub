@@ -1,10 +1,13 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { Job } from "@/types/jobs";
 import { useParams } from "next/navigation";
 import Image from "next/image";
-import Link from "next/link";
+// Types
+import { Job } from "@/types/jobs";
+// Icons
 import { Hourglass, MapPin, Calendar, Clock } from "lucide-react";
+//components
+import Logo from "@/components/main/Logo";
 import JobApplication from "@/components/jobs/JobApplication";
 import JobDetails from "@/components/jobs/JobDetails";
 
@@ -13,11 +16,9 @@ function Page() {
   const [jobs, setJobs] = useState<Job[]>([]);
   const params = useParams();
 
-
-
   const fetchData = async () => {
     try {
-      const res = await fetch("/jobs.json");
+      const res = await fetch("https://localhost:7253/api/Jobs");
       const json = await res.json();
       setJobs(json);
     } catch (error) {
@@ -43,17 +44,7 @@ function Page() {
       {/* Hero Section */}
       <div className="relative w-full h-[100vh] md:h-[80vh]">
         {/* Logo */}
-        <Link href="/" aria-label="Home">
-          <div className="absolute top-5 left-5 w-[120px] h-[40px] sm:w-[170px] sm:h-[60px] z-10">
-            <Image
-              src="https://res.cloudinary.com/dntdescqh/image/upload/v1755689582/logo_dppoxr.png"
-              alt="Invert-Hub Logo"
-              priority
-              fill
-              className="object-contain origin-left cursor-pointer transition-transform duration-[800ms] hover:[transform:scale(1.3)]"
-            />
-          </div>
-        </Link>
+        <Logo isDark={true}/>
 
         {/* Panner */}
         <Image
