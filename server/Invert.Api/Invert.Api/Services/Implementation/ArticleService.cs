@@ -38,24 +38,24 @@ namespace Invert.Api.Services.Implementation
             var article = new Article(dto.Title, dto.ContentJson);
 
 
-            _unitOfWork.Article.Add(article);
-            _unitOfWork.Save(); // Use async save for better performance
+            await _unitOfWork.Article.Add(article);
+            await _unitOfWork.Save(); // Use async save for better performance
             return article.Id;
         }
 
         public async Task DeleteArticleAsync(Guid id)
         {
             // Delete article by id
-            var article = _unitOfWork.Article.Get(a => a.Id == id);
+            var article = await _unitOfWork.Article.Get(a => a.Id == id);
             if (article == null) throw new KeyNotFoundException($"Article with id {id} not found");
             _unitOfWork.Article.Remove(article);
-            _unitOfWork.Save();
+            await _unitOfWork.Save();
         }
 
         public async Task<IEnumerable<ArticleDto>> GetAllAsync()
         {
             // Get all articles
-            var articles = _unitOfWork.Article.GetAll();
+            var articles = await _unitOfWork.Article.GetAll();
             var articleDtos = articles.Select(a => new ArticleDto
             {
                 Id = a.Id,
@@ -65,11 +65,11 @@ namespace Invert.Api.Services.Implementation
             });
             return articleDtos;
         }
-
+            
         public async Task<ArticleDto?> GetByIdAsync(Guid id)
         {
             // Get article by id
-            var article = _unitOfWork.Article.Get(a => a.Id == id);
+            var article = await _unitOfWork.Article.Get(a => a.Id == id);
             if (article == null) return null;
             return new ArticleDto
             {
@@ -83,7 +83,7 @@ namespace Invert.Api.Services.Implementation
         public async Task UpdateArticleAsync(Guid id, UpdateArticleDto dto)
         {
             // Update article by id
-            var article = _unitOfWork.Article.Get(a => a.Id == id);
+            var article = await _unitOfWork.Article.Get(a => a.Id == id);
             if (article == null) throw new KeyNotFoundException($"Article with id {id} not found");
 
             if (!string.IsNullOrEmpty(dto.Title))
@@ -94,7 +94,7 @@ namespace Invert.Api.Services.Implementation
 
 
             _unitOfWork.Article.Update(article);
-            _unitOfWork.Save();
+            await _unitOfWork.Save();
         }
     }
 }

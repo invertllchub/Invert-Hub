@@ -9,9 +9,10 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 using System.Text;
-using static Invert.Api.Data.AppIdentityDbContextSeed;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,6 +23,39 @@ builder.Services.AddControllers();
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddOpenApi();
+builder.Services.AddSwaggerGen();
+
+builder.Services.AddSwaggerGen(c =>
+{
+c.SwaggerDoc("v1", new OpenApiInfo
+{
+    Title = "Dummy App",
+    Version = "v1"
+});
+c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
+{
+    Name = "Authorization",
+    Type = SecuritySchemeType.ApiKey,
+    Scheme = "Bearer",
+    BearerFormat = "JWT",
+    In = ParameterLocation.Header,
+    Description = "Enter 'Bearer' [space] and then your valid token.\r\nExample: \"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI...\""
+});
+    c.AddSecurityRequirement(new OpenApiSecurityRequirement
+{
+    {
+        new OpenApiSecurityScheme
+        {
+            Reference = new OpenApiReference
+            {
+                Type = ReferenceType.SecurityScheme,
+                Id = "Bearer"
+            }
+        },
+        new string[] {}
+    }
+});
+});
 
 builder.Services.AddDbContext<ApplicationDbContext>(option =>
 option.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
@@ -29,16 +63,15 @@ option.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection
 // builder.Services.AddAutoMapper(typeof(AutoMapperProfile));
 builder.Services.AddAutoMapper(cfg => { /* Optional config here */ }, typeof(AutoMapperProfile));
 
-
+//builder.Services.AddAutoMapper(typeof(AutoMapperProfile).Assembly);
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped(typeof(IGenaricRepository<>), typeof(GenaricRepository<>));
 builder.Services.AddScoped<IProjectRepository, ProjectRepository>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IProjectService, ProjectService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
-builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IArticleService, ArticleService>();
-
-
+builder.Services.AddScoped<IJobService , JobService>();
 
 // Identity (ensure AppUser type and ApplicationDbContext are correct)
 builder.Services.AddIdentity<AppUser, IdentityRole>(options =>
@@ -51,14 +84,14 @@ builder.Services.AddIdentity<AppUser, IdentityRole>(options =>
 
 
 
-// builder.Services.AddCors(options =>
-//   options.AddPolicy("AllowReactDev", policy =>
-//     policy.WithOrigins("http://localhost:3000", "https://localhost:3000")
-//           .AllowAnyHeader()
-//           .AllowAnyMethod()
-//           .AllowCredentials()
-//   )
-// );
+builder.Services.AddCors(options =>
+  options.AddPolicy("AllowReactDev", policy =>
+    policy.WithOrigins("http://localhost:3000", "https://localhost:3000")
+          .AllowAnyHeader()
+          .AllowAnyMethod()
+          .AllowCredentials()
+  )
+);
 
 // Configure JWT auth
 var jwtCfg = builder.Configuration.GetSection("Jwt");
@@ -105,8 +138,8 @@ using (var scope = app.Services.CreateScope())
         // await ApplicationDbContextSeed.SeedAsync(context);
 
         //// Seed initial users 
-        var DataSeed = services.GetRequiredService<ContextSeed>();
-        await DataSeed.InitializeAsync();
+        //var DataSeed = services.GetRequiredService<ContextSeed>();
+        //await DataSeed.InitializeAsync();
         ///
         var userManager = services.GetRequiredService<UserManager<AppUser>>();
         // await AppIdentityDbContextSeed.SeedUserAsync(userManager);
@@ -125,16 +158,22 @@ using (var scope = app.Services.CreateScope())
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.MapOpenApi();
+    app.UseSwagger();
+    app.UseSwaggerUI();
 }
 
 app.UseHttpsRedirection();
 
-app.UseStaticFiles();
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(
+        Path.Combine(builder.Environment.ContentRootPath, "wwwroot", "uploads")),
+    RequestPath = "/uploads"
+});
 
 app.UseRouting();
 
-// app.UseCors("AllowReactDev");
+app.UseCors("AllowReactDev");
 app.UseAuthentication();
 app.UseAuthorization();
 

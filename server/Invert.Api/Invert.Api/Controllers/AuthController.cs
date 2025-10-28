@@ -22,7 +22,7 @@ namespace Invert.Api.Controllers
         public AuthController(IAuthService authService, UserManager<AppUser> userManager)
         {
             _authService = authService;
-            // _userManager = userManager;
+            _userManager = userManager;
         }
 
         [HttpPost("login")]
@@ -88,6 +88,27 @@ namespace Invert.Api.Controllers
                     Email = user.Email,
                     Token = " ",
                 });
+            }
+            catch (Exception ex)
+            {
+                return Problem(ex.Message);
+            }
+        }
+        [Authorize]
+        [HttpPost("logout")]
+        public async Task<IActionResult> Logout()
+        {
+            try
+            {
+                var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                var refreshToken = Request.Headers["RefreshToken"].ToString();
+
+                var result = await _authService.LogoutAsync(userId, refreshToken);
+                if (!result)
+                {
+                    return BadRequest(new { Message = "Logout failed" });
+                }
+                return Ok(new { Message = "Logout successful" });
             }
             catch (Exception ex)
             {
