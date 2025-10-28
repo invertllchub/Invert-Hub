@@ -56,6 +56,13 @@ c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
     }
 });
 });
+builder.Services.AddMemoryCache();
+
+builder.Services.AddLogging(config =>
+{
+    config.AddConsole();
+    config.AddDebug();
+});
 
 builder.Services.AddDbContext<ApplicationDbContext>(option =>
 option.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
