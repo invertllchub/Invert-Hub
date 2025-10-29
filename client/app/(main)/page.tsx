@@ -171,7 +171,7 @@ export default function HomePage() {
               >
                 <div className="relative w-full sm:w-1/2 h-[60vh] md:h-full">
                   <Image
-                    src={item.img}
+                    src={item.pathImg}
                     alt={item.title}
                     fill
                     className="object-cover"
