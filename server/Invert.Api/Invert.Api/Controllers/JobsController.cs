@@ -29,6 +29,8 @@ public class JobsController : ControllerBase
     public async Task<IActionResult> Create([FromBody] CreateJobDto dto)
     {
         // create job by JobService and add validation and exception handling
+
+        if (!ModelState.IsValid) return BadRequest(ModelState);
         try
         {
             var jobId = await _service.CreateJobAsync(dto);

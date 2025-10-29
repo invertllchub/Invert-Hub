@@ -7,6 +7,7 @@ using Invert.Api.Entities;
 using Invert.Api.Repositories.Implementation;
 using Invert.Api.Repositories.Interface;
 using Invert.Api.Services.Interface;
+using System.Net.NetworkInformation;
 using System.Text.Json;
 
 namespace Invert.Api.Services.Implementation
@@ -47,36 +48,14 @@ namespace Invert.Api.Services.Implementation
         public async Task<IEnumerable<JobDto>> GetAllAsync()
         {
             var jobs = await _unitOfWork.Job.GetAll();
-            return jobs.Select(j => new JobDto
-            {
-                Id = j.Id,
-                Title = j.Title,
-                Location = j.Location,
-                EmploymentType = j.EmploymentType,
-                ExperienceLevel = j.ExperienceLevel,
-                Salary = j.Salary,
-                Status = j.Status,
-                DatePosted = j.DatePosted,
-                ClosingDate = j.ClosingDate,
-                Description = j.Description,
-                Requirements = string.IsNullOrEmpty(j.Requirements) ? Array.Empty<string>() : j.Requirements.Split(';'),
-                Skills = string.IsNullOrEmpty(j.Skills) ? Array.Empty<string>() : j.Skills.Split(';'),
-                Benefits = string.IsNullOrEmpty(j.Benefits) ? Array.Empty<string>() : j.Benefits.Split(';')
 
-
-            }).ToList();
-
-
-        }
-
-        public async Task<JobDto?> GetByIdAsync(int id)
-        {
-            var job = await _unitOfWork.Job.Get(j => j.Id == id);
-            if (job == null) return null;
-            var jobDto = new JobDto
+            // var jobDtos = _mapper.Map<IEnumerable<JobDto>>(jobs);
+            // mapping manual to handle semicolon separated strings
+            var jobDtos = jobs.Select(job => new JobDto
             {
                 Id = job.Id,
                 Title = job.Title,
+                Description = job.Description,
                 Location = job.Location,
                 EmploymentType = job.EmploymentType,
                 ExperienceLevel = job.ExperienceLevel,
@@ -84,12 +63,49 @@ namespace Invert.Api.Services.Implementation
                 Status = job.Status,
                 DatePosted = job.DatePosted,
                 ClosingDate = job.ClosingDate,
-                Description = job.Description,
                 Requirements = string.IsNullOrEmpty(job.Requirements) ? Array.Empty<string>() : job.Requirements.Split(';'),
                 Skills = string.IsNullOrEmpty(job.Skills) ? Array.Empty<string>() : job.Skills.Split(';'),
-                Benefits = string.IsNullOrEmpty(job.Benefits) ? Array.Empty<string>() : job.Benefits.Split(';')
+                Benefits = string.IsNullOrEmpty(job.Benefits) ? Array.Empty<string>() : job.Benefits.Split(';'),
+
+
+
+            }).ToList();
+
+
+            return jobDtos;
+
+        }
+
+        public async Task<JobDto?> GetByIdAsync(int id)
+        {
+
+            var job = _unitOfWork.Job.Get(j => j.Id == id);
+            if (job == null) return Task.FromResult<JobDto?>(null);
+
+            var jobDto = new JobDto
+            {
+                Id = job.Id,
+                Title = job.Title,
+
+                Description = job.Description,
+
+                Location = job.Location,
+                EmploymentType = job.EmploymentType,
+                ExperienceLevel = job.ExperienceLevel,
+                Salary = job.Salary,
+                Status = job.Status,
+                DatePosted = job.DatePosted,
+                ClosingDate = job.ClosingDate,
+
+                Requirements = string.IsNullOrEmpty(job.Requirements) ? Array.Empty<string>() : job.Requirements.Split(';'),
+                Skills = string.IsNullOrEmpty(job.Skills) ? Array.Empty<string>() : job.Skills.Split(';'),
+                Benefits = string.IsNullOrEmpty(job.Benefits) ? Array.Empty<string>() : job.Benefits.Split(';'),
+
             };
-            return jobDto;
+            return Task.FromResult<JobDto?>(jobDto);
+
+
+            //return Task.FromResult(jobDto);
 
         }
 

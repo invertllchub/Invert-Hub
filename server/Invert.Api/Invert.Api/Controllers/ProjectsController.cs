@@ -9,10 +9,10 @@ namespace Invert.Api.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class ProjectController : ControllerBase
+public class ProjectsController : ControllerBase
 {
     private readonly IProjectService _service;
-    public ProjectController(IProjectService service) => _service = service;
+    public ProjectsController(IProjectService service) => _service = service;
 
     [HttpGet]
     public async Task<IActionResult> GetAll()
@@ -28,6 +28,7 @@ public class ProjectController : ControllerBase
     public IActionResult Create([FromBody] CreateProjectDto dto)
     {
         //create project by ProjectService and add validation and exception handling
+        if (!ModelState.IsValid) return BadRequest(ModelState);
         try
         {
             _service.CreateAsync(dto);

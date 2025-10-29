@@ -47,11 +47,11 @@ namespace Invert.Api.Services.Implementation
             {
                 Id = p.Id,
                 Title = p.Title,
-                Description = p.Description,
-                PathImg = p.PathImg,
+                Description = p.Description ?? string.Empty,
+                PathImg = p.PathImg ?? string.Empty,
                 Link = p.Link,
                 CreatedAt = p.CreatedAt
-            });
+            }).ToList();
 
             // var projectDtos = _mapper.Map<IEnumerable<ProjectDto>>(projects);
             return projectDtos;
@@ -97,17 +97,10 @@ namespace Invert.Api.Services.Implementation
         {
             //get project by unit of work
             var project = _unitOfWork.Project.Get(p => p.Id == id);
-            var projectDto = new ProjectDto
-            {
-                Id = project.Result.Id,
-                Title = project.Result.Title,
-                Description = project.Result.Description,
-                PathImg = project.Result.PathImg,
-                Link = project.Result.Link,
-                CreatedAt = project.Result.CreatedAt
-            };
-            return projectDto;
 
+            if (project == null) return Task.FromResult<ProjectDto>(null!);
+            var projectDto = _mapper.Map<ProjectDto>(project);
+            return Task.FromResult(projectDto);
 
         }
     }

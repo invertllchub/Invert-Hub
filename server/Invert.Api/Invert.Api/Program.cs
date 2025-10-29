@@ -20,42 +20,12 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-builder.Services.AddControllers();
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddOpenApi();
-builder.Services.AddSwaggerGen();
 
-builder.Services.AddSwaggerGen(c =>
-{
-c.SwaggerDoc("v1", new OpenApiInfo
-{
-    Title = "Dummy App",
-    Version = "v1"
-});
-c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
-{
-    Name = "Authorization",
-    Type = SecuritySchemeType.ApiKey,
-    Scheme = "Bearer",
-    BearerFormat = "JWT",
-    In = ParameterLocation.Header,
-    Description = "Enter 'Bearer' [space] and then your valid token.\r\nExample: \"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI...\""
-});
-    c.AddSecurityRequirement(new OpenApiSecurityRequirement
-{
-    {
-        new OpenApiSecurityScheme
-        {
-            Reference = new OpenApiReference
-            {
-                Type = ReferenceType.SecurityScheme,
-                Id = "Bearer"
-            }
-        },
-        new string[] {}
-    }
-});
-});
+builder.Services.AddEndpointsApiExplorer();
+
+builder.Services.AddSwaggerGen();
+//builder.Services.AddOpenApi();
+
 
 builder.Services.AddDbContext<ApplicationDbContext>(option =>
 option.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
@@ -71,7 +41,11 @@ builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IProjectService, ProjectService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IArticleService, ArticleService>();
-builder.Services.AddScoped<IJobService , JobService>();
+
+builder.Services.AddScoped<IArticleRepository, ArticleRepository>();
+builder.Services.AddScoped<IJobRepository, JobRepository>();
+builder.Services.AddScoped<IJobService, JobService>();
+
 
 // Identity (ensure AppUser type and ApplicationDbContext are correct)
 builder.Services.AddIdentity<AppUser, IdentityRole>(options =>
@@ -82,6 +56,7 @@ builder.Services.AddIdentity<AppUser, IdentityRole>(options =>
 .AddEntityFrameworkStores<ApplicationDbContext>()
 .AddDefaultTokenProviders();
 
+builder.Services.AddSwaggerGen();
 
 
 builder.Services.AddCors(options =>
@@ -113,11 +88,16 @@ builder.Services.AddAuthentication(options =>
         ValidIssuer = jwtCfg["Issuer"],
         ValidAudience = jwtCfg["Audience"],
         IssuerSigningKey = new SymmetricSecurityKey(key),
-        ClockSkew = TimeSpan.FromMinutes(1)
+        ClockSkew = TimeSpan.FromMinutes(15)
     };
 });
-
-builder.Services.AddControllers();
+builder.Services.AddScoped<AppIdentityDbContextSeed.ContextSeed>();
+builder.Services.AddControllers()
+    .AddJsonOptions(opts =>
+    {
+        opts.JsonSerializerOptions.PropertyNameCaseInsensitive = true;
+        opts.JsonSerializerOptions.Converters.Add(new System.Text.Json.Serialization.JsonStringEnumConverter());
+    });
 
 var app = builder.Build();
 
@@ -173,7 +153,8 @@ app.UseStaticFiles(new StaticFileOptions
 
 app.UseRouting();
 
-app.UseCors("AllowReactDev");
+ app.UseCors("AllowReactDev");
+
 app.UseAuthentication();
 app.UseAuthorization();
 
