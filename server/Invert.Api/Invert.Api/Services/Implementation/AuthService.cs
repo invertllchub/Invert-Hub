@@ -21,7 +21,7 @@ namespace Invert.Api.Services.Implementation
         public AuthService(
             UserManager<AppUser> userManager,
             IConfiguration configuration)
-        {   
+        {
             _userManager = userManager;
             _configuration = configuration;
         }
@@ -121,9 +121,18 @@ namespace Invert.Api.Services.Implementation
         public Task<string> GenerateRefreshTokenAsync()
         {
             var randomNumber = new byte[64];
+            // Use RandomNumberGenerator to generate a secure random number
             using var rng = RandomNumberGenerator.Create();
             rng.GetBytes(randomNumber);
             return Task.FromResult(Convert.ToBase64String(randomNumber));
+        }
+
+        public Task<bool> LogoutAsync(string userId, string RefreshToken)
+        {
+            // In a real-world application, you would store the refresh tokens in a database or cache.
+            // Here, we simply simulate the logout process.
+            return Task.FromResult(true);
+
         }
     }
 }

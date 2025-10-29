@@ -15,7 +15,7 @@
         public string Description { get; set; } = string.Empty;
         public string Requirements { get; set; } = string.Empty; // Semicolon-separated
         public string Skills { get; set; } = string.Empty;       // Semicolon-separated
-        public string Benefits { get; set; } = string.Empty;     // Semicolon-separated
+        public string? Benefits { get; set; } = string.Empty;     // Semicolon-separated
 
     }
 }

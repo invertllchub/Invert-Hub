@@ -9,10 +9,10 @@ namespace Invert.Api.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class ProjectController : ControllerBase
+public class ProjectsController : ControllerBase
 {
     private readonly IProjectService _service;
-    public ProjectController(IProjectService service) => _service = service;
+    public ProjectsController(IProjectService service) => _service = service;
 
     [HttpGet]
     public async Task<IActionResult> GetAll()
@@ -28,6 +28,7 @@ public class ProjectController : ControllerBase
     public IActionResult Create([FromBody] CreateProjectDto dto)
     {
         //create project by ProjectService and add validation and exception handling
+        if (!ModelState.IsValid) return BadRequest(ModelState);
         try
         {
             _service.CreateAsync(dto);
@@ -41,7 +42,7 @@ public class ProjectController : ControllerBase
 
 
     [HttpGet("{id}")]
-    public async Task<IActionResult> GetById([FromBody] int id)
+    public async Task<IActionResult> GetById(int id)
     {
         var project = await _service.GetByIdAsync(id);
         if (project == null) return NotFound();
@@ -72,7 +73,7 @@ public class ProjectController : ControllerBase
 
     [HttpDelete("{id}")]
     // [Authorize(Roles = "Admin")]
-    public async Task<IActionResult> Delete([FromBody] int id)
+    public async Task<IActionResult> Delete(int id)
     {
 
         if (id == 0) return BadRequest("Id mismatch.");
