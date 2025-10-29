@@ -1,8 +1,10 @@
 "use client";
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function Logo({ isDark }: { isDark: boolean }) {
+
+function Logo({ isDark }: { isDark: boolean }) {
     return (
         <div className="transition-all duration-300">
             <Link href="/" aria-label="Home">
@@ -23,3 +25,5 @@ export default function Logo({ isDark }: { isDark: boolean }) {
         </div>
     );
 }
+
+export default React.memo(Logo);

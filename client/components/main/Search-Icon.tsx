@@ -1,18 +1,28 @@
-import React, { useEffect } from 'react'
-import { useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import { Search, X } from 'lucide-react'
 import { Project } from '@/types/project'
-import ProjectCard from './projectPage/ProjectCard'
+import dynamic from 'next/dynamic'
 
-
+const ProjectCard = dynamic(() => import('./projectPage/ProjectCard'), {
+  loading: () => <p>Loading...</p>, 
+});
 
 const SearchIcon = ({ isDark }: { isDark: boolean }) => {
     const [openSearch, setOpenSearch] = useState(false)
     const [projects, setProjects] = useState<Project[]>([])
     const [searchValue, setSearchValue] = useState("");
-    
+    const [debouncedSearch, setDebouncedSearch] = useState("");
+
+    useEffect(() => {
+        const handler = setTimeout(() => {
+            setDebouncedSearch(searchValue);
+        }, 300); 
+
+        return () => clearTimeout(handler); 
+    }, [searchValue]);
 
     const fetchData = async () =>{
+        if (projects.length) return;
         try {
             const res = await fetch('https://localhost:7253/api/Projects')
             const json = await res.json()
@@ -21,21 +31,24 @@ const SearchIcon = ({ isDark }: { isDark: boolean }) => {
             console.error("Error fetching data:", error);
         }
     }
-    useEffect(() => {
-        fetchData()
-    }, [])
 
-    const filteredProjects = projects.filter((project) => {
-        if (!searchValue) return true;
-        const search = searchValue.toLowerCase();
-        const title = project.title.toLowerCase();
-
-        return title.includes(search);
-    });
+    const filteredProjects = useMemo(() => {
+        return projects.filter(project => {
+            if (!debouncedSearch) return true;
+            const search = debouncedSearch.toLowerCase();
+            return project.title.toLowerCase().includes(search);
+        });
+    }, [projects, debouncedSearch]);
 
     return (
         <>
-        <div aria-label="Open Search" onClick={() => setOpenSearch(true)} className='p-1 rounded-full cursor-pointer hover:bg-black/30'>
+        <div 
+        aria-label="Open Search" 
+        onClick={() => {
+            setOpenSearch(true)
+            fetchData()
+        }}
+        className='p-1 rounded-full cursor-pointer hover:bg-black/30'>
             <Search 
             className={`
                 ${isDark ? 'text-white' : 'text-black'}
@@ -67,7 +80,7 @@ const SearchIcon = ({ isDark }: { isDark: boolean }) => {
                         <div className='w-full grid grid-cols-1  lg:grid-cols-3 gap-8'>
                             {filteredProjects?.slice(0, 3).map((p, i) => {
                                 return (
-                                    <div key={i}>
+                                    <div key={p.id}>
                                         <ProjectCard project={p}/>
                                     </div>
                                 )
@@ -81,4 +94,4 @@ const SearchIcon = ({ isDark }: { isDark: boolean }) => {
     )
 }
 
-export default SearchIcon
+export default React.memo(SearchIcon);

@@ -1,3 +1,4 @@
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 // types
@@ -5,7 +6,7 @@ import { Project } from "@/types/project";
 
 const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
   const header = project.title;
-  const image = project.img;
+  const image = project.pathImg;
   const paragraph = project.description;
   const link = project.link;
 
@@ -56,4 +57,4 @@ const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
   );
 };
 
-export default ProjectCard;
+export default React.memo(ProjectCard);

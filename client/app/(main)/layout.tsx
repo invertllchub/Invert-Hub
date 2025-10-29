@@ -1,6 +1,14 @@
 
-import NavBar from "@/components/main/NavBar";
-import Footer from "@/components/main/Footer";
+
+import dynamic from "next/dynamic";
+
+const NavBar = dynamic(() => import("@/components/main/NavBar"), {
+  loading: () => <p>Loading...</p>, 
+});
+
+const Footer = dynamic(() => import("@/components/main/Footer"), {
+  loading: () => <p>Loading...</p>, 
+});
 
 export default function MainLayout({
   children,

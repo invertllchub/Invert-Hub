@@ -1,5 +1,5 @@
 "use client"
-import React from 'react'
+import React, { useCallback, useMemo } from 'react'
 import { useState } from 'react';
 import Link from 'next/link';
 import { Menu, X } from 'lucide-react'
@@ -8,8 +8,13 @@ function SideBarNav({ isDark }: { isDark: boolean }) {
     const [openSideBar, setOpenSideBar] = useState(false);
     const [hoveredLink, setHoveredLink] = useState<string | null>(null);
 
+    const handleMouseEnter = useCallback((href: string) => setHoveredLink(href), []);
+    const handleMouseLeave = useCallback(() => setHoveredLink(null), []);
 
-    const links = [
+
+
+    const links = useMemo(() => 
+        [
         { href: '/projects', label: 'PROJECTS' },
         { href: '/services', label: 'SERVICES' },
         { href: '/careers', label: 'CAREERS' },
@@ -17,7 +22,8 @@ function SideBarNav({ isDark }: { isDark: boolean }) {
         { href: '/research', label: 'RESEARCH & INNOVATION'},
         { href: '/news', label: 'NEWS & INSIGHTS'},
         { href: '/contact', label: 'CONTACT US'},
-    ];
+    ]
+    , []) 
 
     return (
         <div >
@@ -52,8 +58,8 @@ function SideBarNav({ isDark }: { isDark: boolean }) {
                     <ul className='w-full mt-5 p-6 flex flex-col justify-start items-start gap-6'>
                         {links.slice(0, 3).map(link => (
                             <li key={link.href} 
-                            onMouseEnter={() => setHoveredLink(link.href)}
-                            onMouseLeave={() => setHoveredLink(null)}
+                            onMouseEnter={() => handleMouseEnter(link.href)}
+                            onMouseLeave={handleMouseLeave}
                             className={`bg-black py-1 px-2 rounded-4xl w-full cursor-pointer 
                                 transition-opacity duration-400 
                                 ${
@@ -108,4 +114,4 @@ function SideBarNav({ isDark }: { isDark: boolean }) {
     )
 }
 
-export default SideBarNav
+export default React.memo(SideBarNav);
