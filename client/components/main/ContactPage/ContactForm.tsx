@@ -1,5 +1,5 @@
 import React from "react";
-
+import { useCallback } from "react";
 import { FaPaperPlane } from "react-icons/fa";
 // React-hook-form and validation with Zod
 import { useForm, SubmitHandler } from "react-hook-form";
@@ -19,24 +19,17 @@ function ContactForm() {
     resolver: zodResolver(ContactFormSchema),
   });
 
-  const onSubmit: SubmitHandler<ContactFormFields> = async (data) => {
+  const onSubmit = useCallback<SubmitHandler<ContactFormFields>>(async (data) => {
     const toastId = showToast("loading", {
       message: "Sending message...",
     });
 
     try {
-      const heading = "This message came from contact us form";
-      const formData = new FormData();
-      formData.append("access_key", "0bc40844-5a24-42dd-a1f7-350b79e12dd1");
-      formData.append("Heading", heading);
-      formData.append("Name", data.name);
-      formData.append("Email", data.email);
-      formData.append("What are you reaching out about?", data.reachingOut);
-      formData.append("Message", data.message);
 
-      const response = await fetch("https://api.web3forms.com/submit", {
+      const response = await fetch("/api/contact", {
         method: "POST",
-        body: formData,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
       });
 
       const result = await response.json();
@@ -60,7 +53,8 @@ function ContactForm() {
         toastId,
       });
     }
-  };
+  }, [reset]);
+
 
   return (
     <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
@@ -168,4 +162,4 @@ function ContactForm() {
   );
 }
 
-export default ContactForm;
+export default React.memo(ContactForm);

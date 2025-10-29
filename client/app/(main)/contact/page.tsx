@@ -1,12 +1,15 @@
 "use client";
 
 import React from "react";
-import { IoLogoYoutube, IoLogoLinkedin, IoMailOutline } from "react-icons/io5";
+import { IoLogoLinkedin } from "react-icons/io5";
 import { FaInstagramSquare, FaMapPin, FaPaperPlane } from "react-icons/fa";
-import { FiMapPin, FiPhone } from "react-icons/fi";
-import ContactForm from "@/components/main/ContactPage/ContactForm";
-import Link from "next/link";
 
+import Link from "next/link";
+import dynamic from "next/dynamic";
+
+const ContactForm = dynamic(() => import("@/components/main/ContactPage/ContactForm"), {
+  loading: () => <p>loading...</p>,
+})
 const ContactPage = () => {
   const socialMedia = [
     {

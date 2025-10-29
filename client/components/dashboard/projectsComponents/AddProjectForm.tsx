@@ -14,7 +14,7 @@ function AddProjectForm() {
 
   const handleFileChange = (file: File) => {
     setPreview(URL.createObjectURL(file));
-    setValue("projectImage", file);
+    setValue("pathImg", file);
   };
 
   const {
@@ -35,13 +35,13 @@ function AddProjectForm() {
     try {
 
       let uploadedImageUrl = "";
-      if (data.projectImage) {
-        uploadedImageUrl = await uploadToCloudinary(data.projectImage);
+      if (data.pathImg) {
+        uploadedImageUrl = await uploadToCloudinary(data.pathImg);
       }
 
       const payload = {
         ...data,
-        projectImage: uploadedImageUrl,
+        pathImg: uploadedImageUrl,
       };
 
       const response = await fetch("https://localhost:7253/api/projects", {
@@ -171,8 +171,8 @@ function AddProjectForm() {
               }}
             />
           </div>
-          {errors.projectImage && (
-            <div className="text-red-600">{errors.projectImage.message}</div>
+          {errors.pathImg && (
+            <div className="text-red-600">{errors.pathImg.message}</div>
           )}
         </div>
 

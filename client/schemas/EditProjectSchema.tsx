@@ -3,7 +3,7 @@ import { z } from "zod";
 export const EditProjectSchema = z.object({
     projectName: z.string().min(3, "Name is required"),
     projectDescription: z.string().min(10, "Description is required"),
-    projectImage: z
+    pathImg: z
         .any() 
         .refine(
             file => !file || ["image/jpeg", "image/png", "image/webp"].includes(file.type),

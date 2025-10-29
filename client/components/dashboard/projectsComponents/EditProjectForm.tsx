@@ -15,7 +15,7 @@ type ProjectProp = {
 };
 
 function EditProjectForm({ project }: ProjectProp) {
-  const [preview, setPreview] = useState<string>(project.img || "");
+  const [preview, setPreview] = useState<string>(project.pathImg || "");
   const [file, setFile] = useState<File | null>(null);
 
   const handleFileChange = (newFile: File) => {
@@ -52,7 +52,7 @@ function EditProjectForm({ project }: ProjectProp) {
 
       const payload = {
         ...data,
-        projectImage: uploadedImageUrl,
+        pathImg: uploadedImageUrl,
       };
 
       const response = await fetch("https://localhost:7253/api/Projects", {
@@ -184,9 +184,9 @@ function EditProjectForm({ project }: ProjectProp) {
               }}
             />
           </div>
-          {errors.projectImage && (
+          {errors.pathImg && (
             <div className="text-red-500">
-              {errors.projectImage.message?.toString()}
+              {errors.pathImg.message?.toString()}
             </div>
           )}
         </div>
