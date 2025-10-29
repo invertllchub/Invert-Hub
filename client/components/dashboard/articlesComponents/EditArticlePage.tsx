@@ -21,7 +21,7 @@ export default function EditArticlePage() {
   useEffect(() => {
     const fetchArticle = async () => {
       try {
-        const res = await fetch("/articles.json");
+        const res = await fetch("https://localhost:7253/api/Articles");
         const data = await res.json();
         const found = data.articles.find((a: any) => a.id === Number(id));
         if (found) setArticle(found);
@@ -81,29 +81,46 @@ export default function EditArticlePage() {
     };
     
     try {
-      const res = await fetch('', {
+      const response = await fetch('https://localhost:7253/api/Articles', {
         method: "PUT", 
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(UpdatedArticle)
       })
-      const result = await res.json()
-      if (result.success){
-        showToast("success", {
-          message: "Succussefuly updated the article",
-          toastId
-        })
-      } else {
+
+      const text = await response.text();
+      let parsed;
+      try {
+        parsed = text ? JSON.parse(text) : null;
+      } catch {
+        parsed = text;
+      }
+
+      if (!response.ok) {
+        console.error("❌ Server returned error", response.status, parsed);
         showToast("error", {
-          message: "Something went wrong. Please try again.",
-          toastId
-        })
+          message: `Failed: ${response.status} ${response.statusText}`,
+          toastId,
+        });
+        return;
+      }
+
+      if (parsed && parsed.jobId !== undefined) {
+        showToast("success", {
+          message: parsed.message ?? "Article updated successfully!",
+          toastId,
+        });
+      } else {
+        showToast("success", {
+          message: "Article updated successfully (unexpected response shape).",
+          toastId,
+        });
       }
     } catch (error) {
-      console.error("Failed to fetch", error)
+      console.error("⚠️ Request error", error);
       showToast("error", {
-        message: "Failed to upload the article, please try again later.",
+        message: "Failed to submit the application, please try again later.",
         toastId,
       });
     }

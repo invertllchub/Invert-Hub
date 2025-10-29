@@ -35,7 +35,7 @@ const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
           target="_blank"
           className="font-medium text-gray-900 hover:text-gray-700 transition-colors flex items-center gap-1 mt-4"
         >
-          Read More
+          Visit Demo
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-4 w-4 transition-transform group-hover:translate-x-1"

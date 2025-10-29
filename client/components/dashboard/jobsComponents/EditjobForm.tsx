@@ -4,8 +4,8 @@ import { Job } from "@/types/jobs";
 // React-hook-form and validation with Zod
 import { useForm, SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { FormFields } from "@/components/schemas/EditJobSchema";
-import { EditJobSchema } from "@/components/schemas/EditJobSchema";
+import { EditJobFormFields } from "@/schemas/EditJobSchema";
+import { EditJobSchema } from "@/schemas/EditJobSchema";
 // Toast
 import { showToast } from "@/components/jobs/Toast";
 // Functions
@@ -21,7 +21,7 @@ export default function EditJobForm({ job }: JobProps) {
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm<FormFields>({
+  } = useForm<EditJobFormFields>({
     resolver: zodResolver(EditJobSchema),
     defaultValues: {
       title: job.title,
@@ -38,49 +38,80 @@ export default function EditJobForm({ job }: JobProps) {
     } as any,
   });
 
-  const onSubmit: SubmitHandler<FormFields> = async (data) => {
-    const toastId = showToast("loading", {
-      message: "Editing Job Application",
-    });
+const onSubmit: SubmitHandler<EditJobFormFields> = async (data) => {
+  const toastId = showToast("loading", {
+    message: "Submitting Job Application...",
+  });
 
-    try {
-      const payload = {
-        ...data,
-        requirements: parseMultilineText(data.requirements || ""),
-        benefits: parseMultilineText(data.benefits || ""),
-        salary: Number(data.salary), 
+  try {
+    const salaryVal =
+      data.salary === undefined ||
+      data.salary === null ||
+      Number.isNaN(Number(data.salary))
+        ? null
+        : Number(data.salary);
+
+    const payload = {
+      title: data.title || null,
+      location: data.location || null,
+      employmentType: data.employmentType || null,
+      experienceLevel: data.experienceLevel || null,
+      salary: salaryVal,
+      status: data.status || null,
+      datePosted: data.datePosted || null,
+      closingDate: data.closingDate || null,
+      description: data.description || null,
+      requirements: parseMultilineText(data.requirements || "").filter(Boolean),
+      benefits: parseMultilineText(data.benefits || "").filter(Boolean)
     };
 
-      const response = await fetch("", {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(payload),
-      });
+    const response = await fetch("https://localhost:7253/api/jobs", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
+    });
 
-      const result = await response.json();
+    const text = await response.text();
+    let parsed;
+    try {
+      parsed = text ? JSON.parse(text) : null;
+    } catch {
+      parsed = text;
+    }
 
-      if (result.success) {
-        showToast("success", {
-          message: "Application submitted successfully!",
-          toastId,
-        });
-        reset();
-      } else {
-        showToast("error", {
-          message: "Something went wrong. Please try again.",
-          toastId,
-        });
-      }
-    } catch (error) {
-      console.error(error);
+    if (!response.ok) {
+      console.error("❌ Server returned error", response.status, parsed);
       showToast("error", {
-        message: "Failed to submit the application, please try again later.",
+        message: `Failed: ${response.status} ${response.statusText}`,
         toastId,
       });
+      return;
     }
-  };
+
+    if (parsed && parsed.jobId !== undefined) {
+      showToast("success", {
+        message: parsed.message ?? "Job updated successfully!",
+        toastId,
+      });
+      reset();
+    } else {
+      showToast("success", {
+        message: "Job updated successfully (unexpected response shape).",
+        toastId,
+      });
+      reset();
+    }
+  } catch (error) {
+    console.error("⚠️ Request error", error);
+    showToast("error", {
+      message: "Failed to submit the application, please try again later.",
+      toastId,
+    });
+  }
+};
+
 
   return (
     <form id="edit-job-form" onSubmit={handleSubmit(onSubmit)}>
@@ -123,8 +154,11 @@ export default function EditJobForm({ job }: JobProps) {
               className="border p-3 rounded-lg w-full"
             >
               <option value="">Select Employment Type</option>
-              <option value="Full-time">Full-time</option>
-              <option value="Part-time">Part-time</option>
+              <option value="Full-Time">Full-Time</option>
+              <option value="Part-Time">Part-Time</option>
+              <option value="Full-Time / Part-Time">
+                Full-Time / Part-Time
+              </option>
               <option value="Contract">Contract</option>
             </select>
             {errors.employmentType && (

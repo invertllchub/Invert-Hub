@@ -3,10 +3,10 @@
 import { useEffect, useState } from "react";
 // components
 import NewsHeader from "@/components/main/NewsPage/NewsHeader";
-import SubscriptionCTA from "@/components/main/SubscriptionCTA";
 import ArticleCard from "@/components/main/NewsPage/ArticleCard";
 // types
 import { Article, ArticlesResponse } from "../../../types/articles";
+import SubscribeForm from "@/components/main/NewsPage/SubscribeForm";
 
 export default function NewsPage() {
   const [articles, setArticles] = useState<Article[]>([]);
@@ -14,7 +14,7 @@ export default function NewsPage() {
   // fetch data
   const fetchData = async () => {
     try {
-      const res = await fetch("/articles.json");
+      const res = await fetch("https://localhost:7253/api/Articles");
       const json: ArticlesResponse = await res.json();
       setArticles(json.articles);
     } catch (error) {
@@ -39,7 +39,23 @@ export default function NewsPage() {
           ))}
         </div>
 
-        <SubscriptionCTA />
+        <div className="text-center py-12 border-t border-gray-200 bg-gray-50 rounded-xl px-6">
+          <div className="mx-auto">
+            <h3 className="text-2xl font-bold text-gray-900 mb-3">
+              Stay updated with our insights
+            </h3>
+            <p className="text-gray-600 mb-6 font-light">
+              Join our newsletter to receive future stories, insights, and
+              opportunities directly in your inbox.
+            </p>
+          </div>
+          <div>
+            <SubscribeForm />
+          </div>
+          <p className="mt-4 text-gray-500 text-sm font-light">
+            — Get INVERT's perspectives delivered monthly
+          </p>
+        </div>
       </div>
     </div>
   );

@@ -21,7 +21,7 @@ namespace Invert.Api.Services.Implementation
 
         }
 
-        public Task<int> CreateAsync(CreateProjectDto dto)
+        public async Task<int> CreateAsync(CreateProjectDto dto)
         {
             if (string.IsNullOrWhiteSpace(dto.Title))
             {
@@ -33,9 +33,10 @@ namespace Invert.Api.Services.Implementation
             }
             //create project by unit of work
             var project = _mapper.Map<Project>(dto);
-            _unitOfWork.Project.Add(project);
-            _unitOfWork.Save();
-            return Task.FromResult(project.Id);
+            await _unitOfWork.Project.Add(project);
+            await _unitOfWork.Save();
+            return project.Id;
+
         }
 
         public async Task<IEnumerable<ProjectDto>> GetAllAsync()
@@ -57,9 +58,9 @@ namespace Invert.Api.Services.Implementation
 
         }
 
-        public Task UpdateAsync(int id, UpdateProjectDto dto)
+        public async Task UpdateAsync(int id, UpdateProjectDto dto)
         {
-            var project = _unitOfWork.Project.Get(p => p.Id == id);
+            var project = await _unitOfWork.Project.Get(p => p.Id == id);
             if (project == null) throw new Exception("Project not found"); ;
 
             if (!string.IsNullOrEmpty(dto.Title))
@@ -78,27 +79,29 @@ namespace Invert.Api.Services.Implementation
             project.UpdatedAt = DateTime.UtcNow;
 
             _unitOfWork.Project.Update(project);
-            _unitOfWork.Save();
-            return Task.CompletedTask;
+            await _unitOfWork.Save();
+            return;
 
         }
-        public Task DeleteAsync(int id)
+        public async Task DeleteAsync(int id)
         {
-            var project = _unitOfWork.Project.Get(p => p.Id == id);
+            var project = await _unitOfWork.Project.Get(p => p.Id == id);
             if (project == null) throw new Exception("Project not found"); ;
 
             _unitOfWork.Project.Remove(project);
-            _unitOfWork.Save();
-            return Task.CompletedTask;
+            await _unitOfWork.Save();
+            return;
         }
 
-        public Task<ProjectDto> GetByIdAsync(int id)
+        public async Task<ProjectDto> GetByIdAsync(int id)
         {
             //get project by unit of work
             var project = _unitOfWork.Project.Get(p => p.Id == id);
+
             if (project == null) return Task.FromResult<ProjectDto>(null!);
             var projectDto = _mapper.Map<ProjectDto>(project);
             return Task.FromResult(projectDto);
+
         }
     }
 }

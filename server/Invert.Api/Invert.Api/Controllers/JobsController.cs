@@ -76,7 +76,7 @@ public class JobsController : ControllerBase
 
     [HttpDelete("{id}")]
     // [Authorize(Roles = "Admin")]
-    public async Task<IActionResult> Delete([FromBody] int id)
+    public async Task<IActionResult> Delete(int id)
     {
 
         if (id == 0) return BadRequest("Id mismatch.");

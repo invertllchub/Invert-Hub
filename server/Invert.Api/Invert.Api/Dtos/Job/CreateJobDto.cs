@@ -1,15 +1,18 @@
+
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Text.Json.Serialization;
+
 
 namespace Invert.Api.Dtos.Job
 {
+
     // Use JsonStringEnumConverter (see Program.cs) so client can send enums as strings
     [JsonConverter(typeof(JsonStringEnumConverter))]
     public enum EmploymentType { Unknown, FullTime, PartTime, Contract, Hybrid }
     public enum ExperienceLevel { Unknown, Junior, Mid, Senior }
     public enum JobStatus { Unknown, Available, NotAvailable }
+
 
     public record CreateJobDto
     {
@@ -39,8 +42,10 @@ namespace Invert.Api.Dtos.Job
         public string? Description { get; init; }
 
         // Use collections instead of JSON strings
+
         public List<string>? Requirements { get; init; }
         public List<string>? Skills { get; init; }
         public List<string>? Benefits { get; init; }
     }
 }
+

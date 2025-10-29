@@ -1,15 +1,18 @@
 "use client";
-import Image from "next/image";
 import React, { useEffect, useState } from "react";
-import { Job } from "../../../types/jobs";
+import Image from "next/image";
 import Link from "next/link";
+// types
+import { Job } from "../../../types/jobs";
+// components
+import Logo from "@/components/main/Logo";
 
 function Page() {
   const [jobs, setJobs] = useState<Job[]>([]);
 
   const fetchData = async () => {
     try {
-      const res = await fetch("/jobs.json");
+      const res = await fetch("https://localhost:7253/api/Jobs");
       const json = await res.json();
       setJobs(json);
     } catch (error) {
@@ -25,17 +28,7 @@ function Page() {
     <div>
       {/* Hero Section */}
       <div className="relative w-full h-[90vh] md:h-[100vh]">
-        <Link href="/" aria-label="Home">
-          <div className="absolute top-5 left-5 w-[120px] h-[40px] sm:w-[170px] sm:h-[60px] z-10">
-            <Image
-              src="https://res.cloudinary.com/dntdescqh/image/upload/v1755689582/logo_dppoxr.png"
-              alt="Invert-Hub Logo"
-              priority
-              fill
-              className="object-contain origin-left cursor-pointer transition-transform duration-[800ms] hover:[transform:scale(1.3)]"
-            />
-          </div>
-        </Link>
+        <Logo isDark={true}/>
 
         <Image
           alt="jobs picture"

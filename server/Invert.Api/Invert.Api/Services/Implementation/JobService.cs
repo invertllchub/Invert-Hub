@@ -27,27 +27,28 @@ namespace Invert.Api.Services.Implementation
 
 
 
-        public Task<int> CreateJobAsync(CreateJobDto dto)
+        public async Task<int> CreateJobAsync(CreateJobDto dto)
         {
             var job = _mapper.Map<Job>(dto);
-            _unitOfWork.Job.Add(job);
-            _unitOfWork.Save();
-            return Task.FromResult(job.Id);
+            await _unitOfWork.Job.Add(job);
+            await _unitOfWork.Save();
+            return job.Id;
         }
 
 
-        public Task DeleteJobAsync(int id)
+        public async Task DeleteJobAsync(int id)
         {
-            var job = _unitOfWork.Job.Get(j => j.Id == id);
+            var job = await _unitOfWork.Job.Get(j => j.Id == id);
             if (job == null) throw new KeyNotFoundException($"Job with id {id} not found");
             _unitOfWork.Job.Remove(job);
-            _unitOfWork.Save();
-            return Task.CompletedTask;
+            await _unitOfWork.Save();
+            return;
         }
 
         public async Task<IEnumerable<JobDto>> GetAllAsync()
         {
             var jobs = await _unitOfWork.Job.GetAll();
+
             // var jobDtos = _mapper.Map<IEnumerable<JobDto>>(jobs);
             // mapping manual to handle semicolon separated strings
             var jobDtos = jobs.Select(job => new JobDto
@@ -67,20 +68,27 @@ namespace Invert.Api.Services.Implementation
                 Benefits = string.IsNullOrEmpty(job.Benefits) ? Array.Empty<string>() : job.Benefits.Split(';'),
 
 
+
             }).ToList();
 
+
             return jobDtos;
+
         }
 
-        public Task<JobDto?> GetByIdAsync(int id)
+        public async Task<JobDto?> GetByIdAsync(int id)
         {
+
             var job = _unitOfWork.Job.Get(j => j.Id == id);
             if (job == null) return Task.FromResult<JobDto?>(null);
+
             var jobDto = new JobDto
             {
                 Id = job.Id,
                 Title = job.Title,
+
                 Description = job.Description,
+
                 Location = job.Location,
                 EmploymentType = job.EmploymentType,
                 ExperienceLevel = job.ExperienceLevel,
@@ -88,6 +96,7 @@ namespace Invert.Api.Services.Implementation
                 Status = job.Status,
                 DatePosted = job.DatePosted,
                 ClosingDate = job.ClosingDate,
+
                 Requirements = string.IsNullOrEmpty(job.Requirements) ? Array.Empty<string>() : job.Requirements.Split(';'),
                 Skills = string.IsNullOrEmpty(job.Skills) ? Array.Empty<string>() : job.Skills.Split(';'),
                 Benefits = string.IsNullOrEmpty(job.Benefits) ? Array.Empty<string>() : job.Benefits.Split(';'),
@@ -97,11 +106,12 @@ namespace Invert.Api.Services.Implementation
 
 
             //return Task.FromResult(jobDto);
+
         }
 
-        public Task UpdateJobAsync(int id, UpdateJobDto dto)
+        public async Task UpdateJobAsync(int id, UpdateJobDto dto)
         {
-            var job = _unitOfWork.Job.Get(j => j.Id == id);
+            var job = await _unitOfWork.Job.Get(j => j.Id == id);
             if (job == null) throw new Exception("Job not found");
             if (!string.IsNullOrEmpty(dto.Title))
                 job.Title = dto.Title;
@@ -116,8 +126,8 @@ namespace Invert.Api.Services.Implementation
 
 
             _unitOfWork.Job.Update(job);
-            _unitOfWork.Save();
-            return Task.CompletedTask;
+            await _unitOfWork.Save();
+            return;
         }
     }
 }

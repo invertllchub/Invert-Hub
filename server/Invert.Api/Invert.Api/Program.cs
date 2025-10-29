@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 using System.Text;
-using static Invert.Api.Data.AppIdentityDbContextSeed;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,8 +22,10 @@ builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 
 builder.Services.AddEndpointsApiExplorer();
+
 builder.Services.AddSwaggerGen();
 //builder.Services.AddOpenApi();
+
 
 builder.Services.AddDbContext<ApplicationDbContext>(option =>
 option.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
@@ -31,14 +33,15 @@ option.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection
 // builder.Services.AddAutoMapper(typeof(AutoMapperProfile));
 builder.Services.AddAutoMapper(cfg => { /* Optional config here */ }, typeof(AutoMapperProfile));
 
-
+//builder.Services.AddAutoMapper(typeof(AutoMapperProfile).Assembly);
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped(typeof(IGenaricRepository<>), typeof(GenaricRepository<>));
 builder.Services.AddScoped<IProjectRepository, ProjectRepository>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IProjectService, ProjectService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
-builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IArticleService, ArticleService>();
+
 builder.Services.AddScoped<IArticleRepository, ArticleRepository>();
 builder.Services.AddScoped<IJobRepository, JobRepository>();
 builder.Services.AddScoped<IJobService, JobService>();
@@ -115,8 +118,8 @@ using (var scope = app.Services.CreateScope())
         // await ApplicationDbContextSeed.SeedAsync(context);
 
         //// Seed initial users 
-        var DataSeed = services.GetRequiredService<ContextSeed>();
-        await DataSeed.InitializeAsync();
+        //var DataSeed = services.GetRequiredService<ContextSeed>();
+        //await DataSeed.InitializeAsync();
         ///
         var userManager = services.GetRequiredService<UserManager<AppUser>>();
         // await AppIdentityDbContextSeed.SeedUserAsync(userManager);
@@ -140,15 +143,18 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
 app.UseStaticFiles(new StaticFileOptions
 {
     FileProvider = new PhysicalFileProvider(
         Path.Combine(builder.Environment.ContentRootPath, "wwwroot", "uploads")),
     RequestPath = "/uploads"
 });
+
 app.UseRouting();
 
  app.UseCors("AllowReactDev");
+
 app.UseAuthentication();
 app.UseAuthorization();
 
