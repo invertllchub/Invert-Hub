@@ -16,6 +16,7 @@ namespace Invert.Api.Entities
         public DateTime ClosingDate { get; set; }
         public string Description { get; set; } = string.Empty;
 
+
         // Store as JSON strings in database
         public string RequirementsJson { get; set; } = "[]";
         public string SkillsJson { get; set; } = "[]";

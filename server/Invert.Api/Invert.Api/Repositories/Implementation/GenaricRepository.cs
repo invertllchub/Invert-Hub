@@ -45,7 +45,9 @@ namespace Invert.Api.Repositories.Implementation
             return await query.AsNoTracking().FirstOrDefaultAsync();
         }
 
-        public async Task<IEnumerable<T>> GetAll(Expression<Func<T, bool>>? filter = null, string? includeProperty = null)
+
+        public async Task<List<T>> GetAll(Expression<Func<T, bool>>? filter = null, string? includeProperty = null)
+
         {
             IQueryable<T> query = dbSet;
             if (filter != null)

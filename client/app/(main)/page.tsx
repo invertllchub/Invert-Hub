@@ -1,15 +1,15 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
 // gsap animation
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 // components
 import ScreenText from "@/components/main/ScreenText";
-import Image from "next/image";
-import Link from "next/link";
+import YellowCard from "@/components/main/YellowCard";
 // types
 import { Project } from "../../types/project";
-import YellowCard from "@/components/main/YellowCard";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -171,7 +171,7 @@ export default function HomePage() {
               >
                 <div className="relative w-full sm:w-1/2 h-[60vh] md:h-full">
                   <Image
-                    src={item.img}
+                    src={item.pathImg}
                     alt={item.title}
                     fill
                     className="object-cover"

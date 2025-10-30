@@ -44,12 +44,6 @@ const onSubmit: SubmitHandler<EditJobFormFields> = async (data) => {
   });
 
   try {
-    const requirements = parseMultilineText(data.requirements || "").filter(Boolean);
-    const benefits = parseMultilineText(data.benefits || "").filter(Boolean);
-
-    const datePosted = data.datePosted || null;
-    const closingDate = data.closingDate || null;
-
     const salaryVal =
       data.salary === undefined ||
       data.salary === null ||
@@ -58,17 +52,17 @@ const onSubmit: SubmitHandler<EditJobFormFields> = async (data) => {
         : Number(data.salary);
 
     const payload = {
-      title: data.title,
-      location: data.location,
+      title: data.title || null,
+      location: data.location || null,
       employmentType: data.employmentType || null,
       experienceLevel: data.experienceLevel || null,
       salary: salaryVal,
       status: data.status || null,
-      datePosted,
-      closingDate,
+      datePosted: data.datePosted || null,
+      closingDate: data.closingDate || null,
       description: data.description || null,
-      requirements,
-      benefits,
+      requirements: parseMultilineText(data.requirements || "").filter(Boolean),
+      benefits: parseMultilineText(data.benefits || "").filter(Boolean)
     };
 
     const response = await fetch("https://localhost:7253/api/jobs", {
@@ -98,13 +92,13 @@ const onSubmit: SubmitHandler<EditJobFormFields> = async (data) => {
 
     if (parsed && parsed.jobId !== undefined) {
       showToast("success", {
-        message: parsed.message ?? "Job created successfully!",
+        message: parsed.message ?? "Job updated successfully!",
         toastId,
       });
       reset();
     } else {
       showToast("success", {
-        message: "Job created successfully (unexpected response shape).",
+        message: "Job updated successfully (unexpected response shape).",
         toastId,
       });
       reset();

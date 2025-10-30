@@ -20,10 +20,12 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-builder.Services.AddControllers();
+
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddOpenApi();
+
 builder.Services.AddSwaggerGen();
+//builder.Services.AddOpenApi();
+
 
 builder.Services.AddSwaggerGen(c =>
 {
@@ -64,6 +66,7 @@ builder.Services.AddLogging(config =>
     config.AddDebug();
 });
 
+
 builder.Services.AddDbContext<ApplicationDbContext>(option =>
 option.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
@@ -78,7 +81,11 @@ builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IProjectService, ProjectService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IArticleService, ArticleService>();
-builder.Services.AddScoped<IJobService , JobService>();
+
+builder.Services.AddScoped<IArticleRepository, ArticleRepository>();
+builder.Services.AddScoped<IJobRepository, JobRepository>();
+builder.Services.AddScoped<IJobService, JobService>();
+
 
 // Identity (ensure AppUser type and ApplicationDbContext are correct)
 builder.Services.AddIdentity<AppUser, IdentityRole>(options =>
@@ -89,6 +96,7 @@ builder.Services.AddIdentity<AppUser, IdentityRole>(options =>
 .AddEntityFrameworkStores<ApplicationDbContext>()
 .AddDefaultTokenProviders();
 
+builder.Services.AddSwaggerGen();
 
 
 builder.Services.AddCors(options =>
@@ -120,11 +128,16 @@ builder.Services.AddAuthentication(options =>
         ValidIssuer = jwtCfg["Issuer"],
         ValidAudience = jwtCfg["Audience"],
         IssuerSigningKey = new SymmetricSecurityKey(key),
-        ClockSkew = TimeSpan.FromMinutes(1)
+        ClockSkew = TimeSpan.FromMinutes(15)
     };
 });
-
-builder.Services.AddControllers();
+builder.Services.AddScoped<AppIdentityDbContextSeed.ContextSeed>();
+builder.Services.AddControllers()
+    .AddJsonOptions(opts =>
+    {
+        opts.JsonSerializerOptions.PropertyNameCaseInsensitive = true;
+        opts.JsonSerializerOptions.Converters.Add(new System.Text.Json.Serialization.JsonStringEnumConverter());
+    });
 
 var app = builder.Build();
 
@@ -180,7 +193,8 @@ app.UseStaticFiles(new StaticFileOptions
 
 app.UseRouting();
 
-app.UseCors("AllowReactDev");
+ app.UseCors("AllowReactDev");
+
 app.UseAuthentication();
 app.UseAuthorization();
 

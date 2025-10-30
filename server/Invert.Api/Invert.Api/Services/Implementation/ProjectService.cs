@@ -62,10 +62,12 @@ namespace Invert.Api.Services.Implementation
         {
             try
             {
+
                 var projects = await _unitOfWork.Project.GetAll();
 
                 // ✅ Fixed: Using AutoMapper instead of manual mapping
                 var projectDtos = _mapper.Map<IEnumerable<ProjectDto>>(projects);
+
 
                 _logger.LogInformation("Retrieved {Count} projects", projectDtos.Count());
 
@@ -146,6 +148,7 @@ namespace Invert.Api.Services.Implementation
 
                 // ✅ Fixed: Using AutoMapper for mapping
                 var projectDto = _mapper.Map<ProjectDto>(project);
+
 
                 // ✅ Fixed: Direct return instead of Task.FromResult
                 return projectDto;

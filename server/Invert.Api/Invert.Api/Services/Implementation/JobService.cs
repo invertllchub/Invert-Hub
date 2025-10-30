@@ -7,6 +7,7 @@ using Invert.Api.Entities;
 using Invert.Api.Repositories.Implementation;
 using Invert.Api.Repositories.Interface;
 using Invert.Api.Services.Interface;
+using System.Net.NetworkInformation;
 using System.Text.Json;
 
 namespace Invert.Api.Services.Implementation
@@ -50,6 +51,7 @@ namespace Invert.Api.Services.Implementation
 
         public async Task<IEnumerable<JobDto>> GetAllAsync()
         {
+
             try
             {
                 var jobs = await _unitOfWork.Job.GetAll();
@@ -62,10 +64,14 @@ namespace Invert.Api.Services.Implementation
             }
         
 
+
+            return jobDtos;
+
         }
 
         public async Task<JobDto?> GetByIdAsync(int id)
         {
+
             try
             {
                 var job = await _unitOfWork.Job.Get(j => j.Id == id);
@@ -76,6 +82,7 @@ namespace Invert.Api.Services.Implementation
                 _logger.LogError(ex, "Error retrieving job with ID: {JobId}", id);
                 throw;
             }
+
 
         }
 

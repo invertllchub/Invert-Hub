@@ -10,9 +10,10 @@ namespace Invert.Api.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class ProjectController : ControllerBase
+public class ProjectsController : ControllerBase
 {
     private readonly IProjectService _service;
+
     private readonly IMemoryCache _cache;
     private readonly ILogger<ProjectController> _logger;
     public ProjectController(
@@ -24,6 +25,7 @@ public class ProjectController : ControllerBase
         _cache = cache;
         _logger = logger;
     }
+
     [HttpGet]
     public async Task<IActionResult> GetAll()
     {
@@ -56,6 +58,8 @@ public class ProjectController : ControllerBase
     // [Authorize(Roles = "Admin")]
     public async Task<IActionResult> Create([FromBody] CreateProjectDto dto)
     {
+
+
         try
         {
             if (!ModelState.IsValid)
