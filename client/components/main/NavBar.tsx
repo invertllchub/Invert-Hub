@@ -1,13 +1,16 @@
 "use client";
 import React from "react";
+import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import Image from "next/image";
-import SideBarNav from "./SideBarNav";
+// Components
+import Logo from "./Logo";
 import SearchIcon from "./Search-Icon";
+import SideBarNav from "./SideBarNav";
 
 function NavBar() {
   const pathname = usePathname();
+  const [isDark, setIsDark] = useState(false);
 
   const links = [
     { href: "/projects", label: "PROJECTS" },
@@ -15,21 +18,31 @@ function NavBar() {
     { href: "/careers", label: "CAREERS" },
   ];
 
+  
+  useEffect(() => {
+    const darkSections = document.querySelectorAll(".dark-section");
+  
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const isInDark = entries.some((entry) => entry.isIntersecting);
+        setIsDark(isInDark);
+      },
+      {
+        root: null,
+        threshold: 0.1, 
+      }
+    );
+  
+    darkSections.forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
+  
+  }, [String(pathname)]);
+
   return (
     <>
       <nav className="fixed w-full flex items-center justify-between px-4 py-2 top-0 left-0 z-40 bg-transparent">
         {/* Logo */}
-        <Link href="/" aria-label="Home">
-            <div className="relative w-[170px] h-[60px]">
-              <Image
-                src="https://res.cloudinary.com/dntdescqh/image/upload/v1755689582/logo_dppoxr.png"
-                alt="Invert-Hub Logo"
-                priority
-                fill
-                className="object-contain origin-left cursor-pointer transition-transform duration-[800ms] hover:[transform:scale(1.3)]"
-              />
-            </div>
-        </Link>
+        <Logo isDark={isDark}/>
 
         {/* NavLinks */}
         <div className="flex items-center justify-center gap-10">
@@ -52,8 +65,8 @@ function NavBar() {
 
           {/* Icons */}
           <div className="flex items-center gap-3">
-            <SearchIcon />
-            <SideBarNav />
+            <SearchIcon isDark={isDark}/>
+            <SideBarNav isDark={isDark}/>
           </div>
         </div>
       </nav>
